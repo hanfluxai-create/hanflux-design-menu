@@ -1,0 +1,726 @@
+/* Hanflux Director Mode stage: 25 looks. Shared by the hero, the menu cards and the viewer. */
+/* Hanflux Director Mode: shared stage. Looks live in hx-1..hx-5.css as .L-<id> */
+.hx{--bg:#000;--fg:#fff;--fg2:#fff;--mut:rgba(255,255,255,.55);--ac:#7c9cff;--trk:rgba(127,127,127,.28);--f:system-ui,sans-serif;--fd:var(--f);--fm:ui-monospace,monospace;--cbg:transparent;--cbd:0;
+position:relative;width:960px;height:540px;overflow:hidden;box-sizing:border-box;background:var(--bg);color:var(--fg);font-family:var(--f);isolation:isolate}
+.hx *,.hx *::before,.hx *::after{box-sizing:border-box}
+.hx i,.hx b,.hx em{font-style:normal;font-weight:inherit}
+.hx .bg,.hx .bg2,.hx .spot{position:absolute;inset:0;pointer-events:none}
+.hx .bg{z-index:0}.hx .bg2{z-index:1}.hx .spot{z-index:5;opacity:0;transition:opacity .7s;display:none}
+.hx.pt .spot{opacity:1}
+
+/* ambient chrome */
+.hx .hud{position:absolute;left:28px;right:28px;top:18px;height:24px;display:flex;align-items:center;gap:18px;font:500 10px/1 var(--fm);letter-spacing:.22em;text-transform:uppercase;color:var(--mut);z-index:7}
+.hx .brand{color:var(--fg);letter-spacing:.5em;font-family:var(--fd)}
+.hx .amb{margin-left:auto;display:flex;gap:16px;align-items:center}
+.hx .amb em{color:var(--ac)}
+.hx .gd{width:6px;height:6px;border-radius:50%;background:var(--ac);display:inline-block;margin-right:8px;vertical-align:1px}
+
+/* the scene */
+.hx .panel{position:absolute;left:48px;top:64px;width:864px;height:344px;padding:20px 24px;z-index:3;opacity:0;transform:translateY(14px) scale(.97);transition:opacity .55s ease,transform .8s cubic-bezier(.2,.8,.2,1),filter .6s,clip-path .9s cubic-bezier(.7,0,.2,1);pointer-events:none}
+.hx.on .panel{opacity:1;transform:none}
+.hx .ph{height:36px;margin-bottom:10px;display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.hx .pt{font-family:var(--fd);font-size:22px;font-weight:600}
+.hx .pm{font:500 10px var(--fm);letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.hx .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.hx .it{position:relative;background:var(--cbg);border:var(--cbd);transition:opacity .5s,filter .5s,transform .5s,background .5s,box-shadow .5s,color .5s,border-color .5s}
+.hx .card{height:120px;padding:14px 16px;display:flex;flex-direction:column;gap:7px}
+.hx .card .t{font-family:var(--fd);font-size:17px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hx .m{font:400 10px var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.hx .card .s{margin-top:auto;font-size:12px;color:var(--fg2)}
+.hx .bar{height:3px;background:var(--trk);overflow:hidden}
+.hx .bar i{display:block;height:100%;background:var(--ac)}
+.hx .list{display:flex;flex-direction:column;gap:8px}
+.hx .row{height:44px;padding:0 16px;display:flex;align-items:center;gap:14px}
+.hx .row .m{width:200px;flex:none}
+.hx .row .t{font-family:var(--fd);font-size:15px;font-weight:500;flex:1}
+.hx .row .v{font:500 13px var(--fm);color:var(--fg)}
+.hx .tog{width:30px;height:16px;border-radius:8px;background:var(--trk);position:relative;flex:none}
+.hx .tog::after{content:'';position:absolute;left:2px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--fg)}
+.hx .tog.y{background:var(--ac)}.hx .tog.y::after{left:16px}
+.hx .tog.n{visibility:hidden}
+.hx.pt .it:not(.tg){opacity:.22}
+
+/* highlight frame, pointer, leader line */
+.hx .hl{position:absolute;z-index:4;opacity:0;pointer-events:none;transition:opacity .45s .55s}
+.hx.pt .hl{opacity:1}
+.hx .ptr{position:absolute;z-index:8;width:0;height:0;opacity:0;transition:left 1s cubic-bezier(.6,0,.2,1),top 1s cubic-bezier(.6,0,.2,1),opacity .35s}
+.hx.pt .ptr{opacity:1}
+.hx .ptr i,.hx .ptr b{position:absolute;display:block}
+.hx .ptr b{white-space:nowrap;font:500 10px var(--fm);letter-spacing:.16em;text-transform:uppercase}
+.hx .lead{position:absolute;left:0;top:0;width:960px;height:540px;z-index:4;pointer-events:none;display:none;overflow:visible}
+.hx .lead path{fill:none;stroke:var(--ac);stroke-width:1.5;stroke-dasharray:1000;stroke-dashoffset:1000;transition:stroke-dashoffset 1.1s .15s ease}
+.hx.pt .lead path{stroke-dashoffset:0}
+
+/* the face: 200 x 200, centered; docks bottom left when a scene is open */
+.hx .face{position:absolute;left:380px;top:150px;width:200px;height:200px;z-index:6;transition:transform .9s cubic-bezier(.7,0,.2,1)}
+.hx.on .face{transform:translate(-390px,216px) scale(.38)}
+.hx .fx{position:absolute;inset:0}
+.fx>i{position:absolute;display:none}
+.hx .dots,.hx .word,.hx .asc{display:none}
+.hx .dots i,.hx .word i{position:absolute;display:block}
+
+/* captions */
+.hx .cap{position:absolute;left:110px;right:110px;bottom:40px;z-index:7;text-align:center;transition:left .9s cubic-bezier(.7,0,.2,1),right .9s cubic-bezier(.7,0,.2,1),bottom .9s cubic-bezier(.7,0,.2,1)}
+.hx.on .cap{left:150px;right:48px;bottom:50px;text-align:left}
+.hx .who{display:block;font:500 9px var(--fm);letter-spacing:.3em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
+.hx .say{font-size:18px;line-height:1.35}
+.hx.ls .say{color:var(--mut)}
+.deco>i{position:absolute;display:none;pointer-events:none}
+/* 01 to 05: new directions */
+@keyframes hxBlink{0%,93%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+@keyframes hxTalk{0%{height:6px}18%{height:20px}31%{height:9px}47%{height:24px}62%{height:7px}78%{height:17px}100%{height:6px}}
+@keyframes hxPulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.35);opacity:.25}}
+@keyframes hxSpin{to{transform:rotate(360deg)}}
+@keyframes hxBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+
+/* 01 Persona: a line face with moods and state colors */
+.L-persona{--bg:#0a0b10;--fg:#fff;--fg2:rgba(255,255,255,.82);--mut:rgba(255,255,255,.55);--ac:#f9a8d4;--trk:rgba(255,255,255,.14);--f:Manrope,sans-serif;--fd:Manrope,sans-serif;--fm:'JetBrains Mono',monospace;--cbg:rgba(255,255,255,.06);--cbd:1px solid rgba(255,255,255,.13)}
+.L-persona::before{content:'';position:absolute;inset:0;background:radial-gradient(55% 75% at 50% 46%,rgba(100,116,139,.55),transparent 70%)}
+.L-persona .bg{background:radial-gradient(60% 80% at 50% 46%,rgba(6,182,212,.75),rgba(59,130,246,.35) 45%,transparent 75%);opacity:0;transition:opacity .8s}
+.L-persona .bg2{background:radial-gradient(60% 80% at 50% 46%,rgba(244,114,182,.7),rgba(236,72,153,.3) 45%,transparent 75%);opacity:0;transition:opacity .8s}
+.L-persona.ls .bg{opacity:1}
+.L-persona.spk .bg2{opacity:1}
+.L-persona.on .bg2{opacity:.28}
+.L-persona .brand{font-weight:200;letter-spacing:.55em;font-size:13px}
+.L-persona .panel{background:rgba(0,0,0,.34);border:1px solid rgba(255,255,255,.14);border-radius:24px;backdrop-filter:blur(22px)}
+.L-persona .pt{font-weight:200;letter-spacing:.4em;text-transform:uppercase;font-size:15px}
+.L-persona .it{border-radius:16px}
+.L-persona .card .t{font-weight:400}
+.L-persona .it.tg{border-color:#f9a8d4;background:rgba(249,168,212,.12)}
+.L-persona.pt .it.tg{box-shadow:0 0 0 6px rgba(249,168,212,.12),0 0 28px rgba(249,168,212,.5)}
+.L-persona .fx{filter:drop-shadow(0 0 12px rgba(255,255,255,.55))}
+.L-persona .f1,.L-persona .f2{display:block;top:59px;width:22px;height:56px;border-radius:11px;background:#fff;animation:hxBlink 4.6s infinite;transition:translate .6s}
+.L-persona .f1{left:54px}.L-persona .f2{left:124px}
+.L-persona .f3,.L-persona .f4{display:block;top:30px;width:42px;height:18px;border-top:8px solid #fff;border-radius:50% 50% 0 0/100% 100% 0 0;transition:transform .5s}
+.L-persona .f3{left:44px}.L-persona .f4{left:114px}
+.L-persona .f5{display:block;left:80px;top:136px;width:40px;height:8px;border:6px solid #fff;border-radius:6px 6px 22px 22px;transform:translateY(-50%)}
+.L-persona.spk .f5{animation:hxTalk .9s infinite}
+.L-persona.ls .f1,.L-persona.ls .f2{height:62px;top:54px}
+.L-persona.ls .f3,.L-persona.ls .f4{transform:translateY(-6px)}
+.L-persona.pt .f1,.L-persona.pt .f2{translate:7px -6px}
+.L-persona .ptr .p1{left:-6px;top:-6px;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:0 0 16px #fff}
+.L-persona .ptr .p2{left:-20px;top:-20px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(249,168,212,.9);animation:hxPulse 1.6s infinite}
+.L-persona .ptr .pl{left:26px;top:-6px;color:#fff;letter-spacing:.3em}
+.L-persona .say{font-weight:300;font-size:20px}
+
+/* 02 Theatre Spotlight: the stage is dark, a follow spot is the pointer */
+.L-theatre{--bg:#050403;--fg:#fff4e2;--fg2:#e9dcc6;--mut:rgba(255,236,206,.5);--ac:#ffcf8a;--trk:rgba(255,236,206,.14);--f:'Cormorant Garamond',serif;--fd:'Cormorant Garamond',serif;--fm:'DM Mono',monospace;--cbg:transparent;--cbd:1px solid rgba(255,236,206,.16);--spc:rgba(5,4,3,.9);--s1:120px;--s2:250px}
+.L-theatre .bg{background:radial-gradient(28% 52% at 50% 44%,rgba(255,214,150,.22),transparent 70%),radial-gradient(60% 22% at 50% 100%,rgba(255,214,150,.10),transparent 70%);transition:opacity .8s}
+.L-theatre.on .bg{opacity:.2}
+.L-theatre .bg2{background:linear-gradient(90deg,#2a0606 0,#470b0b 3%,#1e0404 6%,#3d0909 9%,transparent 13%,transparent 87%,#3d0909 91%,#1e0404 94%,#470b0b 97%,#2a0606 100%);opacity:.9}
+.L-theatre .spot{display:block}
+.L-theatre .brand{font-family:'DM Mono',monospace;letter-spacing:.6em}
+.L-theatre .pt{font-size:34px;font-weight:400;font-style:italic}
+.L-theatre .card .t{font-size:22px;font-weight:600}
+.L-theatre .row .t{font-size:19px}
+.L-theatre.pt .it.tg{border-color:rgba(255,214,150,.85);color:#fff}
+.L-theatre .f5{display:block;left:-60px;top:-160px;width:320px;height:330px;background:linear-gradient(180deg,rgba(255,226,170,.0),rgba(255,226,170,.16));clip-path:polygon(44% 0,56% 0,100% 100%,0 100%)}
+.L-theatre .f6{display:block;left:10px;top:178px;width:180px;height:28px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,220,160,.35),transparent)}
+.L-theatre .f1{display:block;left:42px;top:20px;width:116px;height:150px;border-radius:48% 48% 46% 46%/42% 42% 58% 58%;background:radial-gradient(70% 60% at 40% 30%,#fffaf0,#e8dcc4 55%,#a8977a);box-shadow:0 18px 40px rgba(0,0,0,.6)}
+.L-theatre .f2,.L-theatre .f3{display:block;top:72px;width:30px;height:12px;border-radius:50%;background:#16100a;transform:rotate(-8deg)}
+.L-theatre .f2{left:62px}.L-theatre .f3{left:108px;transform:rotate(8deg)}
+.L-theatre .f4{display:block;left:84px;top:128px;width:32px;height:5px;border-radius:50%;background:#2a1a0e;transform:translateY(-50%)}
+.L-theatre.spk .f4{animation:hxTalk .85s infinite}
+.L-theatre .ptr{display:none}
+.L-theatre .say{font-style:italic;font-size:24px;font-weight:500}
+
+/* 03 Mission Control: the operator as a planet, jobs as satellites, a targeting reticle */
+.L-mission{--bg:#06101d;--fg:#e8f3ff;--fg2:#bcd4ea;--mut:rgba(160,200,235,.6);--ac:#ff7a1a;--trk:rgba(127,190,255,.18);--f:'DM Mono',monospace;--fd:'Big Shoulders Display',sans-serif;--fm:'DM Mono',monospace;--cbg:rgba(9,26,46,.65);--cbd:1px solid rgba(127,190,255,.22)}
+.L-mission .bg{background:repeating-radial-gradient(circle at 50% 46%,transparent 0 59px,rgba(127,190,255,.07) 60px 61px),linear-gradient(90deg,transparent 49.9%,rgba(127,190,255,.08) 50%,transparent 50.1%),linear-gradient(0deg,transparent 53.9%,rgba(127,190,255,.08) 54%,transparent 54.1%)}
+.L-mission .bg2{background:radial-gradient(1px 1px at 12% 20%,#fff,transparent),radial-gradient(1px 1px at 82% 14%,#fff,transparent),radial-gradient(1px 1px at 70% 78%,#cfe6ff,transparent),radial-gradient(1px 1px at 22% 84%,#fff,transparent),radial-gradient(1px 1px at 92% 52%,#fff,transparent);opacity:.7}
+.L-mission .brand{font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:15px;letter-spacing:.3em}
+.L-mission .pt{text-transform:uppercase;font-weight:800;font-size:28px;letter-spacing:.06em}
+.L-mission .panel{border:1px solid rgba(127,190,255,.25);background:rgba(4,12,24,.7)}
+.L-mission .card .t{font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:21px;text-transform:uppercase;letter-spacing:.03em}
+.L-mission .row .t{font-family:'DM Mono',monospace;font-size:13px}
+.L-mission .it.tg{border-color:#ff7a1a}
+.L-mission .lead{display:block}
+.L-mission .lead path{stroke:#ff7a1a;stroke-dasharray:4 6;stroke-dashoffset:0;opacity:0;transition:opacity .6s .3s}
+.L-mission.pt .lead path{opacity:1}
+.L-mission .hl{outline:1px solid #ff7a1a;outline-offset:5px}
+.L-mission .f1{display:block;left:40px;top:40px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 36% 32%,#2d6cab,#0b2a4a 60%,#061527);box-shadow:inset -10px -8px 24px rgba(0,0,0,.6),0 0 0 1px rgba(127,190,255,.5),0 0 30px rgba(80,170,255,.35)}
+.L-mission.spk .f1{animation:hxBreathe 1.1s infinite}
+.L-mission .f2,.L-mission .f3{display:block;left:0;top:70px;width:200px;height:60px;border-radius:50%;border:1px dashed rgba(127,190,255,.55);transform:rotate(-16deg)}
+.L-mission .f3{left:20px;top:50px;width:160px;height:100px;border-style:solid;border-color:rgba(255,122,26,.35);transform:rotate(28deg)}
+.L-mission .f4,.L-mission .f5{display:block;left:96px;top:96px;width:8px;height:8px;border-radius:50%;background:#ff7a1a;box-shadow:0 0 10px #ff7a1a}
+.L-mission .f4{animation:hxOrbA 7s linear infinite}.L-mission .f5{background:#7fd4ff;box-shadow:0 0 10px #7fd4ff;animation:hxOrbB 11s linear infinite}
+@keyframes hxOrbA{from{transform:rotate(-16deg) scaleY(.3) rotate(0) translateX(100px) scale(1,3.3)}to{transform:rotate(-16deg) scaleY(.3) rotate(360deg) translateX(100px) scale(1,3.3)}}
+@keyframes hxOrbB{from{transform:rotate(28deg) scaleY(.62) rotate(0) translateX(80px) scale(1,1.6)}to{transform:rotate(28deg) scaleY(.62) rotate(-360deg) translateX(80px) scale(1,1.6)}}
+.L-mission .f6{display:block;left:-6px;top:-6px;width:212px;height:212px;border-radius:50%;background:repeating-conic-gradient(rgba(127,190,255,.6) 0 1deg,transparent 1deg 10deg);-webkit-mask:radial-gradient(circle,transparent 96px,#000 97px);mask:radial-gradient(circle,transparent 96px,#000 97px);animation:hxSpin 40s linear infinite}
+.L-mission .ptr .p1{left:-24px;top:-24px;width:48px;height:48px;border:1.5px solid #ff7a1a;border-radius:50%}
+.L-mission .ptr .p2{left:-36px;top:0;width:72px;height:1px;background:#ff7a1a}
+.L-mission .ptr .p3{left:0;top:-36px;width:1px;height:72px;background:#ff7a1a}
+.L-mission .ptr .pl{left:32px;top:-30px;color:#ff7a1a}
+.L-mission .say{font-size:16px;letter-spacing:.02em}
+
+/* 04 Industrial Hardware: a calm machine, LED grille face, label maker tags */
+.L-industrial{--bg:#dcdad4;--fg:#1c1c1a;--fg2:#3a3935;--mut:#6d6a63;--ac:#ff4f12;--trk:#bdbab3;--f:'Space Mono',monospace;--fd:'Space Grotesk',sans-serif;--fm:'Space Mono',monospace;--cbg:#f4f3ef;--cbd:1px solid #c2bfb8}
+.L-industrial .bg{background:linear-gradient(180deg,#e6e4df,#cfccc5)}
+.L-industrial .bg2{inset:10px;border-radius:22px;box-shadow:inset 0 2px 0 rgba(255,255,255,.7),inset 0 -2px 0 rgba(0,0,0,.06),0 0 0 1px #bdbab3}
+.L-industrial .brand{font-family:'Space Mono',monospace;font-weight:700;letter-spacing:.18em}
+.L-industrial .brand::after{content:' HX-1';color:var(--ac)}
+.L-industrial .panel{background:#ebe9e4;border:1px solid #bdbab3;border-radius:16px;box-shadow:inset 0 1px 0 #fff}
+.L-industrial .pt{font-size:20px;letter-spacing:-.01em}
+.L-industrial .it{border-radius:10px;box-shadow:0 2px 0 #c9c6bf}
+.L-industrial .it::before{content:'';position:absolute;right:12px;top:12px;width:7px;height:7px;border-radius:50%;background:#9d9a92;box-shadow:inset 0 1px 1px rgba(0,0,0,.3)}
+.L-industrial .row::before{top:18px}
+.L-industrial .it.tg::before{background:#ff4f12;box-shadow:0 0 8px #ff4f12}
+.L-industrial.pt .it.tg{transform:translateY(-3px);box-shadow:0 5px 0 #b5b2ab;border-color:#ff4f12}
+.L-industrial .tog{border-radius:3px;background:#c9c6bf}
+.L-industrial .tog::after{border-radius:2px;background:#1c1c1a}
+.L-industrial .tog.y{background:#ff4f12}
+.L-industrial .f1{display:block;left:2px;top:2px;width:196px;height:196px;border-radius:50%;background:#cfccc5;box-shadow:inset 0 3px 8px rgba(0,0,0,.18),0 1px 0 #fff,0 0 0 2px #bdbab3}
+.L-industrial .dots{display:block;position:absolute;inset:0}
+.L-industrial .dots i{width:8px;height:8px;border-radius:50%;background:#8f8c84;box-shadow:inset 0 1px 1px rgba(0,0,0,.35)}
+.L-industrial .dots i.on{background:#ff4f12;box-shadow:0 0 10px #ff4f12}
+.L-industrial.spk .dots i.mo{animation:hxLed .7s infinite}
+.L-industrial.ls .dots i.on{animation:hxLedBlink 1.2s infinite}
+@keyframes hxLed{0%,100%{background:#8f8c84;box-shadow:none}40%{background:#ff4f12;box-shadow:0 0 9px #ff4f12}}
+@keyframes hxLedBlink{50%{opacity:.35}}
+.L-industrial .ptr .p1{left:-8px;top:-8px;width:16px;height:16px;background:#ff4f12;transform:rotate(45deg)}
+.L-industrial .ptr .pl{left:18px;top:-11px;padding:4px 8px;background:#121212;color:#f4f3ef;letter-spacing:.12em;transform:rotate(-2deg)}
+.L-industrial .who{color:#ff4f12}
+.L-industrial .say{font-size:15px}
+
+/* 05 Editorial Luxury: ivory, hairlines, a serif monogram that breathes */
+.L-editorial{--bg:#f3efe7;--fg:#141210;--fg2:#3b3732;--mut:#7b746a;--ac:#7a1f1f;--trk:#d8d2c7;--f:'Hanken Grotesk',sans-serif;--fd:'Instrument Serif',serif;--fm:'Hanken Grotesk',sans-serif;--cbg:transparent;--cbd:0}
+.L-editorial .bg2{inset:22px;border-top:1px solid #141210;border-bottom:1px solid #141210}
+.L-editorial .hud{top:30px;left:40px;right:40px}
+.L-editorial .brand{font-family:'Instrument Serif',serif;font-size:16px;letter-spacing:.35em}
+.L-editorial .pt{font-weight:400;font-size:40px;font-style:italic}
+.L-editorial .panel{top:58px}
+.L-editorial .it{border-top:1px solid #141210}
+.L-editorial .card .t{font-weight:400;font-size:24px}
+.L-editorial .row .t{font-weight:400;font-size:21px}
+.L-editorial .bar{display:none}
+.L-editorial .tog{background:transparent;border:1px solid #141210}
+.L-editorial .tog::after{background:#141210;top:1px}
+.L-editorial .tog.y{background:transparent}
+.L-editorial .it .t{background:linear-gradient(#7a1f1f,#7a1f1f) 0 100%/0 1px no-repeat;transition:background-size .9s .3s}
+.L-editorial.pt .it.tg .t{background-size:100% 1px;font-style:italic}
+.L-editorial .f1{display:block;left:15px;top:15px;width:170px;height:170px;border-radius:50%;border:1px solid #141210;animation:hxBreathe 5s ease-in-out infinite}
+.L-editorial .f2{display:block;left:0;top:30px;width:200px;text-align:center;font:italic 400 104px/1 'Instrument Serif',serif;color:#141210}
+.L-editorial .f2::before{content:'A'}
+.L-editorial .f3{display:block;left:70px;top:150px;width:60px;height:1px;background:#141210;transform-origin:50% 50%}
+.L-editorial.spk .f3{animation:hxLine .8s infinite}
+@keyframes hxLine{0%,100%{transform:scaleX(.3)}35%{transform:scaleX(1.25)}60%{transform:scaleX(.6)}}
+.L-editorial .f4{display:block;left:96px;top:96px;width:8px;height:8px;border-radius:50%;background:#7a1f1f;animation:hxOrbE 9s linear infinite}
+@keyframes hxOrbE{from{transform:rotate(0) translateX(85px)}to{transform:rotate(360deg) translateX(85px)}}
+.L-editorial .ptr .p1{left:-4px;top:-4px;width:8px;height:8px;border-radius:50%;background:#7a1f1f}
+.L-editorial .ptr .pl{left:14px;top:-10px;font:italic 400 18px 'Instrument Serif',serif;letter-spacing:0;text-transform:none;color:#7a1f1f}
+.L-editorial .say{font:italic 400 25px/1.25 'Instrument Serif',serif}
+/* 06 to 10 */
+@keyframes hxRotY{from{transform:rotateX(-14deg) rotateY(0)}to{transform:rotateX(-14deg) rotateY(360deg)}}
+@keyframes hxTwinkle{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes hxQuick{0%,100%{transform:scale(1)}30%{transform:scale(1.05)}55%{transform:scale(.98)}80%{transform:scale(1.04)}}
+@keyframes hxFlicker{0%,19%,21%,23%,80%,100%{opacity:1}20%,22%,81%{opacity:.35}}
+@keyframes hxHue{to{filter:hue-rotate(360deg)}}
+
+/* 06 Particles: a living sphere of light */
+.L-particles{--bg:#030507;--fg:#eef6ff;--fg2:#c8daea;--mut:rgba(200,225,255,.5);--ac:#8cc8ff;--trk:rgba(140,200,255,.18);--f:Sora,sans-serif;--fd:Sora,sans-serif;--fm:'JetBrains Mono',monospace;--cbg:transparent;--cbd:1px dashed rgba(170,215,255,.32)}
+.L-particles .bg{background:radial-gradient(1px 1px at 8% 30%,#fff,transparent),radial-gradient(1px 1px at 30% 12%,#9cf,transparent),radial-gradient(1px 1px at 64% 22%,#fff,transparent),radial-gradient(1px 1px at 90% 40%,#9cf,transparent),radial-gradient(1px 1px at 76% 86%,#fff,transparent),radial-gradient(1px 1px at 18% 76%,#fff,transparent),radial-gradient(40% 50% at 50% 46%,rgba(60,120,200,.18),transparent)}
+.L-particles .pt{font-weight:300;font-size:24px}
+.L-particles .card .t{font-weight:300;font-size:18px}
+.L-particles .it{border-radius:4px}
+.L-particles.pt .it:not(.tg){filter:blur(1.5px)}
+.L-particles.pt .it.tg{border-style:solid;border-color:#bfe2ff;box-shadow:0 0 30px rgba(140,200,255,.35),inset 0 0 24px rgba(140,200,255,.12)}
+.L-particles .face{perspective:700px}
+.L-particles .dots{display:block;position:absolute;left:100px;top:100px;width:0;height:0;transform-style:preserve-3d;animation:hxRotY 16s linear infinite}
+.L-particles .dots i{left:-1.6px;top:-1.6px;width:3.2px;height:3.2px;border-radius:50%;background:#dff0ff;box-shadow:0 0 6px #8cc8ff;animation:hxTwinkle 3s infinite}
+.L-particles .f1{display:block;left:55px;top:55px;width:90px;height:90px;border-radius:50%;background:radial-gradient(closest-side,rgba(160,215,255,.55),transparent)}
+.L-particles.spk .fx{animation:hxQuick .55s infinite}
+.L-particles.ls .f1{background:radial-gradient(closest-side,rgba(120,255,220,.6),transparent)}
+.L-particles .ptr .p1{left:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 14px #8cc8ff,0 0 30px #8cc8ff}
+.L-particles .ptr .p2{left:-62px;top:4px;width:60px;height:2px;background:linear-gradient(90deg,transparent,#8cc8ff);transform-origin:100% 50%;transform:rotate(-35deg)}
+.L-particles .ptr .pl{left:16px;top:10px;color:#bfe2ff}
+.L-particles .say{font-weight:300;font-size:19px}
+
+/* 07 Liquid Morph: an iridescent blob, scenes pour in from the face */
+.L-liquid{--bg:#0d0820;--fg:#f6f1ff;--fg2:#d8ccf6;--mut:rgba(220,205,255,.55);--ac:#ff6ec7;--trk:rgba(255,255,255,.14);--f:Syne,sans-serif;--fd:Syne,sans-serif;--fm:'JetBrains Mono',monospace;--cbg:rgba(255,255,255,.06);--cbd:1px solid rgba(255,255,255,.1)}
+.L-liquid .bg{background:radial-gradient(50% 60% at 20% 90%,rgba(127,92,255,.35),transparent),radial-gradient(40% 50% at 85% 10%,rgba(255,110,199,.22),transparent)}
+.L-liquid .panel{background:rgba(255,255,255,.05);border-radius:30px;clip-path:circle(0 at 5% 118%);opacity:1;transform:none}
+.L-liquid.on .panel{clip-path:circle(160% at 5% 118%)}
+.L-liquid .pt{font-weight:800;font-size:26px}
+.L-liquid .it{border-radius:24px}
+.L-liquid .card .t{font-weight:800}
+.L-liquid .it.tg{background:linear-gradient(120deg,#7f5cff,#ff6ec7);border-color:transparent;color:#fff}
+.L-liquid .it.tg .m,.L-liquid .it.tg .s{color:#fff}
+.L-liquid .it.tg .bar i{background:#fff}
+.L-liquid .f1{display:block;left:18px;top:18px;width:164px;height:164px;background:conic-gradient(from 40deg,#7f5cff,#3ad7ff,#ff6ec7,#ffd36e,#7f5cff);animation:hxMorph 7s ease-in-out infinite,hxHue 12s linear infinite;box-shadow:0 20px 60px rgba(127,92,255,.45)}
+.L-liquid .f2{display:block;left:52px;top:40px;width:56px;height:34px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.85),transparent);transform:rotate(-24deg)}
+.L-liquid .f3{display:block;left:18px;top:18px;width:164px;height:164px;background:radial-gradient(60% 60% at 60% 70%,rgba(13,8,32,.55),transparent 70%);animation:hxMorph 7s ease-in-out infinite}
+.L-liquid.spk .f1,.L-liquid.spk .f3{animation-duration:1.6s,12s}
+@keyframes hxMorph{0%,100%{border-radius:42% 58% 63% 37%/45% 41% 59% 55%}33%{border-radius:61% 39% 44% 56%/58% 63% 37% 42%}66%{border-radius:38% 62% 51% 49%/36% 49% 51% 64%}}
+.L-liquid .ptr .p1{left:-11px;top:-11px;width:22px;height:22px;background:linear-gradient(120deg,#7f5cff,#ff6ec7);animation:hxMorph 2s infinite;box-shadow:0 6px 20px rgba(255,110,199,.5)}
+.L-liquid .ptr .pl{left:20px;top:14px;color:#fff}
+.L-liquid .say{font-weight:500;font-size:19px}
+
+/* 08 Holographic: a projected head over a light cone, foil edges */
+.L-holo{--bg:#04090c;--fg:#dffcff;--fg2:#a9e9f0;--mut:rgba(160,240,250,.5);--ac:#6ff6ff;--trk:rgba(111,246,255,.16);--f:'Chakra Petch',sans-serif;--fd:'Chakra Petch',sans-serif;--fm:'Chakra Petch',sans-serif;--cbg:rgba(111,246,255,.04);--cbd:1px solid rgba(111,246,255,.3)}
+.L-holo .bg2{background:repeating-linear-gradient(0deg,rgba(111,246,255,.05) 0 1px,transparent 1px 4px)}
+.L-holo .bg{background:radial-gradient(45% 60% at 50% 60%,rgba(40,180,200,.16),transparent)}
+.L-holo .panel{background:rgba(6,30,36,.55);border:1px solid;border-image:linear-gradient(90deg,#6ff6ff,#ff8af5,#fff38a,#6ff6ff) 1}
+.L-holo .pt{text-transform:uppercase;letter-spacing:.18em;font-size:20px}
+.L-holo .card .t{text-transform:uppercase;letter-spacing:.06em}
+.L-holo .it.tg{border-image:linear-gradient(90deg,#6ff6ff,#ff8af5,#fff38a,#6ff6ff) 1;background:rgba(255,138,245,.08);animation:hxHue 3s linear infinite}
+.L-holo .f1{display:block;left:40px;top:176px;width:120px;height:20px;border-radius:50%;background:radial-gradient(closest-side,#bffcff,rgba(111,246,255,.4) 50%,transparent);box-shadow:0 0 30px #6ff6ff}
+.L-holo .f2{display:block;left:30px;top:10px;width:140px;height:176px;background:linear-gradient(0deg,rgba(111,246,255,.28),transparent 85%);clip-path:polygon(28% 100%,72% 100%,100% 0,0 0)}
+.L-holo .f3{display:block;left:46px;top:14px;width:108px;height:124px;border-radius:46% 46% 44% 44%;background:repeating-linear-gradient(0deg,rgba(191,252,255,.32) 0 2px,rgba(191,252,255,.08) 2px 5px);box-shadow:0 0 0 1.5px rgba(191,252,255,.8),0 0 24px rgba(111,246,255,.6);animation:hxFlicker 4s infinite}
+.L-holo .f4,.L-holo .f5{display:block;top:58px;width:22px;height:7px;background:#e8feff;box-shadow:0 0 10px #6ff6ff}
+.L-holo .f4{left:70px}.L-holo .f5{left:108px}
+.L-holo .f6{display:block;left:84px;top:104px;width:32px;height:3px;background:#e8feff;box-shadow:0 0 10px #6ff6ff}
+.L-holo.spk .f6{animation:hxLine .7s infinite}
+.L-holo .f7{display:block;left:22px;top:60px;width:156px;height:36px;border-radius:50%;border:1px solid rgba(255,138,245,.6);animation:hxSpin 6s linear infinite}
+.L-holo .lead{display:block;filter:drop-shadow(0 0 6px #6ff6ff)}
+.L-holo .ptr .p1{left:-8px;top:-8px;width:16px;height:16px;border:1.5px solid #6ff6ff;transform:rotate(45deg);box-shadow:0 0 12px #6ff6ff}
+.L-holo .ptr .pl{left:18px;top:-22px;color:#6ff6ff}
+.L-holo .say{font-size:18px;letter-spacing:.02em}
+
+/* 09 Neon Glow: tubes of light on a dark wall */
+.L-neon{--bg:#0b0614;--fg:#fff;--fg2:#ffd9f6;--mut:rgba(255,190,240,.55);--ac:#2bf2ff;--trk:rgba(255,43,214,.2);--f:Rajdhani,sans-serif;--fd:'Tilt Neon',sans-serif;--fm:Rajdhani,sans-serif;--cbg:transparent;--cbd:1.5px solid rgba(255,43,214,.55)}
+.L-neon .bg{background:radial-gradient(60% 70% at 50% 45%,rgba(120,20,110,.25),transparent 70%),repeating-linear-gradient(0deg,rgba(255,255,255,.015) 0 30px,rgba(0,0,0,.04) 30px 32px)}
+.L-neon .brand{text-shadow:0 0 6px #ff2bd6,0 0 18px #ff2bd6}
+.L-neon .pt{font-size:28px;font-weight:400;text-shadow:0 0 8px #ff2bd6,0 0 22px #ff2bd6}
+.L-neon .it{border-radius:12px;box-shadow:0 0 10px rgba(255,43,214,.35),inset 0 0 10px rgba(255,43,214,.15)}
+.L-neon .card .t{font-family:'Tilt Neon',sans-serif;font-weight:400;font-size:19px}
+.L-neon .m{font-size:12px;font-weight:700}
+.L-neon .it.tg{border-color:#2bf2ff;box-shadow:0 0 12px #2bf2ff,0 0 34px rgba(43,242,255,.5),inset 0 0 14px rgba(43,242,255,.3);animation:hxFlicker 2.5s 1}
+.L-neon .f1{display:block;left:20px;top:20px;width:160px;height:160px;border-radius:50%;border:4px solid #ff8af0;box-shadow:0 0 8px #ff2bd6,0 0 24px #ff2bd6,inset 0 0 18px rgba(255,43,214,.6);animation:hxFlicker 6s infinite}
+.L-neon .f2,.L-neon .f3{display:block;top:66px;width:8px;height:34px;border-radius:4px;background:#d7fdff;box-shadow:0 0 8px #2bf2ff,0 0 20px #2bf2ff;animation:hxBlink 5s infinite}
+.L-neon .f2{left:72px}.L-neon .f3{left:120px}
+.L-neon .f4{display:block;left:72px;top:118px;width:56px;height:18px;border:4px solid #d7fdff;border-top:0;border-radius:0 0 30px 30px;box-shadow:0 6px 12px -4px #2bf2ff;filter:drop-shadow(0 0 6px #2bf2ff)}
+.L-neon.spk .f4{animation:hxNeonTalk .8s infinite}
+@keyframes hxNeonTalk{0%,100%{height:12px}40%{height:26px}70%{height:16px}}
+.L-neon .ptr .p1{left:-14px;top:-14px;width:28px;height:28px;border-right:4px solid #d7fdff;border-top:4px solid #d7fdff;filter:drop-shadow(0 0 6px #2bf2ff);transform:rotate(0deg)}
+.L-neon .ptr .pl{left:22px;top:-26px;font-size:14px;font-weight:700;color:#d7fdff;text-shadow:0 0 8px #2bf2ff}
+.L-neon .say{font-size:21px;font-weight:500}
+.L-neon.spk .say{text-shadow:0 0 10px rgba(255,43,214,.6)}
+
+/* 10 Wireframe 3D: a spinning vector globe over a perspective floor */
+.L-wireframe{--bg:#000;--fg:#f2f2f2;--fg2:#cfcfcf;--mut:rgba(255,255,255,.5);--ac:#fff;--trk:rgba(255,255,255,.2);--f:'IBM Plex Mono',monospace;--fd:'Major Mono Display',monospace;--fm:'IBM Plex Mono',monospace;--cbg:transparent;--cbd:1px solid rgba(255,255,255,.7)}
+.L-wireframe .bg2{inset:auto -50% -30% -50%;height:62%;background:linear-gradient(rgba(255,255,255,.22) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(255,255,255,.22) 1px,transparent 1px) 0 0/48px 48px;transform:perspective(380px) rotateX(72deg);transform-origin:50% 100%;-webkit-mask:linear-gradient(0deg,#000,transparent);mask:linear-gradient(0deg,#000,transparent)}
+.L-wireframe .panel{transform:perspective(900px) rotateX(22deg) translateY(40px);background:#000;border:1px solid rgba(255,255,255,.8)}
+.L-wireframe.on .panel{transform:perspective(900px) rotateX(0)}
+.L-wireframe .pt{font-weight:400;font-size:24px;text-transform:lowercase}
+.L-wireframe .card .t{font-weight:400;font-size:15px}
+.L-wireframe .it.tg{background:#fff;color:#000}
+.L-wireframe .it.tg .m,.L-wireframe .it.tg .s,.L-wireframe .it.tg .v{color:#000}
+.L-wireframe .it.tg .bar i{background:#000}
+.L-wireframe .face{perspective:600px}
+.L-wireframe .dots{display:block;position:absolute;left:100px;top:100px;width:0;height:0;transform-style:preserve-3d;animation:hxRotY 14s linear infinite}
+.L-wireframe .dots i.mer{left:-84px;top:-84px;width:168px;height:168px;border-radius:50%;border:1px solid rgba(255,255,255,.85)}
+.L-wireframe .dots i.par{border-radius:50%;border:1px solid rgba(255,255,255,.6)}
+.L-wireframe.spk .fx{animation:hxQuick .6s infinite}
+.L-wireframe .lead{display:block}
+.L-wireframe .lead path{stroke:#fff;stroke-width:1}
+.L-wireframe .ptr .p1{left:-18px;top:0;width:36px;height:1px;background:#fff}
+.L-wireframe .ptr .p2{left:0;top:-18px;width:1px;height:36px;background:#fff}
+.L-wireframe .ptr .p3{left:-10px;top:-10px;width:20px;height:20px;border:1px solid #fff}
+.L-wireframe .ptr .pl{left:18px;top:8px;color:#fff;text-transform:lowercase}
+.L-wireframe .say{font-size:16px}
+/* 11 to 15 */
+@keyframes hxDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-24px)}}
+@keyframes hxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes hxEq{0%,100%{transform:scaleY(1)}30%{transform:scaleY(1.35)}55%{transform:scaleY(.8)}80%{transform:scaleY(1.2)}}
+@keyframes hxWave{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes hxCursor{50%{opacity:0}}
+
+/* 11 Glassmorphism: frosted layers over living color */
+.L-glass{--bg:#2a1f5c;--fg:#fff;--fg2:rgba(255,255,255,.9);--mut:rgba(255,255,255,.72);--ac:#fff;--trk:rgba(255,255,255,.3);--f:Outfit,sans-serif;--fd:Outfit,sans-serif;--fm:Outfit,sans-serif;--cbg:rgba(255,255,255,.14);--cbd:1px solid rgba(255,255,255,.38)}
+.L-glass .bg{background:radial-gradient(40% 55% at 18% 25%,#7b5cff,transparent 70%),radial-gradient(45% 60% at 85% 80%,#ff8a6b,transparent 70%),radial-gradient(40% 50% at 70% 15%,#36c2ff,transparent 70%),#3a2a7a}
+.L-glass .bg2{background:radial-gradient(30% 40% at 40% 70%,rgba(255,120,220,.55),transparent 70%);animation:hxDrift 12s ease-in-out infinite}
+.L-glass .m{text-transform:none;letter-spacing:.04em;font-size:11px}
+.L-glass .panel{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.4);border-radius:28px;backdrop-filter:blur(26px);box-shadow:0 20px 60px rgba(20,10,60,.3)}
+.L-glass .pt{font-weight:500;font-size:24px}
+.L-glass .it{border-radius:18px;backdrop-filter:blur(10px)}
+.L-glass .card .t{font-weight:500}
+.L-glass.pt .it.tg{background:rgba(255,255,255,.34);border-color:#fff;transform:translateY(-4px);box-shadow:0 16px 40px rgba(20,10,60,.35)}
+.L-glass .f1{display:block;left:20px;top:20px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.55);backdrop-filter:blur(16px);box-shadow:inset 0 0 30px rgba(255,255,255,.35),0 24px 60px rgba(30,10,80,.35)}
+.L-glass .f2{display:block;left:60px;top:60px;width:80px;height:80px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.9),rgba(255,180,240,.4) 60%,transparent);filter:blur(4px)}
+.L-glass.spk .f2{animation:hxQuick .5s infinite}
+.L-glass .f3{display:block;left:48px;top:34px;width:50px;height:24px;border-radius:50%;background:rgba(255,255,255,.7);filter:blur(3px);transform:rotate(-25deg)}
+.L-glass .f4,.L-glass .f5{display:block;top:84px;width:12px;height:28px;border-radius:6px;background:#fff;animation:hxBlink 4s infinite}
+.L-glass .f4{left:78px}.L-glass .f5{left:110px}
+.L-glass .ptr .p1{left:-18px;top:-18px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.25);border:1px solid #fff;backdrop-filter:blur(6px)}
+.L-glass .ptr .p2{left:-4px;top:-4px;width:8px;height:8px;border-radius:50%;background:#fff}
+.L-glass .ptr .pl{left:24px;top:-26px;padding:4px 10px;border-radius:12px;background:rgba(255,255,255,.3);color:#fff;letter-spacing:.06em;text-transform:none;font:500 12px Outfit,sans-serif}
+.L-glass .say{font-weight:300;font-size:21px}
+
+/* 12 Kinetic Type: the words are the interface */
+.L-kinetic{--bg:#efece6;--fg:#0e0e0e;--fg2:#262626;--mut:#6b675f;--ac:#ff3b00;--trk:#cfcac0;--f:Archivo,sans-serif;--fd:Anton,sans-serif;--fm:Archivo,sans-serif;--cbg:transparent;--cbd:0}
+.L-kinetic .brand{font-family:Anton,sans-serif;letter-spacing:.12em;font-size:14px}
+.L-kinetic .pt{font-weight:400;font-size:50px;line-height:.9;text-transform:uppercase}
+.L-kinetic .ph{height:48px}
+.L-kinetic .it{border-top:3px solid #0e0e0e}
+.L-kinetic .card .t{font-family:Archivo,sans-serif;font-weight:800;font-size:19px}
+.L-kinetic .row .t{font-family:Archivo,sans-serif;font-weight:800;font-size:17px}
+.L-kinetic .m{font-weight:500}
+.L-kinetic.pt .it.tg{background:#0e0e0e;color:#efece6;border-top-color:#ff3b00}
+.L-kinetic.pt .it.tg .m,.L-kinetic.pt .it.tg .s,.L-kinetic.pt .it.tg .v{color:#efece6}
+.L-kinetic .word{display:block;position:absolute;left:0;top:58px;width:200px;height:80px}
+.L-kinetic .word i{top:0;width:28px;text-align:center;font:400 54px/1 Anton,sans-serif;color:#0e0e0e;transform-origin:50% 100%}
+.L-kinetic.spk .word i{animation:hxEq .55s infinite}
+.L-kinetic.ls .word i{animation:hxWave 1.2s ease-in-out infinite}
+.L-kinetic .f1{display:block;left:6px;top:128px;width:188px;height:10px;background:#ff3b00;transform-origin:0 50%}
+.L-kinetic.spk .f1{animation:hxLine .6s infinite}
+.L-kinetic .ptr .p1{left:-74px;top:-18px;font:400 72px/1 Anton,sans-serif;color:#ff3b00}
+.L-kinetic .ptr .p1::before{content:'\2192'}
+.L-kinetic .ptr .pl{display:none}
+.L-kinetic .say{font:400 30px/1.05 Anton,sans-serif;text-transform:uppercase;letter-spacing:.01em}
+.L-kinetic.ls .say{color:#ff3b00}
+
+/* 13 Isometric: a tidy little world of blocks */
+.L-iso{--bg:#e6f2ec;--fg:#23214a;--fg2:#3d3a6e;--mut:#6f6c98;--ac:#6c5ce7;--trk:#cfc9f5;--f:Lexend,sans-serif;--fd:Lexend,sans-serif;--fm:Lexend,sans-serif;--cbg:#fff;--cbd:1.5px solid #23214a}
+.L-iso .bg2{background:repeating-linear-gradient(30deg,rgba(35,33,74,.06) 0 1px,transparent 1px 26px),repeating-linear-gradient(150deg,rgba(35,33,74,.06) 0 1px,transparent 1px 26px)}
+.L-iso .pt{font-weight:600}
+.L-iso .m{text-transform:none;letter-spacing:.02em;font-size:11px}
+.L-iso .it{border-radius:6px;box-shadow:7px 7px 0 #b8adf6}
+.L-iso.pt .it.tg{background:#6c5ce7;color:#fff;transform:translate(-6px,-6px);box-shadow:13px 13px 0 #23214a}
+.L-iso.pt .it.tg .m,.L-iso.pt .it.tg .s{color:#fff}
+.L-iso.pt .it.tg .bar i{background:#fff}
+.L-iso .fx{animation:hxFloat 3s ease-in-out infinite}
+.L-iso .f1{display:block;left:40px;top:28px;width:120px;height:70px;background:#c9c1ff;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.L-iso .f2{display:block;left:40px;top:63px;width:60px;height:100px;background:#8e7ff0;clip-path:polygon(0 0,100% 35%,100% 100%,0 65%)}
+.L-iso .f3{display:block;left:100px;top:63px;width:60px;height:100px;background:#5a49d6;clip-path:polygon(0 35%,100% 0,100% 65%,0 100%)}
+.L-iso .f4,.L-iso .f5{display:block;top:96px;width:9px;height:16px;background:#fff;transform:skewY(30deg);border-radius:2px;animation:hxBlink 4s infinite}
+.L-iso .f4{left:56px}.L-iso .f5{left:78px}
+.L-iso .f6{display:block;left:58px;top:128px;width:26px;height:5px;background:#fff;transform:skewY(30deg);border-radius:2px}
+.L-iso.spk .f6{animation:hxEq .5s infinite}
+.L-iso .f7{display:block;left:52px;top:178px;width:96px;height:16px;border-radius:50%;background:rgba(35,33,74,.18)}
+.L-iso .ptr .p1{left:-13px;top:-52px;width:26px;height:26px;background:#ff6b6b;border:2px solid #23214a;border-radius:50% 50% 50% 0;transform:rotate(-45deg);animation:hxFloat 1s ease-in-out infinite}
+.L-iso .ptr .p2{left:-8px;top:-4px;width:16px;height:6px;border-radius:50%;background:rgba(35,33,74,.25)}
+.L-iso .ptr .pl{left:20px;top:-50px;padding:3px 8px;background:#23214a;color:#fff;border-radius:4px;letter-spacing:.06em;text-transform:none;font:600 11px Lexend,sans-serif}
+.L-iso .say{font-weight:300;font-size:19px}
+
+/* 14 Clay 3D: soft, warm, touchable */
+.L-clay{--bg:#f4dccd;--fg:#4a2e2a;--fg2:#6b4a44;--mut:#9a776f;--ac:#a98cff;--trk:#ecc9b9;--f:Fredoka,sans-serif;--fd:Fredoka,sans-serif;--fm:Fredoka,sans-serif;--cbg:#fbeee6;--cbd:0}
+.L-clay .bg{background:radial-gradient(60% 70% at 50% 40%,#fbe9de,#f0cdbb)}
+.L-clay .m{text-transform:none;letter-spacing:.02em;font-size:12px}
+.L-clay .panel{background:#f8e4d8;border-radius:34px;box-shadow:inset 6px 6px 14px rgba(255,255,255,.7),inset -8px -8px 16px rgba(170,110,90,.18),0 22px 40px rgba(150,90,70,.22)}
+.L-clay .pt{font-weight:600;font-size:26px}
+.L-clay .it{border-radius:24px;box-shadow:inset 4px 4px 8px rgba(255,255,255,.8),inset -5px -5px 10px rgba(170,110,90,.16),0 8px 14px rgba(150,90,70,.16)}
+.L-clay .card .t{font-weight:600}
+.L-clay .bar{height:8px;border-radius:4px}
+.L-clay .bar i{border-radius:4px}
+.L-clay.pt .it.tg{background:#c8b6ff;transform:translateY(-6px) scale(1.02)}
+.L-clay .fx{animation:hxFloat 3.4s ease-in-out infinite}
+.L-clay .f1{display:block;left:15px;top:15px;width:170px;height:165px;border-radius:50% 50% 46% 46%;background:radial-gradient(70% 70% at 35% 30%,#ffd6b8,#f4a986 60%,#e48a68);box-shadow:inset -12px -16px 24px rgba(160,70,40,.3),inset 12px 12px 22px rgba(255,255,255,.55),0 26px 40px rgba(150,80,60,.3)}
+.L-clay .f2,.L-clay .f3{display:block;top:66px;width:22px;height:30px;border-radius:50%;background:#3b2320;box-shadow:inset 3px 4px 0 rgba(255,255,255,.55);animation:hxBlink 4.5s infinite}
+.L-clay .f2{left:66px}.L-clay .f3{left:112px}
+.L-clay .f4{display:block;left:84px;top:126px;width:32px;height:12px;border-radius:12px;background:#7a2f2a;box-shadow:inset 0 3px 0 rgba(0,0,0,.25);transform:translateY(-50%)}
+.L-clay.spk .f4{animation:hxTalk .8s infinite}
+.L-clay .f5,.L-clay .f6{display:block;top:104px;width:24px;height:14px;border-radius:50%;background:#ff8e8e;filter:blur(3px);opacity:.7}
+.L-clay .f5{left:38px}.L-clay .f6{left:138px}
+.L-clay.pt .f2,.L-clay.pt .f3{translate:6px -5px}
+.L-clay .ptr .p1{left:-16px;top:-16px;width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffd28a,#ff9e3d);box-shadow:inset -4px -5px 8px rgba(160,70,0,.35),0 8px 14px rgba(150,80,40,.3)}
+.L-clay .ptr .pl{left:22px;top:18px;padding:4px 10px;border-radius:12px;background:#fff6ef;color:#4a2e2a;text-transform:none;letter-spacing:.02em;font:600 12px Fredoka,sans-serif;box-shadow:0 6px 12px rgba(150,80,60,.18)}
+.L-clay .say{font-size:20px}
+
+/* 15 ASCII Art: a phosphor terminal that thinks in characters */
+.L-ascii{--bg:#040904;--fg:#86ff9e;--fg2:#6ee388;--mut:#3f9a52;--ac:#86ff9e;--trk:#1c4425;--f:'IBM Plex Mono',monospace;--fd:'IBM Plex Mono',monospace;--fm:'IBM Plex Mono',monospace;--cbg:transparent;--cbd:1px dashed #2f7a3e}
+.L-ascii .bg2{background:repeating-linear-gradient(0deg,rgba(134,255,158,.04) 0 1px,transparent 1px 3px)}
+.L-ascii .bg{background:radial-gradient(70% 80% at 50% 50%,rgba(40,120,60,.18),transparent)}
+.L-ascii .hud,.L-ascii .say,.L-ascii .pt{text-shadow:0 0 6px rgba(134,255,158,.55)}
+.L-ascii .panel{border:1px solid #86ff9e}
+.L-ascii .pt{font-weight:400;font-size:16px}
+.L-ascii .pt::before{content:'[ ';color:var(--mut)}.L-ascii .pt::after{content:' ]';color:var(--mut)}
+.L-ascii .card .t,.L-ascii .row .t{font-weight:400;font-size:14px}
+.L-ascii .card .t::before,.L-ascii .row .t::before{content:'[ ] ';color:var(--mut)}
+.L-ascii .it.tg .t::before{content:'[x] '}
+.L-ascii .bar{height:6px;background:repeating-linear-gradient(90deg,#1c4425 0 5px,transparent 5px 7px)}
+.L-ascii .bar i{background:repeating-linear-gradient(90deg,#86ff9e 0 5px,transparent 5px 7px)}
+.L-ascii .tog{border-radius:0}.L-ascii .tog::after{border-radius:0}
+.L-ascii.pt .it.tg{background:#86ff9e;color:#040904}
+.L-ascii.pt .it.tg .m,.L-ascii.pt .it.tg .s,.L-ascii.pt .it.tg .v,.L-ascii.pt .it.tg .t::before{color:#040904}
+.L-ascii .asc{display:block;position:absolute;left:0;top:22px;width:200px;margin:0;font:400 9.6px/10px 'IBM Plex Mono',monospace;letter-spacing:-.2px;color:#86ff9e;text-align:center;text-shadow:0 0 5px rgba(134,255,158,.7);white-space:pre}
+.L-ascii .ptr .p1{left:14px;top:-9px;font:600 16px 'IBM Plex Mono',monospace;color:#86ff9e;animation:hxCursor 1s steps(1) infinite}
+.L-ascii .ptr .p1::before{content:'<<'}
+.L-ascii .ptr .pl{left:44px;top:-6px;color:#86ff9e}
+.L-ascii .say{font-size:16px}
+.L-ascii .say::after{content:'\2588';margin-left:4px;animation:hxCursor 1s steps(1) infinite}
+/* 16 to 20 */
+@keyframes hxPop{0%{transform:scale(.6) rotate(-3deg);opacity:0}70%{transform:scale(1.04) rotate(1deg);opacity:1}100%{transform:none;opacity:1}}
+@keyframes hxFlipA{from{transform:scaleY(.02)}to{transform:scaleY(1)}}
+@keyframes hxFlipB{from{transform:scaleY(.02)}to{transform:scaleY(1)}}
+@keyframes hxJit{0%,100%{transform:translateX(0)}20%{transform:translateX(-2px)}40%{transform:translateX(2px)}60%{transform:translateX(-1px)}}
+@keyframes hxTrack{from{transform:translateY(-60px)}to{transform:translateY(600px)}}
+@keyframes hxDot{0%,100%{transform:scale(1)}40%{transform:scale(1.45)}}
+
+/* 16 Gradient Mesh: a white product surface floating over warm color */
+.L-mesh{--bg:#ff8a5b;--fg:#1b1530;--fg2:#3a3350;--mut:#7b7590;--ac:#e0368f;--trk:#ebe7f2;--f:'Plus Jakarta Sans',sans-serif;--fd:'Plus Jakarta Sans',sans-serif;--fm:'Plus Jakarta Sans',sans-serif;--cbg:#fff;--cbd:1px solid #ece8f3}
+.L-mesh .bg{background:radial-gradient(45% 60% at 15% 20%,#ffb36b,transparent 70%),radial-gradient(50% 65% at 85% 25%,#e0368f,transparent 70%),radial-gradient(55% 70% at 70% 95%,#3a5bff,transparent 70%),radial-gradient(45% 60% at 10% 90%,#7a4dff,transparent 70%),#ff8a5b}
+.L-mesh .bg2{background:radial-gradient(35% 45% at 50% 45%,rgba(255,240,220,.55),transparent 70%);animation:hxDrift 10s ease-in-out infinite}
+.L-mesh .hud{color:rgba(255,255,255,.85)}.L-mesh .brand{color:#fff}.L-mesh .amb em{color:#fff;font-weight:700}
+.L-mesh .gd{background:#fff}
+.L-mesh .m{text-transform:none;letter-spacing:.01em;font-size:11px}
+.L-mesh .panel{background:rgba(255,255,255,.96);border-radius:22px;box-shadow:0 30px 80px rgba(40,10,60,.35)}
+.L-mesh .pt{font-weight:700;font-size:24px;letter-spacing:-.02em}
+.L-mesh .it{border-radius:14px;box-shadow:0 2px 6px rgba(30,20,60,.06)}
+.L-mesh .bar{height:4px;border-radius:2px}
+.L-mesh .bar i{background:linear-gradient(90deg,#ffb36b,#e0368f,#3a5bff)}
+.L-mesh.pt .it.tg{box-shadow:0 0 0 2px #e0368f,0 14px 34px rgba(224,54,143,.28)}
+.L-mesh .cap .who{color:rgba(255,255,255,.8)}.L-mesh .say{color:#fff;font-weight:700;font-size:21px;letter-spacing:-.01em}
+.L-mesh.on .cap .who{color:rgba(255,255,255,.85)}
+.L-mesh.ls .say{color:rgba(255,255,255,.75)}
+.L-mesh .f1{display:block;left:20px;top:20px;width:160px;height:160px;border-radius:50%;background:conic-gradient(from 0deg,#ffb36b,#e0368f,#7a4dff,#3a5bff,#ffb36b);filter:blur(3px);animation:hxSpin 8s linear infinite}
+.L-mesh .f2{display:block;left:20px;top:20px;width:160px;height:160px;border-radius:50%;background:radial-gradient(60% 60% at 38% 32%,rgba(255,255,255,.85),transparent 60%);box-shadow:0 30px 60px rgba(60,20,90,.35)}
+.L-mesh.spk .fx{animation:hxQuick .5s infinite}
+.L-mesh .ptr .p1{left:-7px;top:-7px;width:14px;height:14px;border-radius:50%;background:#e0368f;box-shadow:0 0 0 6px rgba(224,54,143,.2)}
+.L-mesh .ptr .pl{left:16px;top:14px;padding:5px 12px;border-radius:20px;background:linear-gradient(90deg,#e0368f,#7a4dff);color:#fff;letter-spacing:.04em;text-transform:none;font:700 12px 'Plus Jakarta Sans',sans-serif}
+
+/* 17 Comic Book: ink, halftone and a speech balloon that talks */
+.L-comic{--bg:#fff3d6;--fg:#111;--fg2:#111;--mut:#5a4a2a;--ac:#e8202a;--trk:#e9d9b0;--f:'Comic Neue',sans-serif;--fd:Bangers,sans-serif;--fm:'Comic Neue',sans-serif;--cbg:#fff;--cbd:3px solid #111}
+.L-comic .bg{background:radial-gradient(circle,rgba(232,32,42,.18) 1.6px,transparent 2px) 0 0/9px 9px}
+.L-comic .bg2{background:conic-gradient(from 0deg at 50% 46%,rgba(255,210,63,.55) 0 8deg,transparent 8deg 20deg);-webkit-mask:radial-gradient(circle at 50% 46%,#000 10%,transparent 55%);mask:radial-gradient(circle at 50% 46%,#000 10%,transparent 55%);transition:opacity .6s}
+.L-comic.on .bg2{opacity:0}
+.L-comic .brand{font-family:Bangers,sans-serif;font-size:18px;letter-spacing:.12em;color:#e8202a;-webkit-text-stroke:1px #111}
+.L-comic .m{font-weight:700;letter-spacing:.04em}
+.L-comic .panel{background:#fff;border:4px solid #111;box-shadow:7px 7px 0 #111;transition:opacity .2s,transform .5s cubic-bezier(.3,1.6,.5,1)}
+.L-comic.on .panel{animation:hxPop .5s}
+.L-comic .pt{font-weight:400;font-size:34px;letter-spacing:.04em;color:#e8202a;-webkit-text-stroke:1px #111}
+.L-comic .card .t{font-family:Bangers,sans-serif;font-weight:400;font-size:22px;letter-spacing:.04em}
+.L-comic .row .t{font-weight:700}
+.L-comic .bar{height:8px;border:2px solid #111}
+.L-comic .bar i{background:#e8202a}
+.L-comic.pt .it.tg{background:#ffd23f;transform:rotate(-1.5deg) scale(1.03);box-shadow:5px 5px 0 #111}
+.L-comic .f5{display:block;left:-20px;top:-20px;width:240px;height:240px;border-radius:50%;background:conic-gradient(#e8202a 0 10deg,transparent 10deg 30deg,#e8202a 30deg 40deg,transparent 40deg 60deg,#e8202a 60deg 70deg,transparent 70deg 90deg,#e8202a 90deg 100deg,transparent 100deg 120deg,#e8202a 120deg 130deg,transparent 130deg 150deg,#e8202a 150deg 160deg,transparent 160deg 180deg,#e8202a 180deg 190deg,transparent 190deg 210deg,#e8202a 210deg 220deg,transparent 220deg 240deg,#e8202a 240deg 250deg,transparent 250deg 270deg,#e8202a 270deg 280deg,transparent 280deg 300deg,#e8202a 300deg 310deg,transparent 310deg 330deg,#e8202a 330deg 340deg,transparent 340deg);-webkit-mask:radial-gradient(circle,transparent 82px,#000 84px);mask:radial-gradient(circle,transparent 82px,#000 84px);animation:hxSpin 20s linear infinite}
+.L-comic .f1{display:block;left:30px;top:34px;width:140px;height:132px;border-radius:26px;background:radial-gradient(circle,rgba(0,0,0,.18) 1.4px,transparent 1.8px) 0 0/7px 7px,#ffd23f;border:5px solid #111}
+.L-comic .f6{display:block;left:96px;top:10px;width:8px;height:26px;background:#111;border-radius:4px}
+.L-comic .f7{display:block;left:89px;top:2px;width:22px;height:22px;border-radius:50%;background:#e8202a;border:4px solid #111}
+.L-comic .f2,.L-comic .f3{display:block;top:68px;width:36px;height:36px;border-radius:50%;border:4px solid #111;background:radial-gradient(circle at 58% 48%,#111 0 7px,#fff 8px)}
+.L-comic .f2{left:56px}.L-comic .f3{left:108px}
+.L-comic.pt .f2,.L-comic.pt .f3{background:radial-gradient(circle at 72% 32%,#111 0 7px,#fff 8px)}
+.L-comic .f4{display:block;left:72px;top:128px;width:56px;height:12px;background:#fff;border:4px solid #111;border-radius:6px;transform:translateY(-50%)}
+.L-comic.spk .f4{animation:hxTalk .7s infinite}
+.L-comic .cap{background:#fff;border:3px solid #111;border-radius:22px;padding:10px 18px;left:250px;right:250px;bottom:30px;box-shadow:4px 4px 0 #111}
+.L-comic.on .cap{left:150px;right:260px;bottom:44px}
+.L-comic .cap::after{content:'';position:absolute;left:50%;top:-16px;width:22px;height:16px;background:#111;clip-path:polygon(30% 0,100% 100%,0 100%)}
+.L-comic.on .cap::after{left:-16px;top:auto;bottom:14px;width:18px;height:20px;clip-path:polygon(0 50%,100% 0,100% 100%)}
+.L-comic .who{color:#e8202a;font-weight:700}
+.L-comic .say{font-weight:700;font-size:18px}
+.L-comic .ptr .p1{left:-74px;top:24px;width:70px;height:44px;background:#e8202a;clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%);transform:rotate(-38deg);transform-origin:100% 50%;filter:drop-shadow(2px 2px 0 #111)}
+.L-comic .ptr .pl{left:-150px;top:56px;font:400 26px Bangers,sans-serif;letter-spacing:.06em;color:#111;background:#ffd23f;border:3px solid #111;padding:2px 10px;transform:rotate(-6deg)}
+
+/* 18 Split-flap: an airport departures board that flips to answer */
+.L-flap{--bg:#0f0f0f;--fg:#f3f3f3;--fg2:#dcdcdc;--mut:#8b8b8b;--ac:#ffb000;--trk:#2a2a2a;--f:Oswald,sans-serif;--fd:Oswald,sans-serif;--fm:Oswald,sans-serif;--cbg:linear-gradient(180deg,#232323 0 49%,#0b0b0b 49% 51%,#1c1c1c 51%);--cbd:0}
+.L-flap .brand{font-weight:700;letter-spacing:.35em}
+.L-flap .panel{background:#161616;border:8px solid #232323;border-radius:6px;padding:16px 20px;box-shadow:inset 0 0 0 1px #000}
+.L-flap .pt{font-weight:700;font-size:22px;letter-spacing:.2em;text-transform:uppercase;color:#ffb000}
+.L-flap .pm{color:#ffb000}
+.L-flap .it{border-radius:3px}
+.L-flap .card .t,.L-flap .row .t{font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.L-flap .m{color:#ffb000;letter-spacing:.14em}
+.L-flap.on .it{animation:hxFlipA .45s both}
+.L-flap.on .it:nth-child(2){animation-delay:.06s}.L-flap.on .it:nth-child(3){animation-delay:.12s}.L-flap.on .it:nth-child(4){animation-delay:.18s}.L-flap.on .it:nth-child(5){animation-delay:.24s}.L-flap.on .it:nth-child(6){animation-delay:.3s}
+.L-flap.pt .it.tg{background:#ffb000;color:#0f0f0f}
+.L-flap.pt .it.tg .m,.L-flap.pt .it.tg .s,.L-flap.pt .it.tg .v{color:#0f0f0f}
+.L-flap .word{display:block;position:absolute;inset:0}
+.L-flap .word i{width:26px;height:44px;border-radius:3px;background:linear-gradient(180deg,#262626 0 49%,#050505 49% 51%,#1e1e1e 51%);font:700 28px/44px Oswald,sans-serif;text-align:center;color:#f3f3f3;box-shadow:0 2px 0 #000}
+.L-flap .word i.r2{color:#ffb000}
+.L-flap.k0 .word i.r2{animation:hxFlipA .5s both}
+.L-flap.k1 .word i.r2{animation:hxFlipB .5s both}
+.L-flap .ptr .p1{left:-150px;top:-14px;font:700 24px Oswald,sans-serif;color:#ffb000;animation:hxCursor 1s steps(1) infinite}
+.L-flap .ptr .p1::before{content:'\25B6'}
+.L-flap .ptr .pl{display:none}
+.L-flap .say{text-transform:uppercase;letter-spacing:.08em;font-size:19px}
+.L-flap.ls .say{color:#ffb000}
+
+/* 19 Retro VHS: a tape that knows where you left off */
+.L-vhs{--bg:#07070f;--fg:#fff;--fg2:#e8e8ff;--mut:rgba(220,220,255,.65);--ac:#ff2e88;--trk:rgba(255,255,255,.25);--f:VT323,monospace;--fd:VT323,monospace;--fm:VT323,monospace;--cbg:transparent;--cbd:0}
+.L-vhs .bg{background:radial-gradient(70% 80% at 50% 50%,#1a1640,#07070f)}
+.L-vhs .bg2{z-index:9;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px)}
+.L-vhs .hud{font-size:16px;letter-spacing:.1em;top:14px}
+.L-vhs .brand{text-shadow:-2px 0 #ff2e88,2px 0 #2ef2ff}
+.L-vhs .d1{display:block;left:28px;top:40px;font:400 30px VT323,monospace;color:#fff;text-shadow:-2px 0 #ff2e88,2px 0 #2ef2ff;z-index:8}
+.L-vhs .d1::before{content:'PLAY \25B6'}
+.L-vhs .d2{display:block;right:28px;bottom:14px;font:400 22px VT323,monospace;color:#fff;z-index:8}
+.L-vhs .d2::before{content:'AM 2:37  NOV.07 2026'}
+.L-vhs .d3{display:block;left:0;right:0;top:0;height:26px;z-index:8;background:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 3px,transparent 3px 7px,rgba(255,255,255,.1) 7px 9px,transparent 9px 16px);opacity:.5;animation:hxTrack 4s linear infinite}
+.L-vhs .panel{background:#1430c4;border:2px solid #fff;top:84px;height:320px}
+.L-vhs .pt{font-weight:400;font-size:34px;letter-spacing:.06em}
+.L-vhs .pm,.L-vhs .m{font-size:16px;letter-spacing:.06em;color:#c9d2ff}
+.L-vhs .card .t,.L-vhs .row .t{font-weight:400;font-size:24px}
+.L-vhs .card{height:112px}
+.L-vhs .card .s,.L-vhs .row .v{font-size:18px}
+.L-vhs .bar i{background:#fff}
+.L-vhs.pt .it.tg{background:#fff;color:#1430c4}
+.L-vhs.pt .it.tg .m,.L-vhs.pt .it.tg .s,.L-vhs.pt .it.tg .v{color:#1430c4}
+.L-vhs .fx{animation:hxJit 2.5s steps(2) infinite}
+.L-vhs .f1{display:block;left:25px;top:25px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#ff8bc1,#7a2bd9 60%,#1d0f4a);box-shadow:-5px 0 0 rgba(255,46,136,.6),5px 0 0 rgba(46,242,255,.6)}
+.L-vhs .f2,.L-vhs .f3{display:block;top:78px;width:22px;height:8px;background:#fff;box-shadow:-2px 0 #ff2e88,2px 0 #2ef2ff}
+.L-vhs .f2{left:66px}.L-vhs .f3{left:112px}
+.L-vhs .f4{display:block;left:82px;top:126px;width:36px;height:6px;background:#fff;box-shadow:-2px 0 #ff2e88,2px 0 #2ef2ff;transform:translateY(-50%)}
+.L-vhs.spk .f4{animation:hxTalk .7s steps(3) infinite}
+.L-vhs .f5{display:block;left:0;top:0;width:200px;height:14px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 2px,transparent 2px 5px);animation:hxTrack 2.2s linear infinite;opacity:.6}
+.L-vhs .ptr .p1{left:-150px;top:-16px;font:400 32px VT323,monospace;color:#fff;animation:hxCursor .8s steps(1) infinite}
+.L-vhs .ptr .p1::before{content:'\25B6'}
+.L-vhs .ptr .pl{display:none}
+.L-vhs .who{font-size:15px;letter-spacing:.2em}
+.L-vhs .say{font-size:28px;text-shadow:-2px 0 #ff2e88,2px 0 #2ef2ff}
+
+/* 20 Halftone: two ink risograph, dots that ripple when it speaks */
+.L-halftone{--bg:#f3eee4;--fg:#2340d8;--fg2:#2340d8;--mut:#6d79b8;--ac:#ff48b0;--trk:#e5dccd;--f:'Bricolage Grotesque',sans-serif;--fd:'Bricolage Grotesque',sans-serif;--fm:'Space Mono',monospace;--cbg:#f3eee4;--cbd:2px solid #2340d8}
+.L-halftone .bg{background:radial-gradient(circle,rgba(255,72,176,.22) 1.2px,transparent 1.6px) 0 0/8px 8px;-webkit-mask:radial-gradient(60% 70% at 50% 50%,#000,transparent);mask:radial-gradient(60% 70% at 50% 50%,#000,transparent)}
+.L-halftone .brand{font-weight:800;letter-spacing:.3em;text-shadow:2px 1px 0 #ff48b0}
+.L-halftone .panel{background:#f3eee4;border:2px solid #2340d8;box-shadow:6px 5px 0 #ff48b0}
+.L-halftone .pt{font-weight:800;font-size:30px;letter-spacing:-.02em;text-shadow:2px 1px 0 #ff48b0}
+.L-halftone .card .t{font-weight:800;font-size:19px}
+.L-halftone .it{background:radial-gradient(circle,rgba(255,72,176,.2) 1.3px,transparent 1.7px) 0 0/7px 7px,#f3eee4}
+.L-halftone.pt .it.tg{background:#ff48b0;color:#2340d8;box-shadow:5px 4px 0 #2340d8}
+.L-halftone.pt .it.tg .m{color:#2340d8}
+.L-halftone .dots{display:block;position:absolute;inset:0;filter:drop-shadow(3px 2px 0 rgba(255,72,176,.85))}
+.L-halftone .dots i{border-radius:50%;background:#2340d8}
+.L-halftone.spk .dots i{animation:hxDot .9s infinite}
+.L-halftone .f1,.L-halftone .f2{display:block;top:68px;width:20px;height:26px;border-radius:50%;background:#f3eee4;z-index:2}
+.L-halftone .f1{left:66px}.L-halftone .f2{left:112px}
+.L-halftone .f3{display:block;left:78px;top:132px;width:44px;height:8px;border-radius:6px;background:#f3eee4;z-index:2;transform:translateY(-50%)}
+.L-halftone.spk .f3{animation:hxTalk .8s infinite}
+.L-halftone .ptr .p1{left:-66px;top:20px;width:62px;height:40px;background:#2340d8;clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%);transform:rotate(-38deg);transform-origin:100% 50%;filter:drop-shadow(3px 2px 0 #ff48b0)}
+.L-halftone .ptr .pl{left:-118px;top:58px;font:800 14px 'Bricolage Grotesque',sans-serif;letter-spacing:.1em;color:#ff48b0}
+.L-halftone .say{font-weight:800;font-size:22px;letter-spacing:-.01em;text-shadow:2px 1px 0 rgba(255,72,176,.8)}
+/* 21 to 25 */
+@keyframes hxBar{0%,100%{transform:scaleX(.55)}35%{transform:scaleX(1.15)}65%{transform:scaleX(.8)}}
+@keyframes hxPx{0%,49%{background:#1d2b53}50%,100%{background:#ff004d}}
+@keyframes hxPxBlink{0%,92%,100%{opacity:1}93%,97%{opacity:0}}
+
+/* 21 Bauhaus: primary shapes, a face built from a circle, a square and a triangle */
+.L-bauhaus{--bg:#f1e9d8;--fg:#111;--fg2:#222;--mut:#5b554a;--ac:#e63322;--trk:#d9cfba;--f:Jost,sans-serif;--fd:Jost,sans-serif;--fm:Jost,sans-serif;--cbg:#f1e9d8;--cbd:3px solid #111}
+.L-bauhaus .d1{display:block;right:-120px;top:-120px;width:300px;height:300px;border-radius:50%;background:#f5c400}
+.L-bauhaus .d2{display:block;left:0;bottom:0;width:150px;height:26px;background:#1f4fa3}
+.L-bauhaus .d3{display:block;left:150px;bottom:0;width:26px;height:26px;background:#e63322}
+.L-bauhaus .brand{font-weight:700;letter-spacing:.4em}
+.L-bauhaus .pt{font-weight:700;font-size:28px;text-transform:uppercase;letter-spacing:.08em}
+.L-bauhaus .panel{background:#f1e9d8;border:4px solid #111}
+.L-bauhaus .card .t,.L-bauhaus .row .t{font-weight:700}
+.L-bauhaus .it::before{content:'';position:absolute;right:12px;top:12px;width:14px;height:14px;background:#1f4fa3}
+.L-bauhaus .it:nth-child(2n)::before{background:#e63322;border-radius:50%}
+.L-bauhaus .it:nth-child(3n)::before{background:#f5c400;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.L-bauhaus .row::before{top:14px}
+.L-bauhaus.pt .it.tg{background:#e63322;color:#fff}
+.L-bauhaus.pt .it.tg .m,.L-bauhaus.pt .it.tg .s,.L-bauhaus.pt .it.tg .v{color:#fff}
+.L-bauhaus .f6{display:block;left:25px;top:16px;width:150px;height:75px;border-radius:150px 150px 0 0;background:#1f4fa3}
+.L-bauhaus .f1{display:block;left:25px;top:30px;width:150px;height:150px;border-radius:50%;background:#f5c400;border:4px solid #111}
+.L-bauhaus .f2{display:block;left:62px;top:78px;width:24px;height:24px;border-radius:50%;background:#111;animation:hxBlink 4s infinite}
+.L-bauhaus .f3{display:block;left:114px;top:78px;width:24px;height:24px;background:#e63322;border:3px solid #111;animation:hxBlink 4s infinite}
+.L-bauhaus .f4{display:block;left:88px;top:104px;width:24px;height:24px;background:#e63322;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.L-bauhaus .f5{display:block;left:70px;top:140px;width:60px;height:10px;background:#111}
+.L-bauhaus.spk .f5{animation:hxBar .5s infinite}
+.L-bauhaus .ptr .p1{left:-20px;top:-20px;width:40px;height:40px;border-radius:50%;border:5px solid #111}
+.L-bauhaus .ptr .p2{left:-62px;top:22px;width:40px;height:34px;background:#e63322;clip-path:polygon(100% 0,0 40%,60% 100%)}
+.L-bauhaus .ptr .pl{left:28px;top:-28px;padding:4px 8px;background:#111;color:#f1e9d8;font:700 11px Jost,sans-serif;letter-spacing:.2em}
+.L-bauhaus .say{font-weight:400;font-size:21px}
+
+/* 22 Pixel Art: a 16 bit companion and an RPG menu */
+.L-pixel{--bg:#1a1c2c;--fg:#fff1e8;--fg2:#c2c3c7;--mut:#83769c;--ac:#ffec27;--trk:#5f574f;--f:VT323,monospace;--fd:'Press Start 2P',monospace;--fm:VT323,monospace;--cbg:#1d2b53;--cbd:3px solid #fff1e8}
+.L-pixel .bg{background:radial-gradient(#29adff 1px,transparent 1.5px) 0 0/40px 40px;opacity:.25}
+.L-pixel .hud{font-size:15px;letter-spacing:.08em}
+.L-pixel .brand{font-size:10px;letter-spacing:.2em}
+.L-pixel .panel{background:#1d2b53;border:4px solid #fff1e8;box-shadow:0 0 0 4px #000,inset 0 0 0 4px #000}
+.L-pixel .pt{font-weight:400;font-size:15px;color:#ffec27}
+.L-pixel .pm,.L-pixel .m{font-size:15px;letter-spacing:.04em;text-transform:none}
+.L-pixel .card .t{font:400 11px/1.4 'Press Start 2P',monospace;white-space:normal}
+.L-pixel .row .t{font:400 11px 'Press Start 2P',monospace}
+.L-pixel .card .s,.L-pixel .row .v{font-size:18px}
+.L-pixel .it{border-radius:0;box-shadow:inset 0 0 0 3px #000}
+.L-pixel .bar{height:8px;background:#5f574f}
+.L-pixel .bar i{background:#00e436}
+.L-pixel .tog,.L-pixel .tog::after{border-radius:0}
+.L-pixel.pt .it.tg{background:#7e2553;border-color:#ffec27}
+.L-pixel .dots{display:block;position:absolute;inset:0}
+.L-pixel .dots i{width:10px;height:10px}
+.L-pixel .dots .xh{background:#29adff}.L-pixel .dots .xe{background:#fff1e8;animation:hxPxBlink 4s steps(1) infinite}.L-pixel .dots .xp{background:#1d2b53;animation:hxPxBlink 4s steps(1) infinite}
+.L-pixel .dots .xm{background:#1d2b53}.L-pixel .dots .xa{background:#ffa300}.L-pixel .dots .xc{background:#ff77a8}
+.L-pixel.spk .dots .xm{animation:hxPx .36s steps(1) infinite}
+.L-pixel .ptr .p1{left:-122px;top:-14px;width:4px;height:4px;background:#ffec27;box-shadow:0 4px #ffec27,0 8px #ffec27,0 12px #ffec27,0 16px #ffec27,0 20px #ffec27,0 24px #ffec27,4px 4px #ffec27,4px 8px #ffec27,4px 12px #ffec27,4px 16px #ffec27,4px 20px #ffec27,8px 8px #ffec27,8px 12px #ffec27,8px 16px #ffec27,12px 12px #ffec27;animation:hxCursor .6s steps(1) infinite}
+.L-pixel .ptr .pl{display:none}
+.L-pixel .cap{background:#1d2b53;border:4px solid #fff1e8;box-shadow:0 0 0 4px #000;padding:12px 16px;left:180px;right:180px}
+.L-pixel.on .cap{left:150px;right:48px}
+.L-pixel .who{font-size:15px;letter-spacing:.1em;color:#ffec27}
+.L-pixel .say{font:400 12px/1.7 'Press Start 2P',monospace}
+
+/* 23 Blueprint: everything drafted, dimensioned and called out */
+.L-blueprint{--bg:#0f3a73;--fg:#f4f8ff;--fg2:#dbe7ff;--mut:rgba(220,232,255,.7);--ac:#fff;--trk:rgba(255,255,255,.25);--f:'IBM Plex Mono',monospace;--fd:'IBM Plex Mono',monospace;--fm:'IBM Plex Mono',monospace;--cbg:transparent;--cbd:1.5px solid rgba(255,255,255,.85)}
+.L-blueprint .bg{background:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px) 0 0/12px 12px,linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px) 0 0/12px 12px,linear-gradient(rgba(255,255,255,.16) 1px,transparent 1px) 0 0/60px 60px,linear-gradient(90deg,rgba(255,255,255,.16) 1px,transparent 1px) 0 0/60px 60px}
+.L-blueprint .panel{border:1.5px dashed rgba(255,255,255,.6)}
+.L-blueprint .pt{font:400 26px 'Architects Daughter',cursive}
+.L-blueprint .card .t,.L-blueprint .row .t{font-weight:400}
+.L-blueprint .it::after{content:'A-0' counter(hxc);counter-increment:hxc;position:absolute;right:8px;bottom:6px;font:400 9px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.6)}
+.L-blueprint .grid,.L-blueprint .list{counter-reset:hxc}
+.L-blueprint.pt .it.tg{background:repeating-linear-gradient(45deg,rgba(255,255,255,.22) 0 1px,transparent 1px 7px);border-style:solid;border-width:2.5px}
+.L-blueprint .f1{display:block;left:20px;top:20px;width:160px;height:160px;border-radius:50%;border:1.5px solid #fff}
+.L-blueprint .f2{display:block;left:0;top:0;width:200px;height:200px;background:linear-gradient(90deg,transparent 99.5px,rgba(255,255,255,.5) 99.5px 100.5px,transparent 100.5px),linear-gradient(0deg,transparent 99.5px,rgba(255,255,255,.5) 99.5px 100.5px,transparent 100.5px)}
+.L-blueprint .f3{display:block;left:6px;top:6px;width:188px;height:188px;border-radius:50%;border:1px dashed rgba(255,255,255,.55);animation:hxSpin 30s linear infinite}
+.L-blueprint .f4,.L-blueprint .f5{display:block;top:70px;width:22px;height:22px;border-radius:50%;border:1.5px solid #fff;animation:hxBlink 5s infinite}
+.L-blueprint .f4{left:62px}.L-blueprint .f5{left:116px}
+.L-blueprint .f6{display:block;left:72px;top:132px;width:56px;height:10px;border-left:1.5px solid #fff;border-right:1.5px solid #fff;background:linear-gradient(0deg,transparent 4.5px,#fff 4.5px 6px,transparent 6px)}
+.L-blueprint.spk .f6{animation:hxBar .6s infinite}
+.L-blueprint .f7{display:block;left:126px;top:-2px;font:400 15px 'Architects Daughter',cursive;color:#fff}
+.L-blueprint .f7::before{content:'\00D8 160'}
+.L-blueprint .lead{display:block}
+.L-blueprint .lead path{stroke:#fff;stroke-width:1.2}
+.L-blueprint .ptr .p1{left:-26px;top:-26px;width:52px;height:52px;border-radius:50%;border:1.5px solid #fff}
+.L-blueprint .ptr .pl{left:34px;top:-40px;font:400 16px 'Architects Daughter',cursive;letter-spacing:.04em;color:#fff}
+.L-blueprint .ptr .pl::before{content:'DETAIL A \00B7 '}
+.L-blueprint .say{font:400 21px 'Architects Daughter',cursive}
+
+/* 24 Art Deco: black lacquer, gold rays, a medallion that speaks */
+.L-deco{--bg:#0c0b09;--fg:#efe2bd;--fg2:#d9c79a;--mut:rgba(214,190,130,.65);--ac:#c9a24a;--trk:rgba(201,162,74,.25);--f:'Poiret One',sans-serif;--fd:Limelight,serif;--fm:'Poiret One',sans-serif;--cbg:transparent;--cbd:1px solid rgba(201,162,74,.7)}
+.L-deco .bg{background:radial-gradient(50% 60% at 50% 46%,rgba(201,162,74,.14),transparent 70%)}
+.L-deco .bg2{inset:12px;border:1px solid rgba(201,162,74,.6);outline:1px solid rgba(201,162,74,.35);outline-offset:5px}
+.L-deco .d1,.L-deco .d2{display:block;top:12px;width:120px;height:120px;background:repeating-conic-gradient(from 90deg at 0 0,rgba(201,162,74,.55) 0 1.5deg,transparent 1.5deg 9deg);-webkit-mask:radial-gradient(circle at 0 0,#000 110px,transparent 112px);mask:radial-gradient(circle at 0 0,#000 110px,transparent 112px)}
+.L-deco .d1{left:12px}.L-deco .d2{right:12px;transform:scaleX(-1)}
+.L-deco .hud{font-weight:700;font-size:12px;letter-spacing:.3em}
+.L-deco .brand{font-family:Limelight,serif;color:#c9a24a;letter-spacing:.5em}
+.L-deco .hud,.L-deco .panel{z-index:7}
+.L-deco .panel{background:#0c0b09;border:1px solid #c9a24a;outline:1px solid rgba(201,162,74,.4);outline-offset:4px}
+.L-deco .pt{font-weight:400;font-size:28px;color:#c9a24a;letter-spacing:.12em;text-transform:uppercase}
+.L-deco .card .t,.L-deco .row .t{font-family:'Poiret One',sans-serif;font-weight:700;font-size:18px;letter-spacing:.08em;text-transform:uppercase}
+.L-deco .m{font-weight:700}
+.L-deco.pt .it.tg{background:linear-gradient(180deg,#e2c271,#b8902f);color:#0c0b09;box-shadow:0 0 30px rgba(201,162,74,.45)}
+.L-deco.pt .it.tg .m,.L-deco.pt .it.tg .s,.L-deco.pt .it.tg .v{color:#0c0b09}
+.L-deco .f1{display:block;left:10px;top:10px;width:180px;height:180px;border-radius:50%;background:repeating-conic-gradient(rgba(201,162,74,.9) 0 2deg,transparent 2deg 12deg);-webkit-mask:radial-gradient(circle,transparent 58px,#000 60px,#000 88px,transparent 90px);mask:radial-gradient(circle,transparent 58px,#000 60px,#000 88px,transparent 90px);animation:hxSpin 60s linear infinite}
+.L-deco.spk .f1{animation:hxSpin 60s linear infinite,hxQuick .6s infinite}
+.L-deco .f2{display:block;left:42px;top:42px;width:116px;height:116px;border-radius:50%;background:#0c0b09;border:3px double #c9a24a}
+.L-deco .f3{display:block;left:42px;top:52px;width:116px;text-align:center;font:400 64px/1 Limelight,serif;color:#e2c271}
+.L-deco .f3::before{content:'A'}
+.L-deco .f4{display:block;left:82px;top:126px;width:36px;height:2px;background:#c9a24a}
+.L-deco.spk .f4{animation:hxBar .5s infinite}
+.L-deco .ptr .p1{left:-16px;top:-16px;width:32px;height:32px;border:1px solid #c9a24a;transform:rotate(45deg)}
+.L-deco .ptr .p2{left:-5px;top:-5px;width:10px;height:10px;background:#c9a24a;transform:rotate(45deg)}
+.L-deco .ptr .pl{left:28px;top:-26px;font:700 13px 'Poiret One',sans-serif;letter-spacing:.3em;color:#e2c271}
+.L-deco .say{font-weight:700;font-size:22px;letter-spacing:.04em}
+
+/* 25 Neo-brutalism: loud, honest, hard shadows */
+.L-brutal{--bg:#f6f0e4;--fg:#000;--fg2:#000;--mut:#3d3d3d;--ac:#000;--trk:#000;--f:'Space Grotesk',sans-serif;--fd:'Archivo Black',sans-serif;--fm:'Space Grotesk',sans-serif;--cbg:#a6faff;--cbd:3px solid #000}
+.L-brutal .brand{font-family:'Archivo Black',sans-serif;letter-spacing:.12em;font-size:13px}
+.L-brutal .amb em{background:#ff90e8;color:#000;padding:3px 6px;border:2px solid #000}
+.L-brutal .panel{background:#fff;border:4px solid #000;border-radius:12px;box-shadow:9px 9px 0 #000}
+.L-brutal .pt{font-weight:400;font-size:26px}
+.L-brutal .it{border-radius:10px;box-shadow:4px 4px 0 #000}
+.L-brutal .it:nth-child(2){background:#ffd166}.L-brutal .it:nth-child(3){background:#b8ff9f}.L-brutal .it:nth-child(4){background:#ff90e8}.L-brutal .it:nth-child(5){background:#c4b5ff}.L-brutal .it:nth-child(6){background:#fff}
+.L-brutal .card .t{font-family:'Archivo Black',sans-serif;font-weight:400}
+.L-brutal .row .t{font-weight:700}
+.L-brutal .m{font-weight:700;color:#000}
+.L-brutal .bar{height:8px;border:2px solid #000;background:#fff}
+.L-brutal .bar i{background:#000}
+.L-brutal .tog{border:2px solid #000;background:#fff}.L-brutal .tog::after{background:#000;top:1px}.L-brutal .tog.y{background:#b8ff9f}
+.L-brutal.pt .it:not(.tg){opacity:.35}
+.L-brutal.pt .it.tg{transform:translate(-5px,-5px);box-shadow:10px 10px 0 #000;background:#ffeb3b}
+.L-brutal .f1{display:block;left:25px;top:25px;width:150px;height:150px;border-radius:24px;background:#ff90e8;border:5px solid #000;box-shadow:10px 10px 0 #000}
+.L-brutal .f2,.L-brutal .f3{display:block;top:66px;width:34px;height:34px;background:radial-gradient(circle at 55% 55%,#000 0 8px,#fff 9px);border:4px solid #000;animation:hxBlink 4s infinite}
+.L-brutal .f2{left:58px}.L-brutal .f3{left:108px}
+.L-brutal.pt .f2,.L-brutal.pt .f3{background:radial-gradient(circle at 72% 30%,#000 0 8px,#fff 9px)}
+.L-brutal .f4{display:block;left:70px;top:132px;width:60px;height:14px;background:#000;transform:translateY(-50%)}
+.L-brutal.spk .f4{animation:hxTalk .6s infinite}
+.L-brutal .f5{display:block;left:130px;top:12px;padding:3px 7px;background:#b8ff9f;border:3px solid #000;font:400 12px 'Archivo Black',sans-serif;transform:rotate(12deg)}
+.L-brutal .f5::before{content:'LIVE'}
+.L-brutal .ptr .p1{left:-70px;top:22px;width:66px;height:44px;background:#ffeb3b;clip-path:polygon(0 30%,60% 30%,60% 0,100% 50%,60% 100%,60% 70%,0 70%);transform:rotate(-38deg);transform-origin:100% 50%;filter:drop-shadow(3px 0 0 #000) drop-shadow(-3px 0 0 #000) drop-shadow(0 3px 0 #000) drop-shadow(0 -3px 0 #000)}
+.L-brutal .ptr .pl{left:-150px;top:58px;padding:4px 10px;background:#000;color:#fff;font:700 12px 'Space Grotesk',sans-serif;letter-spacing:.1em}
+.L-brutal .say{font-weight:700;font-size:21px}
+
+/* site adaptations */
+.hx.sc-p .list{display:none}
+.hx.sc-s .grid{display:none}
+.hx .card.ghost{opacity:.6;border-style:dashed}
+.hx.paused,.hx.paused *,.hx.paused *::before,.hx.paused *::after{animation-play-state:paused!important}
+@media (prefers-reduced-motion:reduce){.hx *,.hx *::before,.hx *::after{animation:none!important;transition:none!important}}

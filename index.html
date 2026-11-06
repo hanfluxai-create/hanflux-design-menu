@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Menu · Hanflux AI</title>
+<meta name="description" content="Choose the face of your AI. 25 live interface styles for AI agents and apps, each with Director Mode: your assistant opens the right screen and points to what it is talking about.">
+<meta name="theme-color" content="#07080b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hanflux AI">
+<meta property="og:title" content="The Hanflux Design Menu">
+<meta property="og:description" content="Choose the face of your AI. 25 live interface styles with Director Mode built in.">
+<meta property="og:image" content="/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;family=Instrument+Serif:ital@0;1&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Big+Shoulders+Display:wght@500;800&amp;family=DM+Mono:wght@400;500&amp;family=Space+Mono:wght@400;700&amp;family=Hanken+Grotesk:wght@300;500&amp;family=Sora:wght@300;600&amp;family=Syne:wght@500;800&amp;family=Chakra+Petch:wght@400;600&amp;family=Tilt+Neon&amp;family=Rajdhani:wght@500;700&amp;family=Major+Mono+Display&amp;family=IBM+Plex+Mono:wght@400;600&amp;family=Outfit:wght@300;500;700&amp;family=Anton&amp;family=Archivo:wght@500;800&amp;family=Lexend:wght@300;600&amp;family=Fredoka:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@400;700&amp;family=Bangers&amp;family=Comic+Neue:wght@700&amp;family=Oswald:wght@500;700&amp;family=VT323&amp;family=Bricolage+Grotesque:wght@400;800&amp;family=Jost:wght@400;700&amp;family=Press+Start+2P&amp;family=Architects+Daughter&amp;family=Limelight&amp;family=Poiret+One&amp;family=Archivo+Black&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/stage.css">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/stage.js"></script>
+<script defer src="/assets/styles-data.js"></script>
+<script defer src="/assets/app.js"></script>
+</head>
+<body>
+<a class="skip" href="#menu">Skip to the menu</a>
+
+<header class="nav">
+  <a class="wordmark" href="https://hanflux.ai" aria-label="Hanflux AI home"><span class="wm">HANFLUX</span><span class="wm-sub">Design Menu</span></a>
+  <nav aria-label="Page">
+    <a class="nl" href="#menu">Styles</a>
+    <a class="nl" href="#how">How it works</a>
+    <button class="nav-pick" type="button" data-show-picks>Shortlist <span id="nav-count" class="badge">0</span></button>
+  </nav>
+</header>
+
+<div id="shared" class="shared" hidden>
+  <span class="k">Shared shortlist</span><span id="shared-list"></span>
+  <button class="link" type="button" data-show-picks>Show these styles</button>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="kicker">The design menu · Vol. 01</p>
+      <h1>Choose the <em>face</em><br>of your AI.</h1>
+      <p class="lede">Twenty five interface styles for AI agents, apps and assistants. Every one is live. Watch the assistant open the right screen and point to exactly what it is talking about.</p>
+      <div class="cta">
+        <a class="btn btn-gold" href="#menu">Browse the 25 styles</a>
+        <a class="btn btn-ghost" href="#how">How Director Mode works</a>
+      </div>
+      <dl class="stats">
+        <div><dt>25</dt><dd>live styles</dd></div>
+        <div><dt>4</dt><dd>beats of Director Mode</dd></div>
+        <div><dt>1</dt><dd>voice, yours</dd></div>
+      </dl>
+    </div>
+    <figure class="hero-stage">
+      <figcaption><span class="live"><i></i>Live</span><span>Now showing <b id="hero-now">01 · Persona</b></span></figcaption>
+      <div class="frame"><div class="stage-wrap" id="hero-stage"></div></div>
+    </figure>
+  </section>
+
+  <section class="how" id="how">
+    <p class="kicker">Director Mode</p>
+    <h2>Your AI doesn’t just answer.<br>It <em>shows</em> you.</h2>
+    <ol class="beats">
+      <li><span class="bn">01</span><h3>Presence</h3><p>Only the face, center stage. Quiet status at the edges: what is running and what needs you.</p></li>
+      <li><span class="bn">02</span><h3>Cut</h3><p>Mention something and its screen opens full size. The face steps to the corner to narrate.</p></li>
+      <li><span class="bn">03</span><h3>Point</h3><p>A pointer travels to the exact item. Everything else dims, and the caption names it.</p></li>
+      <li><span class="bn">04</span><h3>Return</h3><p>When the topic ends, the screen folds away and the face comes back. No menus to hunt through.</p></li>
+    </ol>
+    <p class="note">Every style in this menu runs the same Director Mode. Samples use a demo brand, Aurora. Yours gets your name, colors, voice and data.</p>
+  </section>
+
+  <section class="menu" id="menu">
+    <div class="menu-head">
+      <div>
+        <p class="kicker">The menu</p>
+        <h2>Pick the look.<br>We build the rest.</h2>
+      </div>
+      <p class="menu-sub">Tap any preview to watch it full screen. Shortlist your favourites and send us the link.</p>
+    </div>
+    <div class="filters" id="filters" role="toolbar" aria-label="Filter styles">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="signature">Signature</button>
+      <button type="button" data-f="futuristic">Futuristic</button>
+      <button type="button" data-f="retro">Retro</button>
+      <button type="button" data-f="print">Print and editorial</button>
+      <button type="button" data-f="playful">Playful</button>
+      <button type="button" data-f="light">Light</button>
+      <button type="button" data-f="dark">Dark</button>
+      <button type="button" data-f="shortlist">Shortlisted <span id="f-count">0</span></button>
+      <span class="count" id="count" aria-live="polite">25 styles</span>
+    </div>
+    <div class="mgrid" id="grid"></div>
+    <p class="empty" id="empty" hidden>Nothing shortlisted yet. Tap Shortlist on any style you like.</p>
+  </section>
+
+  <section class="closing">
+    <h2>Found your <em>face</em>?</h2>
+    <p>Shortlist the styles you love, copy your link and send it to your Hanflux contact. We build your assistant in that style, with Director Mode built in.</p>
+    <div class="cta">
+      <button class="btn btn-gold" type="button" data-copy>Copy my shortlist link</button>
+      <a class="btn btn-ghost" href="https://hanflux.ai">Visit hanflux.ai</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <span>© 2026 Hanflux AI · Autonomous workflow and voice agents</span>
+  <span>Samples shown on a demo brand. Director Mode is a Hanflux interaction pattern.</span>
+</footer>
+
+<div class="sbar" id="bar" role="region" aria-label="Your shortlist">
+  <span class="k">Shortlist</span>
+  <span class="sbar-list" id="bar-list"></span>
+  <button class="btn btn-gold sm" type="button" data-copy>Copy link</button>
+  <button class="btn btn-ghost sm" type="button" id="bar-clear">Clear</button>
+</div>
+
+<dialog class="viewer" id="viewer" aria-labelledby="v-name">
+  <div class="v-top">
+    <div class="v-title"><span class="v-num" id="v-num">01</span><h2 id="v-name">Persona</h2><span class="v-tags" id="v-tags"></span></div>
+    <button class="icon-btn" type="button" id="v-close" aria-label="Close preview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="v-main">
+    <button class="icon-btn v-arrow" type="button" id="v-prev" aria-label="Previous style"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="v-frame"><div class="stage-wrap" id="v-stage"></div></div>
+    <button class="icon-btn v-arrow" type="button" id="v-next" aria-label="Next style"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="v-bottom">
+    <div class="v-info"><p id="v-desc"></p><p class="best"><span>Best for</span><span id="v-best"></span></p></div>
+    <div class="seg" id="v-beats" role="group" aria-label="Freeze a beat">
+      <button type="button" data-beat="loop" aria-pressed="true">Live</button>
+      <button type="button" data-beat="face">Presence</button>
+      <button type="button" data-beat="scene">Cut</button>
+      <button type="button" data-beat="point">Point</button>
+    </div>
+    <button class="btn btn-pick" type="button" id="v-pick" aria-pressed="false"><span class="ic"></span><span class="lbl">Add to shortlist</span></button>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
