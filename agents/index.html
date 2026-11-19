@@ -14,9 +14,11 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <script>(function(){try{document.documentElement.classList.add(Date.now()<1798741799000?'has-offer':'offer-over')}catch(e){}})()</script>
-<link rel="stylesheet" href="/assets/hx/base.css?v=mwnvejgu">
+<link rel="stylesheet" href="/assets/hx/base.css?v=mwnwzyyh">
 
 <title>AI agent interfaces · Hanflux Design Menu</title>
+<meta name="robots" content="noindex,nofollow">
+<script>(function(){var d=document.documentElement;try{if(sessionStorage.getItem("hx-agents")!=="1")d.classList.add("pin-locked")}catch(e){d.classList.add("pin-locked")}})()</script>
 <meta name="description" content="23 live interface styles for AI agents and assistants, each with Director Mode: your assistant opens the right screen and points to what it is talking about.">
 <meta property="og:title" content="AI agent interfaces · Hanflux Design Menu">
 <meta property="og:description" content="Choose the face of your AI. 23 live interface styles with Director Mode built in.">
@@ -24,24 +26,53 @@
 <link rel="canonical" href="https://hanflux-design-menu.vercel.app/agents/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600&amp;family=JetBrains+Mono:wght@400;600&amp;family=Instrument+Serif:ital@0;1&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Big+Shoulders+Display:wght@500;800&amp;family=DM+Mono:wght@400;500&amp;family=Space+Mono:wght@400;700&amp;family=Hanken+Grotesk:wght@300;500&amp;family=Sora:wght@300;600&amp;family=Syne:wght@500;800&amp;family=Chakra+Petch:wght@400;600&amp;family=Tilt+Neon&amp;family=Rajdhani:wght@500;700&amp;family=Major+Mono+Display&amp;family=IBM+Plex+Mono:wght@400;600&amp;family=Outfit:wght@300;500;700&amp;family=Anton&amp;family=Archivo:wght@500;800&amp;family=Lexend:wght@300;600&amp;family=Fredoka:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@400;700&amp;family=Bangers&amp;family=Comic+Neue:wght@700&amp;family=Oswald:wght@500;700&amp;family=VT323&amp;family=Bricolage+Grotesque:wght@400;800&amp;family=Jost:wght@400;700&amp;family=Press+Start+2P&amp;family=Architects+Daughter&amp;family=Limelight&amp;family=Poiret+One&amp;family=Archivo+Black&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap">
-<link rel="stylesheet" href="/assets/agents/stage.css?v=mwnvejgu">
-<link rel="stylesheet" href="/assets/hx/agents.css?v=mwnvejgu">
-<script defer src="/data/config.js?v=mwnvejgu"></script>
-<script defer src="/data/sites.js?v=mwnvejgu"></script>
-<script defer src="/assets/agents/stage.js?v=mwnvejgu"></script>
-<script defer src="/assets/agents/styles-data.js?v=mwnvejgu"></script>
-<script defer src="/assets/hx/shell.js?v=mwnvejgu"></script>
-<script defer src="/assets/hx/agents.js?v=mwnvejgu"></script>
+<link rel="stylesheet" href="/assets/agents/stage.css?v=mwnwzyyh">
+<link rel="stylesheet" href="/assets/hx/agents.css?v=mwnwzyyh">
+<script defer src="/data/config.js?v=mwnwzyyh"></script>
+<script defer src="/data/sites.js?v=mwnwzyyh"></script>
+<script defer src="/assets/agents/stage.js?v=mwnwzyyh"></script>
+<script defer src="/assets/agents/styles-data.js?v=mwnwzyyh"></script>
+<script defer src="/assets/hx/shell.js?v=mwnwzyyh"></script>
+<script defer src="/assets/hx/agents.js?v=mwnwzyyh"></script>
 </head>
 <body class="agents">
+<div class="pin-gate" role="dialog" aria-modal="true" aria-labelledby="pin-t">
+  <form class="pin-card" id="pin-form" autocomplete="off">
+    <a class="wordmark" href="/" aria-label="Hanflux design menu, home"><b>HANFLUX<sup aria-hidden="true">●</sup></b><span>design menu</span></a>
+    <p class="kicker">private</p>
+    <h1 id="pin-t">AI agent interfaces</h1>
+    <p>This menu is private for now. Enter the PIN to open it.</p>
+    <input class="pin-in" id="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" aria-label="PIN" autocomplete="off">
+    <button class="btn btn-teal" type="submit">Open</button>
+    <p class="pin-err" id="pin-err" role="alert" hidden>That PIN is not right.</p>
+    <a class="alt" href="/websites/">See the website menu instead</a>
+  </form>
+</div>
+<script>
+(function () {
+  var f = document.getElementById('pin-form'), i = document.getElementById('pin'), er = document.getElementById('pin-err');
+  function h(s) { var x = 5381; for (var k = 0; k < s.length; k++) x = ((x * 33) ^ s.charCodeAt(k)) >>> 0; return x.toString(36); }
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (h('hx:' + (i.value || '').trim()) === 'gbt2bz') {
+      try { sessionStorage.setItem('hx-agents', '1'); } catch (x) {}
+      document.documentElement.classList.remove('pin-locked');
+      window.dispatchEvent(new Event('hx-unlock'));
+      window.scrollTo(0, 0);
+    } else {
+      er.hidden = false; f.classList.remove('shake'); void f.offsetWidth; f.classList.add('shake'); i.select();
+    }
+  });
+  if (document.documentElement.classList.contains('pin-locked')) setTimeout(function () { try { i.focus({ preventScroll: true }); } catch (x) {} }, 150);
+})();
+</script>
 <div class="dust" aria-hidden="true"></div>
 <a class="skip" href="#menu">Skip to the styles</a>
-<div class="offer-bar" role="region" aria-label="Launch offer"><div class="track" aria-hidden="true"><span>Launch offer</span><span>Up to 40% off every website</span><span>Ends 31 Dec</span><span>Fixed quote in 24 hours</span><span>Custom designs welcome</span><span>Mix any styles you like</span><span>Launch offer</span><span>Up to 40% off every website</span><span>Ends 31 Dec</span><span>Fixed quote in 24 hours</span><span>Custom designs welcome</span><span>Mix any styles you like</span><span>Launch offer</span><span>Up to 40% off every website</span><span>Ends 31 Dec</span><span>Fixed quote in 24 hours</span><span>Custom designs welcome</span><span>Mix any styles you like</span><span>Launch offer</span><span>Up to 40% off every website</span><span>Ends 31 Dec</span><span>Fixed quote in 24 hours</span><span>Custom designs welcome</span><span>Mix any styles you like</span></div><span class="sr">Launch offer: up to 40% off every website until 31 Dec.</span><a class="ob-cta" href="#request" data-open-request>ends in <b data-countdown>43 days</b></a></div>
+<div class="offer-bar" role="region" aria-label="Launch offer"><div class="track" aria-hidden="true"><span>Launch offer</span><span>Up to 40% off every website</span><span>Ends 31 Dec</span><span>Fixed quote in 24 hours</span><span>Custom designs welcome</span><span>Mix any styles you like</span><span>Launch offer</span><span>Up to 40% off every website</span><span>Ends 31 Dec</span><span>Fixed quote in 24 hours</span><span>Custom designs welcome</span><span>Mix any styles you like</span><span>Launch offer</span><span>Up to 40% off every website</span><span>Ends 31 Dec</span><span>Fixed quote in 24 hours</span><span>Custom designs welcome</span><span>Mix any styles you like</span><span>Launch offer</span><span>Up to 40% off every website</span><span>Ends 31 Dec</span><span>Fixed quote in 24 hours</span><span>Custom designs welcome</span><span>Mix any styles you like</span></div><span class="sr">Launch offer: up to 40% off every website until 31 Dec.</span><a class="ob-cta" href="#request" data-open-request>ends in <b data-countdown>42 days</b></a></div>
 <header class="nav">
   <a class="wordmark" href="/" aria-label="Hanflux design menu, home"><b>HANFLUX<sup aria-hidden="true">●</sup></b><span>design menu</span></a>
   <nav class="nav-links" aria-label="Main">
     <a class="nl" href="/websites/">Websites</a>
-    <a class="nl" href="/agents/" aria-current="page">AI agents</a>
     <a class="nl" href="/#pricing">Pricing</a>
     <a class="nl" href="/#how">How it works</a>
   </nav>
@@ -56,9 +87,9 @@
   <p class="kicker">hanflux design menu</p>
   <nav aria-label="Mobile">
     <a href="/websites/"><small>01</small>Websites</a>
-    <a href="/agents/"><small>02</small>AI agents</a>
-    <a href="/#pricing"><small>03</small>Pricing</a>
-    <a href="/#how"><small>04</small>How it works</a>
+    <a href="/#pricing"><small>02</small>Pricing</a>
+    <a href="/#how"><small>03</small>How it works</a>
+    <a href="/websites/#our-work"><small>04</small>Our work</a>
   </nav>
   <div class="om-foot">
     <a class="btn btn-teal" href="#request" data-open-request>Get a quote</a>
@@ -163,11 +194,11 @@
         <a class="wordmark" href="/"><b>HANFLUX<sup aria-hidden="true">●</sup></b><span>design menu</span></a>
         <p style="max-width:30em;margin:16px 0 0">Websites, AI agents and automations, designed and built by Hanflux AI in Bengaluru for clients everywhere.</p>
       </div>
-      <div><h4>menu</h4><a href="/websites/">Websites</a><a href="/agents/">AI agent interfaces</a><a href="/#pricing">Pricing</a><a href="/#how">How it works</a></div>
+      <div><h4>menu</h4><a href="/websites/">Websites</a><a href="/websites/#our-work">Our work</a><a href="/#pricing">Pricing</a><a href="/#how">How it works</a></div>
       <div><h4>talk to us</h4><a href="https://wa.me/919234660000" target="_blank" rel="noopener">WhatsApp +91 92346 60000</a><a href="mailto:hanfluxai@gmail.com">hanfluxai@gmail.com</a><a href="https://cal.com/chitraksh-mayank-lhab1f/15min" target="_blank" rel="noopener">Book a 15-minute call</a></div>
       <div><h4>company</h4><a href="https://hanflux.ai" target="_blank" rel="noopener">hanflux.ai</a><a href="https://hanflux.ai/privacy" target="_blank" rel="noopener">Privacy</a><a href="https://hanflux.ai/terms" target="_blank" rel="noopener">Terms</a></div>
     </div>
-    <div class="legal"><span>© 2026 Hanflux AI Private Limited</span><span>Sample sites use fictional brands and content. Sites marked “Built by Hanflux” are live client work.</span></div>
+    <div class="legal"><span>© 2026 Hanflux AI Private Limited</span><span>Sample sites use fictional brands and content. Sites marked “Built by Hanflux” are live client work. Hanflux and Oraya sites are our own, shown as examples and not for sale.</span></div>
   </div>
 </footer>
 

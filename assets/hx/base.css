@@ -225,3 +225,21 @@ html.has-offer .offer-bar { display: flex; }
 html.offer-over .now, html.offer-over .off-sticker, html.offer-over .offer-only, html:not(.has-offer) .offer-only { display: none !important; }
 html.offer-over .was::after, html:not(.has-offer) .was::after { display: none; }
 html.offer-over .was, html:not(.has-offer) .was { color: inherit; font-weight: inherit; }
+
+/* our own sites: examples, not for sale */
+.tier.ex-t { color: #ffd3e3; border-color: rgba(255,61,127,.55); background: linear-gradient(90deg, rgba(255,61,127,.16), rgba(124,92,255,.16)); }
+.nfs { font: 600 10.5px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: #ff9dbd; }
+.chip.nfs { color: #ffb3cd; border-color: rgba(255,61,127,.45); }
+
+/* enquiry pop-up (lead.js) */
+.sheet.lead .panel { width: min(500px, 100%); }
+.sheet.lead .ld-stk { margin: 2px 0 14px; }
+.sheet.lead .fgrid { grid-template-columns: 1fr; gap: 12px; margin-top: 4px; }
+.ld-hp { position: absolute !important; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.ld-err { color: #ff9dbd; font-size: 14px; margin: 2px 0 0; }
+.ld-err a { color: var(--teal); }
+.ld-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.ld-row .btn { flex: 1 1 auto; justify-content: center; }
+.ld-done { padding-top: 6px; }
+.ld-tick { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: rgba(39,242,192,.12); border: 1px solid var(--hair-teal); margin: 6px 0 16px; }
+.ld-tick svg { width: 26px; height: 26px; stroke: var(--teal); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }

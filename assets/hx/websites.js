@@ -5,13 +5,13 @@
   var $ = function (s, r) { return (r || D).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || D).querySelectorAll(s)); };
   var by = {}; S.forEach(function (s) { by[s.slug] = s; });
-  var cards = $$('.wcard');
+  var cards = $$('.wcard'), gcards = $$('#grid .wcard');
 
   // live frames
   cards.forEach(function (card) {
     var site = by[card.getAttribute('data-slug')]; if (!site) return;
     var st = $('[data-stage]', card);
-    F.build(st, site);
+    F.build(st, site, { lite: true });
     F.observe(st);
     var mo = new MutationObserver(function () { card.classList.toggle('is-live', !!st.querySelector('.vp.live')); });
     mo.observe(st, { subtree: true, attributes: true, attributeFilter: ['class'] });
@@ -56,7 +56,7 @@
     curF = f;
     $$('#filters [data-f]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-f') === f ? 'true' : 'false'); });
     var n = 0;
-    cards.forEach(function (c) { var show = match(c, f); c.hidden = !show; if (show && !c.classList.contains('ccard')) n++; });
+    gcards.forEach(function (c) { var show = match(c, f); c.hidden = !show; if (show && !c.classList.contains('ccard')) n++; });
     $('#w-count').textContent = n + (n === 1 ? ' design' : ' designs');
     $('#w-empty').hidden = n > 0;
     F.refresh();

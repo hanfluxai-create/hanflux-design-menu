@@ -8,7 +8,7 @@
   var DESK = { w: 1280, h: 800 }, MOB = { w: 390, h: 844 };
   var isPhone = (W.matchMedia && W.matchMedia('(pointer: coarse)').matches && Math.min(screen.width, screen.height) < 900) || W.innerWidth < 760;
   var weak = isPhone || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
-  var MAX_LIVE = isPhone ? 1 : 3;
+  var MAX_LIVE = isPhone || weak ? 1 : 2;
   var ICON_LOCK = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
 
   function el(tag, cls, html) { var e = D.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
@@ -62,7 +62,7 @@
     var site = stage.__site, k = vp.clientWidth / vp.__spec.w, dpr = W.devicePixelRatio || 1;
     var maxDpr = (stage.__opts && stage.__opts.maxDpr) || 1.25;
     var cap = Math.max(0.5, Math.min(maxDpr, k * dpr * 1.05));
-    var lite = vp.__kind === 'm' || weak ? 1 : 0;
+    var lite = vp.__kind === 'm' || weak || (stage.__opts && stage.__opts.lite) ? 1 : 0;
     var tour = stage.__tourOff ? 0 : 1;
     return '/w/' + site.slug + '/?embed=1&tour=' + tour + '&v=' + vp.__kind + '&dpr=' + cap.toFixed(2) + '&lite=' + lite;
   }
@@ -91,8 +91,16 @@
     vp.classList.remove('live', 'mounting');
     var p = vp.querySelector('.prog'); if (p) p.style.width = '0';
   }
-  function mount(stage) { stage.__mounted = true; stage.__vps.forEach(function (vp) { mountVp(stage, vp); }); }
-  function unmount(stage) { stage.__mounted = false; stage.__vps.forEach(unmountVp); }
+  function mount(stage) {
+    stage.__mounted = true;
+    var a = stage.__vps[0], b = stage.__vps[1];
+    mountVp(stage, a);
+    clearTimeout(stage.__t2);
+    var second = function () { a.__onReady = null; clearTimeout(stage.__t2); if (stage.__mounted) mountVp(stage, b); };
+    if (!a.querySelector('iframe') || a.classList.contains('live')) second();
+    else { a.__onReady = second; stage.__t2 = setTimeout(second, 1200); }
+  }
+  function unmount(stage) { stage.__mounted = false; clearTimeout(stage.__t2); clearTimeout(stage.__tq); stage.__vps.forEach(function (vp) { vp.__onReady = null; unmountVp(vp); }); }
   function post(stage, msg) {
     (stage.__vps || []).forEach(function (vp) { var f = vp.querySelector('iframe'); if (f && f.contentWindow) { try { f.contentWindow.postMessage(msg, location.origin); } catch (e) {} } });
   }
@@ -104,7 +112,7 @@
     for (var i = 0; i < frames.length; i++) {
       if (frames[i].contentWindow === e.source) {
         var vp = frames[i].parentNode;
-        if (e.data.hx === 'ready') { clearTimeout(vp.__fallbackT); vp.classList.remove('mounting'); vp.classList.add('live'); }
+        if (e.data.hx === 'ready') { clearTimeout(vp.__fallbackT); vp.classList.remove('mounting'); vp.classList.add('live'); if (vp.__onReady) vp.__onReady(); }
         else if (e.data.hx === 'progress') { var p = vp.querySelector('.prog'); if (p) p.style.width = (Math.max(0, Math.min(1, e.data.p)) * 100).toFixed(1) + '%'; }
         break;
       }
@@ -117,31 +125,41 @@
     D.querySelectorAll('.stage').forEach(function (s) { if (s.__mounted) post(s, msg); });
   });
 
-  // automatic policy for lists of cards: the frames closest to the screen centre run live
-  var tracked = [];
+  // automatic policy for lists of cards: the cards closest to the screen centre run live.
+  // New sites only start once scrolling has settled, one card at a time, so the page never stutters.
+  var tracked = [], lastScroll = 0, schedT = 0;
   var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) { e.target.__ratio = e.intersectionRatio; e.target.__rect = e.boundingClientRect; });
+    entries.forEach(function (e) { e.target.__ratio = e.intersectionRatio; });
     schedule();
-  }, { threshold: [0, 0.2, 0.4, 0.6, 0.8, 1] });
-  var schedT = 0;
-  function schedule() { clearTimeout(schedT); schedT = setTimeout(apply, isPhone ? 260 : 160); }
+  }, { threshold: [0, 0.05, 0.25, 0.5, 0.75, 1] });
+  function schedule() {
+    clearTimeout(schedT);
+    var idle = isPhone ? 320 : 220, wait = Math.max(60, idle - (Date.now() - lastScroll));
+    schedT = setTimeout(apply, wait);
+  }
   function apply() {
-    var vh = W.innerHeight, mid = vh / 2;
-    var cands = tracked.filter(function (s) { return !s.closest('[hidden]') && (s.__ratio || 0) >= (isPhone ? 0.55 : 0.3); });
+    var mid = W.innerHeight / 2;
+    // free anything that has left the screen
+    tracked.forEach(function (s) { if (s.__mounted && (s.__ratio || 0) < 0.05) unmount(s); });
+    var cands = tracked.filter(function (s) { return !s.closest('[hidden]') && (s.__ratio || 0) >= (isPhone ? 0.6 : 0.35); });
     cands.forEach(function (s) { var r = s.getBoundingClientRect(); s.__dist = Math.abs((r.top + r.bottom) / 2 - mid); });
     cands.sort(function (a, b) { return a.__dist - b.__dist; });
     var keep = cands.slice(0, MAX_LIVE);
     tracked.forEach(function (s) {
-      var want = keep.indexOf(s) >= 0;
-      if (want && !s.__mounted) mount(s);
-      else if (!want && s.__mounted) {
-        if ((s.__ratio || 0) < 0.05) unmount(s);       // fully away: free it now
-        else if (keep.length >= MAX_LIVE) unmount(s);    // over budget: free it
-      }
+      if (keep.indexOf(s) >= 0) return;
+      if (s.__queued) { clearTimeout(s.__tq); s.__queued = false; }
+      if (s.__mounted) unmount(s);
+    });
+    var delay = 0;
+    keep.forEach(function (s) {
+      if (s.__mounted || s.__queued) return;
+      s.__queued = true;
+      s.__tq = setTimeout(function () { s.__queued = false; if (keep.indexOf(s) >= 0 && (s.__ratio || 0) >= 0.05 && !s.__mounted) mount(s); }, delay);
+      delay += 650;
     });
   }
   function observe(stage) { tracked.push(stage); io.observe(stage); }
-  W.addEventListener('scroll', function () { if (!isPhone) return; schedule(); }, { passive: true });
+  W.addEventListener('scroll', function () { lastScroll = Date.now(); if (tracked.length) schedule(); }, { passive: true });
 
   function setTour(stage, on) { stage.__tourOff = !on; post(stage, { hx: 'tour', on: !!on }); }
   function setInteractive(stage, on) {

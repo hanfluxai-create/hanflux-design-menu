@@ -3,6 +3,8 @@
 <head>
 {{head}}
 <title>AI agent interfaces · Hanflux Design Menu</title>
+<meta name="robots" content="noindex,nofollow">
+<script>(function(){var d=document.documentElement;try{if(sessionStorage.getItem("hx-agents")!=="1")d.classList.add("pin-locked")}catch(e){d.classList.add("pin-locked")}})()</script>
 <meta name="description" content="{{n_agents}} live interface styles for AI agents and assistants, each with Director Mode: your assistant opens the right screen and points to what it is talking about.">
 <meta property="og:title" content="AI agent interfaces · Hanflux Design Menu">
 <meta property="og:description" content="Choose the face of your AI. {{n_agents}} live interface styles with Director Mode built in.">
@@ -20,6 +22,36 @@
 <script defer src="/assets/hx/agents.js?v={{v}}"></script>
 </head>
 <body class="agents">
+<div class="pin-gate" role="dialog" aria-modal="true" aria-labelledby="pin-t">
+  <form class="pin-card" id="pin-form" autocomplete="off">
+    <a class="wordmark" href="/" aria-label="Hanflux design menu, home"><b>HANFLUX<sup aria-hidden="true">●</sup></b><span>design menu</span></a>
+    <p class="kicker">private</p>
+    <h1 id="pin-t">AI agent interfaces</h1>
+    <p>This menu is private for now. Enter the PIN to open it.</p>
+    <input class="pin-in" id="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" aria-label="PIN" autocomplete="off">
+    <button class="btn btn-teal" type="submit">Open</button>
+    <p class="pin-err" id="pin-err" role="alert" hidden>That PIN is not right.</p>
+    <a class="alt" href="/websites/">See the website menu instead</a>
+  </form>
+</div>
+<script>
+(function () {
+  var f = document.getElementById('pin-form'), i = document.getElementById('pin'), er = document.getElementById('pin-err');
+  function h(s) { var x = 5381; for (var k = 0; k < s.length; k++) x = ((x * 33) ^ s.charCodeAt(k)) >>> 0; return x.toString(36); }
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (h('hx:' + (i.value || '').trim()) === 'gbt2bz') {
+      try { sessionStorage.setItem('hx-agents', '1'); } catch (x) {}
+      document.documentElement.classList.remove('pin-locked');
+      window.dispatchEvent(new Event('hx-unlock'));
+      window.scrollTo(0, 0);
+    } else {
+      er.hidden = false; f.classList.remove('shake'); void f.offsetWidth; f.classList.add('shake'); i.select();
+    }
+  });
+  if (document.documentElement.classList.contains('pin-locked')) setTimeout(function () { try { i.focus({ preventScroll: true }); } catch (x) {} }, 150);
+})();
+</script>
 <div class="dust" aria-hidden="true"></div>
 <a class="skip" href="#menu">Skip to the styles</a>
 {{nav}}

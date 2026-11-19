@@ -1,0 +1,20 @@
+<aside class="d-buy" id="buy" aria-label="Price and add-ons">
+      <div class="buy-card">
+        <div class="buy-top">
+          <span class="tier tier-{{tier}}">{{tier_name}}</span>
+          <span class="mono faint">{{weeks}}</span>
+        </div>
+        <div class="buy-offer offer-only"><span class="off-sticker">{{off_pct}} off · launch</span><span class="offer-note">ends in <b data-countdown>{{offer_ends}}</b></span></div>
+        <div class="buy-price" data-price-block><small>from</small> <s class="was">{{was_price}}</s> <span class="now" id="d-base">{{price}}</span></div>
+        <p class="buy-blurb">{{tier_blurb}}</p>
+        <h3 class="mono-h">add-ons</h3>
+        <ul class="addons" id="d-addons">{{addon_rows}}</ul>
+        <div class="est" id="d-est" data-price-block><div><div class="lbl">your estimate</div><div class="lbl" id="d-est-sub" style="margin-top:4px">{{tier_name}} design, no add-ons yet</div></div><div class="amt" id="d-est-amt">from {{price}}</div></div>
+        <div class="buy-cta">
+          <button class="btn btn-teal" type="button" id="d-request">Request this design</button>
+          <button class="btn btn-ghost btn-pick" type="button" data-pick="{{slug}}" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.4A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.5c0 5.8-7.5 10.4-7.5 10.4z"/></svg><span class="lbl">Shortlist</span></button>
+        </div>
+        <p class="fine">Fixed quote within 24 hours. No payment to ask.</p>
+        <p class="fine offer-only" style="margin-top:6px">{{offer_note}}</p>
+      </div>
+    </aside>

@@ -15,7 +15,7 @@
   box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 30px 70px -18px rgba(0,0,0,.9), 0 0 40px -10px color-mix(in srgb, var(--accent) 40%, transparent); }
 .dev-m .vp { aspect-ratio: 390 / 844; border-radius: 17px; }
 .dev-m .isl { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 28%; height: 9px; border-radius: 99px; background: #000; z-index: 3; }
-.vp iframe { position: absolute; top: 0; left: 0; border: 0; transform-origin: 0 0; background: transparent; pointer-events: none; opacity: 0; transition: opacity .7s ease; }
+.vp iframe { position: absolute; top: 0; left: 0; border: 0; max-width: none; max-height: none; transform-origin: 0 0; background: transparent; pointer-events: none; opacity: 0; transition: opacity .7s ease; }
 .vp.live iframe { opacity: 1; }
 .vp.interactive iframe { pointer-events: auto; }
 .poster { position: absolute; inset: 0; background-size: cover; background-position: center top; transition: opacity .8s ease; }

@@ -42,8 +42,10 @@
     hint.textContent = on ? 'auto tour is on · switch it off to scroll the site yourself' : 'scroll inside the frames to explore · switch auto tour back on any time';
   });
 
-  // add-ons and estimate
+  // add-ons and estimate (our own sites are examples: no price card)
+  var hasBuy = !!$('#d-addons');
   function renderEst() {
+    if (!hasBuy) return;
     var base = X.tierPrice(site.tier), reg = X.tierRegular(site.tier), on = X.offerOn();
     var once = 0, mo = 0, n = 0;
     C.addons.forEach(function (a) { if (X.hasAddon(a.id)) { n++; if (a.monthly) mo += a.from; else once += a.from; } });
@@ -53,9 +55,11 @@
     $('#d-est-sub').textContent = C.tiers[site.tier].name + ' design' + (n ? ' + ' + n + ' add-on' + (n > 1 ? 's' : '') : ', no add-ons yet');
     $('#bb-amt').innerHTML = (on && reg > base ? '<s class="was" style="font:500 12px var(--font-body);margin-right:6px">' + X.money(reg + once) + '</s>' : '') + 'from ' + X.money(base + once) + (mo ? ' <span class="faint" style="font:500 12px var(--font-body)">+ ' + X.money(mo) + '/mo</span>' : '');
   }
-  $('#d-addons').addEventListener('change', function (e) { if (e.target.matches('input')) { X.toggleAddon(e.target.value); } });
-  $('#d-addons').addEventListener('click', function (e) { if (e.target.closest('[data-more-addons]')) $('#d-addons').classList.add('open'); });
-  if (C.addons.some(function (a, k) { return k >= 6 && X.hasAddon(a.id); })) $('#d-addons').classList.add('open');
+  if (hasBuy) {
+    $('#d-addons').addEventListener('change', function (e) { if (e.target.matches('input')) { X.toggleAddon(e.target.value); } });
+    $('#d-addons').addEventListener('click', function (e) { if (e.target.closest('[data-more-addons]')) $('#d-addons').classList.add('open'); });
+    if (C.addons.some(function (a, k) { return k >= 6 && X.hasAddon(a.id); })) $('#d-addons').classList.add('open');
+  }
 
   // shortlist + request
   function syncPick() {

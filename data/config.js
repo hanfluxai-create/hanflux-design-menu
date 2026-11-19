@@ -9,6 +9,11 @@ window.HX_CONFIG = {
   cal: 'https://cal.com/chitraksh-mayank-lhab1f/15min',
   // Optional lead inbox. Fill in to save every request to Supabase as well (insert-only anon key).
   supabase: null, // { url: 'https://xxxx.supabase.co', anonKey: '...', table: 'design_menu_leads' }
+  // Our own sites (Hanflux and Oraya). Shown as examples of our work, never for sale.
+  examples: ['hanflux', 'oraya', 'oraya-film', 'oraya-classic', 'oraya-dealership'],
+  // Enquiry pop-up after this many seconds on the menu. Name, email and website type go to the inbox
+  // below through FormSubmit (the first enquiry sends a one-time "Activate Form" email to that inbox).
+  lead: { on: true, afterSec: 90, endpoint: 'https://formsubmit.co/ajax/hanfluxai@gmail.com' },
 
   currency: { code: 'USD', symbol: '$' },
   showPrices: true,

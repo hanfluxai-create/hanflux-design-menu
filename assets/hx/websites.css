@@ -91,3 +91,8 @@
 .wc-from .was { margin-right: 4px; }
 .legend .tier .was { margin: 0 2px 0 4px; }
 .w-offer { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 22px; }
+
+/* our own work: examples, not for sale */
+.w-ex { margin-top: clamp(16px, 3vw, 36px); padding-top: clamp(40px, 6vw, 84px); border-top: 1px solid var(--hair); }
+.w-ex .sec-head { margin-bottom: 0; }
+.wcard.ex .wc-top .nfs { margin-right: auto; }

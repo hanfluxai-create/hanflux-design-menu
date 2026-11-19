@@ -103,3 +103,12 @@
 .buy-price .was { font-size: .5em; margin-right: 6px; vertical-align: middle; }
 .custom-b .cb-t { margin: 0 0 14px; font-size: 16px; color: var(--ink); }
 .custom-b .cb-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* our own site: example card in place of the price card */
+.ex-card .ex-h { font-size: clamp(26px, 3vw, 34px); line-height: 1.05; letter-spacing: -.02em; margin: 18px 0 10px; }
+.ex-ref { display: grid; gap: 6px; padding: 16px 18px; margin: 18px 0; border-radius: 16px; border: 1px solid var(--hair); background: rgba(255,255,255,.03); }
+.ex-ref b { font: 600 18px/1.2 var(--font-display); }
+.ex-p { font: 600 20px/1.2 var(--font-display); }
+.ex-p .was { font-size: .7em; margin-right: 6px; }
+.ex-card .buy-cta { grid-template-columns: 1fr; }
+.ex-card .buy-cta .btn { justify-content: center; }

@@ -22,12 +22,17 @@
 
   /* ---------- shortlist store ---------- */
   var KEY = 'hx-picks-v2';
+  var EXS = C.examples || [];
+  function isEx(s) { return EXS.indexOf(s) >= 0; }           // our own sites: examples, never for sale
+  var AGENTS_ON = /^\/agents\//.test(location.pathname);       // the agent menu is private for now
   var store = { w: [], a: [], add: [], primary: null };
   try { var raw = JSON.parse(localStorage.getItem(KEY) || 'null'); if (raw) store = Object.assign(store, raw); } catch (e) {}
-  store.w = (store.w || []).filter(function (s) { return bySlug[s]; });
+  store.w = (store.w || []).filter(function (s) { return bySlug[s] && !isEx(s); });
+  if (isEx(store.primary)) store.primary = null;
+  if (!AGENTS_ON) store.a = [];
   var qs = new URLSearchParams(location.search), sharedW = [], sharedA = [];
-  (qs.get('w') || '').split(',').forEach(function (s) { s = s.trim(); if (bySlug[s]) { sharedW.push(s); if (store.w.indexOf(s) < 0) store.w.push(s); } });
-  (qs.get('a') || qs.get('pick') || '').split(',').forEach(function (s) { s = s.trim(); if (s && (byLook[s] || /^[a-z-]+$/.test(s))) { sharedA.push(s); if (store.a.indexOf(s) < 0) store.a.push(s); } });
+  (qs.get('w') || '').split(',').forEach(function (s) { s = s.trim(); if (bySlug[s] && !isEx(s)) { sharedW.push(s); if (store.w.indexOf(s) < 0) store.w.push(s); } });
+  if (AGENTS_ON) (qs.get('a') || qs.get('pick') || '').split(',').forEach(function (s) { s = s.trim(); if (s && (byLook[s] || /^[a-z-]+$/.test(s))) { sharedA.push(s); if (store.a.indexOf(s) < 0) store.a.push(s); } });
   (qs.get('add') || '').split(',').forEach(function (s) { s = s.trim(); if (s && store.add.indexOf(s) < 0 && C.addons.some(function (a) { return a.id === s; })) store.add.push(s); });
   var listeners = [];
   function save() { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} listeners.forEach(function (fn) { try { fn(store); } catch (e) {} }); syncNav(); }
@@ -37,12 +42,13 @@
     store: store, sites: SITES, bySlug: bySlug, money: money, esc: esc, offerOn: offerOn, tierPrice: tierPrice, tierRegular: tierRegular,
     onChange: function (fn) { listeners.push(fn); },
     hasSite: function (s) { return store.w.indexOf(s) >= 0; },
-    toggleSite: function (s) { var on = toggleIn(store.w, s); if (!on && store.primary === s) store.primary = null; save(); toast(on ? 'Added to your shortlist' : 'Removed from your shortlist'); return on; },
+    isExample: isEx,
+    toggleSite: function (s) { if (isEx(s)) { toast('Our own sites are examples, not for sale'); return false; } var on = toggleIn(store.w, s); if (!on && store.primary === s) store.primary = null; save(); toast(on ? 'Added to your shortlist' : 'Removed from your shortlist'); return on; },
     hasAgent: function (id) { return store.a.indexOf(id) >= 0; },
     toggleAgent: function (id) { var on = toggleIn(store.a, id); save(); toast(on ? 'Added to your shortlist' : 'Removed from your shortlist'); return on; },
     hasAddon: function (id) { return store.add.indexOf(id) >= 0; },
     toggleAddon: function (id) { toggleIn(store.add, id); save(); },
-    setPrimary: function (s) { store.primary = s; if (s && store.w.indexOf(s) < 0) store.w.unshift(s); save(); },
+    setPrimary: function (s) { if (isEx(s)) return; store.primary = s; if (s && store.w.indexOf(s) < 0) store.w.unshift(s); save(); },
     estimate: estimate, openRequest: openRequest, closeRequest: closeRequest, toast: toast, shareLink: shareLink, copyShare: copyShare,
     sharedW: sharedW, sharedA: sharedA
   };
@@ -191,7 +197,8 @@
   function openRequest(opts) {
     opts = opts || {};
     if (!sheet) buildSheet();
-    if (opts.primary && bySlug[opts.primary]) api.setPrimary(opts.primary);
+    if (opts.primary && bySlug[opts.primary] && !isEx(opts.primary)) api.setPrimary(opts.primary);
+    if (!opts.kind && opts.primary && isEx(opts.primary)) opts.kind = 'Something fully custom';
     renderSheet();
     if (opts.kind && KINDS.indexOf(opts.kind) >= 0) { kind = opts.kind; $$('[data-kind]', sheet).forEach(function (x) { var on = x.getAttribute('data-kind') === kind; x.setAttribute('aria-pressed', on); x.setAttribute('aria-checked', on); }); }
     lastFocus = D.activeElement;
@@ -238,6 +245,7 @@
     if (!name.value.trim()) { name.focus(); name.style.borderColor = '#ff3d7f'; toast('Add your name so we know who to reply to'); setTimeout(function () { name.style.borderColor = ''; }, 2400); return; }
     var c = compose();
     saveLead(c, via);
+    try { localStorage.setItem('hx-lead', JSON.stringify({ sent: Date.now(), via: via })); } catch (e) {}
     if (via === 'whatsapp') {
       W.open('https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent(c.text), '_blank', 'noopener');
     } else {

@@ -73,3 +73,22 @@
 .w-help-in h2 { margin-top: 14px; }
 .w-help-in .cta { margin: 0; justify-content: flex-end; }
 @media (max-width: 860px) { .w-help-in { grid-template-columns: 1fr; } .w-help-in .cta { justify-content: flex-start; } }
+
+/* private for now: PIN gate */
+.pin-gate { display: none; }
+html.pin-locked body > :not(.pin-gate) { display: none !important; }
+html.pin-locked .pin-gate { display: grid; place-items: center; min-height: 100vh; min-height: 100svh; padding: 24px;
+  background: radial-gradient(80% 60% at 50% 0%, rgba(124,92,255,.18), transparent 60%), radial-gradient(60% 50% at 50% 100%, rgba(39,242,192,.12), transparent 60%), var(--bg); }
+.pin-card { width: min(420px, 100%); text-align: center; padding: 34px 26px 28px; border-radius: 26px; border: 1px solid var(--hair-2); background: var(--glass-2); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 40px 120px -40px rgba(0,0,0,.8); }
+.pin-card .wordmark { display: inline-flex; margin-bottom: 18px; }
+.pin-card h1 { font: 600 clamp(30px, 6vw, 40px)/1 var(--font-display); letter-spacing: -.02em; margin: 10px 0 10px; }
+.pin-card p { color: var(--ink-dim); margin: 0 0 22px; }
+.pin-in { width: 100%; height: 64px; text-align: center; font: 600 30px/1 var(--font-mono); letter-spacing: .5em; padding-left: .5em; border-radius: 16px; border: 1px solid var(--hair-2); background: rgba(255,255,255,.04); color: var(--ink); outline: none; }
+.pin-in:focus { border-color: var(--teal); background: rgba(39,242,192,.04); }
+.pin-card .btn { width: 100%; margin-top: 12px; justify-content: center; }
+.pin-card .pin-err { color: #ff9dbd; font-size: 14px; margin: 12px 0 0; }
+.pin-card .alt { display: inline-block; margin-top: 18px; color: var(--ink-dim); font-size: 14px; }
+.pin-card.shake { animation: pinshake .42s; }
+@keyframes pinshake { 20%, 60% { transform: translateX(-8px); } 40%, 80% { transform: translateX(8px); } }
+.pin-card .wordmark { display: flex; width: max-content; margin: 0 auto 18px; }
+.pin-card .kicker { display: flex; justify-content: center; margin: 0 0 4px; }

@@ -80,7 +80,7 @@
   var scale = phone ? 0.55 : 0.8, steps = phone ? 40 : 56;
   var mx = 0, my = 0, tmx = 0, tmy = 0, sc = 0;
   function resize() {
-    var r = canvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var r = canvas.getBoundingClientRect(), dpr = Math.min(window.devicePixelRatio || 1, phone ? 2 : 1.5);
     var w = Math.max(2, Math.round(r.width * dpr * scale)), h = Math.max(2, Math.round(r.height * dpr * scale));
     if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; gl.viewport(0, 0, w, h); }
   }

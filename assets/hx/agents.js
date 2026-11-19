@@ -1,6 +1,8 @@
 /* Hanflux Design Menu · AI agent interfaces: hero, live grid, viewer, filters, shared shortlist. */
-(function () {
+(function boot() {
   'use strict';
+  // the agent menu is private for now: wait for the PIN gate
+  if (document.documentElement.classList.contains('pin-locked')) { window.addEventListener('hx-unlock', boot, { once: true }); return; }
   var S = window.HX_STYLES, H = window.HXStage, X = window.HXShell;
   if (!S || !H) return;
   var $ = function (s, r) { return (r || document).querySelector(s); };

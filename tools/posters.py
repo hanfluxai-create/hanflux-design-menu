@@ -17,6 +17,9 @@ class Quiet(SimpleHTTPRequestHandler):
         pass
 
 
+# Styles whose signature moment is further down the page: scroll there before the poster is taken.
+AT = {'spire': ('#descent', 0)}  # (selector, extra px)
+
 async def shoot(b, port, slug):
     from playwright.async_api import TimeoutError as PWT
     res = []
@@ -31,6 +34,12 @@ async def shoot(b, port, slug):
             except PWT:
                 pass
             await pg.wait_for_timeout(2600)
+            if slug in AT:
+                sel, extra = AT[slug]
+                for dy, wait in ((extra, 5000),):
+                    await pg.evaluate('''([sel, dy]) => { const e = document.querySelector(sel); if (!e) return; const y = e.getBoundingClientRect().top + scrollY + dy;
+                      const l = window.__lenis; if (l && l.scrollTo) l.scrollTo(y, { immediate: true, force: true }); else window.scrollTo(0, y); }''', [sel, dy])
+                    await pg.wait_for_timeout(wait)
             tmp = '/tmp/poster_%s_%s.png' % (slug, kind)
             await pg.screenshot(path=tmp, timeout=60000)
             im = Image.open(tmp).convert('RGB')

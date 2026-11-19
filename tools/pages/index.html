@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 {{head}}
-<title>Hanflux Design Menu · Live websites and AI agent interfaces</title>
-<meta name="description" content="Watch {{n_sites}} websites and {{n_agents}} AI agent interfaces run live on desktop and phone. Shortlist the design you love and get a fixed quote from Hanflux AI within 24 hours.">
+<title>Hanflux Design Menu · Live website designs</title>
+<meta name="description" content="Watch {{n_sites}} website designs run live on desktop and phone. Shortlist the one you love, mix a few or ask for something custom, and get a fixed quote from Hanflux AI within 24 hours.">
 <meta property="og:title" content="The Hanflux Design Menu">
-<meta property="og:description" content="Pick the design. Watch it live. {{n_sites}} websites and {{n_agents}} AI agent interfaces, from clean business sites to immersive 3D.">
+<meta property="og:description" content="Pick the design. Watch it live. {{n_sites}} website designs, from clean business sites to immersive 3D. Launch prices up to {{off_max}} off.">
 <meta property="og:url" content="https://hanflux-design-menu.vercel.app/">
 <link rel="canonical" href="https://hanflux-design-menu.vercel.app/">
 <link rel="stylesheet" href="/assets/hx/frames.css?v={{v}}">
@@ -14,6 +14,7 @@
 <script defer src="/data/sites.js?v={{v}}"></script>
 <script defer src="/assets/hx/frames.js?v={{v}}"></script>
 <script defer src="/assets/hx/shell.js?v={{v}}"></script>
+<script defer src="/assets/hx/lead.js?v={{v}}"></script>
 <script defer src="/assets/hx/hero-gl.js?v={{v}}"></script>
 <script defer src="/assets/hx/home.js?v={{v}}"></script>
 </head>
@@ -29,21 +30,21 @@
     <div class="hero-in wrap">
       <p class="kicker rv">design menu · vol. 02</p>
       <h1 class="display h-xl rv" id="hero-title">Pick the design.<br><span class="grad">Watch it live.</span></h1>
-      <p class="lede rv">Real websites and AI agent interfaces, running live on desktop and phone. Pick one, mix a few, or ask for something fully custom, and get a fixed quote within 24 hours.</p>
+      <p class="lede rv">Real websites, running live on desktop and phone. Pick one, mix a few, or ask for something fully custom, and get a fixed quote within 24 hours.</p>
       <div class="cta rv">
         <a class="btn btn-teal" href="/websites/">Browse {{n_sites}} websites<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-ghost" href="/agents/">AI agent interfaces</a>
+        <a class="btn btn-ghost" href="#pricing">See launch pricing</a>
       </div>
       <div class="hud rv" aria-label="What is inside">
         <span class="chip"><i class="dot live"></i>{{n_sites}} live websites</span>
-        <span class="chip">{{n_agents}} agent interfaces</span>
+        <span class="chip">fixed quote in 24 hours</span>
         <span class="chip offer-only" style="border-color:rgba(255,61,127,.6);color:#ffb3cd">launch offer · up to {{off_max}} off</span>
       </div>
     </div>
     <div class="hero-foot wrap" aria-hidden="true"><span class="mono">scroll</span><i></i><span class="mono">real-time webgl</span></div>
   </section>
 
-  <section class="doors section" id="doors" aria-label="The two menus">
+  <section class="doors section" id="doors" aria-label="The website menu">
     <div class="wrap">
       <article class="door door-web rv">
         <div class="door-copy">
@@ -54,16 +55,6 @@
           <a class="btn btn-teal" href="/websites/">Open the website menu<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="door-stage"><div class="stage combo" id="feat-stage"></div></div>
-      </article>
-
-      <article class="door door-ai rv">
-        <div class="door-copy">
-          <p class="kicker">menu 02 · ai agents</p>
-          <h2 class="display h-lg">AI agent interfaces</h2>
-          <p class="lede">{{n_agents}} faces for your AI assistant. Each one runs Director Mode: it opens the right screen and points at exactly what it is talking about.</p>
-          <a class="btn btn-ghost" href="/agents/">Open the agent menu<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-        <div class="door-stage"><div class="ai-frame"><div class="ai-wrap" id="ai-stage" aria-hidden="true"></div><span class="ai-now mono" id="ai-now"></span></div></div>
       </article>
     </div>
   </section>
@@ -129,8 +120,8 @@
   <section class="work section" aria-labelledby="work-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">built by hanflux</p><h2 class="display h-lg rv" id="work-title">Our live work<br>is in the menu too.</h2></div>
-        <p class="lede rv">These are real sites we designed and shipped. Each one sits in the menu as a style you can order, and each one is live right now.</p>
+        <div><p class="kicker rv">built by hanflux</p><h2 class="display h-lg rv" id="work-title">Real sites<br>we designed and shipped.</h2></div>
+        <p class="lede rv">Our own brands, Hanflux and Oraya, are shown as examples of our craft and are not for sale. Client work sits in the menu as a style you can order.</p>
       </div>
       <ul class="work-list">{{work}}</ul>
     </div>

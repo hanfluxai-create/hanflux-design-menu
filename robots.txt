@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /w/
+Disallow: /agents/
 Sitemap: https://hanflux-design-menu.vercel.app/sitemap.xml
