@@ -11,12 +11,14 @@
   var KEY = 'hx-lead', T_KEY = 'hx-lead-t', DAY = 864e5;
   var st = null;
   try { st = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) {}
-  if (st && (st.sent || (st.closed && Date.now() - st.closed < 3 * DAY))) return;
+  var force = /[?&]lead=now\b/.test(location.search);   // open the menu with ?lead=now to test the pop-up
+  if (!force && st && (st.sent || (st.closed && Date.now() - st.closed < 3 * DAY))) return;
 
   var TYPES = ['Business website', 'Landing page for a launch or campaign', 'Online store', 'Booking site (clinic, salon, restaurant)',
     'Portfolio or personal brand', '3D or immersive showcase', 'Web app or dashboard', 'Not sure yet'];
   var need = Math.max(5, +L.afterSec || 90) * 1000, spent = 0, last = Date.now(), timer;
   try { spent = +sessionStorage.getItem(T_KEY) || 0; } catch (e) {}
+  if (force) need = 0;
 
   function remember(o) { try { localStorage.setItem(KEY, JSON.stringify(o)); } catch (e) {} }
   function busy() {
