@@ -27,7 +27,12 @@
   .hero-stats { grid-auto-flow: row; grid-template-columns: 1fr 1fr; gap: 18px 16px; }
   .stat > span { font-size: 12px; }
   .hero .cta .btn { flex: 1 1 100%; }
-  .hero-mark { height: clamp(220px, 36svh, 330px); }
+  .hero-mark { height: clamp(184px, 35svh, 330px); margin-bottom: clamp(22px, 3.2svh, 32px); }
+  .hero-mark .lotus { width: clamp(88px, 15.5svh, 150px); }
+  .hero h1 { font-size: clamp(34px, min(10.4vw, 6.4svh), 46px); margin-top: 12px; }
+  .hero .lede { font-size: clamp(14.5px, 2.05svh, 16.5px); }
+  .hero .cta { gap: 8px; }
+  .hero .cta .btn { --h: clamp(44px, 6svh, 50px); }
 }
 @media (prefers-reduced-motion: reduce) { .hero h1 .ln > span { transform: none; animation: none; } .hero-k, .hero-l, .hero-c, .hero-stats { opacity: 1; animation: none; } }
 
@@ -84,8 +89,10 @@
 .tiers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
 .tcard { position: relative; display: flex; flex-direction: column; padding: 24px 22px 22px; border-radius: var(--r); border: 1px solid var(--hair-2); background: #fff; transition: transform .5s var(--ease-out), border-color .3s; isolation: isolate; }
 .tcard::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: var(--shadow-2); opacity: 0; transition: opacity .5s; z-index: -1; pointer-events: none; }
-.tcard:hover { transform: translateY(-4px); border-color: var(--ink-faint); }
-.tcard:hover::after { opacity: 1; }
+@media (hover: hover) {
+  .tcard:hover { transform: translateY(-4px); border-color: var(--ink-faint); }
+  .tcard:hover::after { opacity: 1; }
+}
 .tcard.top { border-color: transparent; background: linear-gradient(#fff, #fff) padding-box, var(--spectrum) border-box; }
 .tcard .tw { font: 500 10.5px/1 var(--font-mono); letter-spacing: .15em; text-transform: uppercase; color: var(--ink-dim); margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
 .tcard .tw::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--s-blue); }
@@ -128,14 +135,15 @@
 .work-list li { border-bottom: 1px solid var(--hair); }
 .work-list a.row { position: relative; display: grid; grid-template-columns: 52px 1.2fr 1fr auto; gap: 18px; align-items: center; padding: 22px 0; transition: padding .5s var(--ease-out); }
 .work-list a.row::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--spectrum); transform: scaleX(0); transform-origin: 0 50%; transition: transform .7s var(--ease-out); }
-.work-list a.row:hover { padding-left: 10px; }
-.work-list a.row:hover::after { transform: scaleX(1); }
+@media (hover: hover) {
+  .work-list a.row:hover { padding-left: 10px; }
+  .work-list a.row:hover::after { transform: scaleX(1); }
+  }
 .work-list .wn { font: 500 11px/1 var(--font-mono); color: var(--ink-faint); letter-spacing: .12em; }
 .work-list .wt { font: 600 clamp(21px, 2.4vw, 30px)/1.1 var(--font-display); letter-spacing: -.03em; color: var(--ink); }
 .work-list .wt small { display: block; font: 400 13.5px/1.4 var(--font-body); color: var(--ink-dim); letter-spacing: 0; margin-top: 8px; }
 .work-list .wu { font: 400 12.5px/1 var(--font-mono); color: var(--ink-2); }
 .work-list .wa { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--hair-2); color: var(--ink); transition: background-color .3s, color .3s, border-color .3s; }
-.work-list a.row:hover .wa { background: var(--ink); border-color: var(--ink); color: #fff; }
 .work-list .wa svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 @media (max-width: 760px) { .work-list a.row { grid-template-columns: 1fr auto; gap: 8px 14px; } .work-list .wn { display: none; } .work-list .wu { grid-column: 1; } .work-list .wa { grid-row: 1 / span 2; grid-column: 2; } }
 
@@ -163,3 +171,13 @@
   .final-meta { position: relative; }
 }
 @media (max-width: 640px) { .final-panel .cta .btn { flex: 1 1 100%; } }
+
+@media (pointer: coarse) { .feat-pick .chip { height: 40px; padding: 0 14px; } .lnk { padding: 12px 0; } .tcard .ex a { padding: 10px 12px; } }
+@media (max-width: 560px) {
+  .offer-card { padding: 30px 20px 26px; }
+  .cd-big { gap: 10px; }
+  .cd-big b { font-size: clamp(30px, 10vw, 44px); }
+  .addons-strip { padding: 20px 16px; }
+  .door-stage { padding: 14px 18px 14px 12px; border-radius: 18px; }
+  .work-list .wt small { font-size: 13px; }
+}

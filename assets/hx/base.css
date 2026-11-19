@@ -92,7 +92,8 @@ a.teal { text-decoration: underline; text-underline-offset: 3px; text-decoration
 /* the hairline with a spectrum tab: the brief's signature rule */
 .tabrule { position: relative; border-top: 1px solid var(--hair); }
 .tabrule::before { content: ""; position: absolute; left: 0; top: -1px; width: 100%; height: 2px; background: var(--spectrum); transform: scaleX(.16); transform-origin: 0 50%; transition: transform .8s var(--ease-out); border-radius: 2px; }
-.tabrule:hover::before, .tabrule.full::before { transform: scaleX(1); }
+.tabrule.full::before { transform: scaleX(1); }
+@media (hover: hover) { .tabrule:hover::before { transform: scaleX(1); } }
 
 /* buttons */
 .btn { --h: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; height: var(--h); padding: 0 22px; border-radius: 999px; border: 1px solid transparent;
@@ -101,14 +102,17 @@ a.teal { text-decoration: underline; text-underline-offset: 3px; text-decoration
 .btn:active { transform: scale(.97); }
 .btn-teal { background: var(--ink); color: #fff; box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 1px 2px rgba(26,27,69,.2), 0 10px 22px -10px rgba(26,27,69,.55); }
 .btn-teal::before { content: ""; position: absolute; inset: -1px; z-index: -1; background: linear-gradient(90deg, #1587bd, #293a77 30%, #653080 52%, #d75088 78%, #f08522); opacity: 0; transition: opacity .45s ease; }
-.btn-teal:hover { transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(26,27,69,.2), 0 16px 30px -12px rgba(101,48,128,.55); }
-.btn-teal:hover::before { opacity: 1; }
+@media (hover: hover) {
+  .btn-teal:hover { transform: translateY(-1px); box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(26,27,69,.2), 0 16px 30px -12px rgba(101,48,128,.55); }
+  .btn-teal:hover::before { opacity: 1; }
+}
+.btn-teal:active::before { opacity: 1; }
 .btn-ghost { background: #fff; border-color: var(--hair-2); color: var(--ink); box-shadow: 0 1px 2px rgba(26,27,69,.04); }
-.btn-ghost:hover { border-color: var(--ink); transform: translateY(-1px); }
+@media (hover: hover) { .btn-ghost:hover { border-color: var(--ink); transform: translateY(-1px); } }
 .btn-sm { --h: 40px; padding: 0 17px; font-size: 13.5px; }
 .btn-xs { --h: 34px; padding: 0 14px; font-size: 13px; }
 .btn .ic { width: 17px; height: 17px; flex: none; transition: transform .35s var(--ease-out); }
-.btn:hover .ic { transform: translateX(3px); }
+@media (hover: hover) { .btn:hover .ic { transform: translateX(3px); } }
 .btn svg { stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .btn-wa { background: #1fae5b; color: #fff; box-shadow: 0 10px 22px -10px rgba(31,174,91,.6); }
 .btn-wa:hover { background: #17a050; transform: translateY(-1px); }
@@ -125,7 +129,8 @@ button.chip:hover, a.chip:hover { border-color: var(--ink); color: var(--ink); }
 .chip.on, .chip[aria-pressed="true"] { border-color: var(--ink); color: #fff; background: var(--ink); }
 .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--s-orange); display: inline-block; flex: none; position: relative; }
 .dot.live::after { content: ""; position: absolute; inset: -1px; border-radius: 50%; border: 1px solid var(--s-orange); animation: ping 1.8s var(--ease-out) infinite; }
-@keyframes ping { from { transform: scale(1); opacity: .9; } to { transform: scale(2.8); opacity: 0; } }
+@keyframes ping { from { transform: scale(1); opacity: .9; } to { transform: scale(2.3); opacity: 0; } }
+.chip > .dot { margin: 0 3px 0 2px; }
 @keyframes pulse { 50% { opacity: .4; } }
 
 /* tier badges */
@@ -140,7 +145,7 @@ button.chip:hover, a.chip:hover { border-color: var(--ink); color: var(--ink); }
 
 /* nav */
 .nav { position: fixed; top: var(--bar-h); left: 0; right: 0; z-index: 40; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  padding: 0 max(var(--pad), calc((100vw - var(--maxw)) / 2 + var(--pad))); transition: background-color .35s, box-shadow .35s; view-transition-name: hx-nav; }
+  padding: env(safe-area-inset-top, 0px) max(var(--pad), calc((100vw - var(--maxw)) / 2 + var(--pad))) 0; transition: background-color .35s, box-shadow .35s; view-transition-name: hx-nav; }
 .nav::before { content: ""; position: absolute; inset: 0; z-index: -1; background: #fff; opacity: 0; transition: opacity .35s; border-bottom: 1px solid var(--hair); }
 .nav.solid::before { opacity: 1; }
 @media (min-width: 861px) and (hover: hover) { .nav::before { background: rgba(255, 255, 255, .9); -webkit-backdrop-filter: saturate(1.6) blur(14px); backdrop-filter: saturate(1.6) blur(14px); } }
@@ -319,3 +324,33 @@ html.offer-over .was, html:not(.has-offer) .was { color: inherit; font-weight: i
 @keyframes lotus-in { from { opacity: 0; transform: scale(.82) translateY(8px); } to { opacity: 1; transform: none; } }
 @keyframes lotus-float { 50% { transform: translateY(-5px) scale(1.012); } }
 @media (prefers-reduced-motion: reduce) { .lotus-wrap .lotus { animation: none; } }
+
+/* phones and other touch screens: finger-sized targets, no hover leftovers */
+@media (pointer: coarse) {
+  .btn-sm { --h: 44px; padding: 0 18px; }
+  .btn-xs { --h: 40px; }
+  .icon-btn { width: 44px; height: 44px; }
+  .pick-pill { height: 44px; }
+  .addon-picks .chip { height: 40px; }
+  .foot a { padding: 8px 0; }
+  .foot a.wordmark { padding: 0; }
+}
+@media (max-width: 560px) {
+  body { font-size: 15.5px; }
+  .lede { font-size: 16px; line-height: 1.55; }
+  .sheet .panel { padding-left: 18px; padding-right: 18px; }
+  .send-row .alt { grid-template-columns: 1fr; }
+  .foot .wrap { padding-top: 40px; }
+  .foot .legal { margin-top: 34px; }
+}
+body:has(.qbar.show) .toast, body:has(.buybar.show) .toast { bottom: calc(88px + var(--safe-b)); }
+@media (max-width: 560px) {
+  /* the add-on chips in the request sheet: two rows you swipe sideways, so the form stays close */
+  .sheet #rq-addons { display: grid; grid-auto-flow: column; grid-template-rows: repeat(2, auto); justify-content: start; gap: 8px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; margin: 4px -18px; padding: 0 18px 2px; -webkit-overflow-scrolling: touch; }
+  .sheet #rq-addons::-webkit-scrollbar { display: none; }
+}
+@media (max-width: 560px) {
+  .sheet .est { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .sheet .est .amt { text-align: left; white-space: nowrap; }
+  .sheet .est .amt .offer-note { white-space: normal; }
+}

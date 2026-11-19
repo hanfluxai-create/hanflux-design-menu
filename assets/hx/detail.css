@@ -140,3 +140,15 @@
 @media (max-width: 560px) { .d-steps ol { grid-template-columns: 1fr; } }
 .d-buy .est { flex-direction: column; align-items: flex-start; gap: 12px; }
 .d-buy .est .amt { text-align: left; white-space: nowrap; font-size: 30px; }
+
+@media (pointer: coarse) { .seg button { height: 40px; } .d-controls .chip { height: 46px; } }
+@media (max-width: 560px) {
+  .d-studio { padding: 12px 12px 18px; border-radius: 18px; }
+  .d-controls { gap: 8px; margin-bottom: 14px; }
+  .seg { flex: 1 1 100%; } .seg button { flex: 1; }
+  .d-controls .chip { flex: 1; justify-content: center; }
+  .d-hint { font-size: 9.5px; letter-spacing: .1em; }
+  .buy-card { padding: 22px 16px 20px; }
+  .incl li { font-size: 15.5px; padding: 13px 0; }
+  .d-nav a b { font-size: 19px; }
+}

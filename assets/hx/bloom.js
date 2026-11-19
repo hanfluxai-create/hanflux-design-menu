@@ -57,7 +57,8 @@
     function layout() {
       var r = cv.getBoundingClientRect();
       w = Math.max(2, r.width); h = Math.max(2, r.height);
-      dpr = Math.min(W.devicePixelRatio || 1, 2);
+      // small canvases (phones) can afford the full pixel ratio; big ones stay at 2
+      dpr = Math.min(W.devicePixelRatio || 1, w * h < 260000 ? 3 : 2);
       var bw = Math.round(w * dpr), bh = Math.round(h * dpr);
       if (cv.width !== bw || cv.height !== bh) { cv.width = bw; cv.height = bh; }
       if (anchor) {
