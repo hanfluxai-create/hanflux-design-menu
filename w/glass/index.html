@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('failsafe')},4500);</script>
+<title>Lumen Dental · Calm, modern dentistry in Indiranagar</title>
+<meta name="description" content="Painless care, transparent prices and evening slots at Lumen Dental, five minutes from Indiranagar metro, Bengaluru.">
+<meta name="theme-color" content="#f4fbfb">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237fe3da'/%3E%3Cstop offset='1' stop-color='%23c9b8ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3Cpath d='M22 20c-5 0-8 4-8 9 0 4.5 1.6 7.6 2.6 12.4 1 4.8 2 9.6 5 9.6 3.2 0 3.4-6.6 4.9-10 .7-1.7 1.8-2.6 3.5-2.6s2.8.9 3.5 2.6c1.5 3.4 1.7 10 4.9 10 3 0 4-4.8 5-9.6 1-4.8 2.6-7.9 2.6-12.4 0-5-3-9-8-9-3.2 0-4.8 1.6-8 1.6s-4.8-1.6-8-1.6z' fill='%23ffffff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gAqLi" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7fe3da"/><stop offset="1" stop-color="#c9b8ff"/></linearGradient>
+    <linearGradient id="gTeal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0aa79a"/><stop offset="1" stop-color="#7b6cf0"/></linearGradient>
+  </defs>
+  <symbol id="i-tooth" viewBox="0 0 32 32"><path d="M10.5 5.5c-3.3 0-5.5 2.6-5.5 6.4 0 3.2 1.1 5.3 1.8 8.6.7 3.4 1.4 7.1 3.5 7.1 2.2 0 2.4-4.6 3.4-7 .5-1.2 1.2-1.8 2.3-1.8s1.8.6 2.3 1.8c1 2.4 1.2 7 3.4 7 2.1 0 2.8-3.7 3.5-7.1.7-3.3 1.8-5.4 1.8-8.6 0-3.8-2.2-6.4-5.5-6.4-2.2 0-3.4 1.1-5.5 1.1s-3.3-1.1-5.5-1.1z"/></symbol>
+  <symbol id="i-aligner" viewBox="0 0 32 32"><path d="M6 9.5c0 9.6 4.4 16.5 10 16.5s10-6.9 10-16.5"/><path d="M10.6 9.5c0 6.6 2.4 11.5 5.4 11.5s5.4-4.9 5.4-11.5"/><path d="M6.6 14.6l4.3-.9M8.6 20l3.6-2.2M12.6 24.2l2.2-3.4M25.4 14.6l-4.3-.9M23.4 20l-3.6-2.2M19.4 24.2l-2.2-3.4"/><path d="M6 9.5h4.6M21.4 9.5H26"/></symbol>
+  <symbol id="i-white" viewBox="0 0 32 32"><path d="M9.5 8.5c-2.8 0-4.5 2.2-4.5 5.3 0 2.7.9 4.4 1.5 7.1.6 2.8 1.2 5.9 2.9 5.9 1.8 0 2-3.8 2.8-5.8.4-1 1-1.5 1.9-1.5s1.5.5 1.9 1.5c.8 2 1 5.8 2.8 5.8 1.7 0 2.3-3.1 2.9-5.9.6-2.7 1.5-4.4 1.5-7.1 0-3.1-1.7-5.3-4.5-5.3-1.8 0-2.8.9-4.6.9s-2.8-.9-4.6-.9z"/><path d="M25 3.5v5M22.5 6h5M27.5 12.5v3M26 14h3"/></symbol>
+  <symbol id="i-implant" viewBox="0 0 32 32"><path d="M8.5 5c-2.4 0-4 1.8-4 4.4 0 2.6 1.2 4.4 2.6 5.1h17.8c1.4-.7 2.6-2.5 2.6-5.1C27.5 6.8 25.9 5 23.5 5c-2.6 0-4.6 1.2-7.5 1.2S11.1 5 8.5 5z"/><path d="M12 14.5h8l-1 3.2h-6z"/><path d="M13 17.7h6l-.5 2.2h-5zM13.5 19.9h5l-.5 2.2h-4zM14 22.1h4l-.6 2.2h-2.8zM14.6 24.3h2.8L16 27z"/></symbol>
+  <symbol id="i-root" viewBox="0 0 32 32"><path d="M10.5 5.5c-3.3 0-5.5 2.6-5.5 6.4 0 3.2 1.1 5.3 1.8 8.6.7 3.4 1.4 7.1 3.5 7.1 2.2 0 2.4-4.6 3.4-7 .5-1.2 1.2-1.8 2.3-1.8s1.8.6 2.3 1.8c1 2.4 1.2 7 3.4 7 2.1 0 2.8-3.7 3.5-7.1.7-3.3 1.8-5.4 1.8-8.6 0-3.8-2.2-6.4-5.5-6.4-2.2 0-3.4 1.1-5.5 1.1s-3.3-1.1-5.5-1.1z"/><path d="M12.5 11.5c-.2 3.2-.8 6.6-2 12M19.5 11.5c.2 3.2.8 6.6 2 12" stroke-dasharray="1.6 2.2"/><circle cx="16" cy="11.6" r="1.6"/></symbol>
+  <symbol id="i-kids" viewBox="0 0 32 32"><path d="M10.5 6.5c-3.3 0-5.5 2.6-5.5 6.4 0 3.2 1.1 5.3 1.8 8.6.7 3.4 1.4 6.1 3.5 6.1 2.2 0 2.4-3.6 3.4-6 .5-1.2 1.2-1.8 2.3-1.8s1.8.6 2.3 1.8c1 2.4 1.2 6 3.4 6 2.1 0 2.8-2.7 3.5-6.1.7-3.3 1.8-5.4 1.8-8.6 0-3.8-2.2-6.4-5.5-6.4-2.2 0-3.4 1.1-5.5 1.1s-3.3-1.1-5.5-1.1z"/><circle cx="12.5" cy="12.5" r=".9" fill="currentColor"/><circle cx="19.5" cy="12.5" r=".9" fill="currentColor"/><path d="M12.6 15.6c1.9 1.8 4.9 1.8 6.8 0"/></symbol>
+  <symbol id="i-smile" viewBox="0 0 32 32"><path d="M5 13.5c3 6.4 7 9.5 11 9.5s8-3.1 11-9.5"/><path d="M8.5 15.2c2.5 1.4 5 2 7.5 2s5-.6 7.5-2"/><path d="M10.6 16.5v2.4M14 17.1v2.9M18 17.1v2.9M21.4 16.5v2.4"/><path d="M24.5 3v4.4M22.3 5.2h4.4"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5z"/><path d="M9 9.2c.2 2.6 2.6 5.1 5.4 5.6l1.2-1.2-1.8-1-1 .7c-.9-.4-1.7-1.2-2.1-2.1l.7-1-1-1.8z" stroke-linejoin="round"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.8l2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-2.9-5.4 2.9 1.1-6-4.5-4.2 6.1-.8z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4.5 7l7.5 6 7.5-6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.4-3 7.9-7 9.5-4-1.6-7-5.1-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="backdrop" aria-hidden="true"><i class="b1"><b></b></i><i class="b2"><b></b></i><i class="b3"><b></b></i><i class="b4"><b></b></i></div>
+
+<header class="nav" id="top">
+  <div class="nav__bar glass">
+    <a class="brand" href="#top" aria-label="Lumen Dental, back to top">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40"><defs><radialGradient id="bm" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#9eeee6"/><stop offset="1" stop-color="#b9a6ff"/></radialGradient></defs><circle cx="20" cy="20" r="18" fill="url(#bm)"/><path d="M14.3 12.5c-3 0-5 2.3-5 5.6 0 2.8 1 4.7 1.6 7.6.6 3 1.2 6.1 3.1 6.1 2 0 2.1-4 3-6.2.4-1 1-1.6 2-1.6s1.6.6 2 1.6c.9 2.2 1 6.2 3 6.2 1.9 0 2.5-3.1 3.1-6.1.6-2.9 1.6-4.8 1.6-7.6 0-3.3-2-5.6-5-5.6-2 0-3 1-4.7 1s-2.7-1-4.7-1z" fill="#fff" opacity=".95"/><path d="M8 13a13 13 0 0 1 9-7" stroke="#fff" stroke-width="1.6" stroke-linecap="round" fill="none" opacity=".85"/></svg>
+      </span>
+      <span class="brand__name">Lumen<em>Dental</em></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#treatments">Treatments</a>
+      <a href="#visit">First visit</a>
+      <a href="#doctors">Doctors</a>
+      <a href="#prices">Prices</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="btn btn--glass btn--sm" type="button" data-wa><svg class="ico"><use href="#i-chat"/></svg><span>WhatsApp</span></button>
+      <a class="btn btn--primary btn--sm" href="#book">Book a visit</a>
+    </div>
+    <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu__aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+  <nav class="menu__links" aria-label="Mobile">
+    <a href="#treatments"><span>01</span>Treatments</a>
+    <a href="#visit"><span>02</span>First visit</a>
+    <a href="#doctors"><span>03</span>Doctors</a>
+    <a href="#reviews"><span>04</span>Reviews</a>
+    <a href="#prices"><span>05</span>Prices</a>
+    <a href="#faq"><span>06</span>FAQ</a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--primary btn--lg btn--block" href="#book">Book a visit</a>
+    <button class="btn btn--glass btn--lg btn--block" type="button" data-wa><svg class="ico"><use href="#i-chat"/></svg>WhatsApp us</button>
+    <p>Open daily till 9 PM · 12th Main, Indiranagar</p>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="hero" data-tour="3400" aria-label="Lumen Dental">
+    <canvas class="hero__gl" aria-hidden="true"></canvas>
+    <div class="hero__fallback" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="container hero__grid">
+      <div class="hero__stage" aria-hidden="true"></div>
+      <div class="hero__copy">
+        <p class="eyebrow hero__eyebrow"><span class="pulse" aria-hidden="true"></span>Indiranagar, Bengaluru · Open till 9 PM</p>
+        <h1 class="display hero__title"><span class="hl">Calm, modern</span> <span class="hl"><span class="grad">dentistry.</span></span></h1>
+        <p class="lead hero__lead">Painless care, transparent prices and evening slots, five minutes from Indiranagar metro.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary btn--lg magnetic" href="#book"><span>Book a visit</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+          <button class="btn btn--glass btn--lg magnetic" type="button" data-wa><svg class="ico"><use href="#i-chat"/></svg><span>WhatsApp us</span></button>
+        </div>
+        <ul class="hero__proof">
+          <li><strong>4.9<span class="stars" aria-label="4.9 out of 5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span></strong><em>1,240 patient reviews</em></li>
+          <li><strong>0%</strong><em>EMI for up to 12 months</em></li>
+          <li><strong>9 PM</strong><em>last slot, Mon to Sat</em></li>
+        </ul>
+      </div>
+      <aside class="slotcard glass" aria-labelledby="slot-title">
+        <div class="slotcard__head">
+          <p id="slot-title"><span class="live" aria-hidden="true"></span>Next free slots today</p>
+          <span class="slotcard__day" data-today>Today</span>
+        </div>
+        <div class="chips" role="radiogroup" aria-label="Choose a time">
+          <button class="chip" type="button" role="radio" aria-checked="false" data-slot="4:30 PM">4:30 PM</button>
+          <button class="chip" type="button" role="radio" aria-checked="false" data-slot="5:15 PM">5:15 PM</button>
+          <button class="chip" type="button" role="radio" aria-checked="false" data-slot="6:00 PM">6:00 PM</button>
+          <span class="chips__pill" aria-hidden="true"></span>
+        </div>
+        <div class="slotcard__row">
+          <span class="avatar avatar--sm av-1" aria-hidden="true">MI</span>
+          <div><strong>Dr. Meera Iyer</strong><span>Consultation and 3D scan</span></div>
+          <b class="price">₹800</b>
+        </div>
+        <button class="btn btn--primary btn--block slotcard__btn" type="button" data-hold><span class="slotcard__label">Choose a time</span><svg class="ico"><use href="#i-arrow"/></svg></button>
+        <p class="slotcard__note" aria-live="polite">No payment now. Free to reschedule.</p>
+      </aside>
+    </div>
+    <a class="hero__scroll" href="#treatments" aria-label="Scroll to treatments"><span></span></a>
+  </section>
+
+  <!-- TREATMENTS -->
+  <section class="section treatments" id="treatments" data-tour="2200">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Treatments</p>
+        <h2 class="h2" data-split>Everything your smile needs, under one calm roof.</h2>
+        <p class="section-sub" data-reveal>Start-from prices you can plan around. Your written plan shows the final figure before anything begins.</p>
+      </header>
+      <div class="tgrid">
+        <article class="tcard glass" data-reveal>
+          <div class="tcard__icon"><svg><use href="#i-aligner"/></svg></div>
+          <h3>Clear aligners</h3>
+          <p>Nearly invisible trays planned on a 3D scan. Preview your new smile before you commit.</p>
+          <div class="tcard__meta"><span><svg class="ico"><use href="#i-clock"/></svg>6 to 14 months</span><b>from ₹65,000</b></div>
+          <a class="tcard__link" href="#book" aria-label="Book a clear aligners consultation"><svg class="ico"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="tcard glass" data-reveal>
+          <div class="tcard__icon"><svg><use href="#i-white"/></svg></div>
+          <h3>Teeth whitening</h3>
+          <p>In-chair whitening that lifts up to six shades in about an hour, with a desensitising finish.</p>
+          <div class="tcard__meta"><span><svg class="ico"><use href="#i-clock"/></svg>60 minutes</span><b>₹8,500</b></div>
+          <a class="tcard__link" href="#book" aria-label="Book teeth whitening"><svg class="ico"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="tcard glass" data-reveal>
+          <div class="tcard__icon"><svg><use href="#i-implant"/></svg></div>
+          <h3>Implants</h3>
+          <p>Guided implant surgery and a zirconia crown matched to your bite, shade and smile line.</p>
+          <div class="tcard__meta"><span><svg class="ico"><use href="#i-clock"/></svg>2 visits plus healing</span><b>from ₹38,000</b></div>
+          <a class="tcard__link" href="#book" aria-label="Book an implant consultation"><svg class="ico"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="tcard glass" data-reveal>
+          <div class="tcard__icon"><svg><use href="#i-root"/></svg></div>
+          <h3>Root canal</h3>
+          <p>Single-sitting rotary root canal under gentle anaesthesia. Most patients are back at work the next morning.</p>
+          <div class="tcard__meta"><span><svg class="ico"><use href="#i-clock"/></svg>60 to 90 minutes</span><b>from ₹6,500</b></div>
+          <a class="tcard__link" href="#book" aria-label="Book a root canal assessment"><svg class="ico"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="tcard glass" data-reveal>
+          <div class="tcard__icon"><svg><use href="#i-kids"/></svg></div>
+          <h3>Kids dentistry</h3>
+          <p>Unhurried visits, cartoons on the ceiling screen and sealants that keep cavities away.</p>
+          <div class="tcard__meta"><span><svg class="ico"><use href="#i-clock"/></svg>From age 2</span><b>from ₹900</b></div>
+          <a class="tcard__link" href="#book" aria-label="Book a kids check-up"><svg class="ico"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="tcard glass" data-reveal>
+          <div class="tcard__icon"><svg><use href="#i-smile"/></svg></div>
+          <h3>Smile makeover</h3>
+          <p>Veneers, contouring and whitening designed together on a digital mock-up of your own face.</p>
+          <div class="tcard__meta"><span><svg class="ico"><use href="#i-clock"/></svg>3 to 4 visits</span><b>from ₹1,20,000</b></div>
+          <a class="tcard__link" href="#book" aria-label="Book a smile makeover consultation"><svg class="ico"><use href="#i-arrow"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIRST VISIT -->
+  <section class="section visit" id="visit" data-tour="2200">
+    <div class="container visit__grid">
+      <div class="visit__aside">
+        <header class="section-head section-head--left">
+          <p class="eyebrow">Your first visit</p>
+          <h2 class="h2" data-split>Your first visit, step by step.</h2>
+          <p class="section-sub" data-reveal>About 45 minutes, door to door. Nothing happens without your yes.</p>
+        </header>
+        <div class="dial glass" aria-hidden="true">
+          <svg class="dial__ring" viewBox="0 0 200 200">
+            <circle class="dial__track" cx="100" cy="100" r="86"/>
+            <circle class="dial__prog" cx="100" cy="100" r="86" stroke="url(#gTeal)"/>
+            <g class="dial__ticks"></g>
+          </svg>
+          <div class="dial__center">
+            <span class="dial__time" data-dial-time>00:00</span>
+            <span class="dial__label" data-dial-label>Arrive</span>
+          </div>
+        </div>
+      </div>
+      <ol class="steps">
+        <li class="step glass" data-step="0" data-time="00:00" data-label="Arrive">
+          <span class="step__node" aria-hidden="true"></span>
+          <p class="step__time">00:00</p>
+          <h3>Arrive to a quiet lounge</h3>
+          <p>Check in on your phone and skip the clipboard. Herbal tea, noise-cancelling headphones and a weighted blanket if you would like one.</p>
+          <ul class="tags"><li>No queue</li><li>Phone check-in</li></ul>
+        </li>
+        <li class="step glass" data-step="1" data-time="00:10" data-label="3D scan">
+          <span class="step__node" aria-hidden="true"></span>
+          <p class="step__time">00:10</p>
+          <h3>A painless 3D scan</h3>
+          <p>An intraoral scanner replaces messy moulds. In two minutes you see every tooth on screen, in 3D, from every angle.</p>
+          <ul class="tags"><li>No moulds</li><li>Low-dose digital X-ray</li></ul>
+        </li>
+        <li class="step glass" data-step="2" data-time="00:25" data-label="Your plan">
+          <span class="step__node" aria-hidden="true"></span>
+          <p class="step__time">00:25</p>
+          <h3>A plan in plain language</h3>
+          <p>Your dentist walks you through what we found, the options and the exact price, in writing. No jargon, no pressure.</p>
+          <ul class="tags"><li>Written quote</li><li>Valid 60 days</li></ul>
+        </li>
+        <li class="step glass" data-step="3" data-time="00:40" data-label="Treatment">
+          <span class="step__node" aria-hidden="true"></span>
+          <p class="step__time">00:40</p>
+          <h3>Treatment, only when you are ready</h3>
+          <p>Many fixes happen the same evening. Or take the plan home and decide in your own time.</p>
+          <ul class="tags"><li>Same-day options</li><li>Your call, always</li></ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- DOCTORS -->
+  <section class="section doctors" id="doctors" data-tour="2000">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Doctors</p>
+        <h2 class="h2" data-split>Specialists who explain before they treat.</h2>
+        <p class="section-sub" data-reveal>Every Lumen dentist holds a master's degree in their specialty and gives a first consultation at least 30 minutes.</p>
+      </header>
+      <div class="docs">
+        <article class="doc glass" data-reveal>
+          <div class="avatar avatar--lg av-1" aria-hidden="true"><span>MI</span></div>
+          <div class="doc__body">
+            <h3>Dr. Meera Iyer</h3>
+            <p class="doc__role">MDS, Orthodontics</p>
+            <p class="doc__focus">Clear aligners and smile design</p>
+            <dl class="doc__stats"><div><dt>Experience</dt><dd>12 years</dd></div><div><dt>Aligner cases</dt><dd>1,400+</dd></div></dl>
+            <p class="doc__lang">English, Kannada, Tamil</p>
+          </div>
+        </article>
+        <article class="doc glass" data-reveal>
+          <div class="avatar avatar--lg av-2" aria-hidden="true"><span>AR</span></div>
+          <div class="doc__body">
+            <h3>Dr. Arjun Rao</h3>
+            <p class="doc__role">MDS, Prosthodontics</p>
+            <p class="doc__focus">Implants and full-mouth rehabilitation</p>
+            <dl class="doc__stats"><div><dt>Experience</dt><dd>15 years</dd></div><div><dt>Implants placed</dt><dd>2,100</dd></div></dl>
+            <p class="doc__lang">English, Kannada, Telugu</p>
+          </div>
+        </article>
+        <article class="doc glass" data-reveal>
+          <div class="avatar avatar--lg av-3" aria-hidden="true"><span>SQ</span></div>
+          <div class="doc__body">
+            <h3>Dr. Sana Qureshi</h3>
+            <p class="doc__role">MDS, Paediatric dentistry</p>
+            <p class="doc__focus">Kids and anxious patients</p>
+            <dl class="doc__stats"><div><dt>Experience</dt><dd>9 years</dd></div><div><dt>Little patients</dt><dd>3,800</dd></div></dl>
+            <p class="doc__lang">English, Hindi, Urdu</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section reviews" id="reviews" data-tour="2400">
+    <div class="container">
+      <div class="reviews__head">
+        <div class="score glass" data-reveal>
+          <p class="score__num"><span data-count="4.9" data-dec="1">4.9</span></p>
+          <div>
+            <span class="stars stars--lg" aria-label="Rated 4.9 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+            <p>from <b data-count="1240">1,240</b> verified patient reviews</p>
+          </div>
+        </div>
+        <header class="section-head section-head--left">
+          <p class="eyebrow">Patient reviews</p>
+          <h2 class="h2" data-split>Patients say the calm is real.</h2>
+        </header>
+      </div>
+      <div class="carousel" data-carousel>
+        <div class="carousel__track" tabindex="0" aria-label="Patient reviews, scroll sideways">
+          <figure class="review glass">
+            <span class="stars" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+            <blockquote>I had put off a root canal for two years. Dr. Rao finished it in one evening sitting and I was at my desk the next morning.</blockquote>
+            <figcaption><span class="avatar avatar--xs av-2" aria-hidden="true">RM</span><span><b>Rohit Menon</b>Root canal · Domlur</span></figcaption>
+          </figure>
+          <figure class="review glass">
+            <span class="stars" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+            <blockquote>They showed me my aligner result in 3D before I paid a rupee. Ten months later my teeth look exactly like the preview.</blockquote>
+            <figcaption><span class="avatar avatar--xs av-1" aria-hidden="true">AS</span><span><b>Ananya Shetty</b>Clear aligners · Koramangala</span></figcaption>
+          </figure>
+          <figure class="review glass">
+            <span class="stars" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+            <blockquote>My daughter asked when she can go back. That has never happened at a dentist before, not once.</blockquote>
+            <figcaption><span class="avatar avatar--xs av-3" aria-hidden="true">KN</span><span><b>Kavya Nair</b>Kids dentistry · Indiranagar</span></figcaption>
+          </figure>
+          <figure class="review glass">
+            <span class="stars" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+            <blockquote>The price on my plan was the price on my bill. No small extras at the end, and the implant feels like my own tooth.</blockquote>
+            <figcaption><span class="avatar avatar--xs av-2" aria-hidden="true">FA</span><span><b>Farhan Ali</b>Implant · HAL 2nd Stage</span></figcaption>
+          </figure>
+          <figure class="review glass">
+            <span class="stars" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+            <blockquote>Booked a 7:30 PM cleaning after work and was in the chair at 7:31. That alone won me over.</blockquote>
+            <figcaption><span class="avatar avatar--xs av-1" aria-hidden="true">DP</span><span><b>Divya Prakash</b>Cleaning · Whitefield</span></figcaption>
+          </figure>
+          <figure class="review glass">
+            <span class="stars" aria-label="5 stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+            <blockquote>Six shades brighter for my sister's wedding, without the zingy sensitivity everyone warned me about.</blockquote>
+            <figcaption><span class="avatar avatar--xs av-3" aria-hidden="true">NK</span><span><b>Neha Kulkarni</b>Teeth whitening · Jayanagar</span></figcaption>
+          </figure>
+        </div>
+        <div class="carousel__ui">
+          <div class="carousel__dots" aria-hidden="true"></div>
+          <div class="carousel__btns">
+            <button class="iconbtn glass" type="button" data-prev aria-label="Previous review"><svg class="ico flip"><use href="#i-chev"/></svg></button>
+            <button class="iconbtn glass" type="button" data-next aria-label="Next review"><svg class="ico"><use href="#i-chev"/></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICES -->
+  <section class="section prices" id="prices" data-tour="2400">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Transparent pricing</p>
+        <h2 class="h2" data-split>The price you see is the price you pay.</h2>
+        <p class="section-sub" data-reveal>Every quote is written, itemised and valid for 60 days. Prices include consumables, X-rays and one review visit.</p>
+      </header>
+      <div class="prices__grid">
+        <div class="ptable glass" data-reveal>
+          <table>
+            <caption class="sr">Lumen Dental treatment prices</caption>
+            <thead><tr><th scope="col">Treatment</th><th scope="col">What is included</th><th scope="col">Price</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Consultation and 3D scan</th><td>Exam, intraoral scan, written plan</td><td>₹800<small>adjusted in treatment</small></td></tr>
+              <tr><th scope="row">Scaling and polishing</th><td>Ultrasonic clean, polish, fluoride varnish</td><td>₹2,200</td></tr>
+              <tr><th scope="row">Tooth-coloured filling</th><td>Composite, per tooth, bite check</td><td>₹2,500</td></tr>
+              <tr><th scope="row">Root canal</th><td>Rotary treatment, X-rays, 1 to 2 visits</td><td>from ₹6,500</td></tr>
+              <tr><th scope="row">Teeth whitening</th><td>In-chair, 60 minutes, take-home kit</td><td>₹8,500</td></tr>
+              <tr><th scope="row">Zirconia crown</th><td>Digital design, 5-year warranty</td><td>₹14,000</td></tr>
+              <tr><th scope="row">Dental implant</th><td>Guided surgery, abutment and crown</td><td>from ₹38,000</td></tr>
+              <tr><th scope="row">Clear aligners</th><td>Full treatment with retainers</td><td>from ₹65,000</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <aside class="emi glass" data-reveal aria-labelledby="emi-title">
+          <p class="eyebrow eyebrow--sm">No-cost EMI</p>
+          <h3 id="emi-title">Spread it out, pay nothing extra.</h3>
+          <div class="seg" role="radiogroup" aria-label="Treatment">
+            <button type="button" role="radio" aria-checked="true" data-amt="65000">Aligners</button>
+            <button type="button" role="radio" aria-checked="false" data-amt="38000">Implant</button>
+            <button type="button" role="radio" aria-checked="false" data-amt="120000">Makeover</button>
+          </div>
+          <div class="seg seg--months" role="radiogroup" aria-label="Months">
+            <button type="button" role="radio" aria-checked="false" data-m="3">3 mo</button>
+            <button type="button" role="radio" aria-checked="false" data-m="6">6 mo</button>
+            <button type="button" role="radio" aria-checked="false" data-m="9">9 mo</button>
+            <button type="button" role="radio" aria-checked="true" data-m="12">12 mo</button>
+          </div>
+          <p class="emi__out"><span class="emi__amt" data-emi>₹5,417</span><span class="emi__per">/ month</span></p>
+          <p class="emi__total" data-emi-note>₹65,000 over 12 months at 0% interest</p>
+          <ul class="emi__list">
+            <li><svg class="ico"><use href="#i-check"/></svg>All major credit cards and UPI-linked credit lines</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>No processing fee, no paperwork</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Itemised invoices for insurance claims</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="section book" id="book" data-tour="2600">
+    <div class="container">
+      <header class="section-head">
+        <p class="eyebrow">Book a visit</p>
+        <h2 class="h2" data-split>Pick a time that suits you, evenings included.</h2>
+        <p class="section-sub" data-reveal>Takes 30 seconds. No payment now, free to reschedule.</p>
+      </header>
+      <form class="booker glass" data-reveal novalidate aria-label="Book an appointment">
+        <div class="booker__main">
+          <fieldset class="bk-block">
+            <legend><span>1</span>What do you need?</legend>
+            <div class="tchips" role="radiogroup" aria-label="Treatment">
+              <button type="button" role="radio" aria-checked="true" data-t="Consultation and 3D scan" data-p="₹800" data-d="Dr. Meera Iyer">Consultation</button>
+              <button type="button" role="radio" aria-checked="false" data-t="Scaling and polishing" data-p="₹2,200" data-d="Dr. Sana Qureshi">Cleaning</button>
+              <button type="button" role="radio" aria-checked="false" data-t="Teeth whitening" data-p="₹8,500" data-d="Dr. Meera Iyer">Whitening</button>
+              <button type="button" role="radio" aria-checked="false" data-t="Aligner consultation" data-p="Free" data-d="Dr. Meera Iyer">Aligners</button>
+              <button type="button" role="radio" aria-checked="false" data-t="Kids check-up" data-p="₹900" data-d="Dr. Sana Qureshi">Kids</button>
+              <button type="button" role="radio" aria-checked="false" data-t="Tooth pain, priority" data-p="₹800" data-d="Dr. Arjun Rao">Tooth pain</button>
+            </div>
+          </fieldset>
+          <fieldset class="bk-block">
+            <legend><span>2</span>Choose a day <em class="bk-month" data-month>This week</em></legend>
+            <div class="week" role="radiogroup" aria-label="Day" data-week>
+              <button type="button" role="radio" aria-checked="true"><small>Mon</small><b>17</b><i></i></button>
+              <button type="button" role="radio" aria-checked="false"><small>Tue</small><b>18</b><i></i></button>
+              <button type="button" role="radio" aria-checked="false"><small>Wed</small><b>19</b><i></i></button>
+              <button type="button" role="radio" aria-checked="false"><small>Thu</small><b>20</b><i></i></button>
+              <button type="button" role="radio" aria-checked="false"><small>Fri</small><b>21</b><i></i></button>
+              <button type="button" role="radio" aria-checked="false"><small>Sat</small><b>22</b><i></i></button>
+              <button type="button" role="radio" aria-checked="false"><small>Sun</small><b>23</b><i></i></button>
+            </div>
+          </fieldset>
+          <fieldset class="bk-block">
+            <legend><span>3</span>Pick a slot</legend>
+            <div class="slots" data-slots>
+              <div class="slots__group"><p>Morning</p><div class="slots__row"><button type="button">9:30 AM</button><button type="button">10:15 AM</button><button type="button">11:00 AM</button><button type="button">11:45 AM</button></div></div>
+              <div class="slots__group"><p>Afternoon</p><div class="slots__row"><button type="button">1:30 PM</button><button type="button">2:15 PM</button><button type="button">3:00 PM</button><button type="button">3:45 PM</button></div></div>
+              <div class="slots__group"><p>Evening</p><div class="slots__row"><button type="button">4:30 PM</button><button type="button">5:15 PM</button><button type="button">6:00 PM</button><button type="button">6:45 PM</button><button type="button">7:30 PM</button><button type="button">8:15 PM</button></div></div>
+            </div>
+          </fieldset>
+        </div>
+        <div class="booker__side">
+          <div class="summary">
+            <p class="eyebrow eyebrow--sm">Your visit</p>
+            <p class="summary__when" data-sum-when>Fri 20 Nov · 6:00 PM</p>
+            <ul class="summary__list">
+              <li><span>Treatment</span><b data-sum-t>Consultation and 3D scan</b></li>
+              <li><span>Dentist</span><b data-sum-d>Dr. Meera Iyer</b></li>
+              <li><span>Pay at clinic</span><b data-sum-p>₹800</b></li>
+            </ul>
+          </div>
+          <div class="fields">
+            <label class="field"><span>Your name</span><input type="text" name="name" autocomplete="name" required placeholder="Your full name"></label>
+            <label class="field"><span>WhatsApp number</span><input type="tel" name="phone" autocomplete="tel" inputmode="numeric" required placeholder="10-digit mobile number"></label>
+          </div>
+          <button class="btn btn--primary btn--lg btn--block" type="submit"><span>Confirm booking</span><svg class="ico"><use href="#i-arrow"/></svg></button>
+          <p class="booker__err" data-err aria-live="polite"></p>
+          <p class="booker__fine">We confirm on WhatsApp within minutes. Reschedule or cancel with one tap.</p>
+          <div class="booked" role="status" aria-live="polite" hidden>
+            <span class="booked__check"><svg class="ico"><use href="#i-check"/></svg></span>
+            <h3>You are booked.</h3>
+            <p data-booked-text>See you Fri 20 Nov at 6:00 PM. Details are on their way to your WhatsApp.</p>
+            <button class="btn btn--glass btn--sm" type="button" data-rebook>Change booking</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" id="faq" data-tour="2000">
+    <div class="container faq__grid">
+      <header class="section-head section-head--left">
+        <p class="eyebrow">FAQ</p>
+        <h2 class="h2" data-split>Questions, answered calmly.</h2>
+        <p class="section-sub" data-reveal>Still unsure? Message us on WhatsApp and a dentist replies, not a bot.</p>
+        <button class="btn btn--glass" type="button" data-wa data-reveal><svg class="ico"><use href="#i-chat"/></svg>Ask on WhatsApp</button>
+      </header>
+      <div class="acc" data-reveal>
+        <details class="acc__item glass" open>
+          <summary>Will it hurt?<span class="acc__icon" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+          <div class="acc__body"><p>We use computer-controlled anaesthesia that numbs slowly, so most patients feel only gentle pressure. Raise a hand at any point and we pause, no questions asked.</p></div>
+        </details>
+        <details class="acc__item glass">
+          <summary>Are the prices on this page final?<span class="acc__icon" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+          <div class="acc__body"><p>Yes. Your written plan lists the exact price before we start. If anything changes mid-treatment, we explain and ask first. You never pay for something you did not approve.</p></div>
+        </details>
+        <details class="acc__item glass">
+          <summary>How late are you open?<span class="acc__icon" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+          <div class="acc__body"><p>Till 9 PM Monday to Saturday and till 7 PM on Sundays. Evening slots fill first, so booking two or three days ahead is a good idea.</p></div>
+        </details>
+        <details class="acc__item glass">
+          <summary>Do you accept insurance?<span class="acc__icon" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+          <div class="acc__body"><p>We give itemised invoices and reports that most health insurers accept for reimbursement, and cashless billing with select corporate plans. Share your policy on WhatsApp and we will check it for you.</p></div>
+        </details>
+        <details class="acc__item glass">
+          <summary>What if I have a dental emergency?<span class="acc__icon" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+          <div class="acc__body"><p>Send us a photo on WhatsApp. We keep two emergency slots open every evening for pain, swelling or a broken tooth.</p></div>
+        </details>
+        <details class="acc__item glass">
+          <summary>Is there parking nearby?<span class="acc__icon" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+          <div class="acc__body"><p>Six free car spaces in our basement and a two-wheeler bay. If you come by metro, we are a five-minute walk from Indiranagar station.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section cta" id="cta" data-tour="2200">
+    <div class="container">
+      <div class="cta__panel glass">
+        <div class="cta__orbs" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p class="eyebrow">Evenings till 9 PM</p>
+        <h2 class="h2 cta__title" data-split>A calmer dentist is five minutes from the metro.</h2>
+        <p class="section-sub">Book online in 30 seconds, or message us on WhatsApp. We usually reply within four minutes.</p>
+        <div class="cta__btns">
+          <a class="btn btn--primary btn--lg magnetic" href="#book"><span>Book a visit</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+          <button class="btn btn--glass btn--lg magnetic" type="button" data-wa><svg class="ico"><use href="#i-chat"/></svg><span>WhatsApp us</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="Lumen Dental, back to top">
+          <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="url(#bm)"/><path d="M14.3 12.5c-3 0-5 2.3-5 5.6 0 2.8 1 4.7 1.6 7.6.6 3 1.2 6.1 3.1 6.1 2 0 2.1-4 3-6.2.4-1 1-1.6 2-1.6s1.6.6 2 1.6c.9 2.2 1 6.2 3 6.2 1.9 0 2.5-3.1 3.1-6.1.6-2.9 1.6-4.8 1.6-7.6 0-3.3-2-5.6-5-5.6-2 0-3 1-4.7 1s-2.7-1-4.7-1z" fill="#fff" opacity=".95"/></svg></span>
+          <span class="brand__name">Lumen<em>Dental</em></span>
+        </a>
+        <p>Premium, unhurried dental care in Indiranagar since 2014.</p>
+        <div class="footer__ctas">
+          <a class="btn btn--primary btn--sm" href="#book">Book a visit</a>
+          <button class="btn btn--glass btn--sm" type="button" data-wa><svg class="ico"><use href="#i-chat"/></svg>WhatsApp</button>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h3>Visit</h3>
+        <address>2nd floor, 612 12th Main Road<br>HAL 2nd Stage, Indiranagar<br>Bengaluru 560038</address>
+        <p class="footer__muted"><svg class="ico"><use href="#i-pin"/></svg>5 min walk from Indiranagar metro</p>
+      </div>
+      <div class="footer__col">
+        <h3>Hours</h3>
+        <ul class="hours">
+          <li><span>Mon to Sat</span><b>9 AM to 9 PM</b></li>
+          <li><span>Sunday</span><b>10 AM to 7 PM</b></li>
+          <li><span>Emergencies</span><b>Same evening</b></li>
+        </ul>
+        <p class="footer__muted"><svg class="ico"><use href="#i-mail"/></svg><a href="mailto:hello@lumendental.in">hello@lumendental.in</a></p>
+      </div>
+      <div class="footer__map glass">
+        <svg viewBox="0 0 420 300" role="img" aria-label="Stylised map: Lumen Dental on 12th Main Road, a five minute walk from Indiranagar metro station">
+          <defs>
+            <linearGradient id="mapbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eefaf9"/><stop offset="1" stop-color="#f1edff"/></linearGradient>
+            <radialGradient id="pinG" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#7fe3da"/><stop offset="1" stop-color="#0aa79a"/></radialGradient>
+          </defs>
+          <rect width="420" height="300" fill="url(#mapbg)"/>
+          <g class="map-blocks" fill="#ffffff" opacity=".7">
+            <rect x="18" y="18" width="92" height="64" rx="10"/><rect x="128" y="18" width="70" height="64" rx="10"/><rect x="232" y="18" width="80" height="50" rx="10"/><rect x="330" y="18" width="72" height="72" rx="10"/>
+            <rect x="18" y="104" width="92" height="74" rx="10"/><rect x="232" y="88" width="80" height="58" rx="10"/><rect x="330" y="108" width="72" height="62" rx="10"/>
+            <rect x="18" y="200" width="60" height="82" rx="10"/><rect x="128" y="200" width="70" height="82" rx="10"/><rect x="232" y="200" width="80" height="82" rx="10"/><rect x="330" y="190" width="72" height="92" rx="10"/>
+          </g>
+          <path d="M128 104h70v74h-70z" fill="#d5f5ec" rx="10"/>
+          <circle cx="152" cy="130" r="9" fill="#bdeedf"/><circle cx="174" cy="152" r="12" fill="#bdeedf"/><circle cx="146" cy="160" r="7" fill="#bdeedf"/>
+          <g fill="none" stroke="#ffffff" stroke-linecap="round">
+            <path d="M0 93h420" stroke-width="14"/><path d="M215 0v300" stroke-width="16"/><path d="M0 190h420" stroke-width="10"/><path d="M119 0v300" stroke-width="8"/><path d="M321 0v300" stroke-width="8"/>
+          </g>
+          <g fill="none" stroke="rgba(15,29,46,.08)" stroke-width="1">
+            <path d="M0 86h420M0 100h420M207 0v300M223 0v300"/>
+          </g>
+          <path class="map-metro" d="M-10 52 C 90 52, 140 60, 215 60 S 340 70, 430 74" fill="none" stroke="#b6a3ff" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="215" cy="60" r="9" fill="#fff" stroke="#9a83ff" stroke-width="3.5"/>
+          <path class="map-walk" d="M215 69 V 93 Q 215 140 262 140 H 268" fill="none" stroke="#0aa79a" stroke-width="2.5" stroke-dasharray="4 6" stroke-linecap="round"/>
+          <g class="map-pin" transform="translate(276 140)">
+            <circle class="map-pulse" r="22" fill="#7fe3da" opacity=".35"/>
+            <circle r="13" fill="url(#pinG)" stroke="#fff" stroke-width="3"/>
+            <path d="M-3.2-4.5c-1.6 0-2.7 1.3-2.7 3 0 1.5.6 2.6 1 4.1.3 1.6.6 3.3 1.6 3.3s1.1-2.1 1.6-3.3c.2-.6.6-.9 1.1-.9s.8.3 1.1.9c.5 1.2.6 3.3 1.6 3.3s1.3-1.7 1.6-3.3c.4-1.5 1-2.6 1-4.1 0-1.7-1.1-3-2.7-3-1.1 0-1.6.5-2.6.5s-1.5-.5-2.6-.5z" fill="#fff"/>
+          </g>
+          <g class="map-labels" font-family="Inter, sans-serif" font-size="10.5" fill="#0f1d2e">
+            <g transform="translate(232 39)"><rect x="-6" y="-12" width="98" height="18" rx="9" fill="#fff" opacity=".92"/><text>Indiranagar metro</text></g>
+            <g transform="translate(296 128)"><rect x="-6" y="-12" width="82" height="34" rx="10" fill="#0f1d2e"/><text fill="#fff" font-weight="600">Lumen Dental</text><text y="14" fill="#7fe3da" font-size="9.5">5 min walk</text></g>
+            <text x="224" y="282" transform="rotate(-90 224 282)" fill="rgba(15,29,46,.55)" font-size="9.5" letter-spacing=".08em">100 FEET ROAD</text>
+            <text x="16" y="186" fill="rgba(15,29,46,.55)" font-size="9.5" letter-spacing=".08em">12TH MAIN ROAD</text>
+            <text x="16" y="111" fill="rgba(15,29,46,.55)" font-size="9.5" letter-spacing=".08em">CMH ROAD</text>
+            <text x="138" y="196" fill="#1b8f7b" font-size="9" letter-spacing=".06em">PARK</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Lumen Dental Care. All rights reserved.</p>
+      <nav aria-label="Legal"><a href="#top">Privacy</a><a href="#top">Terms</a><a href="#top">Patient rights</a></nav>
+      <p class="footer__note">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar glass" aria-hidden="true">
+  <button class="btn btn--glass" type="button" data-wa tabindex="-1"><svg class="ico"><use href="#i-chat"/></svg>WhatsApp</button>
+  <a class="btn btn--primary" href="#book" tabindex="-1">Book a visit</a>
+</div>
+
+<div class="wa glass" role="dialog" aria-modal="false" aria-labelledby="wa-title" hidden>
+  <div class="wa__head">
+    <span class="avatar avatar--sm av-1" aria-hidden="true">LD</span>
+    <div><p id="wa-title">Lumen Dental</p><span><i class="live" aria-hidden="true"></i>Usually replies in 4 minutes</span></div>
+    <button class="wa__close" type="button" aria-label="Close chat"><svg class="ico"><use href="#i-plus"/></svg></button>
+  </div>
+  <div class="wa__body" aria-live="polite">
+    <div class="bubble bubble--in">Hi, this is Riya from Lumen Dental. How can we help today?</div>
+  </div>
+  <div class="wa__quick">
+    <button type="button" data-q="0">Book a check-up</button>
+    <button type="button" data-q="1">I have tooth pain</button>
+    <button type="button" data-q="2">Aligner prices</button>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('failsafe')},4500);</script>
+<title>Ledgerly · Get paid. Skip the paperwork.</title>
+<meta name="description" content="Invoicing and accounting for freelancers and small agencies. Send polished invoices in seconds, chase late payments automatically, and see your cash flow at a glance.">
+<meta name="theme-color" content="#fbfbfd">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%235b5bf7'/%3E%3Crect x='16' y='20' width='32' height='6' rx='3' fill='%23fff'/%3E%3Crect x='16' y='32' width='20' height='6' rx='3' fill='%23fff' opacity='.7'/%3E%3Ccircle cx='44' cy='43' r='6' fill='%232ad49b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/gsap/TextPlugin.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11l8-6.5 8 6.5"/><path d="M6.5 9.5V19h11V9.5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20z"/><path d="M14 3.5V8h4M9.5 12h5M9.5 15.5h5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.2"/><path d="M3.5 19c.6-3 2.8-4.6 5.5-4.6s4.9 1.6 5.5 4.6"/><path d="M15.5 6.2a3 3 0 0 1 0 5.6M17.5 14.6c1.6.6 2.7 2 3 4.4"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3.5h12v17l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4-2 1.4z"/><path d="M9 8h6M9 11.5h6M9 15h3.5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 19.5h16"/><path d="M7 16v-4M11 16V8M15 16v-6M19 16V5"/></symbol>
+  <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M17 3.5l3 3-3 3"/><path d="M20 6.5H8.5A4.5 4.5 0 0 0 4 11v.5"/><path d="M7 20.5l-3-3 3-3"/><path d="M4 17.5h11.5A4.5 4.5 0 0 0 20 13v-.5"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.6 5.2 3.6 8.5s-1.2 6.1-3.6 8.5c-2.4-2.4-3.6-5.2-3.6-8.5S9.6 5.9 12 3.5z"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16"/><path d="M4 12h16"/></symbol>
+  <symbol id="i-portal" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M3.5 9h17M7 6.8h.01M9.5 6.8h.01"/><path d="M8 13h8M8 16h5"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M20.5 3.5L10 14"/><path d="M20.5 3.5l-6.5 17-4-6.5-6.5-4z"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3.5 9L12 4l8.5 5"/><path d="M5.5 10v7M9.5 10v7M14.5 10v7M18.5 10v7M3.5 19.5h17"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M6.5 15h4"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></symbol>
+  <symbol id="i-logo" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#5b5bf7"/><rect x="8" y="10" width="16" height="3.4" rx="1.7" fill="#fff"/><rect x="8" y="16.2" width="10" height="3.4" rx="1.7" fill="#fff" opacity=".72"/><circle cx="22.4" cy="22" r="3.3" fill="#2ad49b"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="container nav__in">
+    <a class="logo" href="#top" aria-label="Ledgerly home"><svg class="logo__mark"><use href="#i-logo"/></svg><span>Ledgerly</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#product">Product</a>
+      <a href="#workflow">How it works</a>
+      <a href="#customers">Customers</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__signin" href="#cta">Sign in</a>
+      <a class="btn btn--dark btn--sm" href="#pricing">Start free</a>
+    </div>
+    <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__links" aria-label="Mobile">
+    <a href="#product">Product<svg class="ico"><use href="#i-arrow"/></svg></a>
+    <a href="#workflow">How it works<svg class="ico"><use href="#i-arrow"/></svg></a>
+    <a href="#customers">Customers<svg class="ico"><use href="#i-arrow"/></svg></a>
+    <a href="#pricing">Pricing<svg class="ico"><use href="#i-arrow"/></svg></a>
+    <a href="#faq">FAQ<svg class="ico"><use href="#i-arrow"/></svg></a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--primary btn--lg btn--block" href="#pricing">Start free</a>
+    <a class="btn btn--ghost btn--lg btn--block" href="#cta">Sign in</a>
+    <p>Free for up to 3 clients. No card needed.</p>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" data-tour="4600" aria-label="Ledgerly">
+    <div class="hero__bg" aria-hidden="true"><div class="hero__grid-lines"></div><i class="glow glow--a"></i><i class="glow glow--b"></i></div>
+    <div class="container hero__in">
+      <div class="hero__copy">
+        <a class="announce" href="#workflow"><span class="announce__tag">New</span><span>Reminders that sound like you</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+        <h1 class="display"><span class="hl">Get paid.</span> <span class="hl hl--muted">Skip the</span> <span class="hl hl--muted">paperwork.</span></h1>
+        <p class="lead">Send polished invoices in seconds, chase late payments automatically, and see your cash flow at a glance.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary btn--lg magnetic" href="#pricing"><span>Start free</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost btn--lg magnetic" href="#workflow"><span class="playdot"><svg><use href="#i-play"/></svg></span><span>See a demo</span></a>
+        </div>
+        <ul class="hero__meta">
+          <li><svg class="ico"><use href="#i-check"/></svg>Free for up to 3 clients</li>
+          <li><svg class="ico"><use href="#i-check"/></svg>No card needed</li>
+          <li><svg class="ico"><use href="#i-check"/></svg>Set up in 4 minutes</li>
+        </ul>
+      </div>
+
+      <div class="demo" data-demo role="img" aria-label="Product preview: an invoice is composed, sent, opened by the client and stamped paid">
+        <div class="demo__tilt">
+          <div class="app">
+            <div class="app__bar">
+              <span class="app__dots"><i></i><i></i><i></i></span>
+              <span class="app__url"><svg class="ico"><use href="#i-lock"/></svg>ledgerly.app/invoices/<b data-invno>INV-2041</b></span>
+              <span class="app__me">JL</span>
+            </div>
+            <div class="app__body">
+              <aside class="side">
+                <div class="side__ws"><span class="side__av">JL</span><div><b>Juniper Lane</b><small>Studio · USD</small></div></div>
+                <nav class="side__nav">
+                  <span><svg class="ico"><use href="#i-home"/></svg>Overview</span>
+                  <span class="on"><svg class="ico"><use href="#i-doc"/></svg>Invoices<em>12</em></span>
+                  <span><svg class="ico"><use href="#i-users"/></svg>Clients</span>
+                  <span><svg class="ico"><use href="#i-receipt"/></svg>Expenses</span>
+                  <span><svg class="ico"><use href="#i-chart"/></svg>Reports</span>
+                </nav>
+                <div class="side__bal">
+                  <small>Available balance</small>
+                  <b class="mono" data-bal>$48,920.40</b>
+                  <span class="side__up mono" data-bal-up>+$9,687.60 today</span>
+                </div>
+              </aside>
+              <div class="doc">
+                <div class="doc__head">
+                  <div>
+                    <p class="doc__no"><span class="mono" data-invno>INV-2041</span><span class="status" data-status="draft">Draft</span></p>
+                    <p class="doc__to"><span class="doc__logo">F</span>Fernhill Coffee Co. · Ana Ruiz</p>
+                  </div>
+                  <div class="doc__actions">
+                    <span class="doc__ghost">Preview</span>
+                    <span class="doc__send" data-send><svg class="ico"><use href="#i-send"/></svg><span data-send-label>Send invoice</span></span>
+                  </div>
+                </div>
+                <div class="doc__meta">
+                  <div><small>Issued</small><b data-issued>Nov 18, 2026</b></div>
+                  <div><small>Due</small><b data-due>Dec 2, 2026</b></div>
+                  <div><small>Terms</small><b>Net 14</b></div>
+                  <div><small>Reminders</small><b class="doc__on"><i></i>Auto</b></div>
+                </div>
+                <div class="lines">
+                  <div class="lines__head"><span>Item</span><span>Qty</span><span>Rate</span><span>Amount</span></div>
+                  <div class="line" data-line><span class="l-desc">Brand identity system</span><span class="l-q mono">1</span><span class="l-r mono">$4,800.00</span><span class="l-a mono">$4,800.00</span></div>
+                  <div class="line" data-line><span class="l-desc">Packaging design, 3 SKUs</span><span class="l-q mono">3</span><span class="l-r mono">$950.00</span><span class="l-a mono">$2,850.00</span></div>
+                  <div class="line" data-line><span class="l-desc">Launch campaign assets</span><span class="l-q mono">12 h</span><span class="l-r mono">$110.00</span><span class="l-a mono">$1,320.00</span></div>
+                  <span class="addline" data-add><svg class="ico"><use href="#i-plus"/></svg>Add item</span>
+                </div>
+                <div class="totals">
+                  <div><span>Subtotal</span><b class="mono" data-sub>$8,970.00</b></div>
+                  <div><span>Tax 8%</span><b class="mono" data-tax>$717.60</b></div>
+                  <div class="totals__grand"><span>Total due</span><b class="mono" data-total>$9,687.60</b></div>
+                </div>
+                <div class="paywith"><span>Accept</span><i><svg class="ico"><use href="#i-card"/></svg>Card</i><i><svg class="ico"><use href="#i-bank"/></svg>Bank transfer</i><i><svg class="ico"><use href="#i-link"/></svg>Pay link</i></div>
+                <div class="stamp" data-stamp aria-hidden="true"><b>PAID</b><small data-stamp-date>NOV 18 · CARD</small></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="fl fl--remind">
+            <div class="fl__head"><span class="fl__ico fl__ico--amber"><svg class="ico"><use href="#i-bell"/></svg></span><b>Auto-reminders</b><span class="toggle on" aria-hidden="true"><i></i></span></div>
+            <ul class="remind">
+              <li class="done"><i></i><span>3 days before due</span><em>Friendly</em></li>
+              <li><i></i><span>On the due date</span><em>Clear</em></li>
+              <li><i></i><span>7 days late</span><em>Firm</em></li>
+            </ul>
+          </div>
+
+          <div class="fl fl--cash">
+            <div class="fl__row"><small>Cash in · <span data-month>November</span></small><span class="delta mono">+31%</span></div>
+            <b class="mono cash__num" data-cash>$31,240.00</b>
+            <svg class="cash__chart" viewBox="0 0 220 64" preserveAspectRatio="none" aria-hidden="true">
+              <defs><linearGradient id="cashG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5b5bf7" stop-opacity=".28"/><stop offset="1" stop-color="#5b5bf7" stop-opacity="0"/></linearGradient></defs>
+              <path class="cash__area" d="M0 52 L22 48 L44 50 L66 40 L88 43 L110 34 L132 36 L154 27 L176 30 L198 22 L220 22 L220 64 L0 64Z" fill="url(#cashG)"/>
+              <path class="cash__line" d="M0 52 L22 48 L44 50 L66 40 L88 43 L110 34 L132 36 L154 27 L176 30 L198 22 L220 22" fill="none" stroke="#5b5bf7" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+              <circle class="cash__dot" cx="220" cy="22" r="3.5" fill="#fff" stroke="#5b5bf7" stroke-width="2"/>
+            </svg>
+          </div>
+
+          <div class="toasts" data-toasts>
+            <div class="toast" data-toast="sent"><span class="toast__ico toast__ico--indigo"><svg class="ico"><use href="#i-send"/></svg></span><div><b>Invoice sent</b><small><span data-invno>INV-2041</span> to Fernhill Coffee Co.</small></div><time>now</time></div>
+            <div class="toast" data-toast="open"><span class="toast__ico toast__ico--amber"><svg class="ico"><use href="#i-eye"/></svg></span><div><b>Ana opened your invoice</b><small>Viewed on mobile, 2 times</small></div><time>2 min</time></div>
+            <div class="toast toast--paid" data-toast="paid"><span class="toast__ico toast__ico--mint"><svg class="ico"><use href="#i-check"/></svg></span><div><b>Payment received</b><small class="mono">$9,687.60 · Card ending 4417</small></div><time>now</time></div>
+          </div>
+
+          <div class="cursor" data-cursor aria-hidden="true">
+            <svg viewBox="0 0 28 28"><path d="M6 3.5l15.5 12.2-6.9.6 4.1 7.9-3.2 1.6-4-8-5.3 4.6z" fill="#0d0f14" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            <i class="cursor__ring"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="trust">
+      <p class="trust__label">Trusted by 38,000 freelancers and studios</p>
+      <div class="trust__marquee" aria-hidden="true">
+        <div class="trust__row">
+          <span class="wm wm--1">halcyon<b>&amp;</b>moss</span><span class="wm wm--2">PARALLEL</span><span class="wm wm--3"><i></i>Kite Collective</span><span class="wm wm--4">brightfold</span><span class="wm wm--5">Oakline<sup>°</sup></span><span class="wm wm--6">COPPERLEAF</span><span class="wm wm--7"><i></i>studio orrin</span><span class="wm wm--8">Fernhill</span>
+          <span class="wm wm--1">halcyon<b>&amp;</b>moss</span><span class="wm wm--2">PARALLEL</span><span class="wm wm--3"><i></i>Kite Collective</span><span class="wm wm--4">brightfold</span><span class="wm wm--5">Oakline<sup>°</sup></span><span class="wm wm--6">COPPERLEAF</span><span class="wm wm--7"><i></i>studio orrin</span><span class="wm wm--8">Fernhill</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENTO -->
+  <section class="section bento" id="product" data-tour="3000">
+    <div class="container">
+      <header class="sec-head">
+        <p class="kicker"><span></span>Product</p>
+        <h2 class="h2" data-split>Everything between sent and paid.</h2>
+        <p class="sec-sub" data-reveal>Six tools that replace the spreadsheet, the awkward reminder emails and the end-of-quarter scramble.</p>
+      </header>
+
+      <div class="bento__grid">
+        <!-- recurring -->
+        <article class="tile t-recur" data-reveal>
+          <div class="tile__head">
+            <span class="tile__ico"><svg class="ico"><use href="#i-repeat"/></svg></span>
+            <h3>Recurring invoices</h3>
+            <p>Retainers bill themselves on the 1st, every month, while you sleep.</p>
+          </div>
+          <div class="recur" aria-hidden="true">
+            <div class="recur__plan"><span class="recur__spin"><svg class="ico"><use href="#i-repeat"/></svg></span><b>Monthly retainer</b><span class="mono">$3,500.00</span><em>Fernhill Coffee Co.</em></div>
+            <div class="recur__track">
+              <div class="recur__months">
+                <div class="mo"><small>Jul</small><span class="mo__chip">Paid</span></div>
+                <div class="mo"><small>Aug</small><span class="mo__chip">Paid</span></div>
+                <div class="mo"><small>Sep</small><span class="mo__chip">Paid</span></div>
+                <div class="mo"><small>Oct</small><span class="mo__chip">Paid</span></div>
+                <div class="mo"><small>Nov</small><span class="mo__chip">Sent</span></div>
+                <div class="mo"><small>Dec</small><span class="mo__chip">Scheduled</span></div>
+              </div>
+              <i class="recur__head"></i>
+            </div>
+          </div>
+        </article>
+
+        <!-- payment links -->
+        <article class="tile t-links" data-reveal>
+          <div class="tile__head">
+            <span class="tile__ico"><svg class="ico"><use href="#i-link"/></svg></span>
+            <h3>Payment links</h3>
+            <p>Share one link. Clients pay by card or bank in two taps.</p>
+          </div>
+          <div class="plink" aria-hidden="true">
+            <div class="plink__url"><span class="mono">ledgerly.app/pay/fh-2041</span><span class="plink__copy" data-copy><svg class="ico"><use href="#i-check"/></svg><em>Copy</em></span></div>
+            <div class="plink__sheet">
+              <small>Juniper Lane Studio</small>
+              <b class="mono">$2,400.00</b>
+              <div class="plink__tabs"><i class="on">Card</i><i>Bank</i><i>Wallet</i></div>
+              <span class="plink__pay" data-pay><span>Pay $2,400.00</span></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- multi-currency -->
+        <article class="tile t-fx" data-reveal>
+          <div class="tile__head">
+            <span class="tile__ico"><svg class="ico"><use href="#i-globe"/></svg></span>
+            <h3>Multi-currency</h3>
+            <p>Invoice in 135 currencies. Your books stay in dollars.</p>
+          </div>
+          <ul class="fx" aria-hidden="true">
+            <li><span class="fx__code">EUR</span><span class="mono fx__from">€4,200.00</span><span class="mono fx__to">$4,571.28</span></li>
+            <li><span class="fx__code">GBP</span><span class="mono fx__from">£2,750.00</span><span class="mono fx__to">$3,492.50</span></li>
+            <li><span class="fx__code">CAD</span><span class="mono fx__from">C$6,000.00</span><span class="mono fx__to">$4,302.00</span></li>
+            <li><span class="fx__code">AUD</span><span class="mono fx__from">A$3,300.00</span><span class="mono fx__to">$2,161.50</span></li>
+            <li><span class="fx__code">JPY</span><span class="mono fx__from">¥480,000</span><span class="mono fx__to">$3,168.00</span></li>
+            <li><span class="fx__code">INR</span><span class="mono fx__from">₹2,10,000</span><span class="mono fx__to">$2,499.00</span></li>
+          </ul>
+          <div class="fx__rate" aria-hidden="true"><small>Live rate</small><b class="mono" data-rate>1 EUR = 1.0884 USD</b><svg viewBox="0 0 120 28" preserveAspectRatio="none"><path class="fx__spark" d="M0 20 L12 18 L24 21 L36 15 L48 17 L60 11 L72 14 L84 9 L96 12 L108 7 L120 9" fill="none" stroke="#2ad49b" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </article>
+
+        <!-- tax reports -->
+        <article class="tile t-tax" data-reveal>
+          <div class="tile__head">
+            <span class="tile__ico"><svg class="ico"><use href="#i-chart"/></svg></span>
+            <h3>Tax-ready reports</h3>
+            <p>Quarterly totals and deductible expenses, ready for your accountant.</p>
+          </div>
+          <div class="tax" aria-hidden="true">
+            <div class="tax__top"><small>Revenue 2026</small><b class="mono">$184,320</b></div>
+            <div class="bars">
+              <div class="bar"><i style="--h:.58"></i><small>Q1</small></div>
+              <div class="bar"><i style="--h:.74"></i><small>Q2</small></div>
+              <div class="bar"><i style="--h:.66"></i><small>Q3</small></div>
+              <div class="bar bar--now"><i style="--h:.92"></i><small>Q4</small></div>
+            </div>
+            <div class="tax__ded">
+              <svg class="donut" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="#eef0f5" stroke-width="6"/><circle class="donut__a" cx="21" cy="21" r="15.9" fill="none" stroke="#5b5bf7" stroke-width="6" stroke-dasharray="46 54" stroke-dashoffset="25"/><circle class="donut__b" cx="21" cy="21" r="15.9" fill="none" stroke="#2ad49b" stroke-width="6" stroke-dasharray="28 72" stroke-dashoffset="79"/><circle class="donut__c" cx="21" cy="21" r="15.9" fill="none" stroke="#b9b9fb" stroke-width="6" stroke-dasharray="18 82" stroke-dashoffset="51"/></svg>
+              <div><small>Deductible expenses</small><b class="mono">$12,480.22</b></div>
+            </div>
+            <div class="tax__exp"><span>Export</span><i>CSV</i><i>PDF</i><em class="tax__ready"><svg class="ico"><use href="#i-check"/></svg>Q4 ready</em></div>
+          </div>
+        </article>
+
+        <!-- expense capture -->
+        <article class="tile t-scan" data-reveal>
+          <div class="tile__head">
+            <span class="tile__ico"><svg class="ico"><use href="#i-scan"/></svg></span>
+            <h3>Expense capture</h3>
+            <p>Snap a receipt. Ledgerly reads it, files it and finds the tax.</p>
+          </div>
+          <div class="scan" aria-hidden="true">
+            <div class="receipt">
+              <b>BLUE DOOR PRINT SHOP</b>
+              <small class="mono">18 NOV 2026 · 14:32</small>
+              <p class="mono"><span>Business cards x500</span><span>64.00</span></p>
+              <p class="mono"><span>Foam board A2</span><span>16.00</span></p>
+              <p class="mono"><span>Sales tax</span><span>6.40</span></p>
+              <p class="mono receipt__tot"><span>TOTAL</span><span>86.40</span></p>
+              <i class="receipt__beam"></i>
+            </div>
+            <ul class="fields">
+              <li><small>Merchant</small><b>Blue Door Print Shop</b><svg class="ico"><use href="#i-check"/></svg></li>
+              <li><small>Amount</small><b class="mono">$86.40</b><svg class="ico"><use href="#i-check"/></svg></li>
+              <li><small>Category</small><b>Printing</b><svg class="ico"><use href="#i-check"/></svg></li>
+              <li><small>Tax found</small><b class="mono">$6.40</b><svg class="ico"><use href="#i-check"/></svg></li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- client portal -->
+        <article class="tile t-portal" data-reveal>
+          <div class="tile__head">
+            <span class="tile__ico"><svg class="ico"><use href="#i-portal"/></svg></span>
+            <h3>Client portal</h3>
+            <p>One tidy page where clients see, download and pay every invoice.</p>
+          </div>
+          <div class="portal" aria-hidden="true">
+            <div class="portal__win">
+              <div class="portal__bar"><i></i><i></i><i></i><span class="mono">billing.juniperlane.studio</span></div>
+              <div class="portal__body">
+                <div class="portal__brand"><span class="doc__logo">F</span><div><b>Fernhill Coffee Co.</b><small>3 invoices · 1 open</small></div></div>
+                <ul class="portal__rows">
+                  <li><span class="mono">INV-2044</span><span>Menu boards</span><span class="mono">$1,840.00</span><em class="pst pst--due" data-portal-status>Due in 5 days</em></li>
+                  <li><span class="mono">INV-2041</span><span>Brand identity</span><span class="mono">$9,687.60</span><em class="pst pst--paid">Paid</em></li>
+                  <li><span class="mono">INV-2036</span><span>Packaging</span><span class="mono">$2,400.00</span><em class="pst pst--paid">Paid</em></li>
+                </ul>
+              </div>
+            </div>
+            <div class="portal__chat">
+              <div class="msg msg--in" data-msg="0">Could we split INV-2044 into two payments?</div>
+              <div class="msg msg--out" data-msg="1">Done. Two links are in your portal now.</div>
+              <div class="msg msg--in" data-msg="2">Perfect, paying the first one today.</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKFLOW -->
+  <section class="section flow" id="workflow" data-tour="2600">
+    <div class="container">
+      <header class="sec-head">
+        <p class="kicker"><span></span>How it works</p>
+        <h2 class="h2" data-split>From first draft to reconciled, in five steps.</h2>
+        <p class="sec-sub" data-reveal>Ledgerly runs the boring middle so you can get back to the work clients actually pay for.</p>
+      </header>
+      <ol class="flow__track" data-reveal>
+        <li class="fstep"><span class="fstep__dot"><svg class="ico"><use href="#i-doc"/></svg></span><b>Create</b><p>Pick a client and a template. Line items and tax fill in from last time.</p><em class="mono">42 sec average</em></li>
+        <li class="fstep"><span class="fstep__dot"><svg class="ico"><use href="#i-send"/></svg></span><b>Send</b><p>Email, payment link or PDF, in your branding and your words.</p><em class="mono">Opened in 3 h</em></li>
+        <li class="fstep"><span class="fstep__dot"><svg class="ico"><use href="#i-bell"/></svg></span><b>Remind</b><p>Polite nudges go out on your schedule, then stop the moment they pay.</p><em class="mono">3 rules, zero effort</em></li>
+        <li class="fstep"><span class="fstep__dot"><svg class="ico"><use href="#i-card"/></svg></span><b>Get paid</b><p>Card, bank transfer or wallet, with funds in your account in 2 days.</p><em class="mono">11 days faster</em></li>
+        <li class="fstep"><span class="fstep__dot"><svg class="ico"><use href="#i-bank"/></svg></span><b>Reconcile</b><p>Payments match your bank feed and land in the right tax category.</p><em class="mono">1 click month-end</em></li>
+        <li class="flow__rail" aria-hidden="true"><i class="flow__fill"></i><i class="flow__packet"><svg class="ico"><use href="#i-doc"/></svg></i></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- NUMBERS -->
+  <section class="section numbers" data-tour="2200" aria-label="Ledgerly in numbers">
+    <div class="container">
+      <div class="numbers__panel">
+        <div class="numbers__bg" aria-hidden="true"></div>
+        <p class="kicker kicker--light"><span></span>By the numbers</p>
+        <div class="numbers__grid">
+          <div class="num"><b class="mono"><span data-count="2.4" data-dec="1" data-pre="$" data-suf="B">$2.4B</span></b><p>invoiced through Ledgerly in 2025</p></div>
+          <div class="num"><b class="mono"><span data-count="11">11</span><small> days</small></b><p>faster to get paid, on average</p></div>
+          <div class="num"><b class="mono"><span data-count="38000" data-suf="+">38,000+</span></b><p>freelancers and studios on board</p></div>
+          <div class="num"><b class="mono"><span data-count="4.8" data-dec="1">4.8</span><small>/5</small></b><p>average rating from 6,200 reviews</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUSTOMERS -->
+  <section class="section words" id="customers" data-tour="2400">
+    <div class="container">
+      <header class="sec-head">
+        <p class="kicker"><span></span>Customers</p>
+        <h2 class="h2" data-split>Fewer spreadsheets. Faster Fridays.</h2>
+      </header>
+      <div class="words__grid">
+        <figure class="quote quote--big" data-reveal>
+          <blockquote>I used to lose Sunday evenings to chasing invoices. Now reminders go out on their own and I just watch the Paid stamps roll in.</blockquote>
+          <figcaption><span class="qav qav--1">ML</span><span><b>Maya Lindqvist</b>Brand designer, Copenhagen</span><em class="qstat"><b class="mono">16 days</b>faster payments</em></figcaption>
+        </figure>
+        <figure class="quote" data-reveal>
+          <blockquote>We run 14 retainers. Recurring invoices and the client portal took our month-end from two days to forty minutes.</blockquote>
+          <figcaption><span class="qav qav--2">DO</span><span><b>Daniel Okafor</b>Founder, Parallel Studio</span></figcaption>
+          <em class="qstat qstat--row"><b class="mono">40 min</b>month-end close</em>
+        </figure>
+        <figure class="quote" data-reveal>
+          <blockquote>Clients pay me in euros and pounds, my books stay in dollars, and my accountant gets one clean export in April.</blockquote>
+          <figcaption><span class="qav qav--3">PR</span><span><b>Priya Raman</b>Motion designer, Austin</span></figcaption>
+          <em class="qstat qstat--row"><b class="mono">3 currencies</b>one tax report</em>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section pricing" id="pricing" data-tour="2600">
+    <div class="container">
+      <header class="sec-head">
+        <p class="kicker"><span></span>Pricing</p>
+        <h2 class="h2" data-split>Simple plans. Start free, upgrade when it pays.</h2>
+        <div class="billing" role="radiogroup" aria-label="Billing period" data-reveal>
+          <button type="button" role="radio" aria-checked="true" data-bill="m">Monthly</button>
+          <button type="button" role="radio" aria-checked="false" data-bill="y">Yearly <em>2 months free</em></button>
+          <i class="billing__pill" aria-hidden="true"></i>
+        </div>
+      </header>
+      <div class="plans">
+        <article class="plan" data-reveal>
+          <h3>Free</h3>
+          <p class="plan__for">For your first clients.</p>
+          <p class="plan__price"><b class="mono">$0</b><span>forever</span></p>
+          <a class="btn btn--ghost btn--block" href="#cta">Start free</a>
+          <ul>
+            <li><svg class="ico"><use href="#i-check"/></svg>Up to 3 clients</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Unlimited invoices</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Payment links</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Card and bank payments</li>
+          </ul>
+        </article>
+        <article class="plan plan--pro" data-reveal>
+          <span class="plan__badge">Most popular</span>
+          <h3>Pro</h3>
+          <p class="plan__for">For full-time freelancers.</p>
+          <p class="plan__price"><b class="mono" data-price data-m="12" data-y="10">$12</b><span data-per>per month</span></p>
+          <a class="btn btn--primary btn--block" href="#cta">Start 14-day trial</a>
+          <ul>
+            <li><svg class="ico"><use href="#i-check"/></svg>Unlimited clients</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Recurring invoices</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Automatic reminders</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Multi-currency</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Expense capture</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Tax-ready reports</li>
+          </ul>
+        </article>
+        <article class="plan" data-reveal>
+          <h3>Team</h3>
+          <p class="plan__for">For studios and small agencies.</p>
+          <p class="plan__price"><b class="mono" data-price data-m="29" data-y="24">$29</b><span data-per>per month</span></p>
+          <a class="btn btn--dark btn--block" href="#cta">Start 14-day trial</a>
+          <ul>
+            <li><svg class="ico"><use href="#i-check"/></svg>Everything in Pro</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Up to 10 teammates</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Branded client portal</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Roles and approvals</li>
+            <li><svg class="ico"><use href="#i-check"/></svg>Priority support</li>
+          </ul>
+        </article>
+      </div>
+      <p class="plans__note" data-reveal>Payment processing is the same on every plan: cards 2.9% + 30¢, bank transfers 1% capped at $10.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" id="faq" data-tour="2000">
+    <div class="container faq__in">
+      <header class="sec-head sec-head--left">
+        <p class="kicker"><span></span>FAQ</p>
+        <h2 class="h2" data-split>Questions, answered.</h2>
+        <p class="sec-sub" data-reveal>Still curious? Write to <a href="mailto:hello@ledgerly.app">hello@ledgerly.app</a> and a human replies within a working day.</p>
+      </header>
+      <div class="acc" data-reveal>
+        <details class="acc__item" open>
+          <summary>Is the Free plan really free?<span class="acc__ico" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+          <div class="acc__body"><p>Yes. Up to three clients and unlimited invoices, for as long as you like. You only pay standard processing fees when a client pays by card or bank transfer.</p></div>
+        </details>
+        <details class="acc__item">
+          <summary>How do payment links work?<span class="acc__ico" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+          <div class="acc__body"><p>Every invoice gets a secure link. Your client opens it, picks card or bank transfer and pays in two taps. Funds reach your account in about two business days.</p></div>
+        </details>
+        <details class="acc__item">
+          <summary>Can clients pay in their own currency?<span class="acc__ico" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+          <div class="acc__body"><p>Yes. Invoice in 135 currencies. We convert at the live rate on the day of payment and record everything in your home currency for tax time.</p></div>
+        </details>
+        <details class="acc__item">
+          <summary>Will my accountant like it?<span class="acc__ico" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+          <div class="acc__body"><p>Invite them for free. They get read-only access, clean CSV and PDF exports, and a quarterly report that matches your bank feed line for line.</p></div>
+        </details>
+        <details class="acc__item">
+          <summary>What happens when a client pays late?<span class="acc__ico" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+          <div class="acc__body"><p>Ledgerly sends up to three reminders on your schedule and in your tone, and can add a late fee if you switch it on. Reminders stop the moment the invoice is paid.</p></div>
+        </details>
+        <details class="acc__item">
+          <summary>Can I cancel anytime?<span class="acc__ico" aria-hidden="true"><svg class="ico"><use href="#i-plus"/></svg></span></summary>
+          <div class="acc__body"><p>Anytime, in two clicks. Your invoices and reports stay downloadable and your account drops back to the Free plan.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section cta" id="cta" data-tour="2400">
+    <div class="container">
+      <div class="cta__panel">
+        <div class="cta__bg" aria-hidden="true"></div>
+        <div class="cta__copy">
+          <h2 class="h2 cta__title" data-split>Your next invoice could be paid by Friday.</h2>
+          <p>Join 38,000 freelancers and studios who send, chase and reconcile with Ledgerly.</p>
+          <form class="cta__form" novalidate>
+            <label class="sr" for="cta-email">Work email</label>
+            <input id="cta-email" type="email" name="email" autocomplete="email" placeholder="you@yourstudio.com" required>
+            <button class="btn btn--mint btn--lg" type="submit"><span>Start free</span><svg class="ico"><use href="#i-arrow"/></svg></button>
+          </form>
+          <p class="cta__fine" data-cta-msg aria-live="polite">Free for up to 3 clients. No card needed.</p>
+        </div>
+        <div class="cta__card" aria-hidden="true">
+          <div class="mini">
+            <div class="mini__top"><span class="mono">INV-2042</span><span class="status" data-status="paid">Paid</span></div>
+            <p class="mini__to">Halden Books · Print campaign</p>
+            <p class="mini__amt mono">$3,250.00</p>
+            <div class="mini__lines"><i style="width:82%"></i><i style="width:64%"></i><i style="width:72%"></i></div>
+            <div class="stamp stamp--mini"><b>PAID</b><small>FRI · BANK</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="logo" href="#top" aria-label="Ledgerly home"><svg class="logo__mark"><use href="#i-logo"/></svg><span>Ledgerly</span></a>
+        <p>Invoicing and accounting for freelancers and small agencies.</p>
+        <form class="news" novalidate>
+          <label for="news-email">Cash-flow notes, once a month</label>
+          <div class="news__row"><input id="news-email" type="email" name="email" autocomplete="email" placeholder="Email address" required><button class="btn btn--dark btn--sm" type="submit">Subscribe</button></div>
+          <p class="news__msg" aria-live="polite"></p>
+        </form>
+      </div>
+      <nav class="footer__cols" aria-label="Footer">
+        <div><h3>Product</h3><a href="#product">Invoices</a><a href="#product">Payment links</a><a href="#product">Recurring billing</a><a href="#product">Expenses</a><a href="#product">Reports</a></div>
+        <div><h3>Company</h3><a href="#customers">Customers</a><a href="#top">About</a><a href="#top">Careers</a><a href="#top">Press kit</a></div>
+        <div><h3>Resources</h3><a href="#faq">Help center</a><a href="#top">Invoice templates</a><a href="#top">Freelance tax guide</a><a href="#top">System status</a></div>
+        <div><h3>Contact</h3><a href="mailto:hello@ledgerly.app">hello@ledgerly.app</a><a href="#top">+1 (415) 555-0137</a><a href="#top">Privacy</a><a href="#top">Terms</a></div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Ledgerly, Inc. All rights reserved.</p>
+      <p class="footer__note">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

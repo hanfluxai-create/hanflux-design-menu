@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Velvet Ward · Cocktails after dark, Bandra</title>
+<meta name="description" content="Velvet Ward is a cocktail bar and club in Bandra West, Mumbai. Signature cocktails, live sets six nights a week, open till 3 AM.">
+<meta name="theme-color" content="#07030b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307030b'/%3E%3Cpath d='M15 17c9 0 10 9 17 30 7-21 8-30 17-30' fill='none' stroke='%23ff2bd6' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Yellowtail&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#tonight">Skip to the lineup</a>
+
+<svg class="defs" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs>
+    <filter id="glow-s" x="-60%" y="-60%" width="220%" height="220%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="a"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="a"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#top" aria-label="Velvet Ward, back to top">Velvet Ward</a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#tonight">Tonight</a>
+    <a href="#cocktails">Cocktails</a>
+    <a href="#room">The room</a>
+    <a href="#events">Private events</a>
+    <a href="#visit">Find us</a>
+  </nav>
+  <a class="btn btn--neon nav__cta magnetic" href="#reserve">Reserve</a>
+  <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu"><span class="nav__menu-label">Menu</span><span class="nav__burger" aria-hidden="true"><i></i><i></i></span></button>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+  <nav class="menu__links" aria-label="Mobile">
+    <a href="#tonight"><small>01</small>Tonight</a>
+    <a href="#cocktails"><small>02</small>Cocktails</a>
+    <a href="#room"><small>03</small>The room</a>
+    <a href="#events"><small>04</small>Private events</a>
+    <a href="#reserve"><small>05</small>Reserve</a>
+    <a href="#visit"><small>06</small>Find us</a>
+  </nav>
+  <div class="menu__foot">
+    <p>Wednesday to Monday, 7 PM till 3 AM</p>
+    <a class="btn btn--primary" href="#reserve">Reserve a table</a>
+  </div>
+</div>
+
+<main id="top">
+  <section class="hero" data-tour="3600" aria-labelledby="hero-title">
+    <div class="hero__scene" aria-hidden="true">
+      <div class="wall">
+        <div class="wall__light"><div class="wall__wash"></div></div>
+        <div class="wall__albedo"></div>
+        <div class="wall__shade"></div>
+      </div>
+      <div class="floor">
+        <div class="floor__albedo"></div>
+        <div class="floor__sheen"></div>
+        <div class="floor__wash"></div>
+        <div class="floor__refl"></div>
+        <div class="floor__edge"></div>
+      </div>
+      <svg class="hardware" aria-hidden="true">
+        <defs><linearGradient id="tbox" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#231c26"/><stop offset="1" stop-color="#09070b"/></linearGradient></defs>
+        <path class="cable" d=""/>
+        <g class="tbox"><rect x="-17" y="0" width="34" height="44" rx="4" fill="url(#tbox)"/><rect x="-17" y="0" width="34" height="44" rx="4" fill="none" stroke="rgba(255,255,255,.07)"/><rect x="-11" y="30" width="22" height="2" fill="rgba(255,255,255,.06)"/><rect x="-11" y="34" width="22" height="2" fill="rgba(255,255,255,.06)"/><circle cx="9" cy="8" r="2" fill="#ff3b3b"/><circle cx="9" cy="8" r="5" fill="#ff3b3b" opacity=".25"/></g>
+        <path class="cable cable--floor" d=""/>
+      </svg>
+      <div class="haze"><div class="haze__layer haze__layer--a"></div><div class="haze__layer haze__layer--b"></div></div>
+      <div class="grain"></div>
+    </div>
+    <div class="hero__sign" id="sign"></div>
+    <div class="hero__copy">
+      <h1 id="hero-title" class="sr-only">Velvet Ward</h1>
+      <p class="hero__line">Cocktails after dark.<span>Bandra, Mumbai.</span></p>
+      <div class="hero__ctas">
+        <a class="btn btn--primary magnetic" href="#reserve">Reserve a table</a>
+        <a class="btn btn--ghost magnetic" href="#tonight">See tonight’s lineup</a>
+      </div>
+    </div>
+    <p class="hero__tonight" aria-live="polite"><span class="dot" aria-hidden="true"></span><span class="hero__tonight-label">Tonight</span> <strong data-tonight-act>Mira Monsoon</strong> <span data-tonight-genre>Bollywood disco edits</span></p>
+    <p class="hero__scroll" aria-hidden="true">Scroll</p>
+  </section>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Wednesday to Monday</span><span>7 PM till 3 AM</span><span>Live sets every night</span><span>Guest list closes 11 PM</span><span>Entry 25+</span><span>14 metres of bar</span><span>Bandra West</span>
+      <span>Wednesday to Monday</span><span>7 PM till 3 AM</span><span>Live sets every night</span><span>Guest list closes 11 PM</span><span>Entry 25+</span><span>14 metres of bar</span><span>Bandra West</span>
+    </div>
+  </div>
+
+  <section class="lineup brick" id="tonight" data-tour="2600" aria-labelledby="lineup-title">
+    <div class="wrap">
+      <div class="lineup__head">
+        <div class="sec-head">
+          <p class="kicker">This week at the Ward</p>
+          <h2 id="lineup-title" class="h2 split"><span class="script script--pink">Tonight</span> and this week</h2>
+          <p class="lede">Six nights of selectors, live bands and the odd surprise guest. Doors at 7 PM, music from 9 PM, last call at 2:30 AM.</p>
+        </div>
+        <div class="open-sign" id="open-sign"></div>
+      </div>
+      <ol class="nights">
+        <li class="night" data-day="3" data-c="p">
+          <div class="night__day"><span class="night__dow">Wed</span><span class="night__badge">Tonight</span></div>
+          <div class="night__body">
+            <h3>Mira Monsoon</h3>
+            <p class="night__genre">Bollywood disco edits</p>
+            <p class="night__desc">Strings, sequins and seventies Hindi film funk, re-edited for the floor.</p>
+          </div>
+          <div class="night__meta"><span>9 PM till 3 AM</span><span>₹1,500 per couple</span><button class="chip-btn" type="button" data-guest>Guest list</button></div>
+        </li>
+        <li class="night" data-day="4" data-c="b">
+          <div class="night__day"><span class="night__dow">Thu</span><span class="night__badge">Tonight</span></div>
+          <div class="night__body">
+            <h3>Kohl &amp; Static</h3>
+            <p class="night__genre">Deep house and Afro house</p>
+            <p class="night__desc">A Bandra duo who build a set like a slow burn and never rush the drop.</p>
+          </div>
+          <div class="night__meta"><span>9 PM till 3 AM</span><span>₹1,500 per couple</span><button class="chip-btn" type="button" data-guest>Guest list</button></div>
+        </li>
+        <li class="night" data-day="5" data-c="a">
+          <div class="night__day"><span class="night__dow">Fri</span><span class="night__badge">Tonight</span></div>
+          <div class="night__body">
+            <h3>The Night Shift Trio</h3>
+            <p class="night__genre">Live jazz, then DJ Ishaan Rao</p>
+            <p class="night__desc">Keys, upright bass and brushes till midnight. Then the rugs come up.</p>
+          </div>
+          <div class="night__meta"><span>8:30 PM till 3 AM</span><span>₹1,500 per couple</span><button class="chip-btn" type="button" data-guest>Guest list</button></div>
+        </li>
+        <li class="night" data-day="6" data-c="p">
+          <div class="night__day"><span class="night__dow">Sat</span><span class="night__badge">Tonight</span></div>
+          <div class="night__body">
+            <h3>Sahil Volt</h3>
+            <p class="night__genre">Peak-time house and techno</p>
+            <p class="night__desc">Our Saturday resident. Lights low, bass high, requests politely ignored.</p>
+          </div>
+          <div class="night__meta"><span>9 PM till 3 AM</span><span>₹1,500 per couple</span><button class="chip-btn" type="button" data-guest>Guest list</button></div>
+        </li>
+        <li class="night" data-day="0" data-c="b">
+          <div class="night__day"><span class="night__dow">Sun</span><span class="night__badge">Tonight</span></div>
+          <div class="night__body">
+            <h3>Azra Noir</h3>
+            <p class="night__genre">R&amp;B, hip hop and throwbacks</p>
+            <p class="night__desc">Slow jams, loud sing-alongs and the friendliest crowd of the week.</p>
+          </div>
+          <div class="night__meta"><span>9 PM till 2 AM</span><span>₹1,500 per couple</span><button class="chip-btn" type="button" data-guest>Guest list</button></div>
+        </li>
+        <li class="night" data-day="1" data-c="a">
+          <div class="night__day"><span class="night__dow">Mon</span><span class="night__badge">Tonight</span></div>
+          <div class="night__body">
+            <h3>Paan Disco Collective</h3>
+            <p class="night__genre">Retro funk and boogie, vinyl only</p>
+            <p class="night__desc">Four selectors digging through the city’s record crates so you don’t have to.</p>
+          </div>
+          <div class="night__meta"><span>9 PM till 1 AM</span><span>₹1,500 per couple</span><button class="chip-btn" type="button" data-guest>Guest list</button></div>
+        </li>
+      </ol>
+      <p class="fineprint">Entry is fully redeemable at the bar. Closed on Tuesdays so the bar team can sleep.</p>
+    </div>
+  </section>
+
+  <section class="pours brick" id="cocktails" data-tour="2400" aria-labelledby="pours-title">
+    <div class="wrap">
+      <div class="sec-head sec-head--center">
+        <p class="kicker">Behind the long bar</p>
+        <h2 id="pours-title" class="h2 split">Signature <span class="script script--blue">pours</span></h2>
+        <p class="lede">Built over two monsoons by our bar team. Every syrup, shrub and cordial is made in-house each afternoon, and the ice is cut by hand.</p>
+      </div>
+      <div class="drinks">
+        <article class="drink" data-c="p">
+          <svg class="drink__icon" viewBox="0 0 120 120" aria-hidden="true">
+            <g class="t t--p"><path d="M18 34L102 34C100 58 82 70 60 70C38 70 20 58 18 34Z"/><path d="M60 70L60 100"/><path d="M40 104Q60 97 80 104"/><path d="M26 44L94 44"/></g>
+            <g class="t t--a"><circle cx="92" cy="28" r="8"/><path d="M92 20L92 36M84 28L100 28"/></g>
+          </svg>
+          <div class="drink__text"><h3>Bandra Sour</h3><p>Bourbon, kokum and tamarind syrup, lemon, egg white, a dash of bitters.</p></div>
+          <p class="drink__price">₹750</p>
+        </article>
+        <article class="drink" data-c="a">
+          <svg class="drink__icon" viewBox="0 0 120 120" aria-hidden="true">
+            <g class="t t--a"><path d="M27 36L32 101Q32 106 37 106L83 106Q88 106 88 101L93 36"/><path d="M33 94L87 94"/><path d="M66 48C74 32 92 38 86 22"/></g>
+            <g class="t t--b"><path d="M44 58L70 51L77 77L51 84Z"/></g>
+          </svg>
+          <div class="drink__text"><h3>Velvet Old Fashioned</h3><p>Rye, smoked jaggery syrup, cacao bitters, a wide twist of orange.</p></div>
+          <p class="drink__price">₹950</p>
+        </article>
+        <article class="drink" data-c="b">
+          <svg class="drink__icon" viewBox="0 0 120 120" aria-hidden="true">
+            <g class="t t--b"><path d="M38 18L82 18C88 46 80 66 60 68C40 66 32 46 38 18Z"/><path d="M60 68L60 100"/><path d="M42 104Q60 97 78 104"/><path d="M38 34L82 34"/></g>
+            <g class="t t--a"><circle cx="52" cy="47" r="3"/><circle cx="66" cy="55" r="2.4"/><circle cx="70" cy="42" r="3.4"/></g>
+            <g class="t t--p"><path d="M101 14C106 21 108 25 105 29C102 32 97 30 97 26C97 22 101 14 101 14Z"/><path d="M15 44C19 50 21 53 18 57C15 60 11 58 11 54C11 50 15 44 15 44Z"/></g>
+          </svg>
+          <div class="drink__text"><h3>Monsoon Spritz</h3><p>Aperitivo, raw mango shrub, prosecco, soda and a mist of petrichor.</p></div>
+          <p class="drink__price">₹690</p>
+        </article>
+        <article class="drink" data-c="p">
+          <svg class="drink__icon" viewBox="0 0 120 120" aria-hidden="true">
+            <g class="t t--p"><path d="M36 22L84 22L79 106L41 106Z"/><path d="M39 42L81 42"/></g>
+            <g class="t t--b"><path d="M70 6L61 30L62 94"/></g>
+            <g class="t t--a"><path d="M72 22A12 12 0 0 1 96 22Z"/><path d="M84 22L84 12M84 22L91 15M84 22L77 15"/></g>
+          </svg>
+          <div class="drink__text"><h3>Kokum Collins</h3><p>Gin, kokum, fresh lime, soda and a pinch of black salt on the rim.</p></div>
+          <p class="drink__price">₹720</p>
+        </article>
+        <article class="drink" data-c="b">
+          <svg class="drink__icon" viewBox="0 0 120 120" aria-hidden="true">
+            <g class="t t--b"><path d="M16 24L104 24L60 70Z"/><path d="M60 70L60 102"/><path d="M42 106L78 106"/><path d="M27 35L93 35"/></g>
+            <g class="t t--a"><ellipse cx="47" cy="29" rx="5.5" ry="3.6"/><ellipse cx="60" cy="29" rx="5.5" ry="3.6"/><ellipse cx="73" cy="29" rx="5.5" ry="3.6"/></g>
+          </svg>
+          <div class="drink__text"><h3>Midnight Espresso</h3><p>Vodka, single-estate cold brew, coffee liqueur and a cap of salted foam.</p></div>
+          <p class="drink__price">₹780</p>
+        </article>
+        <article class="drink" data-c="a">
+          <svg class="drink__icon" viewBox="0 0 120 120" aria-hidden="true">
+            <g class="t t--p"><path d="M36 38L84 38L80 106L40 106Z"/><path d="M60 13C68 13 72 19 70 25C68 31 58 31 54 26C50 21 54 15 60 17C64 18 64 23 60 23"/></g>
+            <g class="t t--a"><path d="M60 30L60 70"/><path d="M60 52C66 47 72 48 75 53C69 56 64 55 60 52Z"/></g>
+            <g class="t t--b"><path d="M20 26L27 33L20 40L27 47"/><path d="M100 26L93 33L100 40L93 47"/></g>
+          </svg>
+          <div class="drink__text"><h3>Rose Static <em>zero-proof</em></h3><p>Rose and hibiscus cordial, verjus, tonic and a crack of pink pepper.</p></div>
+          <p class="drink__price">₹450</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="room brick" id="room" data-tour="2400" aria-labelledby="room-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">The room</p>
+        <h2 id="room-title" class="h2 split">Six corners, <span class="script script--amber">one</span> long night</h2>
+        <p class="lede">A former printing press off Chapel Lane, rewired with forty metres of hand-bent glass. Every corner has its own sign and its own mood.</p>
+      </div>
+      <div class="posters">
+        <figure class="poster" data-poster="bar"><div class="poster__art"></div><figcaption><span class="poster__no">01</span><strong>The Long Bar</strong><span>Fourteen metres of brass and 212 bottles, lit from below.</span></figcaption></figure>
+        <figure class="poster" data-poster="booth"><div class="poster__art"></div><figcaption><span class="poster__no">02</span><strong>The Booth</strong><span>Two decks, a rotary mixer and a sound system tuned by ear.</span></figcaption></figure>
+        <figure class="poster" data-poster="floor"><div class="poster__art"></div><figcaption><span class="poster__no">03</span><strong>The Floor</strong><span>A sprung oak floor for 160 dancers and one mirror ball.</span></figcaption></figure>
+        <figure class="poster" data-poster="kiss"><div class="poster__art"></div><figcaption><span class="poster__no">04</span><strong>Kiss &amp; Tell</strong><span>Velvet booths for six. The curtain is optional.</span></figcaption></figure>
+        <figure class="poster" data-poster="eat"><div class="poster__art"></div><figcaption><span class="poster__no">05</span><strong>After Dark Kitchen</strong><span>Keema pav sliders and chilli cheese toast till 1 AM.</span></figcaption></figure>
+        <figure class="poster" data-poster="alley"><div class="poster__art"></div><figcaption><span class="poster__no">06</span><strong>The Back Alley</strong><span>Open air, string lights and the only quiet corner.</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="events" id="events" data-tour="2400" aria-labelledby="events-title">
+    <div class="wrap events__grid">
+      <div class="events__intro">
+        <p class="kicker">Private events</p>
+        <h2 id="events-title" class="h2 split">Make the Ward <span class="script script--pink">yours</span></h2>
+        <p class="lede">Birthdays, launches, wrap parties and the after-party after the wedding. Our events team plans the night; you just show up.</p>
+        <ul class="ticks">
+          <li>A dedicated host and bar team</li>
+          <li>A cocktail named after you, on the menu for a month</li>
+          <li>Your playlist or one of our residents</li>
+          <li>Projection wall for your visuals</li>
+        </ul>
+        <div class="events__cta">
+          <a class="btn btn--primary magnetic" href="#reserve">Plan your night</a>
+          <span class="neon-arrow" data-dir="right" data-c="a"></span>
+        </div>
+      </div>
+      <div class="packages">
+        <article class="pkg" data-c="p">
+          <p class="pkg__cap">Up to 28 guests</p>
+          <h3>The Velvet Room</h3>
+          <p>The curtained room behind the bar, with its own sound and a bartender on call.</p>
+          <p class="pkg__price"><small>from</small> ₹65,000</p>
+        </article>
+        <article class="pkg" data-c="b">
+          <p class="pkg__cap">Up to 70 guests</p>
+          <h3>Long Bar takeover</h3>
+          <p>The front bar and booths, your music, a welcome round for every guest.</p>
+          <p class="pkg__price"><small>from</small> ₹1,40,000</p>
+        </article>
+        <article class="pkg pkg--wide" data-c="a">
+          <p class="pkg__cap">Up to 160 guests</p>
+          <h3>Full buyout</h3>
+          <p>The whole Ward with lights and sound crew, guest list management and door security.</p>
+          <p class="pkg__price"><small>from</small> ₹3,50,000</p>
+        </article>
+        <p class="fineprint">Minimum spends apply on Fridays and Saturdays. Prices exclude taxes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="reserve brick" id="reserve" data-tour="2600" aria-labelledby="reserve-title">
+    <div class="wrap reserve__grid">
+      <div class="reserve__copy">
+        <p class="kicker">Reservations</p>
+        <h2 id="reserve-title" class="h2 split">Reserve a <span class="script script--blue">table</span></h2>
+        <p class="lede">Pick a night, tell us how many, and we’ll hold the table. Confirmations arrive on WhatsApp within fifteen minutes.</p>
+        <ul class="facts">
+          <li><strong>15 min</strong><span>We hold tables for fifteen minutes past your time.</span></li>
+          <li><strong>4 to 8</strong><span>Booths seat four to eight. Larger groups, see private events.</span></li>
+          <li><strong>Walk-ins</strong><span>Always welcome at the bar counter, first come first served.</span></li>
+        </ul>
+        <span class="neon-arrow neon-arrow--down" data-dir="down" data-c="p"></span>
+      </div>
+      <form class="rform" novalidate aria-label="Table reservation">
+        <fieldset class="rform__group">
+          <legend>Which night?</legend>
+          <div class="chips" data-dates>
+            <label class="chip"><input type="radio" name="night" value="Wed" checked><span>Wed</span></label>
+            <label class="chip"><input type="radio" name="night" value="Thu"><span>Thu</span></label>
+            <label class="chip"><input type="radio" name="night" value="Fri"><span>Fri</span></label>
+            <label class="chip"><input type="radio" name="night" value="Sat"><span>Sat</span></label>
+            <label class="chip"><input type="radio" name="night" value="Sun"><span>Sun</span></label>
+            <label class="chip"><input type="radio" name="night" value="Mon"><span>Mon</span></label>
+          </div>
+        </fieldset>
+        <div class="rform__row">
+          <fieldset class="rform__group">
+            <legend>Party size</legend>
+            <div class="stepper">
+              <button type="button" data-step="-1" aria-label="Fewer guests">−</button>
+              <output name="size" aria-live="polite">4</output>
+              <button type="button" data-step="1" aria-label="More guests">+</button>
+            </div>
+          </fieldset>
+          <fieldset class="rform__group">
+            <legend>Seating</legend>
+            <div class="chips chips--sm">
+              <label class="chip"><input type="radio" name="seat" value="Booth" checked><span>Booth</span></label>
+              <label class="chip"><input type="radio" name="seat" value="Bar counter"><span>Bar</span></label>
+              <label class="chip"><input type="radio" name="seat" value="Lounge"><span>Lounge</span></label>
+            </div>
+          </fieldset>
+        </div>
+        <fieldset class="rform__group">
+          <legend>Arrival time</legend>
+          <div class="chips chips--sm">
+            <label class="chip"><input type="radio" name="time" value="8 PM"><span>8 PM</span></label>
+            <label class="chip"><input type="radio" name="time" value="9 PM"><span>9 PM</span></label>
+            <label class="chip"><input type="radio" name="time" value="10 PM" checked><span>10 PM</span></label>
+            <label class="chip"><input type="radio" name="time" value="11 PM"><span>11 PM</span></label>
+            <label class="chip"><input type="radio" name="time" value="12:30 AM"><span>12:30 AM</span></label>
+          </div>
+        </fieldset>
+        <div class="rform__row">
+          <label class="field"><span>Name</span><input name="name" autocomplete="name" required placeholder="Who’s the booking under?"></label>
+          <label class="field"><span>WhatsApp number</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="10-digit mobile number" pattern="[0-9+ ]{8,}"></label>
+        </div>
+        <button class="btn btn--primary btn--block magnetic" type="submit">Hold my table</button>
+        <p class="rform__err" role="alert" hidden>Add a name and a WhatsApp number so we can confirm.</p>
+        <div class="rform__ok" hidden>
+          <p class="rform__ok-title">You’re on the list.</p>
+          <p class="rform__ok-text" data-ok-text>Table for 4, Wednesday at 10 PM. We’ll confirm on WhatsApp within fifteen minutes.</p>
+          <button class="chip-btn" type="button" data-reset>Make another booking</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="visit" id="visit" data-tour="2400" aria-labelledby="visit-title">
+    <div class="wrap visit__grid">
+      <div class="visit__info">
+        <p class="kicker">Find us</p>
+        <h2 id="visit-title" class="h2 split">Follow the <span class="script script--pink">pink</span> light</h2>
+        <address>Ground floor, 14 Chapel Lane<br>Ranwar, Bandra West<br>Mumbai 400050</address>
+        <dl class="hours">
+          <div><dt>Wednesday to Saturday</dt><dd>7 PM till 3 AM</dd></div>
+          <div><dt>Sunday and Monday</dt><dd>7 PM till 1 AM</dd></div>
+          <div><dt>Tuesday</dt><dd>Closed</dd></div>
+          <div><dt>Kitchen</dt><dd>Till 1 AM</dd></div>
+          <div><dt>Happy hour</dt><dd>7 PM to 9 PM</dd></div>
+        </dl>
+        <p class="visit__note">Seven minutes on foot from Bandra station. Valet on Chapel Road after 8 PM.</p>
+        <div class="visit__ctas">
+          <a class="btn btn--ghost magnetic" href="#reserve">Book on WhatsApp</a>
+          <a class="btn btn--ghost magnetic" href="mailto:hello@velvetward.in">hello@velvetward.in</a>
+        </div>
+      </div>
+      <div class="visit__map">
+        <svg class="map" viewBox="0 0 600 520" role="img" aria-label="Stylised street map of Bandra West showing Velvet Ward on Chapel Lane, seven minutes from Bandra station">
+          <defs>
+            <linearGradient id="sea" x1="0" x2="1"><stop offset="0" stop-color="#0d1a3a"/><stop offset="1" stop-color="#0a0f22"/></linearGradient>
+            <radialGradient id="pinGlow"><stop offset="0" stop-color="#ff2bd6" stop-opacity=".55"/><stop offset="1" stop-color="#ff2bd6" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="600" height="520" fill="#0c0811"/>
+          <path d="M0 0L128 0C116 80 146 140 124 204C104 262 136 330 114 402C100 452 124 492 114 520L0 520Z" fill="url(#sea)"/>
+          <g class="map__waves"><path d="M18 120C30 116 42 124 54 120S78 116 90 120"/><path d="M30 260C42 256 54 264 66 260S90 256 102 260"/><path d="M14 380C26 376 38 384 50 380S74 376 86 380"/><path d="M40 470C52 466 64 474 76 470"/></g>
+          <g class="map__minor"><path d="M180 20L196 520"/><path d="M250 0L262 520"/><path d="M400 0L420 520"/><path d="M470 0L486 520"/><path d="M130 90L590 70"/><path d="M128 330L590 300"/><path d="M126 410L590 380"/><path d="M140 470L590 450"/><path d="M200 230L380 236"/></g>
+          <g class="map__major"><path d="M134 30C120 118 150 168 130 232C112 292 142 352 122 430"/><path d="M128 286L580 250"/><path d="M308 0L334 520"/><path d="M146 168L560 140"/><path d="M226 120L520 212"/></g>
+          <path class="map__rail" d="M566 0L548 520"/>
+          <path class="map__rail-ties" d="M566 0L548 520"/>
+          <g class="map__labels">
+            <text x="38" y="200" class="map__sea">Arabian Sea</text>
+            <text x="150" y="60" transform="rotate(-80 150 60)">Carter Road</text>
+            <text x="400" y="244" transform="rotate(-4.5 400 244)">Hill Road</text>
+            <text x="318" y="470" transform="rotate(87 318 470)">Linking Road</text>
+            <text x="404" y="166" transform="rotate(17 404 166)">Chapel Lane</text>
+            <text x="440" y="132" transform="rotate(-4 440 132)">Waterfield Road</text>
+            <text x="470" y="352">Bandra station</text>
+            <text x="150" y="498" class="map__sea">Bandstand</text>
+          </g>
+          <circle cx="546" cy="360" r="7" class="map__station"/>
+          <path class="map__route" d="M546 360L470 330L452 262L396 246L372 192"/>
+          <g class="map__pin">
+            <circle cx="372" cy="192" r="46" fill="url(#pinGlow)"/>
+            <circle cx="372" cy="192" r="16" class="map__ring"/>
+            <circle cx="372" cy="192" r="16" class="map__ring map__ring--2"/>
+            <circle cx="372" cy="192" r="7" class="map__dot"/>
+          </g>
+          <g class="map__tag" transform="translate(386 286)"><rect x="0" y="0" width="92" height="26" rx="13"/><text x="46" y="17" text-anchor="middle">7 min walk</text></g>
+          <g class="map__north" transform="translate(556 40)"><path d="M0 -16L7 6L0 1L-7 6Z"/><text y="22" text-anchor="middle">N</text></g>
+          <text x="384" y="176" class="map__name">Velvet Ward</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer brick">
+  <div class="wrap">
+    <div class="footer__top">
+      <p class="footer__logo" aria-label="Velvet Ward">Velvet Ward</p>
+      <a class="btn btn--primary magnetic" href="#reserve">Reserve a table</a>
+    </div>
+    <div class="footer__cols">
+      <div><h3>Visit</h3><p>Ground floor, 14 Chapel Lane, Ranwar, Bandra West, Mumbai 400050</p></div>
+      <div><h3>Hours</h3><p>Wed to Sat, 7 PM till 3 AM<br>Sun and Mon, 7 PM till 1 AM<br>Closed Tuesdays</p></div>
+      <div><h3>Talk to us</h3><p><a href="mailto:hello@velvetward.in">hello@velvetward.in</a><br><a href="mailto:events@velvetward.in">events@velvetward.in</a><br><a href="#reserve">Book on WhatsApp</a></p></div>
+      <div><h3>Follow</h3><p>@velvetward on all the usual places. Set times drop every Monday at noon.</p></div>
+    </div>
+    <div class="footer__legal">
+      <p>Entry 25+ with valid photo ID. Please drink responsibly, and let us call you a cab home.</p>
+      <p>© 2026 Velvet Ward Hospitality</p>
+      <p class="hx-note">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

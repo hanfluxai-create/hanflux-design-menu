@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>The Gilded Palms · Heritage suites on Lake Pichola, Udaipur</title>
+<meta name="description" content="The Gilded Palms is a heritage luxury hotel on Lake Pichola, Udaipur. Forty-two suites, a lakeside terrace, the Gold Bar, a spa and weddings on the water.">
+<meta name="theme-color" content="#0a2a23">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%230a2a23'/%3E%3Cpath d='M8 38h32M13 38a11 11 0 0 1 22 0M24 38c0-8 1-15 2-21M26 17q-9-6-15 2M26 17q9-6 15 2M26 17q-5-10-12-10M26 17q5-10 12-10' fill='none' stroke='%23d4af37' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Josefin+Sans:wght@400;600&family=Poiret+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/gsap/DrawSVGPlugin.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#suites">Skip to the suites</a>
+<svg class="defs" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs>
+    <linearGradient id="gold-v" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3dd93"/><stop offset=".5" stop-color="#d4af37"/><stop offset="1" stop-color="#a8822a"/></linearGradient>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <nav class="nav__side nav__side--l" aria-label="Primary">
+    <a href="#suites">Suites</a><a href="#dining">Dining</a><a href="#spa">Spa</a>
+  </nav>
+  <a class="crest" href="#top" aria-label="The Gilded Palms, back to top">
+    <svg class="crest__mark" viewBox="0 0 48 44" aria-hidden="true"><path data-crest d=""/></svg>
+    <span class="crest__word">The Gilded Palms</span>
+    <span class="crest__sub">Lake Pichola · Udaipur</span>
+  </a>
+  <nav class="nav__side nav__side--r" aria-label="Secondary">
+    <a href="#weddings">Weddings</a><a href="#gallery">Gallery</a><a class="btn btn--line btn--sm" href="#reserve">Reserve</a>
+  </nav>
+  <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu"><span>Menu</span><i aria-hidden="true"></i></button>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+  <nav aria-label="Mobile">
+    <a href="#suites">The suites</a><a href="#dining">Dining</a><a href="#spa">The spa</a><a href="#weddings">Weddings</a><a href="#gallery">Gallery</a><a href="#reserve">Reserve</a>
+  </nav>
+  <p class="menu__note">Concierge on WhatsApp, every day from 7 AM to 11 PM</p>
+</div>
+
+<main>
+  <section class="hero" id="top" data-tour="3800" aria-labelledby="hero-title">
+    <div class="hero__stage">
+      <div class="doors" aria-hidden="true">
+        <div class="door door--l"><div class="door__inner"></div><div class="door__shade"></div></div>
+        <div class="door door--r"><div class="door__inner"></div><div class="door__shade"></div></div>
+      </div>
+      <div class="hero__text">
+        <div class="hero__col hero__col--l">
+          <p class="label">Udaipur · Since 1926</p>
+          <h1 id="hero-title" class="hero__title">An era of <em>grace</em> on Lake Pichola.</h1>
+        </div>
+        <div class="hero__col hero__col--r">
+          <p class="hero__sub">Forty-two suites, a lakeside terrace and a century of stories.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--gold magnetic" href="#reserve">Reserve your stay</a>
+            <a class="btn btn--line magnetic" href="#weddings">Plan a wedding</a>
+          </div>
+          <p class="hero__rate">Suites from ₹38,000 per night</p>
+        </div>
+      </div>
+      <p class="hero__cue" aria-hidden="true">Scroll to enter</p>
+    </div>
+  </section>
+
+  <section class="welcome" id="welcome" aria-labelledby="welcome-title">
+    <div class="welcome__inner">
+      <svg class="orn" viewBox="0 0 160 24" aria-hidden="true"><path d="M0 12H58M102 12H160M80 2L90 12L80 22L70 12Z M62 12L70 12M90 12L98 12M80 7L85 12L80 17L75 12Z"/></svg>
+      <p class="label">Est. 1926 · Restored 2019</p>
+      <h2 id="welcome-title" class="h2 h2--gold">A century of stories on the water</h2>
+      <p class="welcome__text">Built as a monsoon retreat for a minor royal house, The Gilded Palms has welcomed poets, painters and three generations of honeymooners. We restored every jharokha and every leaf of gold, then added the quiet luxuries of now.</p>
+      <dl class="stats">
+        <div><dt>Suites</dt><dd data-count="42">42</dd></div>
+        <div><dt>Courtyards</dt><dd data-count="3">3</dd></div>
+        <div><dt>Years on Pichola</dt><dd data-count="100">100</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="suites" id="suites" aria-labelledby="suites-title">
+    <div class="tour-mark" data-tour="3000" data-tour-offset="-1" aria-hidden="true"></div>
+    <div class="wrap" data-tour="2600">
+      <div class="head">
+        <svg class="orn" viewBox="0 0 160 24" aria-hidden="true"><path d="M0 12H58M102 12H160M80 2L90 12L80 22L70 12Z M62 12L70 12M90 12L98 12M80 7L85 12L80 17L75 12Z"/></svg>
+        <p class="label">The suites</p>
+        <h2 id="suites-title" class="h2 h2--gold">Rooms with a view of forever</h2>
+        <p class="lede">Every suite looks over the water. Hand-painted ceilings, marble from Makrana and a butler who remembers how you take your chai.</p>
+      </div>
+      <div class="suite-grid">
+        <article class="suite">
+          <div class="suite__arch" data-room="lake" data-label="Line drawing of the Lake Pavilion Suite: a bed facing an arched window onto the palace"></div>
+          <div class="suite__body">
+            <h3>Lake Pavilion Suite</h3>
+            <p class="suite__meta">58 m² · King bed · Lake view</p>
+            <p class="suite__price"><small>from</small> ₹38,000 <small>per night</small></p>
+          </div>
+        </article>
+        <article class="suite">
+          <div class="suite__arch" data-room="jharokha" data-label="Line drawing of the Jharokha Suite: a cushioned window seat in a carved balcony"></div>
+          <div class="suite__body">
+            <h3>Jharokha Suite</h3>
+            <p class="suite__meta">72 m² · Window seat · Sunset side</p>
+            <p class="suite__price"><small>from</small> ₹52,000 <small>per night</small></p>
+          </div>
+        </article>
+        <article class="suite">
+          <div class="suite__arch" data-room="maharani" data-label="Line drawing of the Maharani Suite: a four-poster canopy bed beneath a chandelier"></div>
+          <div class="suite__body">
+            <h3>Maharani Suite</h3>
+            <p class="suite__meta">110 m² · Four-poster · Private dining</p>
+            <p class="suite__price"><small>from</small> ₹96,000 <small>per night</small></p>
+          </div>
+        </article>
+        <article class="suite">
+          <div class="suite__arch" data-room="palms" data-label="Line drawing of the Palms Residence: a colonnade, a plunge pool and a potted palm"></div>
+          <div class="suite__body">
+            <h3>The Palms Residence</h3>
+            <p class="suite__meta">240 m² · Plunge pool · Two bedrooms</p>
+            <p class="suite__price"><small>from</small> ₹1,85,000 <small>per night</small></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="dining" id="dining" data-tour="2600" aria-labelledby="dining-title">
+    <div class="wrap">
+      <div class="head">
+        <svg class="orn" viewBox="0 0 160 24" aria-hidden="true"><path d="M0 12H58M102 12H160M80 2L90 12L80 22L70 12Z M62 12L70 12M90 12L98 12M80 7L85 12L80 17L75 12Z"/></svg>
+        <p class="label">Dining</p>
+        <h2 id="dining-title" class="h2 h2--gold">Two rooms, one long evening</h2>
+      </div>
+      <div class="venues">
+        <article class="venue">
+          <div class="venue__art" data-venue="terrace" data-label="Line drawing of the Terrace: lanterns over the lake with the palace beyond"></div>
+          <div class="venue__body">
+            <p class="label">Lakeside · Dinner from 7 PM</p>
+            <h3>The Terrace</h3>
+            <p>A seven-course Mewar tasting menu under strings of brass lanterns, as the City Palace turns gold across the water.</p>
+            <ul class="menu-list">
+              <li><span>Laal maas, slow-cooked for nine hours</span></li>
+              <li><span>Ker sangri with bajra roti and white butter</span></li>
+              <li><span>Saffron and pistachio kulfi, smoked at the table</span></li>
+            </ul>
+            <p class="venue__price">Tasting menu ₹6,500 per guest</p>
+          </div>
+        </article>
+        <article class="venue">
+          <div class="venue__art" data-venue="bar" data-label="Line drawing of the Gold Bar: a coupe glass before a fan of light"></div>
+          <div class="venue__body">
+            <p class="label">Deco bar · 5 PM to 1 AM</p>
+            <h3>The Gold Bar</h3>
+            <p>Mirrored walls, a brass rail and a quartet on Friday and Saturday nights. Our bartenders mix by the light of the lake.</p>
+            <ul class="menu-list">
+              <li><span>Pichola Sour, with tamarind and egg white</span></li>
+              <li><span>Saffron Gimlet, finished with gold leaf</span></li>
+              <li><span>The 1926, our house old fashioned</span></li>
+            </ul>
+            <p class="venue__price">Cocktails from ₹1,100</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="spa" id="spa" data-tour="2400" aria-labelledby="spa-title">
+    <div class="wrap spa__grid">
+      <div class="spa__art" data-venue="lotus" data-label="Line drawing of a lotus opening on still water"></div>
+      <div class="spa__body">
+        <p class="label">The Lotus Court</p>
+        <h2 id="spa-title" class="h2 h2--gold">Stillness, by appointment</h2>
+        <p class="lede">A courtyard spa of white marble and running water, with Ayurvedic doctors on call and a hammam warmed by cedar.</p>
+        <ul class="treatments">
+          <li><span class="t__name">Abhyanga ritual</span><span class="t__dots"></span><span class="t__time">90 min</span><span class="t__price">₹9,500</span></li>
+          <li><span class="t__name">Rose and sandalwood scrub</span><span class="t__dots"></span><span class="t__time">60 min</span><span class="t__price">₹6,800</span></li>
+          <li><span class="t__name">Eucalyptus hammam</span><span class="t__dots"></span><span class="t__time">45 min</span><span class="t__price">₹4,200</span></li>
+          <li><span class="t__name">Lakeside yoga at dawn</span><span class="t__dots"></span><span class="t__time">60 min</span><span class="t__price">For guests</span></li>
+        </ul>
+        <a class="btn btn--line magnetic" href="#reserve">Book a treatment</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="weddings" id="weddings" data-tour="2600" aria-labelledby="weddings-title">
+    <div class="wrap">
+      <div class="head">
+        <svg class="orn" viewBox="0 0 160 24" aria-hidden="true"><path d="M0 12H58M102 12H160M80 2L90 12L80 22L70 12Z M62 12L70 12M90 12L98 12M80 7L85 12L80 17L75 12Z"/></svg>
+        <p class="label">Weddings and celebrations</p>
+        <h2 id="weddings-title" class="h2 h2--gold">Arrive by boat. Leave as family.</h2>
+        <p class="lede">From the mehendi in the courtyard to the last dance on the terrace, our wedding house plans every hour. The baraat crosses the lake by lantern light.</p>
+      </div>
+      <div class="weddings__art" data-venue="boat" data-label="Line drawing of a royal barge with a domed canopy and lanterns, under a crescent moon"></div>
+      <dl class="venues-stats">
+        <div><dt>Durbar Hall</dt><dd>300 guests</dd><p>Mirrorwork ceiling, for sangeet and reception dinners.</p></div>
+        <div><dt>Lake Terrace</dt><dd>450 guests</dd><p>Open to the water, for pheras at sunset.</p></div>
+        <div><dt>Mehendi Courtyard</dt><dd>120 guests</dd><p>Marigold canopies and a fountain at its heart.</p></div>
+      </dl>
+      <div class="weddings__ctas">
+        <a class="btn btn--gold magnetic" href="#reserve">Plan a wedding</a>
+        <a class="btn btn--line magnetic" href="#reserve">Message the wedding house on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery" data-tour="1600" aria-labelledby="gallery-title">
+    <div class="gallery__pin">
+      <div class="gallery__head">
+        <p class="label">From the archive</p>
+        <h2 id="gallery-title" class="h2 h2--gold">Posters of the palace</h2>
+        <p class="lede">Our studio redraws the hotel’s 1930s travel posters each season. Prints are framed in every suite.</p>
+      </div>
+      <div class="gallery__track"></div>
+    </div>
+  </section>
+
+  <section class="reserve" id="reserve" data-tour="2800" aria-labelledby="reserve-title">
+    <div class="wrap">
+      <div class="booking-card">
+        <div class="booking__intro">
+          <svg class="orn orn--left" viewBox="0 0 160 24" aria-hidden="true"><path d="M0 12H58M102 12H160M80 2L90 12L80 22L70 12Z M62 12L70 12M90 12L98 12M80 7L85 12L80 17L75 12Z"/></svg>
+          <p class="label">Reservations</p>
+          <h2 id="reserve-title" class="h2 h2--gold">Reserve your stay</h2>
+          <p class="lede">Choose your dates and we will hold the suite while our concierge confirms the details with you.</p>
+          <ul class="perks">
+            <li>Boat transfer from Lal Ghat on arrival</li>
+            <li>Breakfast on the Terrace, every morning</li>
+            <li>Late checkout until 2 PM when the lake allows</li>
+          </ul>
+          <div class="booking__contact">
+            <a class="btn btn--line btn--sm" href="#reserve">Concierge on WhatsApp</a>
+            <a class="btn btn--line btn--sm" href="mailto:stay@gildedpalms.in">stay@gildedpalms.in</a>
+          </div>
+        </div>
+        <form class="booking" novalidate aria-label="Check availability">
+          <div class="cal" data-cal>
+            <div class="cal__head"><button type="button" class="cal__nav" data-prev aria-label="Previous month">‹</button><p class="cal__month" data-month>December 2026</p><button type="button" class="cal__nav" data-next aria-label="Next month">›</button></div>
+            <div class="cal__dow"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+            <div class="cal__grid" data-grid></div>
+          </div>
+          <div class="booking__range">
+            <div><span class="mini">Check-in</span><strong data-in>Wed 9 Dec</strong></div>
+            <div><span class="mini">Check-out</span><strong data-out>Sat 12 Dec</strong></div>
+            <div><span class="mini">Nights</span><strong data-nights>3</strong></div>
+          </div>
+          <div class="booking__row">
+            <div class="step"><span class="mini">Adults</span><div class="stepper"><button type="button" data-step="adults:-1" aria-label="Fewer adults">−</button><output data-adults>2</output><button type="button" data-step="adults:1" aria-label="More adults">+</button></div></div>
+            <div class="step"><span class="mini">Children</span><div class="stepper"><button type="button" data-step="kids:-1" aria-label="Fewer children">−</button><output data-kids>0</output><button type="button" data-step="kids:1" aria-label="More children">+</button></div></div>
+          </div>
+          <label class="select"><span class="mini">Suite</span>
+            <select name="suite" data-suite>
+              <option value="38000">Lake Pavilion Suite, from ₹38,000</option>
+              <option value="52000">Jharokha Suite, from ₹52,000</option>
+              <option value="96000">Maharani Suite, from ₹96,000</option>
+              <option value="185000">The Palms Residence, from ₹1,85,000</option>
+            </select>
+          </label>
+          <p class="booking__total"><span class="mini">Estimated stay</span><strong data-total>₹1,14,000</strong><small>before taxes</small></p>
+          <button class="btn btn--gold btn--block magnetic" type="submit">Check availability</button>
+          <div class="booking__ok" hidden>
+            <svg class="orn" viewBox="0 0 160 24" aria-hidden="true"><path d="M0 12H58M102 12H160M80 2L90 12L80 22L70 12Z M62 12L70 12M90 12L98 12M80 7L85 12L80 17L75 12Z"/></svg>
+            <p class="booking__ok-title">Your suite is held.</p>
+            <p data-ok>We are holding the Lake Pavilion Suite for 3 nights. Our concierge will confirm on WhatsApp within the hour.</p>
+            <button type="button" class="btn btn--line btn--sm" data-again>Change dates</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__crest">
+      <svg class="crest__mark crest__mark--lg" viewBox="0 0 48 44" aria-hidden="true"><path data-crest d=""/></svg>
+      <p class="footer__word">The Gilded Palms</p>
+      <p class="footer__tag">An era of grace on Lake Pichola</p>
+    </div>
+    <div class="footer__cols">
+      <div><h3>Find us</h3><p>Pichola Ghat Road, Old City<br>Udaipur, Rajasthan 313001</p></div>
+      <div><h3>Reservations</h3><p><a href="mailto:stay@gildedpalms.in">stay@gildedpalms.in</a><br><a href="mailto:weddings@gildedpalms.in">weddings@gildedpalms.in</a></p></div>
+      <div><h3>Concierge</h3><p><a href="#reserve">Message us on WhatsApp</a><br>Every day, 7 AM to 11 PM</p></div>
+      <div><h3>Arrival</h3><p>Boat transfers from Lal Ghat jetty, every 20 minutes, day and night.</p></div>
+    </div>
+    <div class="footer__legal">
+      <p>© 2026 The Gilded Palms, Udaipur</p>
+      <p class="hx-note">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Boom Burger · Smash burgers and a yellow truck, Pune</title>
+<meta name="description" content="Boom Burger smashes patties to order at Boom HQ in Koregaon Park and on a yellow food truck across Pune. Order for delivery or find the truck tonight.">
+<meta name="theme-color" content="#ffd400">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 3l7 15 16-6-6 16 14 7-14 7 6 16-16-6-7 15-7-15-16 6 6-16-14-7 14-7-6-16 16 6z' fill='%23ffd400' stroke='%23111' stroke-width='3' stroke-linejoin='round'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Impact' font-size='22' fill='%23e63223' stroke='%23111' stroke-width='1.5'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Bangers&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#menu">Skip to the menu</a>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Boom Burger, back to top"><span class="logo__burst" aria-hidden="true"></span><span class="logo__text">Boom Burger</span></a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#menu">Menu</a><a href="#origin">Origin</a><a href="#truck">The truck</a><a href="#reviews">Reviews</a>
+  </nav>
+  <a class="cart" href="#order" aria-label="Your bag"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 11h18l-2 16H9z" fill="#ffd400" stroke="#111" stroke-width="2.6" stroke-linejoin="round"/><path d="M11 11c0-4 2-7 5-7s5 3 5 7" fill="none" stroke="#111" stroke-width="2.6"/></svg><span class="cart__count" data-cart-count>0</span></a>
+  <a class="btn btn--red nav__cta" href="#order">Order now</a>
+  <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="Open menu"><i></i><i></i><i></i></button>
+</header>
+
+<div class="menu-panel" id="menu-panel" role="dialog" aria-modal="true" aria-label="Site menu" hidden>
+  <nav aria-label="Mobile">
+    <a href="#menu">The menu</a><a href="#origin">Origin story</a><a href="#truck">Find the truck</a><a href="#reviews">Reviews</a><a href="#order">Order now</a>
+  </nav>
+  <p>Boom HQ, Lane 7, Koregaon Park. Open daily, 12 noon to midnight.</p>
+</div>
+
+<main id="top">
+  <section class="hero page" data-tour="3800" aria-labelledby="hero-title">
+    <div class="panel p-burger" aria-hidden="false">
+      <div class="p-burger__fx" aria-hidden="true"><div class="speed"></div><div class="dots"></div></div>
+      <div class="hero-burger" role="img" aria-label="Illustrated smash burger: toasted sesame brioche, two crispy smashed patties, melting cheese, tomato, onion and lettuce"></div>
+      <div class="steam" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="burst burst--smash" aria-hidden="true"></div>
+      <div class="burst burst--boom" aria-hidden="true"></div>
+    </div>
+    <div class="panel p-title">
+      <p class="caption">Meanwhile, in Pune…</p>
+      <h1 id="hero-title" class="hero__title"><span>Smashed.</span> <span class="red">Stacked.</span> <span class="hl">Legendary.</span></h1>
+    </div>
+    <div class="panel p-cta">
+      <p class="hero__sub">Hand-smashed patties, toasted brioche, sauce we won’t tell you about.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--yellow magnetic" href="#order">Order now</a>
+        <a class="btn btn--paper magnetic" href="#truck">Find the truck</a>
+      </div>
+      <p class="hero__today"><span class="dot" aria-hidden="true"></span><span data-today-line>Truck tonight: Koregaon Park, Lane 7, from 6 PM</span></p>
+    </div>
+  </section>
+
+  <section class="menu page" id="menu" data-tour="2600" aria-labelledby="menu-title">
+    <div class="sec-head panel panel--flat">
+      <p class="caption">Issue 1: the menu</p>
+      <h2 id="menu-title" class="h2">Pick your fighter</h2>
+      <p class="sec-head__sub">Every patty is smashed to order on a 250°C griddle until the edges go lacy and loud.</p>
+    </div>
+    <div class="cards">
+      <article class="panel card card--y" data-item="The Boom" data-price="249">
+        <div class="card__art" data-art="boom" role="img" aria-label="The Boom: a single smashed patty cheeseburger"></div>
+        <div class="card__body"><h3>The Boom</h3><p>Single smashed patty, double cheese, house sauce, pickled onion, toasted brioche.</p></div>
+        <div class="card__foot"><span class="price">₹249</span><button class="btn btn--ink add" type="button">Add +</button></div>
+      </article>
+      <article class="panel card card--c" data-item="Double Trouble" data-price="349">
+        <div class="card__art" data-art="double" role="img" aria-label="Double Trouble: two smashed patties with melted cheese"></div>
+        <div class="card__body"><h3>Double Trouble</h3><p>Two patties, two slices of cheese, twice the crust. Napkins are not optional.</p></div>
+        <div class="card__foot"><span class="price">₹349</span><button class="btn btn--ink add" type="button">Add +</button></div>
+      </article>
+      <article class="panel card card--r" data-item="Spicy Shinobi" data-price="299">
+        <div class="card__art" data-art="shinobi" role="img" aria-label="Spicy Shinobi: a burger with jalapeños wearing a red headband"></div>
+        <div class="card__body"><h3>Spicy Shinobi</h3><p>Pepper jack, jalapeños and sriracha mayo. Silent, swift, extremely hot.</p></div>
+        <div class="card__foot"><span class="price">₹299</span><button class="btn btn--ink add" type="button">Add +</button></div>
+      </article>
+      <article class="panel card card--p" data-item="Veg Smash" data-price="219">
+        <div class="card__art" data-art="veg" role="img" aria-label="Veg Smash: a golden aloo and pea patty burger"></div>
+        <div class="card__body"><h3>Veg Smash</h3><p>Aloo and pea patty smashed thin and crisp, cheese, lettuce, green chutney mayo.</p></div>
+        <div class="card__foot"><span class="price">₹219</span><button class="btn btn--ink add" type="button">Add +</button></div>
+      </article>
+      <article class="panel card card--y" data-item="Loaded fries" data-price="179">
+        <div class="card__art" data-art="fries" role="img" aria-label="Loaded fries in a red paper boat with cheese sauce and jalapeños"></div>
+        <div class="card__body"><h3>Loaded fries</h3><p>Skin-on fries, molten cheese sauce, jalapeños and a shake of Boom dust.</p></div>
+        <div class="card__foot"><span class="price">₹179</span><button class="btn btn--ink add" type="button">Add +</button></div>
+      </article>
+      <article class="panel card card--c" data-item="Thick shake" data-price="199">
+        <div class="card__art" data-art="shake" role="img" aria-label="A thick strawberry shake with whipped cream and a cherry"></div>
+        <div class="card__body"><h3>Thick shakes</h3><p>Strawberry, chocolate or salted caramel. So thick the straw stands up by itself.</p></div>
+        <div class="card__foot"><span class="price">₹199</span><button class="btn btn--ink add" type="button">Add +</button></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="origin page" id="origin" data-tour="2600" aria-labelledby="origin-title">
+    <div class="sec-head panel panel--flat">
+      <p class="caption">Our origin story</p>
+      <h2 id="origin-title" class="h2">How the boom began</h2>
+    </div>
+    <ol class="strip">
+      <li class="panel strip__p"><div class="strip__art" data-origin="0"></div><p class="caption caption--box">2019. A tiny kitchen in Kothrud, one cast-iron griddle and a very heavy spatula.</p></li>
+      <li class="panel strip__p"><div class="strip__art" data-origin="1"></div><p class="caption caption--box">Friends kept coming back. Then their friends. Then total strangers.</p></li>
+      <li class="panel strip__p"><div class="strip__art" data-origin="2"></div><p class="caption caption--box">So we bought a tired old truck and painted it the loudest yellow in Pune.</p></li>
+      <li class="panel strip__p"><div class="strip__art" data-origin="3"></div><p class="caption caption--box">Today: four neighbourhoods, 600 burgers a night. Same griddle.</p></li>
+    </ol>
+  </section>
+
+  <section class="truck page" id="truck" data-tour="2600" aria-labelledby="truck-title">
+    <div class="panel truck__hero">
+      <div class="truck__fx" aria-hidden="true"></div>
+      <div class="truck__art" role="img" aria-label="The yellow Boom Burger food truck with a striped awning"></div>
+      <p class="truck__sfx" aria-hidden="true">Vroom!</p>
+    </div>
+    <div class="panel truck__info">
+      <p class="caption">Find the truck</p>
+      <h2 id="truck-title" class="h2">Where’s the truck?</h2>
+      <ul class="sched">
+        <li data-days="2,3"><span class="sched__day">Tue · Wed</span><span class="sched__where"><strong>Baner</strong>Baner Road, by the hill park gate</span><span class="sched__tag">Tonight</span></li>
+        <li data-days="4"><span class="sched__day">Thu</span><span class="sched__where"><strong>Viman Nagar</strong>Lane 5, off the airport road</span><span class="sched__tag">Tonight</span></li>
+        <li data-days="5,6"><span class="sched__day">Fri · Sat</span><span class="sched__where"><strong>Koregaon Park</strong>Lane 7, right outside Boom HQ</span><span class="sched__tag">Tonight</span></li>
+        <li data-days="0"><span class="sched__day">Sun</span><span class="sched__where"><strong>FC Road</strong>By the old bookshop corner</span><span class="sched__tag">Tonight</span></li>
+        <li data-days="1" class="sched__off"><span class="sched__day">Mon</span><span class="sched__where"><strong>Day off</strong>The truck sleeps, the griddle gets seasoned</span><span class="sched__tag">Tonight</span></li>
+      </ul>
+      <p class="truck__note">Truck hours 6 PM to 11:30 PM. Boom HQ in Koregaon Park is open every day, 12 noon to midnight.</p>
+    </div>
+  </section>
+
+  <section class="reviews page" id="reviews" data-tour="2400" aria-labelledby="reviews-title">
+    <div class="sec-head panel panel--flat">
+      <p class="caption">Fan mail</p>
+      <h2 id="reviews-title" class="h2">What Pune is saying</h2>
+      <p class="sec-head__sub"><strong>4.8 out of 5</strong> from 2,300 reviews, most of them typed with greasy fingers.</p>
+    </div>
+    <div class="bubbles">
+      <figure class="bubble bubble--l"><blockquote>Best smash burger in Pune. The crust! THE CRUST!</blockquote><figcaption><span class="stars" aria-label="5 stars">★★★★★</span> Aditi K., Baner</figcaption></figure>
+      <figure class="bubble bubble--shout"><blockquote>Followed the truck from Viman Nagar to FC Road. No regrets.</blockquote><figcaption><span class="stars" aria-label="5 stars">★★★★★</span> Rohan M., Kalyani Nagar</figcaption></figure>
+      <figure class="bubble bubble--r"><blockquote>Spicy Shinobi made me cry. Then I ordered another one.</blockquote><figcaption><span class="stars" aria-label="5 stars">★★★★★</span> Sana Q., Koregaon Park</figcaption></figure>
+      <figure class="bubble bubble--r"><blockquote>The veg smash is not a sad afterthought. It slaps.</blockquote><figcaption><span class="stars" aria-label="4 stars">★★★★☆</span> Kunal D., Aundh</figcaption></figure>
+      <figure class="bubble bubble--think"><blockquote>Shakes so thick the straw stands up on its own. Science.</blockquote><figcaption><span class="stars" aria-label="5 stars">★★★★★</span> Meera J., Deccan</figcaption></figure>
+      <figure class="bubble bubble--l"><blockquote>Ordered at 11:40 PM, burger at my door by 12:05. Heroes.</blockquote><figcaption><span class="stars" aria-label="5 stars">★★★★★</span> Arjun P., Viman Nagar</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="order page" id="order" data-tour="2800" aria-labelledby="order-title">
+    <div class="panel order__panel">
+      <div class="order__fx" aria-hidden="true"></div>
+      <div class="order__copy">
+        <p class="caption">Final page</p>
+        <h2 id="order-title" class="order__title">Hungry yet?</h2>
+        <p class="order__sub">Delivery across Koregaon Park, Kalyani Nagar, Viman Nagar and Baner, every day from 12 noon to 11:30 PM.</p>
+        <p class="order__bag" data-bag aria-live="polite">Your bag is empty. The menu is right up there.</p>
+        <div class="order__ctas">
+          <a class="btn btn--yellow magnetic" href="#order" data-order="delivery">Order for delivery</a>
+          <a class="btn btn--paper magnetic" href="#order" data-order="pickup">Pick up at Boom HQ</a>
+          <a class="btn btn--cyan magnetic" href="#order" data-order="whatsapp">Order on WhatsApp</a>
+        </div>
+        <p class="order__ok" hidden data-order-ok></p>
+      </div>
+      <div class="order__art" aria-hidden="true"><div class="order__burger"></div><div class="burst burst--final"></div></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand"><p class="footer__logo">Boom Burger</p><p>Smashed. Stacked. Legendary. Since 2019.</p></div>
+    <div><h3>Boom HQ</h3><p>Lane 7, Koregaon Park<br>Pune 411001<br>Daily, 12 noon to midnight</p></div>
+    <div><h3>The truck</h3><p>Tue to Sun, 6 PM to 11:30 PM<br>Follow @boomburgertruck for the live spot</p></div>
+    <div><h3>Talk to us</h3><p><a href="mailto:hello@boomburger.in">hello@boomburger.in</a><br><a href="mailto:parties@boomburger.in">parties@boomburger.in</a><br><a href="#order">Order on WhatsApp</a></p></div>
+  </div>
+  <div class="footer__legal">
+    <p>Prices include GST. Our kitchen handles gluten, dairy, egg and sesame.</p>
+    <p>© 2026 Boom Burger Foods</p>
+    <p class="hx-note">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+  </div>
+</footer>
+<div class="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Stillwater · Find your still point</title>
+<meta name="description" content="Stillwater is a meditation and sleep app: guided 4-7-8 breathing, sleep stories and focus sessions that fit a busy day. Try 7 days free.">
+<meta name="theme-color" content="#ffc9a8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffb199'/%3E%3Cstop offset='1' stop-color='%23b8a1ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='32' r='9' fill='%231d1b3f'/%3E%3Ccircle cx='32' cy='32' r='18' fill='none' stroke='%231d1b3f' stroke-width='2.5' opacity='.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<canvas id="mesh" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<a class="skip" href="#breathe">Skip to the breathing exercise</a>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Stillwater, back to top">
+    <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="4.6" fill="currentColor"/><circle cx="16" cy="16" r="9.5" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".55"/><circle cx="16" cy="16" r="14.4" fill="none" stroke="currentColor" stroke-width="1" opacity=".25"/></svg>
+    <span>Stillwater</span>
+  </a>
+  <nav class="nav__links" aria-label="Main">
+    <a href="#breathe">Breathe</a>
+    <a href="#programs">Programs</a>
+    <a href="#app">The app</a>
+    <a href="#pricing">Pricing</a>
+  </nav>
+  <a class="btn btn--ink btn--sm nav__cta" href="#pricing">Try 7 days free</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="overlay" aria-label="Open menu"><i></i><i></i></button>
+</header>
+
+<div class="overlay" id="overlay" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <a href="#breathe">Breathe <em>with us</em></a>
+    <a href="#programs">Programs</a>
+    <a href="#app">The app</a>
+    <a href="#words">Listeners</a>
+    <a href="#pricing">Pricing</a>
+  </nav>
+  <a class="btn btn--ink" href="#pricing">Try 7 days free</a>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="top" data-tod="0" data-tour="3600" aria-labelledby="hero-title">
+    <div class="stage">
+      <div class="orb orb--hero" id="orbHero" aria-hidden="true"><span class="orb__shine"></span></div>
+      <div class="stage__copy">
+        <p class="eyebrow">Meditation and sleep, in minutes a day</p>
+        <h1 class="hero__title" id="hero-title"><span>Find your</span> <em>still point.</em></h1>
+        <p class="hero__sub">Guided breathing, sleep stories and focus sessions that fit a busy day.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--ink magnetic" href="#pricing">Try 7 days free</a>
+          <button class="btn btn--glass magnetic" type="button" data-sample><span class="play" aria-hidden="true"></span><span data-sample-label>Listen to a sample</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="breathcap" aria-live="off">
+      <p class="breathcap__word" data-hero-word>Breathe in</p>
+      <div class="breathcap__bar" aria-hidden="true"><span style="--w:4"><i data-seg="0"></i></span><span style="--w:7"><i data-seg="1"></i></span><span style="--w:8"><i data-seg="2"></i></span></div>
+      <p class="breathcap__legend"><span>In 4</span><span>Hold 7</span><span>Out 8</span></p>
+    </div>
+  </section>
+
+  <!-- BREATHE -->
+  <section class="breathe" id="breathe" data-tod="0.55" data-tour="3600" aria-labelledby="breathe-title">
+    <div class="wrap breathe__grid">
+      <div class="breathe__copy">
+        <p class="eyebrow">Try it now</p>
+        <h2 class="h2 split" id="breathe-title">Take one minute. <em>Breathe with us.</em></h2>
+        <p class="reveal">Follow the orb: in through the nose as it grows, hold while it glows, then out through the mouth as it softens. Four rounds of 4-7-8 slow the heart and quiet the mind in a little over a minute.</p>
+        <div class="patterns reveal" role="radiogroup" aria-label="Breathing pattern">
+          <button class="chip is-on" type="button" role="radio" aria-checked="true" data-pattern="4,7,8,0" data-name="Relax"><strong>4-7-8</strong><span>Relax</span></button>
+          <button class="chip" type="button" role="radio" aria-checked="false" data-pattern="4,4,4,4" data-name="Focus"><strong>Box 4-4-4-4</strong><span>Focus</span></button>
+          <button class="chip" type="button" role="radio" aria-checked="false" data-pattern="5,0,5,0" data-name="Balance"><strong>5-5</strong><span>Balance</span></button>
+        </div>
+        <div class="practice__ctrl reveal">
+          <button class="btn btn--ink" type="button" data-toggle><span data-toggle-label>Pause</span></button>
+          <p class="practice__round" data-round>Round 1 of 4</p>
+        </div>
+      </div>
+      <div class="practice" aria-label="Breathing guide">
+        <svg class="practice__ring" viewBox="0 0 200 200" aria-hidden="true"><circle class="ring-bg" cx="100" cy="100" r="96"/><circle class="ring-fg" cx="100" cy="100" r="96" pathLength="1"/></svg>
+        <div class="orb orb--practice" id="orbPractice"><span class="orb__shine"></span></div>
+        <div class="practice__label" aria-live="polite">
+          <p class="practice__word" data-word>Breathe in</p>
+          <p class="practice__count" data-count>4</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="programs" id="programs" data-tod="1" data-tour="2600" aria-labelledby="programs-title">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Programs</p>
+        <h2 class="h2 split" id="programs-title">Four ways <em>to rest.</em></h2>
+        <p class="reveal">Short enough for a lunch break, deep enough for a long night. New sessions every Sunday.</p>
+      </div>
+      <div class="cards">
+        <article class="card reveal-card" style="--a:#3b3a75;--b:#b8a1ff;--c:#ff9fb2">
+          <div class="card__art" aria-hidden="true"><span class="moon"></span><i></i><i></i><i></i></div>
+          <p class="card__meta">64 stories · 25 to 45 min</p>
+          <h3>Sleep stories</h3>
+          <p>Slow, softly told tales that walk you right to the edge of sleep, then let go.</p>
+          <ul class="sessions">
+            <li><span>The Night Ferry to Lake Orla</span><time>38 min</time></li>
+            <li><span>A Lighthouse Keeper's Garden</span><time>42 min</time></li>
+            <li><span>Rain over the Tea Hills</span><time>35 min</time></li>
+          </ul>
+        </article>
+        <article class="card reveal-card" style="--a:#69c6d9;--b:#b8e0d2;--c:#f4ecd0">
+          <div class="card__art" aria-hidden="true"><span class="bars"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></span></div>
+          <p class="card__meta">30 soundscapes · 25 to 90 min</p>
+          <h3>Deep focus</h3>
+          <p>Low, steady sound and gentle timers built for one task at a time.</p>
+          <ul class="sessions">
+            <li><span>Library at Closing Time</span><time>50 min</time></li>
+            <li><span>Brown Noise and a Kettle</span><time>25 min</time></li>
+            <li><span>The Long Desk</span><time>90 min</time></li>
+          </ul>
+        </article>
+        <article class="card reveal-card" style="--a:#ffb199;--b:#ffd6a5;--c:#f6a6b2">
+          <div class="card__art" aria-hidden="true"><span class="ripples"><b></b><b></b><b></b></span></div>
+          <p class="card__meta">120 resets · 2 to 10 min</p>
+          <h3>Calm the noise</h3>
+          <p>Quick resets for crowded days, racing thoughts and the minute before you walk in.</p>
+          <ul class="sessions">
+            <li><span>Before the Meeting</span><time>3 min</time></li>
+            <li><span>Unclench</span><time>5 min</time></li>
+            <li><span>The Commute Home</span><time>10 min</time></li>
+          </ul>
+        </article>
+        <article class="card reveal-card" style="--a:#8e7cf0;--b:#ffc4a3;--c:#fff1e0">
+          <div class="card__art" aria-hidden="true"><span class="stars"><b></b><b></b><b></b><b></b><b></b></span></div>
+          <p class="card__meta">40 sessions · ages 4 to 10</p>
+          <h3>Kids wind-down</h3>
+          <p>Breathing games and bedtime tales that turn lights-out into the best part of the day.</p>
+          <ul class="sessions">
+            <li><span>Sleepy Otter Counts the Stars</span><time>12 min</time></li>
+            <li><span>Balloon Breathing</span><time>4 min</time></li>
+            <li><span>The Moon Who Could Not Sleep</span><time>15 min</time></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <section class="app" id="app" data-tod="1.65" data-tour="2800" aria-labelledby="app-title">
+    <div class="wrap app__grid">
+      <div class="app__copy">
+        <p class="eyebrow">The app</p>
+        <h2 class="h2 split" id="app-title">Calm, <em>in your pocket.</em></h2>
+        <p class="reveal">Stillwater opens to what you need right now: a breath before a call, a story at bedtime, a long quiet stretch for deep work.</p>
+        <ul class="features reveal">
+          <li><b>Reminders that wait for you.</b> Pick the moment, we nudge once, never twice.</li>
+          <li><b>Downloads for flights and cabins.</b> Every session works offline.</li>
+          <li><b>A sleep timer that fades.</b> Stories soften out instead of stopping dead.</li>
+        </ul>
+      </div>
+      <div class="phones" aria-label="Two Stillwater app screens">
+        <div class="phone phone--a" role="img" aria-label="Today screen with tonight's wind-down and a breathing streak">
+          <div class="phone__screen today">
+            <div class="status"><span>9:41</span><span class="status__icons"><i></i><i></i><i></i></span></div>
+            <p class="today__hi">Good evening, Maya</p>
+            <p class="today__sub">Tuesday · 12-day streak</p>
+            <div class="today__feature">
+              <p class="tag">Tonight's wind-down</p>
+              <p class="today__title">A Lighthouse Keeper's Garden</p>
+              <p class="today__meta">Sleep story · 42 min</p>
+              <span class="today__play" aria-hidden="true"></span>
+            </div>
+            <div class="today__week">
+              <p>This week</p>
+              <div class="week"><span style="--h:.45"><i>M</i></span><span style="--h:.7"><i>T</i></span><span style="--h:.35"><i>W</i></span><span style="--h:.9"><i>T</i></span><span style="--h:.6"><i>F</i></span><span style="--h:.8"><i>S</i></span><span class="is-today" style="--h:.55"><i>S</i></span></div>
+              <p class="week__total">94 calm minutes</p>
+            </div>
+            <div class="today__tiles">
+              <div><b>Breathe</b><span>4-7-8 · 2 min</span></div>
+              <div><b>Focus</b><span>Kettle · 25 min</span></div>
+            </div>
+            <div class="tabbar"><span class="is-on">Today</span><span>Explore</span><span>Sleep</span><span>You</span></div>
+          </div>
+        </div>
+        <div class="phone phone--b" role="img" aria-label="Player screen for the sleep story The Night Ferry to Lake Orla">
+          <div class="phone__screen player">
+            <div class="status"><span>10:52</span><span class="status__icons"><i></i><i></i><i></i></span></div>
+            <div class="player__art"><span class="player__sun"></span><span class="player__lake"></span><span class="player__boat"></span></div>
+            <p class="tag">Sleep story</p>
+            <p class="player__title">The Night Ferry to Lake Orla</p>
+            <p class="player__by">Read by Ines Okafor</p>
+            <div class="wave" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+            <div class="scrub"><span class="scrub__fill"></span></div>
+            <div class="scrub__time"><span>12:40</span><span>38:00</span></div>
+            <div class="controls"><span class="skip15">15</span><span class="pp"></span><span class="skip15 fwd">15</span></div>
+            <p class="timerchip">Fades out in 30 min</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" id="stats" data-tod="2.1" data-tour="2400" aria-labelledby="stats-title">
+    <div class="wrap">
+      <h2 class="stats__title split" id="stats-title"><span class="big">12</span> minutes a day <em>is all it takes.</em></h2>
+      <ul class="stats__grid">
+        <li class="reveal"><p class="stat"><span data-to="83">83</span>%</p><p>of listeners fall asleep faster within two weeks</p></li>
+        <li class="reveal"><p class="stat"><span data-to="4.8" data-dec="1">4.8</span></p><p>average rating from 61,000 reviews</p></li>
+        <li class="reveal"><p class="stat"><span data-to="2.1" data-dec="1">2.1</span>M</p><p>minutes of calm streamed every single day</p></li>
+      </ul>
+      <p class="fine reveal">Stillwater listener survey, September 2026, 4,200 respondents.</p>
+    </div>
+  </section>
+
+  <!-- WORDS -->
+  <section class="words" id="words" data-tod="2.55" data-tour="2600" aria-labelledby="words-title">
+    <div class="wrap">
+      <div class="head head--light">
+        <p class="eyebrow">Listeners</p>
+        <h2 class="h2 split" id="words-title">In their <em>own words.</em></h2>
+      </div>
+      <div class="quotes">
+        <figure class="quote reveal-card">
+          <p class="quote__stars" aria-label="5 out of 5">★★★★★</p>
+          <blockquote><p>“I used to scroll until 1 am. Now I start a sleep story and I'm gone before the ferry reaches the lake.”</p></blockquote>
+          <figcaption><span class="avatar" style="--a:#ffb199;--b:#b8a1ff">PS</span><span><b>Priya S.</b> Night-shift nurse</span></figcaption>
+        </figure>
+        <figure class="quote reveal-card">
+          <p class="quote__stars" aria-label="5 out of 5">★★★★★</p>
+          <blockquote><p>“The 4-7-8 orb is the only thing that brings my heart rate down before I present to the board.”</p></blockquote>
+          <figcaption><span class="avatar" style="--a:#69c6d9;--b:#3b3a75">DK</span><span><b>Daniel K.</b> Product lead</span></figcaption>
+        </figure>
+        <figure class="quote reveal-card">
+          <p class="quote__stars" aria-label="5 out of 5">★★★★★</p>
+          <blockquote><p>“My kids ask for Sleepy Otter by name. Bedtime went from an hour of negotiating to twenty quiet minutes.”</p></blockquote>
+          <figcaption><span class="avatar" style="--a:#ff9fb2;--b:#ffd6a5">AO</span><span><b>Amara O.</b> Parent of two</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing" data-tod="3" data-tour="2800" aria-labelledby="pricing-title">
+    <div class="wrap">
+      <div class="head head--light">
+        <p class="eyebrow">Pricing</p>
+        <h2 class="h2 split" id="pricing-title">Simple, <em>honest pricing.</em></h2>
+        <p class="reveal">Start free and stay free as long as you like. Upgrade when you want the whole library.</p>
+      </div>
+      <div class="plans">
+        <article class="plan reveal-card">
+          <p class="plan__name">Free</p>
+          <p class="plan__price"><b>$0</b><span>forever</span></p>
+          <ul>
+            <li>Daily 4-7-8 breathing guide</li>
+            <li>30 starter sessions</li>
+            <li>3 sleep stories, refreshed monthly</li>
+            <li>Sleep timer and reminders</li>
+          </ul>
+          <a class="btn btn--glass btn--block" href="#download">Start free</a>
+        </article>
+        <article class="plan plan--pro reveal-card">
+          <p class="plan__badge">7 days free</p>
+          <p class="plan__name">Premium</p>
+          <p class="plan__price"><b>$59.99</b><span>per year</span></p>
+          <p class="plan__note">That is $5 a month, billed yearly.</p>
+          <ul>
+            <li>Everything in Free</li>
+            <li>600 sessions and all 64 sleep stories</li>
+            <li>Deep focus soundscapes and timers</li>
+            <li>The full kids wind-down library</li>
+            <li>Offline downloads on every device</li>
+            <li>Share with one family member</li>
+          </ul>
+          <a class="btn btn--light btn--block magnetic" href="#download">Try 7 days free</a>
+          <p class="plan__fine">Cancel in two taps. We remind you two days before the trial ends.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section class="download" id="download" data-tod="3" data-tour="2800" aria-labelledby="dl-title">
+    <div class="wrap download__inner">
+      <div class="moonrise" aria-hidden="true"></div>
+      <h2 class="download__title split" id="dl-title">Your still point <em>is waiting.</em></h2>
+      <p class="reveal">Download Stillwater free and start with a two-minute breath tonight.</p>
+      <div class="stores reveal">
+        <a class="store" href="#download" aria-label="Download for iPhone">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span><small>Download for</small>iPhone</span>
+        </a>
+        <a class="store" href="#download" aria-label="Get it on Android">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9a7 7 0 0 1 14 0v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="9.5" cy="11" r="1" fill="currentColor"/><circle cx="14.5" cy="11" r="1" fill="currentColor"/></svg>
+          <span><small>Get it on</small>Android</span>
+        </a>
+      </div>
+      <p class="download__fine reveal">Rated 4.8 by 61,000 listeners · Works offline · No ads, ever</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-tod="3" data-tour="2000">
+  <div class="wrap">
+    <div class="footer__top">
+      <a class="brand brand--lg" href="#top"><svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="4.6" fill="currentColor"/><circle cx="16" cy="16" r="9.5" fill="none" stroke="currentColor" stroke-width="1.3" opacity=".55"/><circle cx="16" cy="16" r="14.4" fill="none" stroke="currentColor" stroke-width="1" opacity=".25"/></svg><span>Stillwater</span></a>
+      <form class="mini" novalidate>
+        <label for="mini-email">One calm idea every Sunday</label>
+        <div class="mini__row"><input id="mini-email" type="email" autocomplete="email" required spellcheck="false" aria-label="Email address"><button class="btn btn--light btn--sm" type="submit">Subscribe</button></div>
+        <p class="mini__msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="footer__cols">
+      <div><h3>Practice</h3><a href="#breathe">Breathing</a><a href="#programs">Sleep stories</a><a href="#programs">Deep focus</a><a href="#programs">Kids wind-down</a></div>
+      <div><h3>Stillwater</h3><a href="#app">The app</a><a href="#pricing">Pricing</a><a href="#pricing">Gift Premium</a><a href="#pricing">For teams</a></div>
+      <div><h3>Help</h3><a href="mailto:hello@stillwater.app">hello@stillwater.app</a><a href="#pricing">Help centre</a><a href="#top">Privacy</a><a href="#top">Terms</a></div>
+    </div>
+    <div class="footer__base">
+      <p>© 2026 Stillwater. Made slowly, for busy people.</p>
+      <p>Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" hidden>
+  <span class="toast__eq" aria-hidden="true"><b></b><b></b><b></b></span>
+  <span class="toast__text"><b>Rain over the Tea Hills</b> <small data-toast-time>Sample · 0:20</small></span>
+  <button type="button" class="toast__stop" data-sample-stop>Stop</button>
+</div>
+</body>
+</html>

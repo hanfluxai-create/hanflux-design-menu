@@ -1,0 +1,4 @@
+tools/
+_qa/
+*.md
+!README.md

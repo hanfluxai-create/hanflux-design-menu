@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>CRUNCH CO. · Snacks that slap</title>
+<meta name="description" content="Roasted makhana and protein chips from CRUNCH CO. Baked not fried, no palm oil, and labels that tell you everything. ₹149 a pack, box of 6 for ₹799.">
+<meta name="theme-color" content="#ffc900">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='%23ffc900' stroke='%23000' stroke-width='5'/%3E%3Cpath d='M41 22a13 13 0 1 0 0 20' fill='none' stroke='%23000' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/Draggable.min.js" defer></script>
+<script src="/vendor/gsap/InertiaPlugin.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="announce" aria-label="Offers">
+  <div class="announce__t"><span>Free delivery above ₹499</span><i>✸</i><span>Salted Caramel is back</span><i>✸</i><span>Baked, never fried</span><i>✸</i><span>No palm oil, ever</span><i>✸</i><span>Box of 6 for ₹799</span><i>✸</i></div>
+</div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="CRUNCH CO., back to top"><span class="logo__mark" aria-hidden="true">C</span>CRUNCH CO.</a>
+  <nav class="nav__links" aria-label="Main">
+    <a href="#flavours">Flavours</a><a href="#nutrition">Nutrition</a><a href="#box">Build a box</a><a href="#reviews">Reviews</a><a href="#faq">FAQ</a>
+  </nav>
+  <a class="cart" href="#box" id="cartBtn" aria-label="Cart, 0 items"><span class="cart__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 4h3l2.4 10.2a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.5L21 8H7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="10" cy="20" r="1.7"/><circle cx="18" cy="20" r="1.7"/></svg></span><span class="cart__label">Cart</span><b class="cart__count" id="cartCount">0</b></a>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__links" aria-label="Mobile">
+    <a href="#flavours" style="--c:var(--orange)">Flavours</a>
+    <a href="#nutrition" style="--c:var(--green)">Nutrition</a>
+    <a href="#box" style="--c:var(--yellow)">Build a box</a>
+    <a href="#reviews" style="--c:var(--pink)">Reviews</a>
+    <a href="#faq" style="--c:#fff">FAQ</a>
+  </nav>
+  <a class="btn btn--green menu__wa" href="#footer">Chat on WhatsApp</a>
+</div>
+
+<main id="main">
+  <section class="hero" id="top" data-tour="3200">
+    <div class="hero__copy">
+      <p class="pill"><span class="pill__dot"></span>Roasted makhana + protein chips</p>
+      <h1 class="hero__title"><span class="ht ht--1">Snacks</span> <span class="ht ht--2">that <mark>slap.</mark></span> <span class="ht ht--3"><span>Labels that don't lie.</span></span></h1>
+      <p class="hero__sub">Roasted makhana and protein chips, baked not fried, no palm oil. Every gram on the label, in a font you can actually read.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--ink" href="#flavours">Shop flavours <b aria-hidden="true">→</b></a>
+        <a class="btn btn--pink" href="#box">Build a box</a>
+      </div>
+      <ul class="trust">
+        <li><b>4.8</b><span class="stars" aria-hidden="true">★★★★★</span><span>2,140 reviews</span></li>
+        <li><b>48 h</b><span>dispatch</span></li>
+        <li><b>₹499</b><span>free delivery</span></li>
+      </ul>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="stage__panel" id="stagePanel">
+        <div class="stage__burst" aria-hidden="true"></div>
+        <canvas class="stage__gl" id="gl" role="img" aria-label="A CRUNCH CO. snack pouch spinning slowly, showing the flavour label on the front and the nutrition table on the back"></canvas>
+        <p class="stage__now" aria-live="polite"><span>Now spinning</span><b id="nowName">Peri Peri</b></p>
+        <p class="stage__hint">Drag to spin</p>
+      </div>
+      <div class="sticker sticker--new" data-sticker aria-hidden="true"><span>NEW!</span></div>
+      <div class="sticker sticker--protein" data-sticker aria-hidden="true"><b>12 g</b><span>protein</span></div>
+      <div class="sticker sticker--baked" data-sticker aria-hidden="true"><span>Baked</span><span>not fried</span></div>
+      <div class="flav-switch" role="group" aria-label="Choose a flavour to spin">
+        <button class="fs is-on" data-f="0" style="--c:var(--orange)" aria-pressed="true">Peri Peri</button>
+        <button class="fs" data-f="1" style="--c:var(--green)" aria-pressed="false">Pudina Punch</button>
+        <button class="fs" data-f="2" style="--c:var(--yellow)" aria-pressed="false">Cheese and Herb</button>
+        <button class="fs" data-f="3" style="--c:var(--pink)" aria-pressed="false">Salted Caramel</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="bands" aria-hidden="true">
+    <div class="band band--pink"><div class="band__t"><span>Baked not fried</span><i>✸</i><span>No palm oil</span><i>✸</i><span>12 g protein</span><i>✸</i><span>Zero maida</span><i>✸</i><span>Real spices</span><i>✸</i><span>Baked not fried</span><i>✸</i><span>No palm oil</span><i>✸</i><span>12 g protein</span><i>✸</i></div></div>
+    <div class="band band--ink"><div class="band__t"><span>Roasted makhana</span><i class="o">✸</i><span>Protein chips</span><i class="g">✸</i><span>₹149 a pack</span><i class="p">✸</i><span>Box of 6 for ₹799</span><i class="y">✸</i><span>Roasted makhana</span><i class="o">✸</i><span>Protein chips</span><i class="g">✸</i></div></div>
+  </div>
+
+  <section class="flavours" id="flavours" data-tour="2800" data-tour-offset="-0.06">
+    <div class="sec-head">
+      <h2>Pick your <span class="hl hl--y">crunch.</span></h2>
+      <p>Four flavours, two bases, one price. Every pack is ₹149 and every one of them is gone faster than you planned.</p>
+      <span class="tag-sticker" aria-hidden="true">All ₹149</span>
+    </div>
+    <div class="cards" id="cards">
+      <article class="card" data-f="0" style="--c:var(--orange);--l:#ffd9bd">
+        <div class="card__top"><span class="card__type">Protein chips</span><span class="card__heat" aria-label="Heat level 3 of 3"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+        <div class="card__shot"><canvas class="shot" data-f="0" width="360" height="430" role="img" aria-label="Peri Peri protein chips pouch"></canvas></div>
+        <h3>Peri Peri</h3>
+        <p class="card__tag">Smoky, tangy, properly hot.</p>
+        <p class="card__facts"><b>12 g</b> protein · 60 g pack</p>
+        <div class="card__buy"><span class="price">₹149</span><button class="btn btn--ink btn--add" data-add="0">Add <b aria-hidden="true">+</b></button></div>
+      </article>
+      <article class="card" data-f="1" style="--c:var(--green);--l:#c5ebe5">
+        <div class="card__top"><span class="card__type">Roasted makhana</span><span class="card__heat" aria-label="Heat level 1 of 3"><i class="on"></i><i></i><i></i></span></div>
+        <div class="card__shot"><canvas class="shot" data-f="1" width="360" height="430" role="img" aria-label="Pudina Punch roasted makhana pouch"></canvas></div>
+        <h3>Pudina Punch</h3>
+        <p class="card__tag">Mint, lime and a kick of black salt.</p>
+        <p class="card__facts"><b>7 g</b> protein · 70 g pack</p>
+        <div class="card__buy"><span class="price">₹149</span><button class="btn btn--ink btn--add" data-add="1">Add <b aria-hidden="true">+</b></button></div>
+      </article>
+      <article class="card" data-f="2" style="--c:var(--yellow);--l:#ffecae">
+        <div class="card__top"><span class="card__type">Protein chips</span><span class="card__heat" aria-label="Heat level 0 of 3"><i></i><i></i><i></i></span></div>
+        <div class="card__shot"><canvas class="shot" data-f="2" width="360" height="430" role="img" aria-label="Cheese and Herb protein chips pouch"></canvas></div>
+        <h3>Cheese and Herb</h3>
+        <p class="card__tag">Sharp cheddar, oregano, zero regret.</p>
+        <p class="card__facts"><b>12 g</b> protein · 60 g pack</p>
+        <div class="card__buy"><span class="price">₹149</span><button class="btn btn--ink btn--add" data-add="2">Add <b aria-hidden="true">+</b></button></div>
+      </article>
+      <article class="card" data-f="3" style="--c:var(--pink);--l:#ffd9f6">
+        <div class="card__top"><span class="card__type">Roasted makhana</span><span class="card__new">Back!</span></div>
+        <div class="card__shot"><canvas class="shot" data-f="3" width="360" height="430" role="img" aria-label="Salted Caramel roasted makhana pouch"></canvas></div>
+        <h3>Salted Caramel</h3>
+        <p class="card__tag">Sweet, salty, dangerously moreish.</p>
+        <p class="card__facts"><b>6 g</b> protein · 70 g pack</p>
+        <div class="card__buy"><span class="price">₹149</span><button class="btn btn--ink btn--add" data-add="3">Add <b aria-hidden="true">+</b></button></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="nutrition" id="nutrition" data-tour="2800">
+    <div class="sec-head sec-head--inv">
+      <h2>Labels that <span class="hl hl--p">don't lie.</span></h2>
+      <p>The whole table, front and centre. Pick a flavour and read every number. We already did.</p>
+    </div>
+    <div class="nutri">
+      <div class="nlabel" id="nlabel">
+        <div class="ntabs" role="tablist" aria-label="Flavour">
+          <button role="tab" class="ntab is-on" data-n="0" aria-selected="true" style="--c:var(--orange)">Peri Peri</button>
+          <button role="tab" class="ntab" data-n="1" aria-selected="false" style="--c:var(--green)">Pudina</button>
+          <button role="tab" class="ntab" data-n="2" aria-selected="false" style="--c:var(--yellow)">Cheese</button>
+          <button role="tab" class="ntab" data-n="3" aria-selected="false" style="--c:var(--pink)">Caramel</button>
+        </div>
+        <div class="nlabel__body" role="tabpanel">
+          <p class="nlabel__title">Nutrition information</p>
+          <p class="nlabel__serve" id="nServe">Serving: 1 pack (60 g)</p>
+          <table class="ntable">
+            <thead><tr><th scope="col">Nutrient</th><th scope="col">Per 100 g</th><th scope="col" id="nPackHead">Per pack</th></tr></thead>
+            <tbody id="nBody">
+              <tr class="big"><th scope="row">Energy</th><td>452 kcal</td><td>271 kcal</td></tr>
+              <tr class="hot"><th scope="row">Protein</th><td>20.0 g</td><td>12.0 g</td></tr>
+              <tr><th scope="row">Carbohydrate</th><td>56.2 g</td><td>33.7 g</td></tr>
+              <tr class="sub"><th scope="row">of which sugars</th><td>2.1 g</td><td>1.3 g</td></tr>
+              <tr><th scope="row">Total fat</th><td>15.8 g</td><td>9.5 g</td></tr>
+              <tr class="sub"><th scope="row">Saturated fat</th><td>2.4 g</td><td>1.4 g</td></tr>
+              <tr class="sub"><th scope="row">Trans fat</th><td>0 g</td><td>0 g</td></tr>
+              <tr><th scope="row">Dietary fibre</th><td>6.4 g</td><td>3.8 g</td></tr>
+              <tr><th scope="row">Sodium</th><td>612 mg</td><td>367 mg</td></tr>
+            </tbody>
+          </table>
+          <p class="nlabel__ing"><b>Ingredients:</b> <span id="nIng">Pea protein crisps (68%), rice flour, rice bran oil, peri peri seasoning (red chilli, paprika, garlic, onion, lemon powder, rock salt), oregano.</span></p>
+        </div>
+      </div>
+      <div class="nside">
+        <div class="never">
+          <h3>Never inside</h3>
+          <ul class="never__list">
+            <li><span>Palm oil</span></li>
+            <li><span>Maida</span></li>
+            <li><span>Added MSG</span></li>
+            <li><span>Artificial colours</span></li>
+            <li><span>Preservatives</span></li>
+          </ul>
+        </div>
+        <div class="vs">
+          <h3>Protein per pack</h3>
+          <div class="bar" style="--w:100%;--c:var(--yellow)"><span>Our protein chips</span><b>12 g</b></div>
+          <div class="bar" style="--w:58%;--c:var(--green)"><span>Our roasted makhana</span><b>7 g</b></div>
+          <div class="bar" style="--w:33%;--c:#4a4a46"><span>Typical fried potato chips</span><b>4 g</b></div>
+        </div>
+        <span class="read-sticker" aria-hidden="true">Read every word. We did.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="boxsec" id="box" data-tour="3600">
+    <div class="sec-head">
+      <h2>Build a box <span class="hl hl--g">of 6.</span></h2>
+      <p>Mix any flavours. Six packs for ₹799 instead of ₹894, delivered free.</p>
+    </div>
+    <div class="builder">
+      <div class="picker" id="picker">
+        <!-- rows are rendered from data -->
+      </div>
+      <div class="crate">
+        <div class="crate__box" id="crate" aria-label="Your box" role="img">
+          <div class="crate__lid" aria-hidden="true"><span>CRUNCH CO.</span><span>Box of 6</span></div>
+          <div class="crate__slots" id="slots"></div>
+        </div>
+        <div class="crate__meta">
+          <div class="progress" aria-hidden="true"><i id="progBar"></i></div>
+          <p class="crate__count" id="boxCount" aria-live="polite">2 of 6 picked</p>
+          <p class="crate__price"><s id="boxWas"></s><b id="boxPrice">₹298</b><span id="boxSave"></span></p>
+          <div class="crate__btns">
+            <button class="btn btn--yellow" id="boxAdd" disabled>Pick 4 more</button>
+            <button class="btn btn--line" id="boxSurprise">Surprise me</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reviews" id="reviews" data-tour="2800">
+    <div class="sec-head">
+      <h2>People are <span class="hl hl--o">crunching.</span></h2>
+      <div class="rating-sticker" aria-label="Rated 4.8 out of 5 from 2,140 reviews"><b>4.8</b><span>★★★★★</span><small>2,140 reviews</small></div>
+    </div>
+    <div class="wall" id="wall">
+      <figure class="rv rv--1" data-drag><span class="stars">★★★★★</span><blockquote>Finished a pack of Peri Peri before the lift reached the ninth floor. No regrets.</blockquote><figcaption>Aditi, Pune</figcaption></figure>
+      <figure class="rv rv--2" data-drag><span class="stars">★★★★★</span><blockquote>Finally, a snack label I can read without a law degree.</blockquote><figcaption>Kabir, Mumbai</figcaption></figure>
+      <figure class="rv rv--3" data-drag><span class="stars">★★★★★</span><blockquote>My gym buddy thinks I have gone soft. I have gone Cheese and Herb.</blockquote><figcaption>Rohan, Bengaluru</figcaption></figure>
+      <figure class="rv rv--4" data-drag><span class="stars">★★★★★</span><blockquote>Pudina Punch with 5 pm chai is now a recurring meeting.</blockquote><figcaption>Meher, Delhi</figcaption></figure>
+      <figure class="rv rv--5" data-drag><span class="stars">★★★★☆</span><blockquote>Ordered a box of 6 for the office. Received a box of 6. Kept a box of 6.</blockquote><figcaption>Sana, Hyderabad</figcaption></figure>
+      <figure class="rv rv--6" data-drag><span class="stars">★★★★★</span><blockquote>Salted Caramel should come with a warning sticker. This is that sticker.</blockquote><figcaption>Dev, Chennai</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="faq" id="faq" data-tour="2400">
+    <div class="sec-head">
+      <h2>Questions, <span class="hl hl--p">answered.</span></h2>
+      <p>Still curious? Message us on WhatsApp. A real person replies, usually with a snack in hand.</p>
+    </div>
+    <div class="acc" id="acc">
+      <details open><summary>Are they really not fried?</summary><p>Really. Our protein chips are baked in small batches and our makhana is slow-roasted in drum roasters. Seasoning goes on with a light mist of rice bran oil. Nothing ever touches a fryer.</p></details>
+      <details><summary>Why no palm oil?</summary><p>Because it is cheap, not good. We use rice bran oil and print exactly how much is in every pack, down to the gram.</p></details>
+      <details><summary>How much protein is in a pack?</summary><p>Protein chips carry 12 g in a 60 g pack. Roasted makhana carries 6 to 7 g in a 70 g pack, which beats most of what your hand finds at 5 pm.</p></details>
+      <details><summary>Do you deliver across India?</summary><p>Yes, to more than 19,000 pin codes. Delivery is free above ₹499 and most orders arrive in 2 to 5 days.</p></details>
+      <details><summary>Are they gluten free?</summary><p>The makhana range is naturally gluten free. Protein chips are made in a kitchen that also handles wheat, so we do not label them gluten free.</p></details>
+      <details><summary>Can I swap flavours after I order a box?</summary><p>Yes, until it is packed. Message us on WhatsApp with your order number and we will swap it, no forms.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" id="footer">
+  <div class="foot__club">
+    <div>
+      <h2>Join the Crunch Club</h2>
+      <p>10% off your first box, first dibs on new flavours, zero spam.</p>
+    </div>
+    <form class="club" id="club" novalidate>
+      <label class="sr" for="clubEmail">Email address</label>
+      <input id="clubEmail" type="email" placeholder="you@email.com" required autocomplete="email">
+      <button class="btn btn--ink" type="submit">Get 10% off</button>
+      <p class="club__msg" id="clubMsg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+  <div class="foot__grid">
+    <div class="foot__brand">
+      <p class="foot__word" aria-hidden="true"><span>CRUNCH</span><span>CO.</span></p>
+      <p>Roasted makhana and protein chips, made in Pune with real spices and honest labels.</p>
+    </div>
+    <div class="foot__col"><h4>Shop</h4><a href="#flavours">Flavours</a><a href="#box">Build a box</a><a href="#flavours">Gift boxes</a></div>
+    <div class="foot__col"><h4>Help</h4><a href="#faq">Delivery</a><a href="#faq">Returns</a><a href="#faq">FAQ</a></div>
+    <div class="foot__col"><h4>Talk to us</h4><a href="mailto:hello@crunchco.in">hello@crunchco.in</a><a class="btn btn--green btn--sm" href="#footer" aria-label="Chat with CRUNCH CO. on WhatsApp">WhatsApp us</a><span>UPI, all major cards and net banking</span></div>
+  </div>
+  <div class="foot__base">
+    <span>© 2026 Crunch Co. Foods Pvt. Ltd.</span>
+    <span>Sample site designed by Hanflux AI. Brand, people and content are fictional.</span>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

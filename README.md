@@ -1,22 +1,9 @@
 # Hanflux Design Menu
 
-A client facing menu of 25 live interface styles for AI agents and apps. Every style runs the same
-Director Mode choreography: the assistant's face holds the stage, opens the screen you mention and
-points at the exact item it is talking about.
+Live at https://hanflux-design-menu.vercel.app
 
-Static site, no build step and no dependencies.
-
-```
-index.html              page
-assets/site.css         page shell (dark, luxury, minimal)
-assets/stage.css        the 25 looks (.hx .L-<look>)
-assets/stage.js         stage engine: builds a stage and runs the 8 beat loop
-assets/styles-data.js   the menu: names, descriptions, tags, filters
-assets/app.js           hero, grid, full screen viewer, filters, shortlist link
-```
-
-Run it locally with any static server, for example `npx serve .`, then open the printed address.
-
-Shortlist links look like `/?pick=07,12`. Opening one shows the client's picks at the top of the page.
-
-Samples use a demo brand, Aurora. Change `BRAND` in `assets/stage.js` to restyle every sample.
+- `/` home, `/websites/` live website menu, `/websites/<slug>/` one design with pricing, `/agents/` AI agent interfaces.
+- `/w/<slug>/` the live demo sites shown inside the device frames (each loads `/shared/hx-embed.js` for the auto-tour).
+- `data/config.js` contacts, tiers, add-ons and prices. `data/sites.js` the website styles and their order.
+- `node tools/build.mjs` renders the pages from `tools/pages` and `tools/partials` after any data or template change.
+- `python3 tools/posters.py [slug]` refreshes the still posters; `python3 tools/qa.py <slug>` checks a demo on desktop and phone.

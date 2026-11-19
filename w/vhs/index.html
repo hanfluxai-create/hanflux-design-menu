@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Static Bloom Records · Summer 2027</title>
+<meta name="description" content="Static Bloom Records: an indie label and a three-day summer festival. August 13 to 15, two stages, forty artists.">
+<meta name="theme-color" content="#070710">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23070710'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23fff200'/%3E%3Crect x='6' y='17' width='20' height='2' fill='%23070710'/%3E%3Crect x='6' y='21' width='20' height='3' fill='%23070710'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<canvas class="tv" aria-hidden="true"></canvas>
+<canvas class="snow" aria-hidden="true"></canvas>
+
+<header class="nav" id="top">
+  <div class="nav__in">
+    <a class="logo" href="#top" aria-label="Static Bloom Records, back to top">
+      <svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true"><defs><clipPath id="sun"><circle cx="20" cy="20" r="15"/></clipPath></defs><g clip-path="url(#sun)"><rect x="0" y="0" width="40" height="40" fill="#fff200"/><rect x="0" y="22" width="40" height="18" fill="#ff3df0"/><rect x="0" y="21" width="40" height="2" fill="#070710"/><rect x="0" y="26" width="40" height="3" fill="#070710"/><rect x="0" y="32" width="40" height="4" fill="#070710"/></g></svg>
+      <span class="logo__t">Static Bloom<small>Records</small></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#lineup">Lineup</a><a href="#releases">Releases</a><a href="#tour">Tour</a><a href="#roster">Roster</a><a href="#shop">Shop</a>
+    </nav>
+    <div class="nav__r">
+      <a class="nav__bag" href="#shop" aria-label="Bag, 0 items"><span class="nav__bag-i" aria-hidden="true"></span><span class="nav__bag-t">Bag</span> <b id="bagn">0</b></a>
+      <a class="btn btn--sm" href="#tickets">Get tickets</a>
+      <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu"><span class="nav__menu-t">Menu</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <a href="#lineup"><span>CH 04</span>Lineup</a>
+    <a href="#releases"><span>CH 05</span>Releases</a>
+    <a href="#tour"><span>CH 06</span>Tour</a>
+    <a href="#roster"><span>CH 07</span>Roster</a>
+    <a href="#shop"><span>CH 08</span>Shop</a>
+    <a href="#club"><span>CH 09</span>Tape Club</a>
+  </nav>
+  <a class="btn btn--block" href="#tickets">Get tickets</a>
+</div>
+
+<div class="osd" aria-hidden="true">
+  <div class="osd__ch" id="chdisp"><b>CH 03</b><span>STATIC BLOOM TV</span></div>
+  <div class="osd__bl"><span class="osd__mode" id="mode">PLAY ▶</span><span class="osd__sp">SP <b id="tc">00:03:17</b></span></div>
+  <div class="osd__br"><span>AUG 13 2027</span><span class="osd__clock">PM 9:41</span></div>
+  <div class="osd__ff" id="ff">FF ▶▶</div>
+</div>
+
+<main id="main">
+
+<section class="hero" id="hero" data-ch="03" data-chname="STATIC BLOOM TV" data-tour="3400" aria-labelledby="hero-t">
+  <div class="hero__in wrap">
+    <p class="hero__kick vt"><span class="rec" aria-hidden="true"></span>Larkspur Meadows, California</p>
+    <h1 class="hero__t glitchy" id="hero-t"><span class="hero__a">Static Bloom</span> <span class="hero__b">Summer 2027.</span></h1>
+    <p class="hero__sub">Three days, two stages, forty artists. August 13 to 15.</p>
+    <div class="hero__foot">
+      <div class="hero__ctas">
+        <a class="btn" href="#tickets"><span class="btn__ic" aria-hidden="true">▶</span>Get tickets</a>
+        <a class="btn btn--ghost" href="#releases"><svg class="btn__ej" viewBox="0 0 16 14" aria-hidden="true"><path d="M8 0l8 8H0z" fill="currentColor"/><rect y="10" width="16" height="4" fill="currentColor"/></svg>New releases</a>
+      </div>
+      <ul class="hero__facts vt" aria-label="Festival facts">
+        <li><b>3-day pass</b> from $189</li>
+        <li><b>Camping</b> on site</li>
+        <li class="hide-s"><b>All ages</b> until 10 PM</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec lineup" id="lineup" data-ch="04" data-chname="THE LINEUP" data-tour="3200" aria-labelledby="lineup-t">
+  <div class="wrap">
+    <header class="sec__head sec__head--c">
+      <p class="tag vt">CH 04 · the lineup</p>
+      <h2 class="h2 glitchy" id="lineup-t">Forty artists. Two stages. Zero skips.</h2>
+    </header>
+    <div class="days">
+      <article class="day" data-reveal>
+        <p class="day__lab vt"><span>FRI 13.08</span> Bloom Stage + Static Tent</p>
+        <p class="day__head" style="--len:8;--word:4">Luna Fax</p>
+        <p class="day__row"><span>The Cassette Saints</span> <i>/</i> <span>Pale Harbor Radio</span> <i>/</i> <span>Moth Choir</span></p>
+        <p class="day__row day__row--sm"><span>DJ Rewind Kid</span> <i>/</i> <span>Soft Tracking</span> <i>/</i> <span>Glass Antenna</span> <i>/</i> <span>Juniper Hiss</span></p>
+      </article>
+      <article class="day day--b" data-reveal>
+        <p class="day__lab vt"><span>SAT 14.08</span> Bloom Stage + Static Tent</p>
+        <p class="day__head" style="--len:17;--word:10">Cobalt Dreamhouse</p>
+        <p class="day__row"><span>Tape Ghosts</span> <i>/</i> <span>Saturn Mall</span> <i>/</i> <span>Night Swim Club</span></p>
+        <p class="day__row day__row--sm"><span>Analog Kisses</span> <i>/</i> <span>Hollow Channel</span> <i>/</i> <span>Rosa Static</span> <i>/</i> <span>Ms. Vapor Trail</span></p>
+      </article>
+      <article class="day day--c" data-reveal>
+        <p class="day__lab vt"><span>SUN 15.08</span> Bloom Stage + Static Tent</p>
+        <p class="day__head" style="--len:18;--word:8">The Magnetic Years</p>
+        <p class="day__row"><span>Kid Halation</span> <i>/</i> <span>Echo Motel</span> <i>/</i> <span>Velour Machines</span></p>
+        <p class="day__row day__row--sm"><span>Lilac Overdrive</span> <i>/</i> <span>Pastel Riot</span> <i>/</i> <span>Dial Tone Darling</span> <i>/</i> <span>Sunday Rewind</span></p>
+      </article>
+    </div>
+    <p class="lineup__more vt">+ 16 more acts on the Static Tent · full set times drop July 20</p>
+  </div>
+</section>
+
+<section class="sec releases" id="releases" data-ch="05" data-chname="NEW RELEASES" data-tour="2600" aria-labelledby="rel-t">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="tag vt">CH 05 · new releases</p>
+      <div class="sec__row">
+        <h2 class="h2 glitchy" id="rel-t">Fresh off the tape deck.</h2>
+        <p class="sec__sub">Six records from the label this season. Every cover was made in our studio, every pressing is numbered.</p>
+      </div>
+    </header>
+    <div class="rel" role="list">
+      <article class="card" role="listitem" data-reveal>
+        <div class="card__art"><canvas class="cover" data-cover="0" data-title="Night Receiver" data-artist="Luna Fax" role="img" aria-label="Cover art for Night Receiver by Luna Fax: a striped sun over a neon grid"></canvas><span class="card__disc" aria-hidden="true"></span></div>
+        <div class="card__meta"><p class="card__cat vt">SB-041 · LP · out now</p><h3>Night Receiver</h3><p class="card__by">Luna Fax</p></div>
+        <div class="card__foot"><span class="card__price">Vinyl $32 · Cassette $14</span><button class="play" type="button" aria-pressed="false" aria-label="Play a preview of Night Receiver"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="play__t">Preview</span></button></div>
+      </article>
+      <article class="card" role="listitem" data-reveal>
+        <div class="card__art"><canvas class="cover" data-cover="1" data-title="Soft Focus" data-artist="Moth Choir" role="img" aria-label="Cover art for Soft Focus by Moth Choir: halftone moons fading into blue"></canvas><span class="card__disc" aria-hidden="true"></span></div>
+        <div class="card__meta"><p class="card__cat vt">SB-042 · EP · out now</p><h3>Soft Focus</h3><p class="card__by">Moth Choir</p></div>
+        <div class="card__foot"><span class="card__price">Vinyl $24 · Cassette $12</span><button class="play" type="button" aria-pressed="false" aria-label="Play a preview of Soft Focus"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="play__t">Preview</span></button></div>
+      </article>
+      <article class="card" role="listitem" data-reveal>
+        <div class="card__art"><canvas class="cover" data-cover="2" data-title="Rewind Forever" data-artist="Cobalt Dreamhouse" role="img" aria-label="Cover art for Rewind Forever by Cobalt Dreamhouse: concentric tape reels in electric blue"></canvas><span class="card__disc" aria-hidden="true"></span></div>
+        <div class="card__meta"><p class="card__cat vt">SB-043 · LP · out now</p><h3>Rewind Forever</h3><p class="card__by">Cobalt Dreamhouse</p></div>
+        <div class="card__foot"><span class="card__price">Vinyl $32 · Cassette $14</span><button class="play" type="button" aria-pressed="false" aria-label="Play a preview of Rewind Forever"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="play__t">Preview</span></button></div>
+      </article>
+      <article class="card" role="listitem" data-reveal>
+        <div class="card__art"><canvas class="cover" data-cover="3" data-title="Tracking Error" data-artist="Tape Ghosts" role="img" aria-label="Cover art for Tracking Error by Tape Ghosts: torn horizontal glitch bars"></canvas><span class="card__disc" aria-hidden="true"></span></div>
+        <div class="card__meta"><p class="card__cat vt">SB-044 · single · June 5</p><h3>Tracking Error</h3><p class="card__by">Tape Ghosts</p></div>
+        <div class="card__foot"><span class="card__price">7 inch $12 · Digital $3</span><button class="play" type="button" aria-pressed="false" aria-label="Play a preview of Tracking Error"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="play__t">Preview</span></button></div>
+      </article>
+      <article class="card" role="listitem" data-reveal>
+        <div class="card__art"><canvas class="cover" data-cover="4" data-title="Overexposed" data-artist="Kid Halation" role="img" aria-label="Cover art for Overexposed by Kid Halation: blown-out pink and yellow light leaks"></canvas><span class="card__disc" aria-hidden="true"></span></div>
+        <div class="card__meta"><p class="card__cat vt">SB-045 · LP · July 24</p><h3>Overexposed</h3><p class="card__by">Kid Halation</p></div>
+        <div class="card__foot"><span class="card__price">Pre-order $32</span><button class="play" type="button" aria-pressed="false" aria-label="Play a preview of Overexposed"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="play__t">Preview</span></button></div>
+      </article>
+      <article class="card" role="listitem" data-reveal>
+        <div class="card__art"><canvas class="cover" data-cover="5" data-title="Vacancy" data-artist="Echo Motel" role="img" aria-label="Cover art for Vacancy by Echo Motel: a night motel facade with a single lit window"></canvas><span class="card__disc" aria-hidden="true"></span></div>
+        <div class="card__meta"><p class="card__cat vt">SB-046 · LP · out now</p><h3>Vacancy</h3><p class="card__by">Echo Motel</p></div>
+        <div class="card__foot"><span class="card__price">Vinyl $30 · Cassette $14</span><button class="play" type="button" aria-pressed="false" aria-label="Play a preview of Vacancy"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="play__t">Preview</span></button></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec tour" id="tour" data-ch="06" data-chname="ON TOUR" data-tour="2600" aria-labelledby="tour-t">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="tag vt">CH 06 · timer rec</p>
+      <div class="sec__row">
+        <h2 class="h2 glitchy" id="tour-t">The Static Bloom Revue, on the road.</h2>
+        <p class="sec__sub">Luna Fax, Moth Choir and Tape Ghosts warm up the summer, one city at a time, all the way to the meadow.</p>
+      </div>
+    </header>
+    <div class="timer">
+      <div class="timer__head vt" aria-hidden="true"><span>PROG</span><span>DATE</span><span>CITY</span><span>VENUE</span><span>STATUS</span><span></span></div>
+      <ol class="timer__list">
+        <li class="show" data-reveal><span class="show__p vt">P01</span><span class="show__d vt">FRI JUN 11</span><span class="show__c">Portland, OR</span><span class="show__v">The Lantern Room</span><span class="show__s vt is-on">on sale</span><a class="tk" href="#tickets">Tickets</a></li>
+        <li class="show" data-reveal><span class="show__p vt">P02</span><span class="show__d vt">SAT JUN 12</span><span class="show__c">Seattle, WA</span><span class="show__v">Hollow Hall</span><span class="show__s vt is-few">few left</span><a class="tk" href="#tickets">Tickets</a></li>
+        <li class="show is-out" data-reveal><span class="show__p vt">P03</span><span class="show__d vt">TUE JUN 15</span><span class="show__c">Oakland, CA</span><span class="show__v">Night Owl Theatre</span><span class="show__s vt">sold out</span><a class="tk tk--ghost" href="#club">Waitlist</a></li>
+        <li class="show" data-reveal><span class="show__p vt">P04</span><span class="show__d vt">THU JUN 17</span><span class="show__c">Los Angeles, CA</span><span class="show__v">Sunset Ballroom</span><span class="show__s vt is-on">on sale</span><a class="tk" href="#tickets">Tickets</a></li>
+        <li class="show" data-reveal><span class="show__p vt">P05</span><span class="show__d vt">SUN JUN 20</span><span class="show__c">Denver, CO</span><span class="show__v">Copper Cave</span><span class="show__s vt is-on">on sale</span><a class="tk" href="#tickets">Tickets</a></li>
+        <li class="show" data-reveal><span class="show__p vt">P06</span><span class="show__d vt">THU JUN 24</span><span class="show__c">Chicago, IL</span><span class="show__v">Velvet Annex</span><span class="show__s vt is-few">few left</span><a class="tk" href="#tickets">Tickets</a></li>
+        <li class="show is-out" data-reveal><span class="show__p vt">P07</span><span class="show__d vt">WED JUN 30</span><span class="show__c">Brooklyn, NY</span><span class="show__v">The Mercury Loft</span><span class="show__s vt">sold out</span><a class="tk tk--ghost" href="#club">Waitlist</a></li>
+        <li class="show show--fest" id="tickets" data-reveal><span class="show__p vt">P08</span><span class="show__d vt">AUG 13 TO 15</span><span class="show__c">Larkspur Meadows, CA</span><span class="show__v">Static Bloom Summer 2027</span><span class="show__s vt is-on">3-day $189</span><a class="tk tk--hot" href="#tickets" data-buy>Buy pass</a></li>
+      </ol>
+      <p class="timer__note vt">Day passes $79 · VIP with shaded deck and fast lane $349 · camping $45 per tent</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec roster" id="roster" data-ch="07" data-chname="AUX · ROSTER" data-tour="2800" aria-labelledby="roster-t">
+  <div class="wrap">
+    <div class="vcr">
+      <div class="vcr__top vt"><span>MENU · ARTIST ROSTER</span><span>12 ARTISTS · PAGE 1/1</span></div>
+      <h2 class="vcr__title vt" id="roster-t">Who's on the label</h2>
+      <div class="vcr__grid">
+        <ol class="vcr__list" id="roster-list">
+          <li><button type="button" class="is-sel" data-i="0"><span class="cur" aria-hidden="true">▶</span><span class="n">01</span><span class="a">LUNA FAX</span><span class="g">DREAM POP</span></button></li>
+          <li><button type="button" data-i="1"><span class="cur" aria-hidden="true">▶</span><span class="n">02</span><span class="a">MOTH CHOIR</span><span class="g">SLOWCORE</span></button></li>
+          <li><button type="button" data-i="2"><span class="cur" aria-hidden="true">▶</span><span class="n">03</span><span class="a">COBALT DREAMHOUSE</span><span class="g">SYNTHWAVE</span></button></li>
+          <li><button type="button" data-i="3"><span class="cur" aria-hidden="true">▶</span><span class="n">04</span><span class="a">TAPE GHOSTS</span><span class="g">LO-FI HOUSE</span></button></li>
+          <li><button type="button" data-i="4"><span class="cur" aria-hidden="true">▶</span><span class="n">05</span><span class="a">KID HALATION</span><span class="g">BEDROOM POP</span></button></li>
+          <li><button type="button" data-i="5"><span class="cur" aria-hidden="true">▶</span><span class="n">06</span><span class="a">ECHO MOTEL</span><span class="g">SHOEGAZE</span></button></li>
+          <li><button type="button" data-i="6"><span class="cur" aria-hidden="true">▶</span><span class="n">07</span><span class="a">PALE HARBOR RADIO</span><span class="g">INDIE FOLK</span></button></li>
+          <li><button type="button" data-i="7"><span class="cur" aria-hidden="true">▶</span><span class="n">08</span><span class="a">SOFT TRACKING</span><span class="g">AMBIENT</span></button></li>
+          <li><button type="button" data-i="8"><span class="cur" aria-hidden="true">▶</span><span class="n">09</span><span class="a">VELOUR MACHINES</span><span class="g">ITALO DISCO</span></button></li>
+          <li><button type="button" data-i="9"><span class="cur" aria-hidden="true">▶</span><span class="n">10</span><span class="a">JUNIPER HISS</span><span class="g">POST-PUNK</span></button></li>
+          <li><button type="button" data-i="10"><span class="cur" aria-hidden="true">▶</span><span class="n">11</span><span class="a">SATURN MALL</span><span class="g">CITY POP</span></button></li>
+          <li><button type="button" data-i="11"><span class="cur" aria-hidden="true">▶</span><span class="n">12</span><span class="a">LILAC OVERDRIVE</span><span class="g">NOISE POP</span></button></li>
+        </ol>
+        <div class="vcr__info" aria-live="polite">
+          <div class="vcr__card">
+            <img class="vcr__pic" width="320" height="240" alt="Generated channel card for Luna Fax">
+            <p class="vt vcr__now">NOW SHOWING</p>
+            <p class="vt vcr__name" id="r-name">LUNA FAX</p>
+            <dl class="vt vcr__dl">
+              <div><dt>FROM</dt><dd id="r-from">PORTLAND, OR</dd></div>
+              <div><dt>SOUND</dt><dd id="r-sound">DREAM POP, TAPE DELAY, LATE NIGHTS</dd></div>
+              <div><dt>LATEST</dt><dd id="r-latest">NIGHT RECEIVER (LP)</dd></div>
+              <div><dt>LIVE</dt><dd id="r-live">FRI 13.08 · BLOOM STAGE</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+      <div class="vcr__bot vt"><span>▲▼ SELECT</span><span>▶ PLAY</span><span>MENU EXIT</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec shop" id="shop" data-ch="08" data-chname="THE SHOP" data-tour="2600" aria-labelledby="shop-t">
+  <div class="wrap">
+    <header class="sec__head">
+      <p class="tag vt">CH 08 · the shop</p>
+      <div class="sec__row">
+        <h2 class="h2 glitchy" id="shop-t">Take the summer home.</h2>
+        <p class="sec__sub">Pressed, dubbed and printed in small runs. Orders over $50 ship free in the US, and every parcel gets a sticker sheet.</p>
+      </div>
+    </header>
+    <div class="goods">
+      <article class="good" data-reveal>
+        <div class="good__art good__art--vinyl" aria-hidden="true">
+          <svg viewBox="0 0 320 240">
+            <g class="vinyl__disc"><circle cx="196" cy="120" r="92" fill="#120a1f"/><circle cx="196" cy="120" r="92" fill="url(#grooves)"/><circle cx="196" cy="120" r="32" fill="#ff3df0"/><circle cx="196" cy="120" r="32" fill="none" stroke="#fff200" stroke-width="3"/><circle cx="196" cy="120" r="4" fill="#070710"/><path d="M150 70 A70 70 0 0 1 246 70" stroke="rgba(255,255,255,.22)" stroke-width="3" fill="none"/></g>
+            <rect x="34" y="28" width="184" height="184" fill="#2b2bff"/>
+            <circle cx="126" cy="112" r="52" fill="#fff200"/><rect x="74" y="120" width="104" height="5" fill="#2b2bff"/><rect x="74" y="132" width="104" height="7" fill="#2b2bff"/><rect x="74" y="146" width="104" height="10" fill="#2b2bff"/>
+            <path d="M34 168 L218 168 M34 182 L218 182 M34 198 L218 198 M126 168 L60 212 M126 168 L192 212 M126 168 L126 212" stroke="#ff3df0" stroke-width="2"/>
+            <text x="48" y="58" fill="#fff" font-family="Archivo Black, sans-serif" font-size="17">NIGHT RECEIVER</text>
+            <defs><radialGradient id="grooves"><stop offset=".35" stop-color="#1d1230"/><stop offset=".36" stop-color="#0b0614"/><stop offset=".6" stop-color="#1a1029"/><stop offset=".61" stop-color="#0b0614"/><stop offset=".85" stop-color="#1d1230"/><stop offset=".86" stop-color="#0b0614"/></radialGradient></defs>
+          </svg>
+        </div>
+        <div class="good__body">
+          <p class="vt good__k">Vinyl LP · 180 g</p>
+          <h3>Night Receiver, Luna Fax</h3>
+          <p>Translucent magenta pressing with a printed inner sleeve and a download code. Numbered run of 800.</p>
+          <div class="opts" role="radiogroup" aria-label="Vinyl colour"><button type="button" class="opt is-on" role="radio" aria-checked="true">Magenta</button><button type="button" class="opt" role="radio" aria-checked="false">Black</button></div>
+          <div class="good__buy"><b class="good__price">$32</b><button class="btn btn--sm add" type="button" data-name="Night Receiver LP">Add to bag</button></div>
+        </div>
+      </article>
+      <article class="good" data-reveal>
+        <div class="good__art good__art--tape" aria-hidden="true">
+          <svg viewBox="0 0 320 240">
+            <rect x="40" y="46" width="240" height="152" rx="12" fill="#1a1a2e" stroke="#00f0ff" stroke-width="2"/>
+            <rect x="58" y="62" width="204" height="74" rx="6" fill="#fff200"/>
+            <rect x="58" y="62" width="204" height="18" fill="#ff3df0"/>
+            <text x="68" y="76" fill="#070710" font-family="VT323, monospace" font-size="16">SIDE A · SUMMER MIXTAPE VOL. 3</text>
+            <rect x="96" y="94" width="128" height="32" rx="16" fill="#070710"/>
+            <g class="reel reel--l"><circle cx="114" cy="110" r="12" fill="#f4f4ff"/><path d="M114 100v20M104 110h20M107 103l14 14M121 103l-14 14" stroke="#070710" stroke-width="2.4"/></g>
+            <g class="reel reel--r"><circle cx="206" cy="110" r="12" fill="#f4f4ff"/><path d="M206 100v20M196 110h20M199 103l14 14M213 103l-14 14" stroke="#070710" stroke-width="2.4"/></g>
+            <path d="M84 198 L100 160 H220 L236 198" fill="#0f0f22" stroke="#00f0ff" stroke-width="2"/>
+            <circle cx="120" cy="182" r="5" fill="#070710"/><circle cx="200" cy="182" r="5" fill="#070710"/>
+          </svg>
+        </div>
+        <div class="good__body">
+          <p class="vt good__k">Cassette · chrome tape</p>
+          <h3>Summer Mixtape Vol. 3</h3>
+          <p>Twenty-four tracks from the festival lineup, dubbed in real time on our own decks. J-card art by Rosa Static.</p>
+          <div class="opts" role="radiogroup" aria-label="Shell colour"><button type="button" class="opt is-on" role="radio" aria-checked="true">Smoke</button><button type="button" class="opt" role="radio" aria-checked="false">Clear cyan</button></div>
+          <div class="good__buy"><b class="good__price">$14</b><button class="btn btn--sm add" type="button" data-name="Summer Mixtape cassette">Add to bag</button></div>
+        </div>
+      </article>
+      <article class="good" data-reveal>
+        <div class="good__art good__art--tee" aria-hidden="true">
+          <svg viewBox="0 0 320 240">
+            <path d="M112 30 L140 22 Q160 38 180 22 L208 30 L262 62 L242 104 L218 92 L218 222 L102 222 L102 92 L78 104 L58 62 Z" fill="#0d0d1c" stroke="#ff3df0" stroke-width="2"/>
+            <path d="M140 22 Q160 38 180 22" fill="none" stroke="#ff3df0" stroke-width="2"/>
+            <circle cx="160" cy="112" r="34" fill="#fff200"/><rect x="124" y="114" width="72" height="4" fill="#0d0d1c"/><rect x="124" y="123" width="72" height="6" fill="#0d0d1c"/><rect x="124" y="134" width="72" height="9" fill="#0d0d1c"/>
+            <path d="M120 150 H200 M124 160 H196 M160 146 L132 178 M160 146 L188 178" stroke="#00f0ff" stroke-width="2"/>
+            <text x="160" y="198" text-anchor="middle" fill="#f4f4ff" font-family="Archivo Black, sans-serif" font-size="13">STATIC BLOOM 26</text>
+          </svg>
+        </div>
+        <div class="good__body">
+          <p class="vt good__k">Tee · heavyweight cotton</p>
+          <h3>Summer 2027 sun tee</h3>
+          <p>Boxy fit, 240 gsm organic cotton, water-based print that softens with every wash. Lineup on the back.</p>
+          <div class="opts" role="radiogroup" aria-label="Size"><button type="button" class="opt" role="radio" aria-checked="false">S</button><button type="button" class="opt is-on" role="radio" aria-checked="true">M</button><button type="button" class="opt" role="radio" aria-checked="false">L</button><button type="button" class="opt" role="radio" aria-checked="false">XL</button></div>
+          <div class="good__buy"><b class="good__price">$28</b><button class="btn btn--sm add" type="button" data-name="Summer 2027 tee">Add to bag</button></div>
+        </div>
+      </article>
+    </div>
+    <p class="shop__toast vt" id="toast" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<section class="sec club" id="club" data-ch="09" data-chname="TAPE CLUB" data-tour="2400" aria-labelledby="club-t">
+  <div class="wrap club__in">
+    <div class="club__copy">
+      <p class="tag vt">CH 09 · tape club</p>
+      <h2 class="h2 glitchy" id="club-t">Press record on the Bloom Tape Club.</h2>
+      <p class="sec__sub">First dibs on festival passes, a monthly mixtape link, and 10% off the shop. One email a month, never more.</p>
+    </div>
+    <form class="rec-form" id="club-form" novalidate>
+      <div class="rec-form__label vt"><span>TAPE LABEL</span><span>T-120 · SP</span></div>
+      <label class="rec-form__field"><span class="vt">your email</span><input type="email" name="email" autocomplete="email" required placeholder="you@yourmail.com"></label>
+      <button class="btn btn--rec" type="submit"><span class="rec" aria-hidden="true"></span>Rec</button>
+      <p class="rec-form__msg vt" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <a class="logo" href="#top" aria-label="Static Bloom Records, back to top"><svg class="logo__mark" viewBox="0 0 40 40" aria-hidden="true"><g clip-path="url(#sun)"><rect x="0" y="0" width="40" height="40" fill="#fff200"/><rect x="0" y="22" width="40" height="18" fill="#ff3df0"/><rect x="0" y="21" width="40" height="2" fill="#070710"/><rect x="0" y="26" width="40" height="3" fill="#070710"/><rect x="0" y="32" width="40" height="4" fill="#070710"/></g></svg><span class="logo__t">Static Bloom<small>Records</small></span></a>
+        <p>An independent label and a summer festival, run from a warehouse studio in Oakland since 2014.</p>
+      </div>
+      <nav class="foot__col" aria-label="Festival"><p class="vt">Festival</p><a href="#lineup">Lineup</a><a href="#tickets">Tickets</a><a href="#tour">Tour dates</a><a href="#club">Tape Club</a></nav>
+      <nav class="foot__col" aria-label="Label"><p class="vt">Label</p><a href="#releases">Releases</a><a href="#roster">Roster</a><a href="#shop">Shop</a><a href="#club">Demo policy</a></nav>
+      <div class="foot__col"><p class="vt">Say hi</p><a href="mailto:hello@staticbloom.fm">hello@staticbloom.fm</a><a href="mailto:tickets@staticbloom.fm">tickets@staticbloom.fm</a><a href="mailto:press@staticbloom.fm">press@staticbloom.fm</a><span>Oakland, California</span></div>
+    </div>
+    <div class="foot__base">
+      <p class="vt">© 2026 Static Bloom Records · be kind, rewind</p>
+      <p class="foot__fict">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

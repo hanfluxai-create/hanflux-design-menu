@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Northbound · Curated small-group trips</title>
+<meta name="description" content="Northbound runs curated small-group trips for twelve travellers at most, led by local hosts. Kyoto, Lisbon, Reykjavik, Oaxaca, Patagonia, Marrakesh and more.">
+<meta name="theme-color" content="#121212">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23121212'/%3E%3Crect x='12' y='12' width='40' height='19' rx='3' fill='%231c1c1c'/%3E%3Crect x='12' y='33' width='40' height='19' rx='3' fill='%231c1c1c'/%3E%3Cpath d='M32 15l9 30-9-6-9 6z' fill='%23ffc400'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Northbound, back to top">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 5l6 19-6-4-6 4z" fill="#ffc400"/></svg>
+    <span>Northbound</span>
+  </a>
+  <nav class="nav__links" aria-label="Main">
+    <a href="#trips">Trips</a><a href="#how">How it works</a><a href="#builder">Trip builder</a><a href="#words">Travellers</a>
+  </nav>
+  <a class="btn btn--y btn--sm nav__cta" href="#builder">Plan my trip</a>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <p class="menu__label">Departures</p>
+  <nav class="menu__links" aria-label="Mobile">
+    <a href="#trips" data-flap="TRIPS"><span class="sr">Trips</span><span class="menu__flap" aria-hidden="true"></span><small>06 open</small></a>
+    <a href="#how" data-flap="HOW IT WORKS"><span class="sr">How it works</span><span class="menu__flap" aria-hidden="true"></span><small>4 steps</small></a>
+    <a href="#builder" data-flap="TRIP BUILDER"><span class="sr">Trip builder</span><span class="menu__flap" aria-hidden="true"></span><small>Find yours</small></a>
+    <a href="#words" data-flap="TRAVELLERS"><span class="sr">Travellers</span><span class="menu__flap" aria-hidden="true"></span><small>Postcards</small></a>
+    <a href="#letter" data-flap="THE LETTER"><span class="sr">The Departures Letter</span><span class="menu__flap" aria-hidden="true"></span><small>Monthly</small></a>
+  </nav>
+  <p class="menu__foot">hello@northbound.travel</p>
+</div>
+
+<main id="main">
+
+  <section class="hero" id="top" data-tour="6400">
+    <div class="hero__top">
+      <p class="eyebrow"><i class="dot"></i>Departures · Winter 2026 to Autumn 2027</p>
+      <p class="hero__clock"><span>Local time</span><span class="flaprow flaprow--clock" id="clockFlap" aria-hidden="true"></span></p>
+    </div>
+
+    <div class="board" id="board" role="img" aria-label="Departures board. Upcoming Northbound trips include Kyoto, Lisbon, Reykjavik, Oaxaca, Marrakesh and Patagonia.">
+      <i class="board__screw s1"></i><i class="board__screw s2"></i><i class="board__screw s3"></i><i class="board__screw s4"></i>
+      <div class="board__head" id="boardHead" aria-hidden="true"></div>
+      <div class="board__rows" id="boardRows" aria-hidden="true"></div>
+      <div class="board__foot" aria-hidden="true">
+        <span>Northbound · Departures</span>
+        <span class="board__live"><i></i>Seats update live</span>
+      </div>
+    </div>
+
+    <div class="hero__copy">
+      <h1>Small groups. <em>Big departures.</em></h1>
+      <div class="hero__side">
+        <p>Curated trips for twelve travellers at most, led by local hosts who actually live there. Kyoto in maple season, Lisbon in spring, Reykjavik when the lights come out.</p>
+        <div class="ctas">
+          <a class="btn btn--y" href="#trips">Find your departure <b aria-hidden="true">→</b></a>
+          <a class="btn btn--line" href="#how">How it works</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trips" id="trips" data-tour="2600">
+    <div class="sec-head">
+      <p class="eyebrow eyebrow--ink">Now boarding · 6 curated trips</p>
+      <h2>Trips we would take <em>tomorrow.</em></h2>
+      <p class="sec-head__lede">Every Northbound trip is scouted twice, priced honestly and capped at twelve seats. Pick a date, hold a seat, and we handle the rest.</p>
+    </div>
+    <div class="trips__grid" id="tripsGrid">
+      <!-- cards are listed here; posters are drawn in code -->
+      <article class="trip" data-trip="kyoto">
+        <div class="trip__poster" data-poster="kyoto" role="img" aria-label="Travel poster for Kyoto: a red sun behind a five-tier pagoda"></div>
+        <div class="trip__body">
+          <p class="trip__meta">Japan · 9 nights · Max 12</p>
+          <h3>Kyoto in maple season</h3>
+          <p class="trip__dates">Nov 13 to 22, 2027 · <span class="hot">4 seats left</span></p>
+          <div class="trip__price"><span class="flaprow flaprow--mini" data-flap="$2,480 / 9 NIGHTS" aria-hidden="true"></span><span class="sr">$2,480 for 9 nights</span></div>
+          <a class="trip__link" href="#builder">Reserve a seat <b aria-hidden="true">→</b></a>
+        </div>
+      </article>
+      <article class="trip" data-trip="lisbon">
+        <div class="trip__poster" data-poster="lisbon" role="img" aria-label="Travel poster for Lisbon: a yellow tram on a hill of terracotta houses above the sea"></div>
+        <div class="trip__body">
+          <p class="trip__meta">Portugal · 7 nights · Max 12</p>
+          <h3>Lisbon and the Alentejo coast</h3>
+          <p class="trip__dates">May 9 to 16, 2027 · 7 seats left</p>
+          <div class="trip__price"><span class="flaprow flaprow--mini" data-flap="$1,890 / 7 NIGHTS" aria-hidden="true"></span><span class="sr">$1,890 for 7 nights</span></div>
+          <a class="trip__link" href="#builder">Reserve a seat <b aria-hidden="true">→</b></a>
+        </div>
+      </article>
+      <article class="trip" data-trip="reykjavik">
+        <div class="trip__poster" data-poster="reykjavik" role="img" aria-label="Travel poster for Reykjavik: green aurora over black mountains and a calm sea"></div>
+        <div class="trip__body">
+          <p class="trip__meta">Iceland · 6 nights · Max 12</p>
+          <h3>Northern lights, Iceland</h3>
+          <p class="trip__dates">Feb 12 to 18, 2027 · <span class="hot">2 seats left</span></p>
+          <div class="trip__price"><span class="flaprow flaprow--mini" data-flap="$2,750 / 6 NIGHTS" aria-hidden="true"></span><span class="sr">$2,750 for 6 nights</span></div>
+          <a class="trip__link" href="#builder">Reserve a seat <b aria-hidden="true">→</b></a>
+        </div>
+      </article>
+      <article class="trip" data-trip="oaxaca">
+        <div class="trip__poster" data-poster="oaxaca" role="img" aria-label="Travel poster for Oaxaca: a giant orange sun over pink hills and cacti"></div>
+        <div class="trip__body">
+          <p class="trip__meta">Mexico · 8 nights · Max 12</p>
+          <h3>Oaxaca for the food</h3>
+          <p class="trip__dates">Mar 14 to 22, 2027 · 5 seats left</p>
+          <div class="trip__price"><span class="flaprow flaprow--mini" data-flap="$2,190 / 8 NIGHTS" aria-hidden="true"></span><span class="sr">$2,190 for 8 nights</span></div>
+          <a class="trip__link" href="#builder">Reserve a seat <b aria-hidden="true">→</b></a>
+        </div>
+      </article>
+      <article class="trip" data-trip="patagonia">
+        <div class="trip__poster" data-poster="patagonia" role="img" aria-label="Travel poster for Patagonia: jagged granite peaks above a glacier lake"></div>
+        <div class="trip__body">
+          <p class="trip__meta">Argentina · 12 nights · Max 10</p>
+          <h3>Patagonia on foot</h3>
+          <p class="trip__dates">Jan 20 to Feb 1, 2027 · <span class="hot">Final call</span></p>
+          <div class="trip__price"><span class="flaprow flaprow--mini" data-flap="$3,960 / 12 NIGHTS" aria-hidden="true"></span><span class="sr">$3,960 for 12 nights</span></div>
+          <a class="trip__link" href="#builder">Reserve a seat <b aria-hidden="true">→</b></a>
+        </div>
+      </article>
+      <article class="trip" data-trip="marrakesh">
+        <div class="trip__poster" data-poster="marrakesh" role="img" aria-label="Travel poster for Marrakesh: a horseshoe arch framing the sun over desert dunes and a palm"></div>
+        <div class="trip__body">
+          <p class="trip__meta">Morocco · 7 nights · Max 12</p>
+          <h3>Marrakesh and the Atlas</h3>
+          <p class="trip__dates">Apr 3 to 10, 2027 · 6 seats left</p>
+          <div class="trip__price"><span class="flaprow flaprow--mini" data-flap="$1,740 / 7 NIGHTS" aria-hidden="true"></span><span class="sr">$1,740 for 7 nights</span></div>
+          <a class="trip__link" href="#builder">Reserve a seat <b aria-hidden="true">→</b></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="how" id="how" data-tour="2600">
+    <div class="sec-head sec-head--dark">
+      <p class="eyebrow">How it works</p>
+      <h2>Four steps from <em>sofa to gate.</em></h2>
+    </div>
+    <ol class="passes">
+      <li class="pass">
+        <div class="pass__main">
+          <p class="pass__top"><span>Northbound</span><span>Boarding pass</span></p>
+          <h3>Pick a departure</h3>
+          <p>Every trip runs on fixed dates with twelve seats. Hold yours with a $200 deposit, fully refundable for 14 days.</p>
+          <dl class="pass__route"><div><dt>From</dt><dd>Your sofa</dd></div><div><dt>To</dt><dd>The board</dd></div></dl>
+        </div>
+        <div class="pass__stub"><span class="pass__lbl">Step</span><b>01</b><span class="pass__seat">Seat 1A</span><i class="barcode" aria-hidden="true"></i></div>
+      </li>
+      <li class="pass">
+        <div class="pass__main">
+          <p class="pass__top"><span>Northbound</span><span>Boarding pass</span></p>
+          <h3>Meet your host</h3>
+          <p>A local who lives there, not a guide reading a script. Your host calls you before you fly and texts you the good bakery.</p>
+          <dl class="pass__route"><div><dt>From</dt><dd>Strangers</dd></div><div><dt>To</dt><dd>First names</dd></div></dl>
+        </div>
+        <div class="pass__stub"><span class="pass__lbl">Step</span><b>02</b><span class="pass__seat">Seat 2C</span><i class="barcode" aria-hidden="true"></i></div>
+      </li>
+      <li class="pass">
+        <div class="pass__main">
+          <p class="pass__top"><span>Northbound</span><span>Boarding pass</span></p>
+          <h3>Travel light</h3>
+          <p>Boutique stays, trains, transfers, entry tickets and most meals are handled. Your only job is to show up curious.</p>
+          <dl class="pass__route"><div><dt>From</dt><dd>Spreadsheets</dd></div><div><dt>To</dt><dd>Nothing to plan</dd></div></dl>
+        </div>
+        <div class="pass__stub"><span class="pass__lbl">Step</span><b>03</b><span class="pass__seat">Seat 3F</span><i class="barcode" aria-hidden="true"></i></div>
+      </li>
+      <li class="pass">
+        <div class="pass__main">
+          <p class="pass__top"><span>Northbound</span><span>Boarding pass</span></p>
+          <h3>Come home with a crew</h3>
+          <p>Twelve strangers, one long table. More than a third of our travellers book their next trip together.</p>
+          <dl class="pass__route"><div><dt>From</dt><dd>Solo</dd></div><div><dt>To</dt><dd>Group chat</dd></div></dl>
+        </div>
+        <div class="pass__stub"><span class="pass__lbl">Step</span><b>04</b><span class="pass__seat">Seat 4K</span><i class="barcode" aria-hidden="true"></i></div>
+      </li>
+    </ol>
+    <ul class="stats">
+      <li><b data-count="12">12</b><span>travellers per trip, never more</span></li>
+      <li><b data-count="41">41</b><span>local hosts in 23 countries</span></li>
+      <li><b data-count="4.9" data-dec="1">4.9</b><span>average from 3,200 reviews</span></li>
+      <li><b data-count="96" data-suffix="%">96%</b><span>would travel with us again</span></li>
+    </ul>
+  </section>
+
+  <section class="builder" id="builder" data-tour="3400">
+    <div class="builder__in">
+      <div class="builder__copy">
+        <p class="eyebrow">Trip builder</p>
+        <h2>Tell us the mood. <em>We will find the gate.</em></h2>
+        <fieldset class="pick" id="vibes">
+          <legend>Pick a vibe</legend>
+          <label><input type="radio" name="vibe" value="slow" checked><span>Slow and scenic</span></label>
+          <label><input type="radio" name="vibe" value="food"><span>Food first</span></label>
+          <label><input type="radio" name="vibe" value="wild"><span>Wild and remote</span></label>
+          <label><input type="radio" name="vibe" value="culture"><span>Culture deep dive</span></label>
+          <label><input type="radio" name="vibe" value="warm"><span>Warm water</span></label>
+        </fieldset>
+        <fieldset class="pick pick--months" id="months">
+          <legend>Pick a month</legend>
+        </fieldset>
+      </div>
+      <div class="builder__out">
+        <div class="board board--result" aria-hidden="true">
+          <div class="board__head board__head--result"><span>Your departure</span><span class="board__live"><i></i>Matched</span></div>
+          <div class="board__rows" id="resultRows"></div>
+        </div>
+        <div class="result" id="result" aria-live="polite">
+          <p class="result__kicker" id="resultKicker">Best match for slow and scenic in November</p>
+          <h3 id="resultName">Kyoto in maple season</h3>
+          <p id="resultWhy">Temple gardens at dawn, kaiseki dinners and a slow train to the mountains, with a host who grew up in Gion.</p>
+          <div class="result__row">
+            <a class="btn btn--y" href="#letter">Hold my seat <b aria-hidden="true">→</b></a>
+            <span class="result__note">$200 deposit · refundable for 14 days</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="words" id="words" data-tour="2600">
+    <div class="sec-head">
+      <p class="eyebrow eyebrow--ink">Travellers' words</p>
+      <h2>Postcards from <em>the group chat.</em></h2>
+    </div>
+    <div class="cards">
+      <figure class="postcard pc1">
+        <blockquote>I booked Kyoto on a whim and came home with eleven new friends and a ceramics habit. Our host knew every back-alley tea house in Gion.</blockquote>
+        <figcaption><b>Priya S.</b><span>Kyoto · November 2025</span></figcaption>
+        <div class="postcard__side" aria-hidden="true"><div class="stamp" data-stamp="kyoto"></div><div class="postmark"><span>KYOTO</span><span>NOV 2025</span></div><i></i><i></i><i></i></div>
+      </figure>
+      <figure class="postcard pc2">
+        <blockquote>No tour bus, no flag on a stick. Just a tiny group, a brilliant host and the best grilled sardines of my life.</blockquote>
+        <figcaption><b>Tom R.</b><span>Lisbon · May 2026</span></figcaption>
+        <div class="postcard__side" aria-hidden="true"><div class="stamp" data-stamp="lisbon"></div><div class="postmark"><span>LISBON</span><span>MAY 2026</span></div><i></i><i></i><i></i></div>
+      </figure>
+      <figure class="postcard pc3">
+        <blockquote>Our host checked the aurora forecast like a weatherman on deadline. Night three, the sky went green and nobody said a word.</blockquote>
+        <figcaption><b>Hannah K.</b><span>Reykjavik · February 2026</span></figcaption>
+        <div class="postcard__side" aria-hidden="true"><div class="stamp" data-stamp="reykjavik"></div><div class="postmark"><span>REYKJAVIK</span><span>FEB 2026</span></div><i></i><i></i><i></i></div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="letter" id="letter" data-tour="2600">
+    <div class="letter__in">
+      <div>
+        <p class="eyebrow eyebrow--ink">Newsletter</p>
+        <h2>The Departures Letter</h2>
+        <p>One email a month: new departures, last seats and a postcard from one of our hosts. Unsubscribe in one click, no hard feelings.</p>
+      </div>
+      <form class="signup" id="signup" novalidate>
+        <div class="board board--letter" aria-hidden="true"><div class="board__rows" id="letterRows"></div></div>
+        <div class="signup__row">
+          <label class="sr" for="email">Email address</label>
+          <input id="email" type="email" required placeholder="you@example.com" autocomplete="email">
+          <button class="btn btn--ink" type="submit">Subscribe</button>
+        </div>
+        <p class="signup__msg" id="signupMsg" role="status" aria-live="polite">Next letter goes out December 1.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__top">
+    <a class="logo logo--big" href="#top" aria-label="Northbound, back to top">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M16 5l6 19-6-4-6 4z" fill="#ffc400"/></svg>
+      <span>Northbound</span>
+    </a>
+    <div class="foot__cols">
+      <div><h4>Trips</h4><a href="#trips">Japan</a><a href="#trips">Portugal</a><a href="#trips">Iceland</a><a href="#trips">Mexico</a><a href="#trips">Argentina</a><a href="#trips">Morocco</a></div>
+      <div><h4>Company</h4><a href="#how">How it works</a><a href="#words">Travellers</a><a href="#how">Our hosts</a><a href="#letter">The Letter</a></div>
+      <div><h4>Talk to a human</h4><a href="mailto:hello@northbound.travel">hello@northbound.travel</a><a href="tel:+12065550118">+1 (206) 555-0118</a><span>Monday to Friday, 9 to 6 Pacific</span><span>1420 Western Avenue, Seattle</span></div>
+    </div>
+  </div>
+  <div class="foot__base">
+    <span>© 2026 Northbound Travel Co. Prices per person, twin share.</span>
+    <span>Sample site designed by Hanflux AI. Brand, people and content are fictional.</span>
+  </div>
+</footer>
+</body>
+</html>

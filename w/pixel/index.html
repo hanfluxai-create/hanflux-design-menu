@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Pixelforge Arcade · Gaming café and esports lounge, Hyderabad</title>
+<meta name="description" content="40 high-refresh battle stations, a console lounge and tournaments every Friday in Jubilee Hills, Hyderabad. From ₹120 an hour. Book a station.">
+<meta name="theme-color" content="#140b2e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='%23140b2e'/%3E%3Crect x='2' y='5' width='12' height='6' fill='%238f6ad8'/%3E%3Crect x='4' y='7' width='3' height='1' fill='%23ffd34d'/%3E%3Crect x='5' y='6' width='1' height='3' fill='%23ffd34d'/%3E%3Crect x='10' y='6' width='1' height='1' fill='%233dff8a'/%3E%3Crect x='11' y='8' width='1' height='1' fill='%23ff5fa2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="world" aria-hidden="true"><canvas id="world"></canvas></div>
+
+<header class="nav" data-nav>
+  <a class="brand" href="#top" aria-label="Pixelforge Arcade home">
+    <canvas class="sprite brand__icon" data-sprite="controller" width="16" height="16" aria-hidden="true"></canvas>
+    <span class="brand__word">PIXELFORGE</span>
+  </a>
+  <nav class="nav__links" aria-label="Main">
+    <a href="#rigs">Rigs</a><a href="#prices">Prices</a><a href="#tournaments">Tournaments</a><a href="#snacks">Snacks</a>
+  </nav>
+  <a class="pbtn pbtn--green pbtn--sm nav__cta" href="#book">Book</a>
+  <button class="nav__menu" type="button" aria-expanded="false" aria-controls="pause" data-menu-btn><span class="sr">Open menu</span><i></i><i></i><i></i></button>
+</header>
+<div class="hud" aria-live="off">
+  <span class="hud__item"><b>1UP</b> <span data-score>004200</span></span>
+  <span class="hud__item hud__coins"><canvas class="sprite" data-sprite="coin1" width="8" height="8" aria-hidden="true"></canvas>×<span data-coins>00</span></span>
+  <span class="hud__item hud__lvl">WORLD <span data-world>1-1</span></span>
+  <span class="hud__item hud__hi"><b>HI</b> 099999</span>
+</div>
+
+<div class="pause" id="pause" hidden data-menu>
+  <p class="pause__title">PAUSED</p>
+  <nav aria-label="Mobile">
+    <a href="#rigs">The rigs</a><a href="#prices">Prices</a><a href="#tournaments">Tournaments</a><a href="#snacks">Snack bar</a><a href="#book">Book a station</a>
+  </nav>
+  <p class="pause__note">Open daily 11 AM to 3 AM · Jubilee Hills</p>
+</div>
+
+<main id="main">
+  <section class="hero" id="top" data-level="1" data-tour="3000">
+    <div class="hero__inner">
+      <p class="hero__kicker"><span>WORLD 1-1</span> Jubilee Hills, Hyderabad</p>
+      <h1 class="hero__title"><span>LEVEL UP</span> <span>YOUR</span> <span class="g">WEEKEND.</span></h1>
+      <p class="hero__sub">40 high-refresh battle stations, a console lounge and tournaments every Friday.</p>
+      <div class="hero__ctas">
+        <a class="pbtn pbtn--green" href="#book">Book a station</a>
+        <a class="pbtn pbtn--pink" href="#tournaments">This week's tournaments</a>
+      </div>
+      <p class="press" aria-hidden="true">PRESS START</p>
+    </div>
+    <p class="hero__open"><span class="dot" aria-hidden="true"></span>Open now · 11 AM to 3 AM</p>
+  </section>
+
+  <section class="level" id="rigs" data-level="2">
+    <header class="banner" data-tour="2200">
+      <p class="banner__lvl">LEVEL 2</p>
+      <h2 class="banner__title">THE RIGS</h2>
+      <p class="banner__ready" aria-hidden="true">READY?</p>
+    </header>
+    <div class="wrap">
+      <div class="rigs">
+        <div class="panel rigs__art">
+          <canvas class="station" data-station width="160" height="100" role="img" aria-label="A Pixelforge battle station: 240 Hz monitor, RGB keyboard, headset and a pink gaming chair"></canvas>
+          <p class="panel__cap">Station 17 · Battle class</p>
+        </div>
+        <div class="panel rigs__stats">
+          <h3 class="ptitle">Loadout</h3>
+          <p class="rigs__lede">Every station is tuned like it's tournament day. On Fridays, it is.</p>
+          <ul class="stats">
+            <li><canvas class="sprite" data-sprite="monitor" width="16" height="16" aria-hidden="true"></canvas><span class="stat__name">Screen</span><span class="stat__val">27-inch, 240 Hz, 1 ms</span><span class="bar" style="--v:10"></span></li>
+            <li><canvas class="sprite" data-sprite="gpu" width="16" height="16" aria-hidden="true"></canvas><span class="stat__name">Graphics</span><span class="stat__val">Top-tier GPUs, max settings</span><span class="bar" style="--v:9"></span></li>
+            <li><canvas class="sprite" data-sprite="keyboard" width="16" height="16" aria-hidden="true"></canvas><span class="stat__name">Input</span><span class="stat__val">Mechanical, hot-swap switches</span><span class="bar" style="--v:9"></span></li>
+            <li><canvas class="sprite" data-sprite="headset" width="16" height="16" aria-hidden="true"></canvas><span class="stat__name">Audio</span><span class="stat__val">7.1 surround headsets</span><span class="bar" style="--v:8"></span></li>
+            <li><canvas class="sprite" data-sprite="ping" width="16" height="16" aria-hidden="true"></canvas><span class="stat__name">Network</span><span class="stat__val">1 Gbps fibre, single-digit ping</span><span class="bar" style="--v:10"></span></li>
+            <li><canvas class="sprite" data-sprite="chair" width="16" height="16" aria-hidden="true"></canvas><span class="stat__name">Comfort</span><span class="stat__val">Ergonomic chairs, 4 hour grade</span><span class="bar" style="--v:8"></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="zones">
+        <article class="panel zone"><p class="zone__n">×40</p><h3 class="ptitle">Battle stations</h3><p>The main floor. High-refresh PCs in rows of eight, with every big competitive title installed and updated overnight.</p></article>
+        <article class="panel zone"><p class="zone__n">×6</p><h3 class="ptitle">Console pods</h3><p>65-inch 4K screens, couch co-op and racing seats. Bring your crew, we bring the controllers.</p></article>
+        <article class="panel zone"><p class="zone__n">×2</p><h3 class="ptitle">Squad rooms</h3><p>Private rooms for five with team voice, a replay screen and a door that actually closes.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="level" id="prices" data-level="3">
+    <header class="banner" data-tour="2200">
+      <p class="banner__lvl">LEVEL 3</p>
+      <h2 class="banner__title">THE SHOP</h2>
+      <p class="banner__ready" aria-hidden="true">PICK A POWER-UP</p>
+    </header>
+    <div class="wrap">
+      <div class="shop">
+        <article class="panel item">
+          <canvas class="sprite item__ico" data-sprite="clock" width="16" height="16" aria-hidden="true"></canvas>
+          <h3 class="ptitle">Hour pass</h3>
+          <p class="price"><span><i class="rs">₹</i>120</span> per hour</p>
+          <p>Any battle station, any game in the library. Top up by the hour, pay at the counter or by UPI.</p>
+          <a class="pbtn pbtn--green pbtn--block" href="#book" data-pick="station">Select</a>
+        </article>
+        <article class="panel item item--hot">
+          <p class="item__tag">BEST VALUE</p>
+          <canvas class="sprite item__ico" data-sprite="moon" width="16" height="16" aria-hidden="true"></canvas>
+          <h3 class="ptitle">Night pass</h3>
+          <p class="price"><span><i class="rs">₹</i>599</span> 11 PM to 7 AM</p>
+          <p>Fridays and Saturdays only. Unlimited play all night, plus a midnight chai on the house.</p>
+          <a class="pbtn pbtn--gold pbtn--block" href="#book" data-pick="night">Select</a>
+        </article>
+        <article class="panel item">
+          <canvas class="sprite item__ico" data-sprite="squad" width="16" height="16" aria-hidden="true"></canvas>
+          <h3 class="ptitle">Squad of 5</h3>
+          <p class="price"><span><i class="rs">₹</i>499</span> per hour</p>
+          <p>A private squad room for five, team voice and a big screen for replays. Perfect for scrims.</p>
+          <a class="pbtn pbtn--pink pbtn--block" href="#book" data-pick="squad">Select</a>
+        </article>
+      </div>
+      <div class="perks">
+        <p class="perk"><canvas class="sprite" data-sprite="bolt" width="16" height="16" aria-hidden="true"></canvas><span><b>Student power-up:</b> 20% off weekdays before 5 PM with a college ID.</span></p>
+        <p class="perk"><canvas class="sprite" data-sprite="controller" width="16" height="16" aria-hidden="true"></canvas><span><b>Console lounge:</b> ₹150 per hour per controller.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="level" id="tournaments" data-level="4">
+    <header class="banner" data-tour="2200">
+      <p class="banner__lvl">LEVEL 4</p>
+      <h2 class="banner__title">TOURNAMENTS</h2>
+      <p class="banner__ready" aria-hidden="true">FIGHT!</p>
+    </header>
+    <div class="wrap">
+      <div class="week">
+        <article class="panel event"><p class="event__day">FRI · 8 PM</p><h3 class="ptitle">Friday Night Frags</h3><p>5v5 tactical shooter. Entry ₹1,000 per squad.</p><p class="event__prize"><canvas class="sprite" data-sprite="trophy" width="16" height="16" aria-hidden="true"></canvas>₹40,000 prize pool</p></article>
+        <article class="panel event"><p class="event__day">SAT · 6 PM</p><h3 class="ptitle">Saturday Smash</h3><p>1v1 fighting, double elimination. Entry ₹200.</p><p class="event__prize"><canvas class="sprite" data-sprite="trophy" width="16" height="16" aria-hidden="true"></canvas>₹10,000 prize pool</p></article>
+        <article class="panel event"><p class="event__day">SUN · 4 PM</p><h3 class="ptitle">Kart Cup</h3><p>8-player racing on the console pods. Entry ₹150.</p><p class="event__prize"><canvas class="sprite" data-sprite="trophy" width="16" height="16" aria-hidden="true"></canvas>₹6,000 prize pool</p></article>
+      </div>
+      <div class="panel bracket-wrap">
+        <div class="bracket-head"><h3 class="ptitle">Friday Night Frags · last week</h3><a class="pbtn pbtn--pink pbtn--sm" href="#book" data-pick="squad">Register your squad</a></div>
+        <div class="bracket" role="table" aria-label="Last week's bracket">
+          <div class="round" role="rowgroup">
+            <p class="round__name">Quarter-finals</p>
+            <div class="match"><p class="win">Charminar Chaos <b>13</b></p><p>Hitec Hawks <b>9</b></p></div>
+            <div class="match"><p>Biryani Bandits <b>8</b></p><p class="win">Golconda Ghosts <b>13</b></p></div>
+            <div class="match"><p class="win">Tank Bund Titans <b>13</b></p><p>Banjara Blitz <b>11</b></p></div>
+            <div class="match"><p>Necklace Road Ninjas <b>6</b></p><p class="win">Deccan Dragons <b>13</b></p></div>
+          </div>
+          <div class="round" role="rowgroup">
+            <p class="round__name">Semi-finals</p>
+            <div class="match"><p>Charminar Chaos <b>10</b></p><p class="win">Golconda Ghosts <b>13</b></p></div>
+            <div class="match"><p class="win">Tank Bund Titans <b>13</b></p><p>Deccan Dragons <b>7</b></p></div>
+          </div>
+          <div class="round" role="rowgroup">
+            <p class="round__name">Final</p>
+            <div class="match match--final"><p class="win">Golconda Ghosts <b>13</b></p><p>Tank Bund Titans <b>11</b></p></div>
+          </div>
+          <div class="round round--champ" role="rowgroup">
+            <p class="round__name">Champion</p>
+            <div class="champ"><canvas class="sprite" data-sprite="crown" width="16" height="16" aria-hidden="true"></canvas><p>Golconda Ghosts</p><span>+ ₹40,000</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="level" id="snacks" data-level="5">
+    <header class="banner" data-tour="2200">
+      <p class="banner__lvl">LEVEL 5</p>
+      <h2 class="banner__title">SNACK BAR</h2>
+      <p class="banner__ready" aria-hidden="true">+50 HP</p>
+    </header>
+    <div class="wrap">
+      <div class="panel menu-head"><p>Order from your station: tap the chef icon on screen and we bring it over. No pausing required.</p></div>
+      <ul class="menu">
+        <li class="panel food"><canvas class="sprite" data-sprite="chai" width="16" height="16" aria-hidden="true"></canvas><h3>Irani chai</h3><p class="fx">+10 focus</p><p class="cost"><i class="rs">₹</i>40</p></li>
+        <li class="panel food"><canvas class="sprite" data-sprite="biryani" width="16" height="16" aria-hidden="true"></canvas><h3>Chicken dum biryani bowl</h3><p class="fx">+50 HP</p><p class="cost"><i class="rs">₹</i>290</p></li>
+        <li class="panel food"><canvas class="sprite" data-sprite="fries" width="16" height="16" aria-hidden="true"></canvas><h3>Masala fries</h3><p class="fx">+15 HP</p><p class="cost"><i class="rs">₹</i>140</p></li>
+        <li class="panel food"><canvas class="sprite" data-sprite="roll" width="16" height="16" aria-hidden="true"></canvas><h3>Paneer tikka roll</h3><p class="fx">+30 HP</p><p class="cost"><i class="rs">₹</i>180</p></li>
+        <li class="panel food"><canvas class="sprite" data-sprite="noodles" width="16" height="16" aria-hidden="true"></canvas><h3>Chilli garlic noodles</h3><p class="fx">+35 HP</p><p class="cost"><i class="rs">₹</i>190</p></li>
+        <li class="panel food"><canvas class="sprite" data-sprite="samosa" width="16" height="16" aria-hidden="true"></canvas><h3>Samosa, two pieces</h3><p class="fx">+12 HP</p><p class="cost"><i class="rs">₹</i>60</p></li>
+        <li class="panel food"><canvas class="sprite" data-sprite="coffee" width="16" height="16" aria-hidden="true"></canvas><h3>Cold coffee</h3><p class="fx">+20 focus</p><p class="cost"><i class="rs">₹</i>150</p></li>
+        <li class="panel food"><canvas class="sprite" data-sprite="lassi" width="16" height="16" aria-hidden="true"></canvas><h3>Mango lassi</h3><p class="fx">+18 focus</p><p class="cost"><i class="rs">₹</i>120</p></li>
+        <li class="panel food"><canvas class="sprite" data-sprite="can" width="16" height="16" aria-hidden="true"></canvas><h3>Energy drink</h3><p class="fx">+25 speed</p><p class="cost"><i class="rs">₹</i>130</p></li>
+        <li class="panel food"><canvas class="sprite" data-sprite="meetha" width="16" height="16" aria-hidden="true"></canvas><h3>Double ka meetha</h3><p class="fx">+1 life</p><p class="cost"><i class="rs">₹</i>130</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="level" id="book" data-level="6">
+    <header class="banner" data-tour="2400">
+      <p class="banner__lvl">FINAL LEVEL</p>
+      <h2 class="banner__title">BOOK A STATION</h2>
+      <p class="banner__ready" aria-hidden="true">PLAYER 1</p>
+    </header>
+    <div class="wrap">
+      <form class="panel book" data-book novalidate>
+        <fieldset class="book__group">
+          <legend>1. Choose your setup</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="kind" value="station" data-rate="120" data-unit="hour" checked><span><canvas class="sprite" data-sprite="monitor" width="16" height="16" aria-hidden="true"></canvas>Battle station<small>₹120 per hour</small></span></label>
+            <label class="opt"><input type="radio" name="kind" value="console" data-rate="150" data-unit="hour"><span><canvas class="sprite" data-sprite="controller" width="16" height="16" aria-hidden="true"></canvas>Console pod<small>₹150 per hour</small></span></label>
+            <label class="opt"><input type="radio" name="kind" value="squad" data-rate="499" data-unit="hour"><span><canvas class="sprite" data-sprite="squad" width="16" height="16" aria-hidden="true"></canvas>Squad room<small>₹499 per hour</small></span></label>
+            <label class="opt"><input type="radio" name="kind" value="night" data-rate="599" data-unit="night"><span><canvas class="sprite" data-sprite="moon" width="16" height="16" aria-hidden="true"></canvas>Night pass<small>₹599, Fri and Sat</small></span></label>
+          </div>
+        </fieldset>
+        <fieldset class="book__group">
+          <legend>2. Pick a day and time</legend>
+          <div class="days" data-days>
+            <label class="chip"><input type="radio" name="day" value="0" checked><span>Today</span></label>
+            <label class="chip"><input type="radio" name="day" value="1"><span>Tomorrow</span></label>
+            <label class="chip"><input type="radio" name="day" value="2"><span>Day 3</span></label>
+            <label class="chip"><input type="radio" name="day" value="3"><span>Day 4</span></label>
+            <label class="chip"><input type="radio" name="day" value="4"><span>Day 5</span></label>
+          </div>
+          <div class="row">
+            <label class="field"><span>Start time</span><select name="time"><option>2 PM</option><option>4 PM</option><option>6 PM</option><option selected>8 PM</option><option>10 PM</option><option>Midnight</option></select></label>
+            <div class="field"><span>Hours</span><div class="stepper"><button type="button" data-step="-1" aria-label="One hour less">−</button><output name="hours" data-hours>2</output><button type="button" data-step="1" aria-label="One hour more">+</button></div></div>
+          </div>
+        </fieldset>
+        <fieldset class="book__group">
+          <legend>3. Player details</legend>
+          <div class="row">
+            <label class="field"><span>Gamer tag or name</span><input name="name" autocomplete="nickname" placeholder="e.g. KiteRunner" required></label>
+            <label class="field"><span>WhatsApp number</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="We confirm on WhatsApp" required></label>
+          </div>
+        </fieldset>
+        <div class="book__foot">
+          <p class="total">TOTAL <b data-total><i class="rs">₹</i>240</b></p>
+          <button class="pbtn pbtn--green pbtn--lg" type="submit">Press start to book</button>
+        </div>
+        <div class="book__done" data-done hidden role="status">
+          <canvas class="sprite" data-sprite="star" width="16" height="16" aria-hidden="true"></canvas>
+          <p class="done__t">PLAYER 1 READY!</p>
+          <p class="done__m" data-done-msg>Station 17 is yours. Your confirmation is on its way to WhatsApp.</p>
+          <button class="pbtn pbtn--pink pbtn--sm" type="button" data-again>Book another</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot" data-level="7" data-tour="2600">
+  <div class="wrap">
+    <div class="foot__over">
+      <p class="foot__go">GAME OVER?</p>
+      <p class="foot__never">NEVER.</p>
+      <p class="foot__cont">CONTINUE? <span data-count>9</span></p>
+      <div class="foot__ctas">
+        <a class="pbtn pbtn--green" href="#book">Book a station</a>
+        <a class="pbtn pbtn--ghost" href="#book">WhatsApp us</a>
+      </div>
+    </div>
+    <div class="panel foot__grid">
+      <div>
+        <p class="foot__h">FIND US</p>
+        <p class="foot__addr"><canvas class="sprite" data-sprite="pin" width="16" height="16" aria-hidden="true"></canvas><span>Pixelforge Arcade, 3rd floor, Forge House, Road No. 36, Jubilee Hills, Hyderabad 500033</span></p>
+      </div>
+      <div>
+        <p class="foot__h">OPEN</p>
+        <p>Daily 11 AM to 3 AM<br>Fri and Sat all-nighters till 7 AM</p>
+      </div>
+      <div>
+        <p class="foot__h">MENU</p>
+        <nav class="foot__links" aria-label="Footer"><a href="#rigs">Rigs</a><a href="#prices">Prices</a><a href="#tournaments">Tournaments</a><a href="#snacks">Snacks</a></nav>
+      </div>
+      <div>
+        <p class="foot__h">SAY HI</p>
+        <p><a href="mailto:hello@pixelforge.gg">hello@pixelforge.gg</a><br>Parties and corporate LAN nights: <a href="mailto:events@pixelforge.gg">events@pixelforge.gg</a></p>
+      </div>
+    </div>
+    <div class="foot__base">
+      <p>© 2026 Pixelforge Arcade · Hyderabad</p>
+      <p class="foot__fine">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

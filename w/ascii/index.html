@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Blackline · We break in before they do</title>
+<meta name="description" content="Blackline runs penetration tests, incident response and a 24/7 security operations center for teams that can't afford a bad Monday.">
+<meta name="theme-color" content="#050706">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050706'/%3E%3Cpath d='M8 10l6 6-6 6' stroke='%2339ff9f' stroke-width='3' fill='none'/%3E%3Crect x='16' y='20' width='9' height='3' fill='%2339ff9f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;0,800;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/ScrambleTextPlugin.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="nav__inner">
+    <a class="brand" href="#top" aria-label="Blackline, back to top">
+      <svg class="brand__mark" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 9.5l5 4.5-5 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/><rect class="brand__cur" x="14.5" y="17" width="7" height="2.6" fill="currentColor"/></svg>
+      <span class="brand__name">BLACKLINE</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#feed">Threat feed</a>
+      <a href="#case">Case study</a>
+      <a href="#standards">Standards</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__hot" href="tel:+14155550199"><span class="pulse" aria-hidden="true"></span><span class="nav__hot-l">24/7 hotline</span> +1 (415) 555-0199</a>
+      <a class="btn btn--sm magnet" href="#contact">Book a pentest</a>
+      <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu"><span class="nav__menu-t">Menu</span><span class="nav__menu-i" aria-hidden="true"></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu__inner">
+    <p class="menu__prompt">blackline@soc:~$ ls ./site</p>
+    <nav aria-label="Mobile">
+      <a href="#services"><span>01</span> services</a>
+      <a href="#feed"><span>02</span> threat-feed</a>
+      <a href="#case"><span>03</span> case-study</a>
+      <a href="#standards"><span>04</span> standards</a>
+      <a href="#contact"><span>05</span> contact</a>
+    </nav>
+    <a class="menu__hot" href="tel:+14155550199">Under attack? Call +1 (415) 555-0199</a>
+  </div>
+</div>
+
+<main id="main">
+
+<section class="hero" id="hero" data-tour="3600" aria-labelledby="hero-title">
+  <canvas class="hero__gl" role="img" aria-label="A padlock rendered live in green ASCII characters, slowly turning, scanned and then broken open"></canvas>
+  <div class="hero__shade" aria-hidden="true"></div>
+  <div class="hero__inner wrap">
+    <div class="hero__copy">
+      <p class="eyebrow"><span class="eyebrow__b">[ok]</span> offensive security + 24/7 SOC</p>
+      <h1 class="h1" id="hero-title">We <span class="hl">break in</span><br> <span class="nw">before they do.<span class="caret" aria-hidden="true"></span></span></h1>
+      <p class="lede">Offensive security and round-the-clock monitoring for teams that can't afford a bad Monday.</p>
+      <div class="ctas">
+        <a class="btn magnet" href="#contact"><span>Book a pentest</span><span class="btn__k" aria-hidden="true">&gt;</span></a>
+        <a class="btn btn--ghost magnet" href="#hotline"><span>Talk to the SOC</span></a>
+      </div>
+    </div>
+    <div class="term" aria-label="Example scan output">
+      <div class="term__bar"><span class="term__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="term__title">operator@blackline: ~/engagements</span><span class="term__live">live</span></div>
+      <pre class="term__body" id="term"><span class="c-dim"># engagement 4471 · scope signed 17 nov 2026</span>
+$ blackline scan --target acme-retail.com
+  resolving scope ........ 14 hosts, 3 clouds
+  fingerprinting ......... 213 open ports
+  [CRIT] auth bypass on /api/v2/session
+  [HIGH] exposed .git on staging host
+  [HIGH] admin panel reachable without MFA
+  [MED ] TLS 1.0 on the mail gateway
+  done in 00:41:07 · 3 crit · 7 high · 19 med
+&gt; report sent. we fix it before they find it.</pre>
+    </div>
+  </div>
+  <div class="hero__status" aria-hidden="true">
+    <div class="wrap hero__status-in">
+      <span><b class="ok">●</b> soc online</span>
+      <span class="hide-s">analysts on shift <b>12</b></span>
+      <span>threat level <b class="warn">elevated</b></span>
+      <span class="hide-s">events today <b id="evtoday">2,918,404,117</b></span>
+      <span><b id="utc">14:02:11</b> utc</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec services" id="services" data-tour="2400" aria-labelledby="svc-title">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="label"><span class="label__n">01</span> // services</p>
+      <h2 class="h2" id="svc-title" data-scramble>Four ways we keep the door shut.</h2>
+      <p class="sec__sub">Every engagement is run by senior operators, written up in plain English and retested for free.</p>
+    </div>
+    <div class="panes">
+      <article class="pane" data-reveal>
+        <div class="pane__bar"><span class="pane__id">01</span><span class="pane__path">~/services/pentest</span><span class="pane__state">ready</span></div>
+        <div class="pane__body">
+          <p class="pane__cmd"><span class="pr">$</span> blackline pentest --scope web,api,mobile</p>
+          <h3 class="pane__title">Penetration testing</h3>
+          <p class="pane__txt">Senior testers attack your apps, APIs and network the way a real crew would, then walk you through exactly how they got in.</p>
+          <dl class="pane__list">
+            <div><dt>scope</dt><dd>web, API, mobile, internal network</dd></div>
+            <div><dt>timeline</dt><dd>2 to 4 weeks, report in 5 days</dd></div>
+            <div><dt>includes</dt><dd>free retest within 90 days</dd></div>
+          </dl>
+          <p class="pane__price">engagements from <b>$14,500</b></p>
+        </div>
+      </article>
+      <article class="pane" data-reveal>
+        <div class="pane__bar"><span class="pane__id">02</span><span class="pane__path">~/services/soc</span><span class="pane__state pane__state--live">watching</span></div>
+        <div class="pane__body">
+          <p class="pane__cmd"><span class="pr">$</span> blackline soc --watch --all-timezones</p>
+          <h3 class="pane__title">24/7 SOC</h3>
+          <p class="pane__txt">Analysts watch your endpoints, cloud and identity logs every minute of every day, and act on real alerts inside eleven minutes.</p>
+          <dl class="pane__list">
+            <div><dt>coverage</dt><dd>endpoints, cloud, identity, email</dd></div>
+            <div><dt>response</dt><dd>11 min median, alert to action</dd></div>
+            <div><dt>reporting</dt><dd>weekly digest, monthly board pack</dd></div>
+          </dl>
+          <p class="pane__price">from <b>$6,900</b> per month</p>
+        </div>
+      </article>
+      <article class="pane" data-reveal>
+        <div class="pane__bar"><span class="pane__id">03</span><span class="pane__path">~/services/incident-response</span><span class="pane__state pane__state--red">on call</span></div>
+        <div class="pane__body">
+          <p class="pane__cmd"><span class="pr">$</span> blackline respond --sla 60m</p>
+          <h3 class="pane__title">Incident response</h3>
+          <p class="pane__txt">When something is already wrong, a lead responder joins your call within the hour and stays until it is contained and explained.</p>
+          <dl class="pane__list">
+            <div><dt>sla</dt><dd>responder on your call in 60 minutes</dd></div>
+            <div><dt>work</dt><dd>containment, forensics, recovery</dd></div>
+            <div><dt>after</dt><dd>root cause report and board briefing</dd></div>
+          </dl>
+          <p class="pane__price">retainers from <b>$2,400</b> per month</p>
+        </div>
+      </article>
+      <article class="pane" data-reveal>
+        <div class="pane__bar"><span class="pane__id">04</span><span class="pane__path">~/services/cloud-hardening</span><span class="pane__state">ready</span></div>
+        <div class="pane__body">
+          <p class="pane__cmd"><span class="pr">$</span> blackline harden --cloud --iac</p>
+          <h3 class="pane__title">Cloud hardening</h3>
+          <p class="pane__txt">We review identity, network and storage settings across your cloud accounts, then fix the drift directly in your infrastructure code.</p>
+          <dl class="pane__list">
+            <div><dt>checks</dt><dd>380 configuration controls</dd></div>
+            <div><dt>fixes</dt><dd>pull requests to your IaC repos</dd></div>
+            <div><dt>cadence</dt><dd>quarterly, drift alerts in between</dd></div>
+          </dl>
+          <p class="pane__price">from <b>$9,800</b> per review</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec feed" id="feed" data-tour="3000" aria-labelledby="feed-title">
+  <div class="wrap">
+    <div class="sec__head sec__head--split">
+      <div>
+        <p class="label"><span class="label__n">02</span> // live threat feed</p>
+        <h2 class="h2" id="feed-title" data-scramble>Right now, someone is knocking.</h2>
+      </div>
+      <p class="sec__sub">A replay of the last minute inside our SOC. Client names are masked and every event was triaged by a human analyst.</p>
+    </div>
+    <div class="feed__grid">
+      <div class="panel map" data-reveal>
+        <div class="panel__bar"><span>attack origins<span class="hide-s"> · last 60 s</span></span><span class="panel__meta"><span class="pulse pulse--red" aria-hidden="true"></span>blocked today <b id="blocked">1,204,887</b></span></div>
+        <div class="map__wrap">
+          <canvas class="map__canvas" role="img" aria-label="ASCII world map: red points blink where attacks start, and arcs travel to protected client sites"></canvas>
+        </div>
+        <div class="map__legend"><span><i class="lg lg--red">*</i> attack source</span><span><i class="lg lg--white">@</i> protected client</span><span><i class="lg">[#]</i> Blackline SOC</span></div>
+      </div>
+      <div class="panel log" data-reveal>
+        <div class="panel__bar"><span>tail -f /soc/events.log</span><span class="panel__meta">utc</span></div>
+        <div class="log__view"><ol class="log__list" id="log" aria-label="Recent security events">
+          <li class="ev ev--high"><time>14:01:52</time><b>HIGH</b><span class="ev__d">impossible travel login, finance admin</span><em>ESCALATED</em></li>
+          <li class="ev ev--med"><time>14:01:55</time><b>MED</b><span class="ev__d">password spray, 412 attempts from 198.51.100.23</span><em>BLOCKED</em></li>
+          <li class="ev ev--low"><time>14:01:57</time><b>LOW</b><span class="ev__d">port scan from a known research scanner</span><em>CLOSED</em></li>
+          <li class="ev ev--crit"><time>14:02:01</time><b>CRIT</b><span class="ev__d">shadow copies deleted on client-07 file server</span><em>CONTAINED</em></li>
+          <li class="ev ev--med"><time>14:02:04</time><b>MED</b><span class="ev__d">MFA push fatigue burst on client-12</span><em>BLOCKED</em></li>
+          <li class="ev ev--high"><time>14:02:06</time><b>HIGH</b><span class="ev__d">new admin created outside change window</span><em>ESCALATED</em></li>
+          <li class="ev ev--low"><time>14:02:08</time><b>LOW</b><span class="ev__d">expired certificate on a staging host</span><em>TICKETED</em></li>
+          <li class="ev ev--med"><time>14:02:10</time><b>MED</b><span class="ev__d">beacon to a domain registered 2 hours ago</span><em>BLOCKED</em></li>
+        </ol></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec stats" id="stats" data-tour="1900" aria-labelledby="stats-title">
+  <div class="wrap">
+    <div class="sec__head">
+      <p class="label"><span class="label__n">03</span> // by the numbers</p>
+      <h2 class="h2" id="stats-title" data-scramble>Measured every minute.</h2>
+    </div>
+    <div class="stats__grid">
+      <div class="stat" data-reveal>
+        <p class="stat__num"><span data-count="11">11</span><small>min</small></p>
+        <p class="stat__lab">median response, from alert to an analyst acting on it</p>
+        <pre class="stat__spark" aria-hidden="true">.:-=+*#%@%#*+=-:..:-=+*#</pre>
+      </div>
+      <div class="stat" data-reveal>
+        <p class="stat__num"><span data-count="4.2" data-dec="1">4.2</span><small>B</small></p>
+        <p class="stat__lab">events triaged every day across client environments</p>
+        <pre class="stat__spark" aria-hidden="true">=+*#%@@%#*+==+*#%@%#*+=-</pre>
+      </div>
+      <div class="stat" data-reveal>
+        <p class="stat__num"><span data-count="1340">1,340</span></p>
+        <p class="stat__lab">penetration tests delivered since we opened in 2016</p>
+        <pre class="stat__spark" aria-hidden="true">..::--==++**##%%@@%%##**</pre>
+      </div>
+      <div class="stat" data-reveal>
+        <p class="stat__num"><span data-count="38">38</span></p>
+        <p class="stat__lab">analysts on shift across San Francisco, London and Singapore</p>
+        <pre class="stat__spark" aria-hidden="true">#%@%#*#%@%#*#%@%#*#%@%#*</pre>
+      </div>
+    </div>
+    <div class="panel chart" data-reveal>
+      <div class="panel__bar"><span>soc load · events per minute<span class="hide-s"> · last 24 h</span></span><span class="panel__meta"><i class="key" aria-hidden="true"></i>spike, analyst on it</span></div>
+      <pre class="chart__pre" id="chart" role="img" aria-label="ASCII bar chart of events per minute over the last 24 hours, with spikes highlighted in red"></pre>
+    </div>
+  </div>
+</section>
+
+<section class="sec case" id="case" data-tour="2600" aria-labelledby="case-title">
+  <div class="wrap case__grid">
+    <div class="case__copy">
+      <p class="label"><span class="label__n">04</span> // case file 0x2a</p>
+      <h2 class="h2" id="case-title">41 hours from the car park to the payment network.</h2>
+      <p class="case__lede">Northgate Outfitters runs 600 stores and a busy online shop. They asked us to try everything a determined crew would. We started with a laptop in a store car park.</p>
+      <dl class="case__metrics">
+        <div><dt>41 h</dt><dd>to the objective</dd></div>
+        <div><dt>17</dt><dd>findings, 3 critical</dd></div>
+        <div><dt>19 d</dt><dd>to close every one</dd></div>
+      </dl>
+      <blockquote class="case__quote">
+        <p>“Blackline found what three audits had missed, then sat with my team until every single hole was closed.”</p>
+        <footer><span class="case__mono" aria-hidden="true">DW</span><span><b>Dana Whitfield</b> CISO, Northgate Outfitters</span></footer>
+      </blockquote>
+    </div>
+    <div class="panel case__panel" data-reveal>
+      <div class="panel__bar"><span>attack-path.log</span><span class="panel__meta">red team · 2026</span></div>
+      <ol class="path" id="path">
+        <li><span class="path__t">T+00h</span><span class="path__k">recon</span><span class="path__d">14 subdomains, 1 forgotten VPN portal</span></li>
+        <li><span class="path__t">T+06h</span><span class="path__k">access</span><span class="path__d">guest Wi-Fi reached the store network</span></li>
+        <li><span class="path__t">T+19h</span><span class="path__k">creds</span><span class="path__d">password spray: 1 of 2,300 accounts</span></li>
+        <li><span class="path__t">T+31h</span><span class="path__k">pivot</span><span class="path__d">unpatched print server, local admin</span></li>
+        <li class="path--hit"><span class="path__t">T+41h</span><span class="path__k">objective</span><span class="path__d">read access to payment staging [!]</span></li>
+        <li class="path--fix"><span class="path__t">T+19d</span><span class="path__k">fixed</span><span class="path__d">17 of 17 closed, retest clean</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec standards" id="standards" data-tour="1700" aria-labelledby="std-title">
+  <div class="wrap">
+    <div class="sec__head sec__head--split">
+      <div>
+        <p class="label"><span class="label__n">05</span> // standards</p>
+        <h2 class="h2" id="std-title" data-scramble>Audited, certified, boringly thorough.</h2>
+      </div>
+      <p class="sec__sub">Reports your auditors already know how to read, with every finding mapped to the control it breaks.</p>
+    </div>
+    <ul class="std">
+      <li data-reveal><span class="std__chk">[x]</span><b>ISO 27001</b><small>certified ISMS, annual surveillance audit</small></li>
+      <li data-reveal><span class="std__chk">[x]</span><b>SOC 2 Type II</b><small>audited every twelve months</small></li>
+      <li data-reveal><span class="std__chk">[x]</span><b>OWASP</b><small>Top 10 and ASVS test methodology</small></li>
+      <li data-reveal><span class="std__chk">[x]</span><b>PCI DSS</b><small>segmentation testing for card scope</small></li>
+      <li data-reveal><span class="std__chk">[x]</span><b>NIST CSF</b><small>findings mapped to functions and controls</small></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec hotline" id="contact" data-tour="2800" aria-labelledby="hot-title">
+  <div class="hotline__bg" aria-hidden="true"></div>
+  <div class="wrap hot__grid">
+    <div class="hot__copy" id="hotline">
+      <p class="label label--red"><span class="pulse pulse--red" aria-hidden="true"></span> incident hotline · staffed 24/7</p>
+      <h2 class="h2 hot__title" id="hot-title">Under attack?</h2>
+      <p class="hot__lede">Call now. A senior responder picks up, day or night, and stays on the line until it's contained.</p>
+      <a class="hot__num" href="tel:+14155550199">+1 (415) 555-0199</a>
+      <ul class="hot__meta">
+        <li>median pickup 19 seconds</li>
+        <li>no retainer needed for the first call</li>
+        <li>soc@blackline.sec for encrypted mail</li>
+      </ul>
+    </div>
+    <form class="panel form" id="pentest-form" novalidate>
+      <div class="panel__bar"><span>~/book-a-pentest</span><span class="panel__meta">reply in 4 business hours</span></div>
+      <div class="form__body">
+        <h3 class="form__title">Book a pentest</h3>
+        <div class="form__row">
+          <label class="field"><span>name</span><input name="name" autocomplete="name" required placeholder="Jordan Ellis"></label>
+          <label class="field"><span>work email</span><input name="email" type="email" autocomplete="email" required placeholder="jordan@company.com"></label>
+        </div>
+        <fieldset class="chips">
+          <legend>scope</legend>
+          <label><input type="checkbox" name="scope" value="web" checked><span>web app</span></label>
+          <label><input type="checkbox" name="scope" value="api"><span>API</span></label>
+          <label><input type="checkbox" name="scope" value="network"><span>network</span></label>
+          <label><input type="checkbox" name="scope" value="cloud"><span>cloud</span></label>
+          <label><input type="checkbox" name="scope" value="red"><span>red team</span></label>
+        </fieldset>
+        <label class="field"><span>when do you need the report?</span>
+          <select name="when"><option>Within 4 weeks</option><option>This quarter</option><option>Before an audit date</option><option>Just exploring</option></select>
+        </label>
+        <button class="btn btn--full" type="submit"><span>Send request</span><span class="btn__k" aria-hidden="true">&gt;</span></button>
+        <p class="form__ok" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <a class="brand" href="#top" aria-label="Blackline, back to top"><svg class="brand__mark" viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 9.5l5 4.5-5 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square"/><rect class="brand__cur" x="14.5" y="17" width="7" height="2.6" fill="currentColor"/></svg><span class="brand__name">BLACKLINE</span></a>
+        <p>Offensive security and a 24/7 SOC for teams that can't afford a bad Monday.</p>
+        <p class="foot__pgp">pgp 4F2A 91C0 7DE3 B115 0A6C &nbsp;2E8D 5B71 C904 33AF 1D20</p>
+      </div>
+      <nav class="foot__col" aria-label="Services">
+        <p class="foot__h">services</p>
+        <a href="#services">Penetration testing</a><a href="#services">24/7 SOC</a><a href="#services">Incident response</a><a href="#services">Cloud hardening</a>
+      </nav>
+      <nav class="foot__col" aria-label="Company">
+        <p class="foot__h">company</p>
+        <a href="#case">Case studies</a><a href="#standards">Standards</a><a href="#feed">Threat feed</a><a href="#contact">Careers</a>
+      </nav>
+      <div class="foot__col">
+        <p class="foot__h">contact</p>
+        <a href="tel:+14155550199">+1 (415) 555-0199</a>
+        <a href="mailto:hello@blackline.sec">hello@blackline.sec</a>
+        <a href="mailto:soc@blackline.sec">soc@blackline.sec</a>
+        <p>San Francisco · London · Singapore</p>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <p>© 2026 Blackline Security, Inc. All engagements are authorized in writing.</p>
+      <p class="foot__fict">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

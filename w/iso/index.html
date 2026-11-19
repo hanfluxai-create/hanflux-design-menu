@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Cargoflow · Every box, every mile, one live map</title>
+<meta name="description" content="Cargoflow tracks shipments across 120+ carriers and tells you about delays before your customers do.">
+<meta name="theme-color" content="#f3f6ff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M16 3l11 6.3L16 15.6 5 9.3z' fill='%23ff6a4d'/%3E%3Cpath d='M5 9.3l11 6.3V28.5L5 22.2z' fill='%230b1b3f'/%3E%3Cpath d='M27 9.3L16 15.6V28.5l11-6.3z' fill='%232ed3a5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vendor/lenis/lenis.css">
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="sky" aria-hidden="true"></div>
+<canvas id="stage" aria-hidden="true"></canvas>
+<div class="pins" id="pins" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Cargoflow home">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 6.3L16 15.6 5 9.3z" fill="#ff6a4d"/><path d="M5 9.3l11 6.3V28.5L5 22.2z" fill="#0b1b3f"/><path d="M27 9.3L16 15.6V28.5l11-6.3z" fill="#2ed3a5"/></svg>
+    <span>Cargoflow</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#product">Product</a><a href="#live">Live map</a><a href="#integrations">Integrations</a><a href="#customers">Customers</a><a href="#pricing">Pricing</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="nav-signin" href="#pricing">Sign in</a>
+    <a class="btn btn-coral btn-sm" href="#start">Start free</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><i></i><i></i></button>
+  </div>
+</header>
+<div class="menu" id="menu" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <a href="#product">Product</a><a href="#live">Live map</a><a href="#integrations">Integrations</a><a href="#customers">Customers</a><a href="#pricing">Pricing</a>
+  </nav>
+  <div class="menu-ctas"><a class="btn btn-coral" href="#start">Start free</a><a class="btn btn-ghost" href="#start">Book a demo</a></div>
+</div>
+
+<main id="main">
+  <section class="hero" id="top" data-tour="3600">
+    <div class="hero-copy">
+      <p class="pill"><span class="pill-dot"></span>New: predictive delay alerts</p>
+      <h1 class="h1" id="hero-title">Every box,<br> every mile,<br> <span class="hl">one live map.<svg viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path d="M3 12C60 5 140 3 297 9"/></svg></span></h1>
+      <p class="sub">Cargoflow tracks shipments across 120+ carriers and tells you about delays before your customers do.</p>
+      <div class="ctas">
+        <a class="btn btn-coral magnetic" href="#start"><span>Start free</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a class="btn btn-ghost magnetic" href="#start"><span>Book a demo</span></a>
+      </div>
+      <p class="fine"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Free for your first 500 shipments a month. No card needed.</p>
+    </div>
+  </section>
+
+  <section class="logos" aria-label="Customers">
+    <p class="logos-t">Trusted by 2,400+ operations teams</p>
+    <div class="marquee">
+      <div class="mq-track">
+        <span class="wm wm-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20L9 7l4 7 3-4 6 10z"/></svg>Northpeak</span>
+        <span class="wm wm-2">Ferro &amp; Finch</span>
+        <span class="wm wm-3"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>lumio home</span>
+        <span class="wm wm-4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19C5 10 11 4 20 4c0 9-6 15-15 15z"/></svg>Kinroot</span>
+        <span class="wm wm-5">TIDEWELL<small>SUPPLY</small></span>
+        <span class="wm wm-6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 13h7v7h-7z"/></svg>Oakmere</span>
+        <span class="wm wm-7">parcelio</span>
+        <span class="wm wm-8">Westgale<i>Outdoor</i></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="product" aria-labelledby="feat-title">
+    <span class="tm fm-0" data-tour="2800" aria-hidden="true"></span>
+    <span class="tm fm-1" data-tour="2800" aria-hidden="true"></span>
+    <span class="tm fm-2" data-tour="3000" aria-hidden="true"></span>
+    <div class="feat-sticky">
+      <div class="feat-panel">
+        <p class="eyebrow">One platform, three worlds</p>
+        <h2 class="h2" id="feat-title">Follow the box from dock to doorstep.</h2>
+        <ol class="feats">
+          <li class="feat is-on" data-i="0">
+            <button class="feat-head" type="button" tabindex="-1"><span class="fz fz-ware">01</span><span class="ft">Warehouse</span><span class="fprog"><i></i></span></button>
+            <div class="feat-body"><div class="feat-inner">
+              <h3>From dock door to departure.</h3>
+              <p>Every pallet is scanned at the dock door, so a shipment is live the moment it is packed. Cargoflow reads your WMS events and carrier pickups and stitches them into one timeline.</p>
+              <ul class="checks"><li>Dock scans in real time</li><li>Pickup windows from 120+ carriers</li><li>Auto-booked carrier slots</li></ul>
+              <p class="fstat"><b>4 min</b> from packing to first tracking event</p>
+            </div></div>
+          </li>
+          <li class="feat" data-i="1">
+            <button class="feat-head" type="button" tabindex="-1"><span class="fz fz-port">02</span><span class="ft">Port and ocean</span><span class="fprog"><i></i></span></button>
+            <div class="feat-body"><div class="feat-inner">
+              <h3>Ocean freight without blind spots.</h3>
+              <p>Vessel positions, berth schedules and customs holds in one view. When a ship slips its ETA, Cargoflow recalculates every order on board and flags the ones that will miss their promise date.</p>
+              <ul class="checks"><li>Live vessel positions</li><li>Customs hold alerts</li><li>Container-level ETAs</li></ul>
+              <p class="fstat"><b>2.6 days</b> earlier warning on ocean delays</p>
+            </div></div>
+          </li>
+          <li class="feat" data-i="2">
+            <button class="feat-head" type="button" tabindex="-1"><span class="fz fz-city">03</span><span class="ft">Last mile</span><span class="fprog"><i></i></span></button>
+            <div class="feat-body"><div class="feat-inner">
+              <h3>Live all the way to the doorstep.</h3>
+              <p>Vans, couriers and drone drops report back to one map. Customers get a branded tracking page and a heads-up before the doorbell rings, not after it doesn’t.</p>
+              <ul class="checks"><li>Branded tracking pages</li><li>Proactive SMS and email</li><li>Photo proof of delivery</li></ul>
+              <p class="fstat"><b>41%</b> fewer “where is my order” tickets</p>
+            </div></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="live" id="live" data-tour="3200">
+    <div class="wrap">
+      <header class="sec-head center">
+        <p class="eyebrow">Live tracking</p>
+        <h2 class="h2" data-split>Your whole network, moving in real time.</h2>
+        <p class="sec-p" data-reveal>Ocean, road, rail and parcel on one map, with an ETA you can trust on every order and an alert the moment one starts to slip.</p>
+      </header>
+      <div class="app" data-reveal>
+        <aside class="app-side" aria-hidden="true">
+          <svg class="app-logo" viewBox="0 0 32 32"><path d="M16 3l11 6.3L16 15.6 5 9.3z" fill="#ff6a4d"/><path d="M5 9.3l11 6.3V28.5L5 22.2z" fill="#fff"/><path d="M27 9.3L16 15.6V28.5l11-6.3z" fill="#2ed3a5"/></svg>
+          <span class="si on"><svg viewBox="0 0 24 24"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14M15 6v14"/></svg></span>
+          <span class="si"><svg viewBox="0 0 24 24"><path d="M4 7h16v12H4zM4 7l2-3h12l2 3M10 11h4"/></svg></span>
+          <span class="si"><svg viewBox="0 0 24 24"><path d="M12 4l9 16H3zM12 10v4M12 17v.5"/></svg></span>
+          <span class="si"><svg viewBox="0 0 24 24"><path d="M3 17h2l2-6h8l3 6h3M7 17a2 2 0 104 0M15 17a2 2 0 104 0"/></svg></span>
+          <span class="si"><svg viewBox="0 0 24 24"><path d="M5 19V9M12 19V5M19 19v-7"/></svg></span>
+        </aside>
+        <div class="app-main">
+          <div class="app-top">
+            <div><p class="app-title">Live map</p><p class="app-date">Thursday, 19 November · updated 6 s ago</p></div>
+            <div class="app-filters" role="group" aria-label="Transport mode">
+              <button class="chip on" type="button">All modes</button><button class="chip" type="button">Ocean</button><button class="chip" type="button">Road</button><button class="chip" type="button">Rail</button>
+            </div>
+          </div>
+          <div class="kpis">
+            <div class="kpi"><p class="kpi-l">Active shipments</p><p class="kpi-v"><span data-count="1284">1,284</span></p><p class="kpi-d up">+86 today</p></div>
+            <div class="kpi"><p class="kpi-l">On time</p><p class="kpi-v"><span data-count="96.8" data-dec="1">96.8</span>%</p><p class="kpi-d up">+1.4 pts this week</p></div>
+            <div class="kpi"><p class="kpi-l">At risk</p><p class="kpi-v warn"><span data-count="14">14</span></p><p class="kpi-d">12 customers notified</p></div>
+            <div class="kpi"><p class="kpi-l">Earlier warnings</p><p class="kpi-v"><span data-count="2.6" data-dec="1">2.6</span> d</p><p class="kpi-d up">vs. carrier updates</p></div>
+          </div>
+          <div class="app-body">
+            <div class="map">
+              <svg class="map-svg" viewBox="0 0 840 360" role="img" aria-label="World map with live shipping routes: Shanghai to Rotterdam, Rotterdam to New York, Savannah to Santos, Mumbai to Jebel Ali and Los Angeles to New York by rail">
+                <path class="map-dots" d=""/>
+                <g class="map-routes"></g>
+                <g class="map-ports"></g>
+                <g class="map-vehicles"></g>
+              </svg>
+              <div class="map-card">
+                <p class="mc-id"><span class="pd ok"></span>CF-20931 <em>Ocean</em></p>
+                <p class="mc-route">Shanghai → Rotterdam</p>
+                <div class="mc-bar"><i style="--w:68%"></i></div>
+                <p class="mc-eta">ETA 24 Nov, 09:40 · <b>On time</b></p>
+              </div>
+              <div class="map-legend"><span><i class="lg ok"></i>On time</span><span><i class="lg warn"></i>At risk</span><span><i class="lg late"></i>Delayed</span></div>
+            </div>
+            <div class="ship-list">
+              <article class="alert">
+                <p class="alert-h"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2l6.5 11.5h-13zM8 6.5v3.2M8 11.6v.4"/></svg>Delay predicted</p>
+                <p class="alert-b"><b>CF-21004</b> is held at customs in Jebel Ali. 12 orders affected, customers notified automatically 2 h ago.</p>
+                <a class="alert-a" href="#live">Review orders</a>
+              </article>
+              <article class="eta"><div class="eta-t"><b>CF-20977</b><span class="st ok">On time</span></div><p>Los Angeles → New York · Rail</p><div class="eta-bar"><i style="--w:45%"></i></div><p class="eta-s">ETA 21 Nov, 18:15</p></article>
+              <article class="eta"><div class="eta-t"><b>CF-21004</b><span class="st warn">At risk</span></div><p>Mumbai → Jebel Ali · Ocean</p><div class="eta-bar warn"><i style="--w:82%"></i></div><p class="eta-s">Customs hold · 6 h</p></article>
+              <article class="eta"><div class="eta-t"><b>CF-20958</b><span class="st late">Delayed 1 d</span></div><p>Savannah → Santos · Ocean</p><div class="eta-bar late"><i style="--w:30%"></i></div><p class="eta-s">New ETA 3 Dec · customer notified</p></article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="integr" id="integrations" data-tour="2600">
+    <div class="wrap integr-grid">
+      <header class="integr-copy">
+        <p class="eyebrow">Integrations</p>
+        <h2 class="h2" data-split>Plugs into the stack you already run.</h2>
+        <p class="sec-p" data-reveal>Connect your ERP, warehouse system and storefront once. Cargoflow keeps every carrier in sync, then pushes clean events wherever your team works.</p>
+        <a class="btn btn-ghost" href="#start" data-reveal><span>See all integrations</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </header>
+      <div class="hub" data-reveal>
+        <svg class="hub-lines" viewBox="0 0 600 520" aria-hidden="true"></svg>
+        <div class="hub-core"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 6.3L16 15.6 5 9.3z" fill="#ff6a4d"/><path d="M5 9.3l11 6.3V28.5L5 22.2z" fill="#fff"/><path d="M27 9.3L16 15.6V28.5l11-6.3z" fill="#2ed3a5"/></svg><span>Cargoflow</span></div>
+        <div class="node n0"><span class="ni"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4zM4 10h16M9 10v9"/></svg></span><b>ERP</b><small>Orders and invoices</small></div>
+        <div class="node n1"><span class="ni"><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6v10H3zM8 20v-6h8v6"/></svg></span><b>WMS</b><small>Pick, pack, dock scans</small></div>
+        <div class="node n2"><span class="ni"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1.5 11h-11zM9 8a3 3 0 016 0"/></svg></span><b>Storefronts</b><small>Checkout ETAs, tracking pages</small></div>
+        <div class="node n3"><span class="ni"><svg viewBox="0 0 24 24"><path d="M2 16h3l2-7h9l4 7h2M6 16a2 2 0 104 0M14 16a2 2 0 104 0"/></svg></span><b>120+ carriers</b><small>Ocean, road, rail, parcel</small></div>
+        <div class="node n4"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 4a4 4 0 00-2 7.5L7 17M12 4a4 4 0 012 7.5l3 5.5M5 18a3 3 0 106 0 3 3 0 00-6 0zM13 18a3 3 0 106 0"/></svg></span><b>Webhooks</b><small>Push events anywhere</small></div>
+        <div class="node n5"><span class="ni"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span><b>API</b><small>REST, with sandbox keys</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metrics" aria-label="Cargoflow in numbers" data-tour="2000">
+    <div class="wrap metrics-grid">
+      <div class="metric" data-reveal><p class="mv"><span data-count="120">120</span><i>+</i></p><p class="ml">carriers connected, from global ocean lines to local couriers</p></div>
+      <div class="metric" data-reveal><p class="mv"><span data-count="38">38</span><i>M</i></p><p class="ml">shipments tracked in 2025 across 64 countries</p></div>
+      <div class="metric" data-reveal><p class="mv"><span data-count="2.6" data-dec="1">2.6</span><i>d</i></p><p class="ml">earlier warning on delays than carrier updates alone</p></div>
+      <div class="metric" data-reveal><p class="mv"><span data-count="99.95" data-dec="2">99.95</span><i>%</i></p><p class="ml">platform uptime over the last twelve months</p></div>
+    </div>
+  </section>
+
+  <section class="quote" id="customers" data-tour="2400">
+    <div class="wrap quote-grid">
+      <figure class="q" data-reveal>
+        <svg class="q-mark" viewBox="0 0 48 40" aria-hidden="true"><path d="M2 38V22C2 10 8 3 20 1l2 5c-7 2-10 6-10 12h9v20zM27 38V22c0-12 6-19 18-21l2 5c-7 2-10 6-10 12h9v20z"/></svg>
+        <blockquote>We used to learn about delays from angry emails. Cargoflow flags them two days early, and our “where is my order” tickets fell by 41% in a single quarter.</blockquote>
+        <figcaption><span class="av">DW</span><span><b>Dana Whitfield</b><small>VP Operations, Northpeak Outfitters</small></span></figcaption>
+      </figure>
+      <div class="q-stats">
+        <div data-reveal><p><span data-count="41">41</span>%</p><small>fewer WISMO tickets</small></div>
+        <div data-reveal><p><span data-count="2.1" data-dec="1">2.1</span> d</p><small>earlier delay warnings</small></div>
+        <div data-reveal><p><span data-count="9">9</span></p><small>carrier portals retired</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing" data-tour="2800">
+    <div class="wrap">
+      <header class="sec-head center">
+        <p class="eyebrow">Pricing</p>
+        <h2 class="h2" data-split>Priced per shipment volume, not per seat.</h2>
+        <div class="toggle" role="group" aria-label="Billing period">
+          <button type="button" class="tg on" data-bill="m">Monthly</button><button type="button" class="tg" data-bill="y">Annual <em>save 20%</em></button>
+        </div>
+      </header>
+      <div class="plans">
+        <article class="plan" data-reveal>
+          <p class="plan-n">Starter</p>
+          <p class="plan-p"><span class="cur">$</span><span class="amt" data-m="299" data-y="239">299</span><span class="per">/mo</span></p>
+          <p class="plan-d">For growing brands shipping with a handful of carriers.</p>
+          <a class="btn btn-ghost btn-wide" href="#start">Start free</a>
+          <ul class="checks"><li>Up to 2,000 shipments a month</li><li>40 carriers included</li><li>Email delay alerts</li><li>Branded tracking page</li><li>3 team seats</li></ul>
+        </article>
+        <article class="plan plan-pop" data-reveal>
+          <p class="plan-badge">Most popular</p>
+          <p class="plan-n">Scale</p>
+          <p class="plan-p"><span class="cur">$</span><span class="amt" data-m="899" data-y="719">899</span><span class="per">/mo</span></p>
+          <p class="plan-d">For operations teams running ocean, road and parcel at once.</p>
+          <a class="btn btn-coral btn-wide" href="#start">Start free</a>
+          <ul class="checks"><li>Up to 15,000 shipments a month</li><li>All 120+ carriers</li><li>Predictive delay alerts</li><li>SMS and email notifications</li><li>API and webhooks</li><li>15 team seats</li></ul>
+        </article>
+        <article class="plan" data-reveal>
+          <p class="plan-n">Enterprise</p>
+          <p class="plan-p"><span class="amt-c">Custom</span></p>
+          <p class="plan-d">For global shippers with their own carrier contracts.</p>
+          <a class="btn btn-ghost btn-wide" href="#start">Talk to sales</a>
+          <ul class="checks"><li>Unlimited shipments</li><li>Custom carrier onboarding</li><li>SSO and audit logs</li><li>99.95% uptime SLA</li><li>Dedicated success manager</li></ul>
+        </article>
+      </div>
+      <p class="plans-note">Every plan includes your first 500 shipments a month free. Prices in USD, billed monthly or annually.</p>
+    </div>
+  </section>
+
+  <section class="cta" id="start" data-tour="2600" data-tour-offset="-0.09">
+    <div class="wrap">
+      <div class="cta-card">
+        <svg class="cta-iso" viewBox="0 0 560 360" aria-hidden="true"></svg>
+        <div class="cta-copy">
+          <h2 class="h2" data-split>Put every shipment on one live map.</h2>
+          <p>Connect your first carrier in under ten minutes. Your first 500 shipments each month are on us.</p>
+          <form class="cta-form" novalidate>
+            <label class="sr" for="cta-email">Work email</label>
+            <input id="cta-email" type="email" placeholder="you@company.com" autocomplete="email" required>
+            <button class="btn btn-coral" type="submit"><span>Start free</span></button>
+          </form>
+          <p class="cta-ok" role="status" aria-live="polite" hidden>You’re in. Check your inbox for a sandbox key and a 10 minute setup guide.</p>
+          <p class="cta-alt">Prefer a walkthrough? <a href="#start">Book a 20 minute demo</a> or call <a href="tel:+14155550142">+1 (415) 555-0142</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-tour="2000">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="logo logo-inv" href="#top" aria-label="Cargoflow home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 6.3L16 15.6 5 9.3z" fill="#ff6a4d"/><path d="M5 9.3l11 6.3V28.5L5 22.2z" fill="#ffffff"/><path d="M27 9.3L16 15.6V28.5l11-6.3z" fill="#2ed3a5"/></svg><span>Cargoflow</span></a>
+        <p>Shipment tracking and delay prediction for teams that promise dates to their customers.</p>
+        <p class="status"><i></i>All systems normal</p>
+      </div>
+      <div class="foot-cols">
+        <div><p class="fh">Product</p><a href="#live">Live map</a><a href="#product">Delay prediction</a><a href="#product">Tracking pages</a><a href="#integrations">Integrations</a><a href="#pricing">Pricing</a></div>
+        <div><p class="fh">Company</p><a href="#customers">Customers</a><a href="#top">About</a><a href="#top">Careers</a><a href="#top">Press kit</a></div>
+        <div><p class="fh">Resources</p><a href="#integrations">Docs</a><a href="#integrations">API reference</a><a href="#top">Security</a><a href="#top">Status</a></div>
+        <div><p class="fh">Contact</p><a href="mailto:hello@cargoflow.io">hello@cargoflow.io</a><a href="mailto:sales@cargoflow.io">sales@cargoflow.io</a><a href="tel:+14155550142">+1 (415) 555-0142</a></div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Cargoflow Inc. · Privacy · Terms</p>
+      <p class="hanflux">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Keystone Build · Built to the line</title>
+<meta name="description" content="Keystone Build delivers commercial, residential, industrial and infrastructure projects on time across Maharashtra since 2004.">
+<meta name="theme-color" content="#0b3d91">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b3d91'/%3E%3Cpath d='M9 6h14l-3 20h-8z' fill='none' stroke='%23e6f0ff' stroke-width='2'/%3E%3Cpath d='M12 26h8' stroke='%23ffcc00' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vendor/lenis/lenis.css">
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+  <a class="logo" href="#top" aria-label="Keystone Build home">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 5h16l-3.4 22h-9.2z"/><path d="M11.4 27h9.2" class="lk"/><path d="M13 11h6" /></svg>
+    <span>Keystone<b>Build</b></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary"><a href="#services">Services</a><a href="#projects">Projects</a><a href="#process">Process</a><a href="#safety">Safety</a><a href="#quote">Contact</a></nav>
+  <div class="nav-r">
+    <a class="btn btn-y btn-sm" href="#quote"><span>Get a quote</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span>Menu</span><i></i></button>
+  </div>
+</header>
+<div class="menu" id="menu" aria-hidden="true">
+  <nav aria-label="Mobile"><a href="#services"><small>01</small>Services</a><a href="#projects"><small>02</small>Projects</a><a href="#process"><small>03</small>Process</a><a href="#safety"><small>04</small>Safety</a><a href="#quote"><small>05</small>Contact</a></nav>
+  <div class="menu-f"><a class="btn btn-y" href="#quote">Get a quote</a><p>hello@keystonebuild.co · Baner, Pune</p></div>
+</div>
+
+<main id="main">
+  <section class="hero" id="top" aria-label="Keystone Build introduction">
+    <span class="tm tm-0" data-tour="3600" aria-hidden="true"></span>
+    <span class="tm tm-1" data-tour="2600" aria-hidden="true"></span>
+    <span class="tm tm-2" data-tour="3200" aria-hidden="true"></span>
+    <div class="hero-sticky">
+      <div class="frame" aria-hidden="true"><div class="zones-x"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></div><div class="zones-y"><i>A</i><i>B</i><i>C</i><i>D</i><i>E</i></div></div>
+      <canvas id="model" aria-hidden="true"></canvas>
+      <div class="dwg-wrap" id="dwg"></div>
+      <div class="mlabels" id="mlabels" aria-hidden="true">
+        <div class="ml" data-p="18,33.9,9"><span>Core walls · 300 RCC</span></div>
+        <div class="ml ml--l" data-p="36,15.3,24"><span>PT slabs · 250 thick</span></div>
+        <div class="ml" data-p="0,8.1,24"><span>Columns 600 × 600 · M40</span></div>
+      </div>
+      <div class="xhair" aria-hidden="true"><i class="xh"></i><i class="xv"></i><b class="xbox"></b><span class="xy">X 18 000 · Y 12 900</span></div>
+
+      <div class="copy c0">
+        <p class="eyebrow"><i></i>Since 2004 · Pune, Maharashtra</p>
+        <h1 class="h1" id="hero-title">Built to the line.</h1>
+        <p class="lede">Commercial, residential and industrial projects delivered on time across Maharashtra since 2004.</p>
+        <div class="ctas"><a class="btn btn-y magnetic" href="#quote"><span>Get a quote</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn btn-line magnetic" href="#projects"><span>See projects</span></a></div>
+      </div>
+      <div class="copy c1" aria-hidden="true">
+        <p class="eyebrow"><i></i>Section A-A · typical floor</p>
+        <p class="ch">Every project starts on paper.</p>
+        <p class="cp">Structure, services and sequence are drawn before a single bag of cement is ordered. Riverline Offices: 864 m² floor plates on a 7.2 × 6 m grid around one central core.</p>
+      </div>
+      <div class="copy c2" aria-hidden="true">
+        <p class="eyebrow"><i></i>Coordination model</p>
+        <p class="ch">Then it rises, floor by floor.</p>
+        <p class="cp">Every column, beam and duct is checked in 3D before it reaches site. A clash found on screen costs nothing. Found on site, it costs a week.</p>
+      </div>
+
+      <div class="tblock" aria-hidden="true">
+        <div class="tb-logo"><svg viewBox="0 0 32 32"><path d="M8 5h16l-3.4 22h-9.2z"/><path d="M11.4 27h9.2" class="lk"/></svg><span>KEYSTONE<br>BUILD</span></div>
+        <div class="tb-c tb-proj"><small>Project</small><b>Riverline Offices, Baner, Pune</b></div>
+        <div class="tb-c"><small>Drawing</small><b class="tb-title">South elevation</b></div>
+        <div class="tb-c"><small>No.</small><b class="tb-no">KB-2026-014</b></div>
+        <div class="tb-c"><small>Scale</small><b class="tb-scale">1:100</b></div>
+        <div class="tb-c"><small>Rev</small><b>C</b></div>
+        <div class="tb-c"><small>Drawn</small><b>R. Kulkarni</b></div>
+        <div class="tb-c"><small>Checked</small><b>S. Deshmukh</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services sec" id="services" data-tour="2400">
+    <div class="wrap">
+      <header class="sh"><p class="tag">01 · Services</p><h2 class="h2" data-split>Four kinds of work. One standard.</h2><p class="sp" data-reveal>Design and build or build to your drawings. Either way you get one contract, one programme and one site team accountable for the result.</p></header>
+      <div class="svc-grid">
+        <article class="svc" data-reveal>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M16 58V8h32v50"/><path d="M10 58h44"/><path d="M16 18h32M16 28h32M16 38h32M16 48h32" class="t"/><path d="M27 8v40M37 8v40" class="t"/><path d="M28 58v-8h8v8" class="y"/></svg>
+          <h3>Commercial</h3><p>Grade A offices, retail podiums and hospitals, built around live operations when they have to be.</p>
+          <ul><li>Offices and IT parks</li><li>Hospitals and labs</li><li>Retail and hospitality</li></ul><p class="svc-f">Typical 1.5 to 6 lakh sq ft</p>
+        </article>
+        <article class="svc" data-reveal>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 58V18h18v40M30 58V8h22v50"/><path d="M8 58h48"/><path d="M12 28h18M12 38h18M12 48h18M30 18h22M30 28h22M30 38h22M30 48h22" class="t"/><path d="M34 22h14M34 32h14M34 42h14" class="y"/></svg>
+          <h3>Residential</h3><p>Towers, townships and villa communities, with RERA-ready documentation from the first slab.</p>
+          <ul><li>High-rise towers</li><li>Gated townships</li><li>Affordable housing</li></ul><p class="svc-f">Typical 120 to 900 homes</p>
+        </article>
+        <article class="svc" data-reveal>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 58V30l12-10v10l12-10v10l12-10v10l12-10v38"/><path d="M4 58h56"/><path d="M48 18V8h6v12" class="t"/><path d="M12 58V44h10v14M30 58V44h10v14" class="y"/></svg>
+          <h3>Industrial</h3><p>Pre-engineered steel and RCC sheds, cold chains and clean rooms, handed over ready to operate.</p>
+          <ul><li>Warehousing and logistics</li><li>Manufacturing plants</li><li>Cold storage</li></ul><p class="svc-f">Typical 1 to 8 lakh sq ft</p>
+        </article>
+        <article class="svc" data-reveal>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M2 30h60M2 36h60"/><path d="M20 36v20M44 36v20" /><path d="M16 56h8M40 56h8"/><path d="M8 30V22M20 30V20M32 30V18M44 30V20M56 30V22" class="t"/><path d="M2 50c10-3 20 3 30 0s20-3 30 0" class="y"/></svg>
+          <h3>Infrastructure</h3><p>Bridges, flyovers, water and sewage works for public bodies and private developers.</p>
+          <ul><li>Bridges and flyovers</li><li>Water treatment plants</li><li>Roads and drainage</li></ul><p class="svc-f">Spans up to 60 m</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects sec sec-deep" id="projects" data-tour="2800">
+    <div class="wrap">
+      <header class="sh"><p class="tag">02 · Selected projects</p><h2 class="h2" data-split>From drawing to handover.</h2><p class="sp" data-reveal>Flip any project between the drawing we issued and what stands on site today.</p></header>
+      <div class="pj-grid">
+        <article class="pj-card" data-pj="office">
+          <div class="pj-frame"><div class="pj-svg"></div><span class="pj-no">KB-2025-031</span><div class="pj-tg" role="group" aria-label="View"><button type="button" class="on" data-v="bp">Drawing</button><button type="button" data-v="rd">Render</button></div></div>
+          <div class="pj-meta"><h3>Riverline Offices</h3><p class="pj-loc">Baner, Pune · Commercial</p><dl><div><dt>Area</dt><dd>2.1 lakh sq ft</dd></div><div><dt>Floors</dt><dd>G + 8</dd></div><div><dt>Handed over</dt><dd>2025</dd></div></dl></div>
+        </article>
+        <article class="pj-card" data-pj="resi">
+          <div class="pj-frame"><div class="pj-svg"></div><span class="pj-no">KB-2024-018</span><div class="pj-tg" role="group" aria-label="View"><button type="button" class="on" data-v="bp">Drawing</button><button type="button" data-v="rd">Render</button></div></div>
+          <div class="pj-meta"><h3>Saanvi Heights</h3><p class="pj-loc">Wakad, Pune · Residential</p><dl><div><dt>Homes</dt><dd>312</dd></div><div><dt>Towers</dt><dd>2 × G + 14</dd></div><div><dt>Handed over</dt><dd>2024</dd></div></dl></div>
+        </article>
+        <article class="pj-card" data-pj="ind">
+          <div class="pj-frame"><div class="pj-svg"></div><span class="pj-no">KB-2023-007</span><div class="pj-tg" role="group" aria-label="View"><button type="button" class="on" data-v="bp">Drawing</button><button type="button" data-v="rd">Render</button></div></div>
+          <div class="pj-meta"><h3>Chakan Logistics Park, Phase 2</h3><p class="pj-loc">Chakan, Pune · Industrial</p><dl><div><dt>Area</dt><dd>6.5 lakh sq ft</dd></div><div><dt>Docks</dt><dd>84</dd></div><div><dt>Handed over</dt><dd>2023</dd></div></dl></div>
+        </article>
+        <article class="pj-card" data-pj="bridge">
+          <div class="pj-frame"><div class="pj-svg"></div><span class="pj-no">KB-2022-002</span><div class="pj-tg" role="group" aria-label="View"><button type="button" class="on" data-v="bp">Drawing</button><button type="button" data-v="rd">Render</button></div></div>
+          <div class="pj-meta"><h3>Indrayani River Bridge</h3><p class="pj-loc">Alandi · Infrastructure</p><dl><div><dt>Length</dt><dd>180 m</dd></div><div><dt>Spans</dt><dd>3 × 60 m</dd></div><div><dt>Opened</dt><dd>2022</dd></div></dl></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="numbers sec" aria-label="Keystone Build in numbers" data-tour="2200">
+    <div class="wrap nums">
+      <div class="num" data-reveal><div class="dl"><i></i><span>Delivered</span></div><p class="nv"><span data-count="2.4" data-dec="1">2.4</span><small>M sq ft</small></p><p class="nl">built and handed over since 2004</p></div>
+      <div class="num" data-reveal><div class="dl"><i></i><span>Safety</span></div><p class="nv"><span data-count="900">900</span><small>days</small></p><p class="nl">without a lost-time incident, across all sites</p></div>
+      <div class="num" data-reveal><div class="dl"><i></i><span>Projects</span></div><p class="nv"><span data-count="140">140</span><small>+</small></p><p class="nl">handed over in Pune, Mumbai and Nashik</p></div>
+      <div class="num" data-reveal><div class="dl"><i></i><span>Programme</span></div><p class="nv"><span data-count="96">96</span><small>%</small></p><p class="nl">handed over on or before the contract date</p></div>
+    </div>
+  </section>
+
+  <section class="process sec sec-deep" id="process" data-tour="2600">
+    <div class="wrap">
+      <header class="sh"><p class="tag">03 · Process</p><h2 class="h2" data-split>Five stages. No surprises.</h2></header>
+      <ol class="tl">
+        <li data-reveal><span class="tl-dot"></span><p class="tl-w">Weeks 1 to 2</p><h3>Survey</h3><p>Total station and drone survey, soil tests to 12 m and a utilities check before a single line is drawn.</p></li>
+        <li data-reveal><span class="tl-dot"></span><p class="tl-w">Weeks 3 to 10</p><h3>Design</h3><p>Architecture, structure and services coordinated in one model. You sign off a fixed scope and programme.</p></li>
+        <li data-reveal><span class="tl-dot"></span><p class="tl-w">Weeks 6 to 16</p><h3>Approvals</h3><p>We file and follow up building permission, fire NOC and environment clearance with the local authorities.</p></li>
+        <li data-reveal><span class="tl-dot"></span><p class="tl-w">Months 4 to 22</p><h3>Build</h3><p>Weekly photo reports, a live programme on your phone and one site engineer who answers the call.</p></li>
+        <li data-reveal><span class="tl-dot"></span><p class="tl-w">Month 23</p><h3>Handover</h3><p>Snags closed, as-built drawings, O&amp;M manuals and a five year structural warranty.</p></li>
+      </ol>
+      <div class="tl-line" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
+
+  <section class="safety sec" id="safety" data-tour="2600">
+    <div class="hazard" aria-hidden="true"></div>
+    <div class="wrap safety-grid">
+      <div class="board" data-reveal>
+        <p class="b-top">Site safety board · all Keystone sites</p>
+        <p class="b-big">This company has worked</p>
+        <div class="digits" aria-label="900 days"><span>0</span><span>9</span><span>0</span><span>0</span></div>
+        <p class="b-big">days without a lost-time incident</p>
+        <p class="b-foot">Last updated 06:30 today · next audit 2 December</p>
+      </div>
+      <div class="safety-copy">
+        <p class="tag">04 · Safety</p>
+        <h2 class="h2" data-split>Everyone goes home. Every day.</h2>
+        <ul class="sl">
+          <li data-reveal><b>Toolbox talk every morning</b><span>In Marathi, Hindi and English, before the first lift of the day.</span></li>
+          <li data-reveal><b>Independent audit every quarter</b><span>Scaffolds, lifting gear and electrics inspected by a third party.</span></li>
+          <li data-reveal><b>Insured from day one</b><span>Every worker on every site, including subcontractor crews.</span></li>
+          <li data-reveal><b>Site crèche on large projects</b><span>On any site with more than 200 workers, run by trained carers.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote sec sec-deep" id="quote" data-tour="2800">
+    <div class="wrap quote-grid">
+      <div class="q-copy">
+        <p class="tag">05 · Request a quote</p>
+        <h2 class="h2" data-split>Tell us what you are building.</h2>
+        <p class="sp" data-reveal>Our estimating team replies within one working day with a budget range, a draft programme and the name of the engineer who would run your site.</p>
+        <div class="q-btns" data-reveal><a class="btn btn-y" href="#quote-form"><span>WhatsApp our estimators</span></a><a class="btn btn-line" href="#quote-form"><span>Book a site visit</span></a></div>
+        <dl class="q-dl" data-reveal><div><dt>Office</dt><dd>4th floor, Sai Prism, Baner Road, Pune 411045</dd></div><div><dt>Email</dt><dd><a href="mailto:hello@keystonebuild.co">hello@keystonebuild.co</a></dd></div><div><dt>Hours</dt><dd>Mon to Sat, 9:00 to 18:30</dd></div></dl>
+      </div>
+      <form class="form" id="quote-form" novalidate>
+        <div class="f-in">
+          <div class="f-row"><label class="fld"><span>Name</span><input name="name" required autocomplete="name" placeholder="Anil Patwardhan"></label><label class="fld"><span>Company</span><input name="company" autocomplete="organization" placeholder="Patwardhan Realty"></label></div>
+          <div class="f-row"><label class="fld"><span>Phone</span><input name="phone" type="tel" required autocomplete="tel" placeholder="Mobile number"></label><label class="fld"><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="anil@company.in"></label></div>
+          <fieldset class="fld chips"><legend>Project type</legend>
+            <label><input type="radio" name="type" value="Commercial" checked><span>Commercial</span></label><label><input type="radio" name="type" value="Residential"><span>Residential</span></label><label><input type="radio" name="type" value="Industrial"><span>Industrial</span></label><label><input type="radio" name="type" value="Infrastructure"><span>Infrastructure</span></label>
+          </fieldset>
+          <div class="f-row">
+            <label class="fld"><span>Location</span><select name="city"><option>Pune</option><option>Pimpri-Chinchwad</option><option>Mumbai</option><option>Nashik</option><option>Other, Maharashtra</option></select></label>
+            <label class="fld"><span>Built-up area, sq ft</span><input name="area" inputmode="numeric" placeholder="1,20,000"></label>
+          </div>
+          <label class="fld"><span>Brief</span><textarea name="msg" rows="3" placeholder="G + 6 office block on a 1.2 acre plot, plans approved, start in March."></textarea></label>
+          <button class="btn btn-y btn-wide" type="submit"><span>Request a quote</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+        </div>
+        <div class="f-done" role="status" aria-live="polite" hidden>
+          <p class="stamp">Received</p>
+          <p class="fd-h">Request logged as <b>KB-Q-2611</b>.</p>
+          <p class="fd-p">Thank you<span class="fd-n"></span>. Our estimating team will call within one working day.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-tour="2000">
+  <div class="wrap">
+    <div class="ft-block">
+      <div class="ft-c ft-logo"><a class="logo" href="#top" aria-label="Keystone Build home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 5h16l-3.4 22h-9.2z"/><path d="M11.4 27h9.2" class="lk"/><path d="M13 11h6"/></svg><span>Keystone<b>Build</b></span></a><p>Construction and engineering contractor. Pune, since 2004.</p></div>
+      <div class="ft-c"><small>Office</small><p>Keystone Build Pvt. Ltd.<br>4th floor, Sai Prism, Baner Road<br>Pune 411045</p></div>
+      <div class="ft-c"><small>Contact</small><p><a href="mailto:hello@keystonebuild.co">hello@keystonebuild.co</a><br><a href="mailto:careers@keystonebuild.co">careers@keystonebuild.co</a></p></div>
+      <div class="ft-c"><small>Sitemap</small><p><a href="#services">Services</a> · <a href="#projects">Projects</a> · <a href="#process">Process</a><br><a href="#safety">Safety</a> · <a href="#quote">Contact</a></p></div>
+      <div class="ft-c ft-dwg"><small>Drawing</small><p>KB-2026-000 · Sheet 01 of 01 · Rev D</p></div>
+      <div class="ft-c ft-copy"><small>Issued</small><p>© 2026 Keystone Build Pvt. Ltd.</p></div>
+    </div>
+    <p class="hanflux">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+  </div>
+</footer>
+</body>
+</html>

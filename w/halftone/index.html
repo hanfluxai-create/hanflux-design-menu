@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Grain &amp; Ink · Roasted on Tuesday, in your cup by Thursday</title>
+<meta name="description" content="Grain & Ink roasts single-origin coffee every Tuesday in Bengaluru. Beans, a fortnightly subscription and two cafés in Indiranagar and Jayanagar.">
+<meta name="theme-color" content="#f2ede1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23f2ede1'/%3E%3Ccircle cx='14' cy='17' r='8' fill='%23e8432e' opacity='.9'/%3E%3Ccircle cx='18' cy='15' r='8' fill='%232c5bd6' opacity='.85' style='mix-blend-mode:multiply'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg class="defs" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs>
+    <pattern id="dotsB" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(15)"><circle cx="3.5" cy="3.5" r="1.9" fill="#2c5bd6"/></pattern>
+    <pattern id="dotsBs" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(15)"><circle cx="3" cy="3" r="1.1" fill="#2c5bd6"/></pattern>
+    <pattern id="dotsR" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(75)"><circle cx="3.5" cy="3.5" r="2.1" fill="#e8432e"/></pattern>
+    <pattern id="dotsRs" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(75)"><circle cx="3" cy="3" r="1.2" fill="#e8432e"/></pattern>
+    <pattern id="linesB" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-30)"><rect width="6" height="2.2" fill="#2c5bd6"/></pattern>
+  </defs>
+</svg>
+
+<header class="nav" id="top">
+  <div class="nav__in">
+    <a class="logo" href="#top" aria-label="Grain and Ink, back to top"><span class="logo__g">Grain</span><span class="logo__amp" aria-hidden="true">&amp;</span><span class="logo__i">Ink</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#origins">Origins</a><a href="#subscribe">Subscribe</a><a href="#cafes">Cafés</a><a href="#brew">Brew guide</a><a href="#letters">Reviews</a>
+    </nav>
+    <div class="nav__r">
+      <a class="nav__bag" href="#origins" aria-label="Bag, 0 items">Bag <b id="bagn">0</b></a>
+      <a class="btn btn--ink btn--sm" href="#origins">Shop beans</a>
+      <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <p class="menu__k">Contents · Issue No. 142</p>
+  <nav aria-label="Mobile">
+    <a href="#origins"><span>p. 04</span>Origins</a>
+    <a href="#subscribe"><span>p. 07</span>The Tuesday Club</a>
+    <a href="#cafes"><span>p. 10</span>Our cafés</a>
+    <a href="#brew"><span>p. 12</span>Brew guide</a>
+    <a href="#letters"><span>p. 14</span>Letters</a>
+  </nav>
+  <a class="btn btn--ink" href="#origins">Shop beans</a>
+</div>
+
+<main id="main">
+
+<section class="hero" id="hero" data-tour="3400" aria-labelledby="hero-t">
+  <canvas class="hero__gl" aria-hidden="true"></canvas>
+  <div class="hero__in wrap">
+    <div class="mast" aria-label="Issue details">
+      <span>Issue No. 142</span>
+      <span class="mast__mid">Roasted Tue 17 Nov 2026 · Ships Thu 19 Nov</span>
+      <span>Bengaluru · ₹950 / 250 g</span>
+    </div>
+    <div class="hero__grid">
+      <h1 class="hero__t" id="hero-t">Roasted on <em>Tuesday.</em> <span class="hero__l2">In your cup by</span> <em>Thursday.</em></h1>
+      <div class="hero__cup" aria-hidden="true"></div>
+      <div class="hero__bottom">
+        <p class="hero__sub">Single-origin beans from Indian estates and beyond, roasted weekly in Bengaluru.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--ink magnet" href="#origins">Shop beans</a>
+          <a class="btn btn--line magnet" href="#cafes">Visit the café</a>
+        </div>
+      </div>
+      <aside class="sticker" aria-label="This week on the roaster">
+        <span class="sticker__k">On the roaster this week</span>
+        <b>Chikmagalur Estate</b>
+        <span>Medium roast · jaggery, cocoa nib, orange peel</span>
+      </aside>
+      <div class="stamp" aria-hidden="true">
+        <svg viewBox="0 0 200 200"><defs><path id="circ" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+          <circle cx="100" cy="100" r="96" fill="#e8432e"/>
+          <g class="stamp__ring"><text><textPath href="#circ" startOffset="0">FRESH ROAST EVERY TUESDAY • SHIPS THURSDAY •</textPath></text></g>
+          <text x="100" y="94" text-anchor="middle" class="stamp__n">No.</text><text x="100" y="128" text-anchor="middle" class="stamp__b">142</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="ticker" aria-hidden="true"><div class="ticker__t"><span>Chikmagalur Estate</span><i>•</i><span>Ethiopia Guji</span><i>•</i><span>Colombia Huila</span><i>•</i><span>Roasted every Tuesday</span><i>•</i><span>Free delivery across Bengaluru</span><i>•</i><span>Chikmagalur Estate</span><i>•</i><span>Ethiopia Guji</span><i>•</i><span>Colombia Huila</span><i>•</i><span>Roasted every Tuesday</span><i>•</i><span>Free delivery across Bengaluru</span><i>•</i></div></div>
+</section>
+
+<section class="sec origins" id="origins" data-tour="2800" aria-labelledby="or-t">
+  <div class="wrap">
+    <header class="head">
+      <p class="folio"><span>p. 04</span> Origins</p>
+      <h2 class="h2" id="or-t">Three farms. One <em>Tuesday</em> roaster.</h2>
+      <p class="lede">We buy green coffee from growers we know by name, pay well above market, and roast in small 6 kg batches so nothing sits on a shelf.</p>
+    </header>
+    <div class="orgs">
+      <article class="org" data-reveal>
+        <div class="org__art">
+          <svg viewBox="0 0 400 250" role="img" aria-label="Riso print of shaded hills in Chikmagalur">
+            <rect width="400" height="250" fill="#f2ede1"/>
+            <g style="mix-blend-mode:multiply"><circle cx="300" cy="78" r="44" fill="url(#dotsR)"/><path d="M0 190 C70 130 130 150 190 120 C250 92 320 140 400 110 V250 H0Z" fill="url(#dotsB)"/></g>
+            <g style="mix-blend-mode:multiply" transform="translate(3 -2)"><path d="M0 214 C80 170 150 196 220 170 C290 146 340 180 400 160 V250 H0Z" fill="#2c5bd6" opacity=".85"/><g fill="#e8432e"><circle cx="88" cy="150" r="17"/><circle cx="128" cy="140" r="13"/><circle cx="244" cy="132" r="16"/><circle cx="330" cy="150" r="12"/></g><g stroke="#e8432e" stroke-width="4"><path d="M88 167v28M128 153v26M244 148v24M330 162v20"/></g></g>
+          </svg>
+          <span class="org__tag">India</span>
+        </div>
+        <div class="org__body">
+          <h3>Chikmagalur Estate</h3>
+          <p class="org__where">Baba Budangiri hills, Karnataka · 1,350 m · washed · SLN 9 and SL 795</p>
+          <p class="org__notes"><span>jaggery</span><span>cocoa nib</span><span>orange peel</span></p>
+          <div class="roast" aria-label="Roast level: medium, 3 of 5"><span class="roast__k">Roast</span><div class="roast__bar" style="--lvl:3"><i></i><i></i><i></i><i></i><i></i></div><span class="roast__v">Medium</span></div>
+          <dl class="prof">
+            <div><dt>Acidity</dt><dd><span style="--v:.4"></span></dd></div>
+            <div><dt>Body</dt><dd><span style="--v:.8"></span></dd></div>
+            <div><dt>Sweetness</dt><dd><span style="--v:.8"></span></dd></div>
+          </dl>
+          <div class="org__buy"><b>₹850 <small>/ 250 g</small></b><button class="btn btn--ink btn--sm add" type="button" data-name="Chikmagalur Estate">Add 250 g</button></div>
+        </div>
+      </article>
+      <article class="org" data-reveal>
+        <div class="org__art">
+          <svg viewBox="0 0 400 250" role="img" aria-label="Riso print of a sun over terraced hills in Guji">
+            <rect width="400" height="250" fill="#f2ede1"/>
+            <g style="mix-blend-mode:multiply"><circle cx="200" cy="112" r="70" fill="#e8432e"/><circle cx="200" cy="112" r="94" fill="url(#dotsRs)"/></g>
+            <g style="mix-blend-mode:multiply" transform="translate(-3 2)"><path d="M0 170 H400 V250 H0Z" fill="url(#linesB)"/><path d="M0 150 C100 140 120 168 200 160 C280 152 300 136 400 150 V178 H0Z" fill="#2c5bd6" opacity=".9"/><path d="M0 196 C90 186 150 210 230 200 C300 192 340 206 400 198 V214 H0Z" fill="#2c5bd6" opacity=".9"/></g>
+            <g style="mix-blend-mode:multiply" fill="#e8432e"><circle cx="66" cy="120" r="7"/><circle cx="78" cy="132" r="7"/><circle cx="60" cy="138" r="7"/><path d="M40 92 C60 110 70 112 92 140" stroke="#2c5bd6" stroke-width="3" fill="none"/></g>
+          </svg>
+          <span class="org__tag">Ethiopia</span>
+        </div>
+        <div class="org__body">
+          <h3>Ethiopia Guji</h3>
+          <p class="org__where">Hambela, Guji zone · 2,150 m · natural · heirloom varieties</p>
+          <p class="org__notes"><span>bergamot</span><span>ripe peach</span><span>jasmine</span></p>
+          <div class="roast" aria-label="Roast level: light, 1 of 5"><span class="roast__k">Roast</span><div class="roast__bar" style="--lvl:1"><i></i><i></i><i></i><i></i><i></i></div><span class="roast__v">Light</span></div>
+          <dl class="prof">
+            <div><dt>Acidity</dt><dd><span style="--v:1"></span></dd></div>
+            <div><dt>Body</dt><dd><span style="--v:.4"></span></dd></div>
+            <div><dt>Sweetness</dt><dd><span style="--v:.8"></span></dd></div>
+          </dl>
+          <div class="org__buy"><b>₹1,150 <small>/ 250 g</small></b><button class="btn btn--ink btn--sm add" type="button" data-name="Ethiopia Guji">Add 250 g</button></div>
+        </div>
+      </article>
+      <article class="org" data-reveal>
+        <div class="org__art">
+          <svg viewBox="0 0 400 250" role="img" aria-label="Riso print of a volcano and clouds over Huila">
+            <rect width="400" height="250" fill="#f2ede1"/>
+            <g style="mix-blend-mode:multiply"><circle cx="96" cy="70" r="36" fill="#e8432e"/><path d="M60 250 L200 70 L236 104 L262 86 L380 250Z" fill="url(#dotsB)"/></g>
+            <g style="mix-blend-mode:multiply" transform="translate(2 3)"><path d="M150 250 L200 92 L228 120 L254 104 L320 250Z" fill="#2c5bd6" opacity=".88"/><path d="M200 70 L236 104 L262 86 L268 96 L236 120 L200 92 L186 104Z" fill="#f2ede1"/><g fill="#e8432e"><ellipse cx="300" cy="64" rx="52" ry="14"/><ellipse cx="270" cy="54" rx="30" ry="12"/><ellipse cx="80" cy="130" rx="44" ry="11"/></g></g>
+          </svg>
+          <span class="org__tag">Colombia</span>
+        </div>
+        <div class="org__body">
+          <h3>Colombia Huila</h3>
+          <p class="org__where">Pitalito, Huila · 1,750 m · washed · Caturra and Castillo</p>
+          <p class="org__notes"><span>red apple</span><span>panela</span><span>milk chocolate</span></p>
+          <div class="roast" aria-label="Roast level: medium light, 2 of 5"><span class="roast__k">Roast</span><div class="roast__bar" style="--lvl:2"><i></i><i></i><i></i><i></i><i></i></div><span class="roast__v">Medium light</span></div>
+          <dl class="prof">
+            <div><dt>Acidity</dt><dd><span style="--v:.6"></span></dd></div>
+            <div><dt>Body</dt><dd><span style="--v:.6"></span></dd></div>
+            <div><dt>Sweetness</dt><dd><span style="--v:1"></span></dd></div>
+          </dl>
+          <div class="org__buy"><b>₹1,050 <small>/ 250 g</small></b><button class="btn btn--ink btn--sm add" type="button" data-name="Colombia Huila">Add 250 g</button></div>
+        </div>
+      </article>
+    </div>
+    <p class="toast" id="toast" role="status" aria-live="polite"></p>
+  </div>
+</section>
+
+<section class="sec sub" id="subscribe" data-tour="2800" aria-labelledby="sub-t">
+  <div class="wrap sub__grid">
+    <div class="sub__copy">
+      <p class="folio"><span>p. 07</span> The Tuesday Club</p>
+      <h2 class="h2" id="sub-t">Fresh beans every <em>two weeks.</em></h2>
+      <p class="lede">₹950 per 250 g, roasted the Tuesday before it ships. Pause, skip or switch origins anytime from WhatsApp or your account. Free delivery across Bengaluru, ₹60 anywhere else in India.</p>
+      <form class="cfg" id="cfg" novalidate>
+        <fieldset>
+          <legend>Origin</legend>
+          <div class="chips">
+            <label><input type="radio" name="origin" value="Roaster's choice" checked><span>Roaster's choice</span></label>
+            <label><input type="radio" name="origin" value="Chikmagalur Estate"><span>Chikmagalur</span></label>
+            <label><input type="radio" name="origin" value="Ethiopia Guji"><span>Guji</span></label>
+            <label><input type="radio" name="origin" value="Colombia Huila"><span>Huila</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Grind</legend>
+          <div class="chips">
+            <label><input type="radio" name="grind" value="Whole bean" checked><span>Whole bean</span></label>
+            <label><input type="radio" name="grind" value="Pour-over"><span>Pour-over</span></label>
+            <label><input type="radio" name="grind" value="Espresso"><span>Espresso</span></label>
+            <label><input type="radio" name="grind" value="French press"><span>French press</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Every two weeks</legend>
+          <div class="chips">
+            <label><input type="radio" name="size" value="1" checked><span>1 bag · 250 g</span></label>
+            <label><input type="radio" name="size" value="2"><span>2 bags · 500 g</span></label>
+          </div>
+        </fieldset>
+        <div class="cfg__sum">
+          <p><b id="price">₹950</b> every 2 weeks <span class="cfg__first">first roast Tue 24 Nov</span></p>
+          <button class="btn btn--red" type="submit">Start my subscription</button>
+        </div>
+        <p class="cfg__ok" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="bag" aria-hidden="true">
+      <svg viewBox="0 0 360 460">
+        <g style="mix-blend-mode:multiply">
+          <path d="M70 70 L290 70 L306 430 Q180 446 54 430 Z" fill="url(#dotsBs)"/>
+          <path d="M70 70 L120 40 L240 40 L290 70" fill="none" stroke="#2c5bd6" stroke-width="5"/>
+        </g>
+        <g style="mix-blend-mode:multiply" transform="translate(4 -3)">
+          <path d="M70 70 L290 70 L306 430 Q180 446 54 430 Z" fill="none" stroke="#151515" stroke-width="4"/>
+          <path d="M120 40 L240 40 L250 70 L110 70 Z" fill="#151515"/>
+          <rect x="96" y="150" width="168" height="196" fill="#f2ede1" stroke="#151515" stroke-width="3"/>
+          <rect x="96" y="150" width="168" height="40" fill="#e8432e"/>
+        </g>
+        <text x="180" y="177" text-anchor="middle" class="bag__brand">GRAIN &amp; INK</text>
+        <text x="180" y="224" text-anchor="middle" class="bag__o" id="bag-o1">Roaster's</text>
+        <text x="180" y="252" text-anchor="middle" class="bag__o" id="bag-o2">choice</text>
+        <line x1="114" y1="270" x2="246" y2="270" stroke="#151515" stroke-width="1.5"/>
+        <text x="180" y="294" text-anchor="middle" class="bag__m" id="bag-g">WHOLE BEAN · 250 G</text>
+        <text x="180" y="318" text-anchor="middle" class="bag__m" id="bag-r">ROASTED 24.11.26</text>
+        <g class="bag__seal"><circle cx="276" cy="390" r="38" fill="#e8432e"/><text x="276" y="386" text-anchor="middle" class="bag__s">EVERY</text><text x="276" y="402" text-anchor="middle" class="bag__s">2 WEEKS</text></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="sec cafes" id="cafes" data-tour="2600" aria-labelledby="cafe-t">
+  <div class="wrap">
+    <header class="head">
+      <p class="folio"><span>p. 10</span> Visit</p>
+      <h2 class="h2" id="cafe-t">Two cafés, both with the <em>good</em> filter.</h2>
+    </header>
+    <div class="cafe__grid">
+      <article class="cafe" data-reveal data-open='[[450,1260],[450,1260],[450,1260],[450,1260],[450,1260],[480,1320],[480,1320]]'>
+        <div class="cafe__map">
+          <svg viewBox="0 0 420 240" role="img" aria-label="Map of the Indiranagar café near 12th Main Road and the metro station">
+            <rect width="420" height="240" fill="#f2ede1"/>
+            <g style="mix-blend-mode:multiply"><rect x="250" y="20" width="120" height="76" fill="url(#dotsBs)"/><path d="M0 150 H420 M150 0 V240 M300 120 V240 M0 70 H230" stroke="#2c5bd6" stroke-width="9" opacity=".35"/><path d="M0 150 H420 M150 0 V240" stroke="#2c5bd6" stroke-width="3"/></g>
+            <g style="mix-blend-mode:multiply"><circle cx="210" cy="114" r="15" fill="#e8432e"/><circle cx="210" cy="114" r="30" fill="url(#dotsRs)"/></g>
+            <g transform="translate(76 186)"><circle r="14" fill="#2c5bd6"/><text y="5" text-anchor="middle" class="map__m">M</text></g>
+            <text x="156" y="16" class="map__t">100 FT RD</text><text x="300" y="166" class="map__t">12TH MAIN</text><text x="258" y="60" class="map__t">PARK</text>
+          </svg>
+        </div>
+        <div class="cafe__body">
+          <p class="cafe__state" aria-live="polite"><i></i><span>Open now</span></p>
+          <h3>Indiranagar</h3>
+          <p>Roastery and pour-over bar. Watch Tuesday's roast through the glass while you wait.</p>
+          <dl class="cafe__dl">
+            <div><dt>Where</dt><dd>No. 18, 12th Main Road, HAL 2nd Stage, Indiranagar, Bengaluru 560038</dd></div>
+            <div><dt>Hours</dt><dd>Mon to Fri 7:30 AM to 9 PM · Sat and Sun 8 AM to 10 PM</dd></div>
+            <div><dt>Good to know</dt><dd>28 seats · 6 minutes from Indiranagar metro · laptops welcome until 5 PM</dd></div>
+          </dl>
+          <div class="cafe__btns"><a class="btn btn--ink btn--sm" href="#cafes">WhatsApp us</a><a class="btn btn--line btn--sm" href="#cafes">Book a table</a></div>
+        </div>
+      </article>
+      <article class="cafe" data-reveal data-open='[[420,1200],[420,1200],[420,1200],[420,1200],[420,1200],[420,1200],[420,1200]]'>
+        <div class="cafe__map">
+          <svg viewBox="0 0 420 240" role="img" aria-label="Map of the Jayanagar café on 11th Main Road beside the 4th Block park">
+            <rect width="420" height="240" fill="#f2ede1"/>
+            <g style="mix-blend-mode:multiply"><rect x="40" y="110" width="150" height="100" fill="url(#dotsBs)"/><path d="M0 90 H420 M230 0 V240 M0 220 H420 M330 0 V90" stroke="#2c5bd6" stroke-width="9" opacity=".35"/><path d="M0 90 H420 M230 0 V240" stroke="#2c5bd6" stroke-width="3"/></g>
+            <g style="mix-blend-mode:multiply"><circle cx="268" cy="140" r="15" fill="#e8432e"/><circle cx="268" cy="140" r="30" fill="url(#dotsRs)"/></g>
+            <text x="236" y="230" class="map__t">11TH MAIN</text><text x="14" y="82" class="map__t">30TH CROSS</text><text x="70" y="166" class="map__t">4TH BLOCK PARK</text>
+          </svg>
+        </div>
+        <div class="cafe__body">
+          <p class="cafe__state" aria-live="polite"><i></i><span>Open now</span></p>
+          <h3>Jayanagar</h3>
+          <p>Garden café with filter coffee all day, a shaded patio and a small zine library.</p>
+          <dl class="cafe__dl">
+            <div><dt>Where</dt><dd>No. 7, 11th Main Road, 4th Block, Jayanagar, Bengaluru 560011</dd></div>
+            <div><dt>Hours</dt><dd>Every day 7 AM to 8 PM</dd></div>
+            <div><dt>Good to know</dt><dd>34 seats · dog friendly patio · weekend brew classes at 11 AM</dd></div>
+          </dl>
+          <div class="cafe__btns"><a class="btn btn--ink btn--sm" href="#cafes">WhatsApp us</a><a class="btn btn--line btn--sm" href="#cafes">Book a class</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec brew" id="brew" data-tour="1600" aria-labelledby="brew-t">
+  <div class="wrap">
+    <header class="head">
+      <p class="folio"><span>p. 12</span> Brew guide</p>
+      <h2 class="h2" id="brew-t">Pour-over at home, in <em>three minutes.</em></h2>
+      <p class="recipe"><span>15 g coffee</span><span>250 g water</span><span>93°C</span><span>medium-fine grind</span><span>3:00 total</span></p>
+    </header>
+  </div>
+  <div class="brew__pin" id="brewpin">
+    <div class="wrap brew__grid">
+      <div class="brew__viz" aria-hidden="true">
+        <svg viewBox="0 0 420 420">
+          <circle cx="210" cy="210" r="196" fill="none" stroke="#151515" stroke-width="2" stroke-dasharray="2 9"/>
+          <circle class="brew__ring" cx="210" cy="210" r="182" fill="none" stroke="#e8432e" stroke-width="16" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" transform="rotate(-90 210 210)"/>
+          <clipPath id="cupclip"><path d="M150 268 H270 L262 336 Q210 348 158 336 Z"/></clipPath>
+          <clipPath id="coneclip"><path d="M138 120 H282 L222 232 H198 Z"/></clipPath>
+          <g style="mix-blend-mode:multiply">
+            <g clip-path="url(#cupclip)"><rect class="brew__fill" x="140" y="268" width="140" height="80" fill="url(#dotsR)" transform="translate(0 80)"/></g>
+            <g clip-path="url(#coneclip)"><rect class="brew__water" x="130" y="120" width="160" height="120" fill="url(#dotsB)" transform="translate(0 120)"/></g>
+          </g>
+          <path d="M138 120 H282 L222 232 H198 Z" fill="none" stroke="#151515" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M124 120 H296" stroke="#151515" stroke-width="5"/>
+          <path d="M150 268 H270 L262 336 Q210 348 158 336 Z" fill="none" stroke="#151515" stroke-width="4"/>
+          <path d="M270 284 Q296 292 268 318" fill="none" stroke="#151515" stroke-width="4"/>
+          <path class="brew__drip" d="M210 236 V262" stroke="#2c5bd6" stroke-width="4" stroke-dasharray="4 6"/>
+        </svg>
+        <p class="brew__clock" aria-live="off"><span id="clock">0:00</span><small id="stepname">Rinse and warm</small></p>
+      </div>
+      <ol class="steps" id="steps">
+        <li class="is-on"><span class="steps__t">prep</span><div><h3>Rinse and warm</h3><p>Rinse the paper filter with hot water, warm the cup, and pour the rinse water away.</p></div></li>
+        <li><span class="steps__t">0:00</span><div><h3>Bloom</h3><p>Add 15 g of coffee, pour 45 g of water, swirl gently and wait 45 seconds while it bubbles.</p></div></li>
+        <li><span class="steps__t">0:45</span><div><h3>First pour</h3><p>Pour slowly in small circles, avoiding the paper, until the scale reads 150 g.</p></div></li>
+        <li><span class="steps__t">1:15</span><div><h3>Second pour</h3><p>Top up to 250 g with a steady stream and keep the bed level.</p></div></li>
+        <li><span class="steps__t">2:00</span><div><h3>Swirl</h3><p>Give the dripper one gentle swirl so the grounds settle flat.</p></div></li>
+        <li><span class="steps__t">3:00</span><div><h3>Drawdown</h3><p>Done when the bed is flat and dry. Pour, wait a minute, then taste as it cools.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec letters" id="letters" data-tour="2600" aria-labelledby="let-t">
+  <div class="wrap">
+    <header class="head head--row">
+      <div>
+        <p class="folio"><span>p. 14</span> Letters</p>
+        <h2 class="h2" id="let-t">Letters to the <em>roaster.</em></h2>
+      </div>
+      <p class="rating"><b>4.9</b> average from 1,200+ subscribers</p>
+    </header>
+    <div class="zine">
+      <blockquote class="note note--a" data-reveal><p>“The Guji tastes like someone dropped a ripe peach into my cup. I cancelled two other subscriptions.”</p><footer><span class="ava ava--r">MS</span>Meera S., Koramangala</footer></blockquote>
+      <blockquote class="note note--b" data-reveal><p>“Roasted Tuesday, on my doorstep Thursday. Fourteen months, not one late bag.”</p><footer><span class="ava ava--b">AP</span>Arjun P., subscriber since 2025</footer></blockquote>
+      <blockquote class="note note--c" data-reveal><p>“Best pour-over bar in Indiranagar, and they happily taught me their recipe.”</p><footer><span class="ava ava--r">FK</span>Fatima K., HSR Layout</footer></blockquote>
+      <blockquote class="note note--d" data-reveal><p>“The Chikmagalur made me stop adding sugar. The jaggery note is real.”</p><footer><span class="ava ava--b">RD</span>Rohan D., Whitefield</footer></blockquote>
+      <blockquote class="note note--e" data-reveal><p>“Garden patio, filter coffee and a zine to read. Sunday, sorted.”</p><footer><span class="ava ava--r">KR</span>Kavya R., Basavanagudi</footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="sec last" id="last" data-tour="2400" aria-labelledby="last-t">
+  <div class="last__dots" aria-hidden="true"></div>
+  <div class="wrap last__in">
+    <p class="folio"><span>p. 16</span> Last call</p>
+    <h2 class="h2 last__t" id="last-t">This week's roast closes <em>Monday, 9 PM.</em></h2>
+    <p class="count" aria-live="off"><span><b id="cd-d">5</b> days</span><span><b id="cd-h">00</b> hrs</span><span><b id="cd-m">00</b> min</span><span><b id="cd-s">00</b> sec</span></p>
+    <div class="last__ctas"><a class="btn btn--ink magnet" href="#origins">Shop beans</a><a class="btn btn--red magnet" href="#subscribe">Start a subscription</a></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <a class="logo" href="#top" aria-label="Grain and Ink, back to top"><span class="logo__g">Grain</span><span class="logo__amp" aria-hidden="true">&amp;</span><span class="logo__i">Ink</span></a>
+        <p>Specialty coffee roasted every Tuesday in Bengaluru since 2019. Printed, poured and posted with care.</p>
+      </div>
+      <nav class="foot__col" aria-label="Shop"><p>Shop</p><a href="#origins">Beans</a><a href="#subscribe">The Tuesday Club</a><a href="#origins">Gift cards</a><a href="#origins">Wholesale</a></nav>
+      <nav class="foot__col" aria-label="Visit"><p>Visit</p><a href="#cafes">Indiranagar</a><a href="#cafes">Jayanagar</a><a href="#brew">Brew classes</a></nav>
+      <div class="foot__col"><p>Contact</p><a href="mailto:hello@grainandink.coffee">hello@grainandink.coffee</a><a href="mailto:wholesale@grainandink.coffee">wholesale@grainandink.coffee</a><a class="foot__wa" href="#cafes">WhatsApp us</a></div>
+    </div>
+    <div class="foot__base">
+      <p>© 2026 Grain &amp; Ink Coffee Roasters, Bengaluru</p>
+      <p class="foot__fict">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

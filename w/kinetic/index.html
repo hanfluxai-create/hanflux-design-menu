@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Loudmouth · We make brands loud</title>
+<meta name="description" content="Loudmouth is a branding and motion studio in Brooklyn. Strategy, identity, motion and web for companies that refuse to whisper.">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0b0b'/%3E%3Cpath d='M14 14h9v27h17v9H14z' fill='%23e4ff1a'/%3E%3Ccircle cx='47' cy='45' r='5' fill='%23ff3b1f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Roboto+Flex:opsz,wdth,wght,GRAD,YTUC@8..144,25..151,100..1000,-200..150,528..760&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#top" aria-label="Loudmouth, back to top">LOUDMOUTH<i class="onair" aria-hidden="true"></i></a>
+  <nav class="nav__links" aria-label="Main">
+    <a href="#work" class="flexlink">Work</a>
+    <a href="#services" class="flexlink">Services</a>
+    <a href="#studio" class="flexlink">Studio</a>
+    <a href="#contact" class="flexlink">Contact</a>
+  </nav>
+  <div class="nav__right">
+    <span class="nav__clock">Brooklyn <time id="clock" datetime="10:42">10:42 AM</time></span>
+    <a class="btn btn--acid btn--sm magnetic" href="#contact"><span>Start a project</span></a>
+  </div>
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__links" aria-label="Mobile">
+    <a href="#work"><small>01</small>Work</a>
+    <a href="#services"><small>02</small>Services</a>
+    <a href="#studio"><small>03</small>Studio</a>
+    <a href="#contact"><small>04</small>Contact</a>
+  </nav>
+  <div class="menu__foot">
+    <a href="mailto:hello@loudmouth.studio">hello@loudmouth.studio</a>
+    <span>Unit 4, 55 Water Street, Brooklyn, NY</span>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="hero" id="top" data-tour="3000">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="mq" data-speed="-38"><div class="mq__t">LOUD ✱ LOUDER ✱ LOUDEST ✱ LOUD ✱ LOUDER ✱ LOUDEST ✱&nbsp;</div></div>
+      <div class="mq mq--alt" data-speed="30"><div class="mq__t">NO BEIGE ✱ NO WHISPERS ✱ NO SMALL TALK ✱ NO BEIGE ✱ NO WHISPERS ✱&nbsp;</div></div>
+      <div class="mq" data-speed="-24"><div class="mq__t">STRATEGY ✱ IDENTITY ✱ MOTION ✱ WEB ✱ STRATEGY ✱ IDENTITY ✱&nbsp;</div></div>
+    </div>
+
+    <div class="hero__inner">
+      <p class="hero__kicker"><span class="chip"><i></i>Branding and motion studio</span><span class="hero__kicker-dim">Brooklyn, NY · Since 2015 · Taking projects for spring 2027</span></p>
+
+      <h1 class="hero__title" id="heroTitle" aria-label="We make brands loud.">
+        <span class="hrow">WE MAKE BRANDS</span>
+        <span class="hrow">LOUD.</span>
+      </h1>
+
+      <div class="hero__foot">
+        <p class="hero__lede">Loudmouth is a branding and motion studio for companies that refuse to whisper. We find the one thing only you can say, then build the strategy, identity, motion and web to say it at full volume.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--acid magnetic" href="#contact"><span>Start a project</span><b aria-hidden="true">→</b></a>
+          <a class="btn btn--ghost magnetic" href="#work"><span>See the work</span></a>
+        </div>
+        <p class="hero__cue"><span>Scroll for the noise</span><i aria-hidden="true"></i></p>
+      </div>
+      <p class="hero__stage" id="heroStage">Every brand has a voice. <span>We find it, then turn it all the way up.</span></p>
+      <div class="ring" id="ring" aria-hidden="true">
+        <div class="ring__layer ring__back"></div>
+        <div class="ring__core"></div>
+        <div class="ring__layer ring__front"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="manifesto" id="studio" data-tour="2600">
+    <div class="sec-head">
+      <span class="idx">(01)</span><span class="label">Manifesto</span>
+    </div>
+    <p class="manifesto__text" id="manifesto">Most brands are polite. Polite is <em data-hit="red">invisible.</em> We help ambitious companies find the one thing only they can say, then say it so <em>loudly</em> the whole category has to answer. Strategy with a <em>spine.</em> Identities with a <em>voice.</em> Motion that <em>stops thumbs,</em> and websites that <em>refuse</em> to sit still.</p>
+    <div class="manifesto__foot">
+      <p class="sig">Signed, the 26 people of Loudmouth</p>
+      <ul class="manifesto__facts">
+        <li><b>11</b><span>years making noise</span></li>
+        <li><b>4</b><span>disciplines under one roof</span></li>
+        <li><b>1</b><span>rule: no beige</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="services" id="services" data-tour="2600">
+    <div class="sec-head sec-head--ink">
+      <span class="idx">(02)</span><span class="label">What we do</span>
+      <p class="sec-head__note">Four disciplines. One loud idea, carried all the way through.</p>
+    </div>
+    <ol class="svc" id="svc">
+      <li class="svc__item is-on">
+        <button class="svc__row" aria-expanded="true" aria-controls="svc-1"><span class="svc__n">01</span><span class="svc__word">STRATEGY</span><span class="svc__plus" aria-hidden="true"></span></button>
+        <div class="svc__detail" id="svc-1"><div class="svc__inner">
+          <p>Positioning, naming and messaging that gives your whole company one story to tell, and the nerve to tell it.</p>
+          <ul><li>Brand positioning</li><li>Naming</li><li>Messaging</li><li>Brand architecture</li></ul>
+          <span class="svc__time">4 to 6 weeks</span>
+        </div></div>
+      </li>
+      <li class="svc__item">
+        <button class="svc__row" aria-expanded="false" aria-controls="svc-2"><span class="svc__n">02</span><span class="svc__word">IDENTITY</span><span class="svc__plus" aria-hidden="true"></span></button>
+        <div class="svc__detail" id="svc-2"><div class="svc__inner">
+          <p>Logos, type systems, colour and packaging built to be recognised from across the street and across a crowded feed.</p>
+          <ul><li>Logo and wordmark</li><li>Type and colour</li><li>Packaging</li><li>Guidelines</li></ul>
+          <span class="svc__time">6 to 10 weeks</span>
+        </div></div>
+      </li>
+      <li class="svc__item" data-tour="2200" data-tour-offset="-0.35">
+        <button class="svc__row" aria-expanded="false" aria-controls="svc-3"><span class="svc__n">03</span><span class="svc__word">MOTION</span><span class="svc__plus" aria-hidden="true"></span></button>
+        <div class="svc__detail" id="svc-3"><div class="svc__inner">
+          <p>Animated identities, launch films and social systems. If it moves, we make it move like it means it.</p>
+          <ul><li>Motion identity</li><li>Launch films</li><li>Social systems</li><li>Product animation</li></ul>
+          <span class="svc__time">3 to 8 weeks</span>
+        </div></div>
+      </li>
+      <li class="svc__item">
+        <button class="svc__row" aria-expanded="false" aria-controls="svc-4"><span class="svc__n">04</span><span class="svc__word">WEB</span><span class="svc__plus" aria-hidden="true"></span></button>
+        <div class="svc__detail" id="svc-4"><div class="svc__inner">
+          <p>Websites and launch pages that load fast, read clearly and refuse to look like everybody else's.</p>
+          <ul><li>Art direction</li><li>Design systems</li><li>Development</li><li>Launch pages</li></ul>
+          <span class="svc__time">6 to 12 weeks</span>
+        </div></div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="work" id="work" data-tour="2400">
+    <div class="sec-head">
+      <span class="idx">(03)</span><span class="label">Selected work</span><span class="sec-head__note">2023 to 2026</span>
+    </div>
+    <h2 class="work__title"><span class="work__big">Recent</span> <span class="work__big work__big--out">noise</span></h2>
+
+    <div class="work__grid">
+      <div class="work__col work__col--a">
+        <article class="proj">
+          <a class="proj__cover" href="#contact" aria-label="Volta, electric bikes. Identity and launch film.">
+            <div class="cv cv--volta" aria-hidden="true">
+              <span class="cv__tag">E-bikes for cities that never stop</span>
+              <div class="cv__stack"><b>VOLTA</b><b>VOLTA</b><b>VOLTA</b><b>VOLTA</b><b>VOLTA</b></div>
+            </div>
+          </a>
+          <div class="proj__meta"><h3>Volta</h3><p>Electric bikes · Identity, launch film</p><span>2026</span></div>
+          <p class="proj__result"><i></i>Launch film: 4.1M views in nine days</p>
+        </article>
+        <article class="proj">
+          <a class="proj__cover" href="#contact" aria-label="Northpaw, pet food. Identity and packaging system.">
+            <div class="cv cv--paw" aria-hidden="true">
+              <b class="cv__north">north</b><b class="cv__pawword">paw</b>
+              <div class="cv__paw"><i></i><i></i><i></i><i></i><em></em></div>
+            </div>
+          </a>
+          <div class="proj__meta"><h3>Northpaw</h3><p>Pet food · Identity, packaging system</p><span>2025</span></div>
+          <p class="proj__result"><i></i>From farmers' markets to 1,200 stores</p>
+        </article>
+        <article class="proj" data-tour="2000" data-tour-offset="-0.2">
+          <a class="proj__cover" href="#contact" aria-label="Kilnworks, ceramics studio and shop. Identity.">
+            <div class="cv cv--kiln" aria-hidden="true">
+              <div class="cv__kiln"><b>K</b><b>I</b><b>L</b><b>N</b></div>
+              <span class="cv__works">WORKS · HAND THROWN IN QUEENS</span>
+              <span class="cv__weights">100 · 400 · 700 · 1000</span>
+            </div>
+          </a>
+          <div class="proj__meta"><h3>Kilnworks</h3><p>Ceramics · Identity, shop</p><span>2024</span></div>
+          <p class="proj__result"><i></i>Sold out its first collection in 36 hours</p>
+        </article>
+      </div>
+      <div class="work__col work__col--b">
+        <article class="proj">
+          <a class="proj__cover" href="#contact" aria-label="Fizzbang, sparkling tea. Rebrand and packaging.">
+            <div class="cv cv--fizz" aria-hidden="true">
+              <div class="cv__fizz"><b>FIZZ</b><b>FIZZ</b><b>FIZZ</b></div>
+              <b class="cv__bang">BANG!</b>
+              <span class="cv__bubble b1"></span><span class="cv__bubble b2"></span><span class="cv__bubble b3"></span>
+            </div>
+          </a>
+          <div class="proj__meta"><h3>Fizzbang</h3><p>Sparkling tea · Rebrand, packaging</p><span>2025</span></div>
+          <p class="proj__result"><i></i>Retail sell-through up 38% in two quarters</p>
+        </article>
+        <article class="proj">
+          <a class="proj__cover" href="#contact" aria-label="Hushhaus, mattresses and sleep. Website and motion.">
+            <div class="cv cv--hush" aria-hidden="true">
+              <b class="cv__hush">hush</b>
+              <span class="cv__sub">sleep, properly · since 2019</span>
+              <span class="cv__z">z z z</span>
+            </div>
+          </a>
+          <div class="proj__meta"><h3>Hushhaus</h3><p>Sleep · Website, motion system</p><span>2024</span></div>
+          <p class="proj__result"><i></i>Online conversion up 2.4x after relaunch</p>
+        </article>
+        <article class="proj">
+          <a class="proj__cover" href="#contact" aria-label="Orbital Oats, oat milk. Packaging system across fourteen products.">
+            <div class="cv cv--oats" aria-hidden="true">
+              <b class="cv__oat">OATS</b>
+              <span class="cv__orbit"></span>
+              <span class="cv__moon">Oat milk for the moon and back</span>
+            </div>
+          </a>
+          <div class="proj__meta"><h3>Orbital Oats</h3><p>Oat milk · Packaging across 14 products</p><span>2023</span></div>
+          <p class="proj__result"><i></i>Shelf standout scored 2x the category average</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="nums" data-tour="2200" aria-label="Loudmouth in numbers">
+    <div class="sec-head sec-head--ink"><span class="idx">(04)</span><span class="label">By the numbers</span></div>
+    <ul class="nums__grid">
+      <li><b class="num" data-to="140" data-suffix="+">140+</b><span>brands launched or relaunched since 2015</span></li>
+      <li><b class="num" data-to="2.3" data-dec="1" data-suffix="B">2.3B</b><span>views on campaigns we have made</span></li>
+      <li><b class="num" data-to="26">26</b><span>strategists, designers, animators and developers</span></li>
+      <li><b class="num" data-to="91" data-suffix="%">91%</b><span>of clients come back for round two</span></li>
+    </ul>
+  </section>
+
+  <section class="clients" aria-label="Clients" data-tour="1600">
+    <p class="clients__label">Brands we have made louder</p>
+    <div class="band band--acid"><div class="band__t">
+      <span class="lg lg1">FIZZBANG</span><i>✱</i><span class="lg lg2">northpaw</span><i>✱</i><span class="lg lg3">VOLTA</span><i>✱</i><span class="lg lg4">hushhaus</span><i>✱</i><span class="lg lg5">KILNWORKS</span><i>✱</i><span class="lg lg6">Orbital Oats</span><i>✱</i>
+    </div></div>
+    <div class="band band--ink"><div class="band__t">
+      <span class="lg lg3">PAPERCUT PRESS</span><i>✱</i><span class="lg lg4">meridian air</span><i>✱</i><span class="lg lg1">SALT &amp; SABLE</span><i>✱</i><span class="lg lg6">Brightwell</span><i>✱</i><span class="lg lg5">GOODGRIEF</span><i>✱</i><span class="lg lg2">tandem</span><i>✱</i>
+    </div></div>
+  </section>
+
+  <section class="contact" id="contact" data-tour="2800">
+    <div class="sec-head"><span class="idx">(05)</span><span class="label">Contact</span><span class="sec-head__note">Replies within one working day</span></div>
+    <h2 class="say" id="say" aria-label="Say hello">SAY HELLO</h2>
+    <a class="mail" id="mail" href="mailto:hello@loudmouth.studio" aria-label="Email hello@loudmouth.studio">hello@loudmouth.studio</a>
+
+    <div class="contact__grid">
+      <div class="contact__col">
+        <h3>New business</h3>
+        <p>Mara Okafor, Partner</p>
+        <a href="mailto:mara@loudmouth.studio">mara@loudmouth.studio</a>
+        <a href="tel:+17185550134">+1 (718) 555-0134</a>
+      </div>
+      <div class="contact__col">
+        <h3>Studio</h3>
+        <p>Unit 4, 55 Water Street<br>Brooklyn, NY 11201</p>
+        <p class="mute">Monday to Friday, 9:30 to 6</p>
+      </div>
+      <form class="brief" id="brief" novalidate>
+        <h3>Brief us in thirty seconds</h3>
+        <label class="fld"><span>What needs to get loud?</span><textarea name="what" rows="2" required placeholder="A rebrand before our Series B in March"></textarea></label>
+        <div class="brief__row">
+          <label class="fld"><span>Name</span><input name="name" autocomplete="name" required placeholder="Jordan Lee"></label>
+          <label class="fld"><span>Email</span><input name="email" type="email" autocomplete="email" required placeholder="jordan@company.com"></label>
+        </div>
+        <fieldset class="chips">
+          <legend>Budget</legend>
+          <label><input type="radio" name="budget" value="40"><span>$40k to $80k</span></label>
+          <label><input type="radio" name="budget" value="80" checked><span>$80k to $150k</span></label>
+          <label><input type="radio" name="budget" value="150"><span>$150k+</span></label>
+        </fieldset>
+        <button class="btn btn--acid magnetic" type="submit"><span>Send it</span><b aria-hidden="true">→</b></button>
+        <p class="brief__ok" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__top">
+    <div class="foot__col">
+      <h4>Studio</h4>
+      <a href="#work">Work</a><a href="#services">Services</a><a href="#studio">Manifesto</a><a href="#contact">Careers</a>
+    </div>
+    <div class="foot__col">
+      <h4>Say hi</h4>
+      <a href="mailto:hello@loudmouth.studio">hello@loudmouth.studio</a><a href="tel:+17185550134">+1 (718) 555-0134</a><span>@loudmouthstudio, on every app worth opening</span>
+    </div>
+    <div class="foot__col foot__col--wide">
+      <h4>The Loud Letter</h4>
+      <p>One email a month. New work, one strong opinion, zero filler.</p>
+      <form class="mini" id="mini" novalidate>
+        <label class="sr" for="mini-email">Email address</label>
+        <input id="mini-email" type="email" placeholder="you@company.com" required>
+        <button type="submit" class="btn btn--acid btn--sm"><span>Subscribe</span></button>
+      </form>
+      <p class="mini__ok" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+  <div class="foot__mark" aria-hidden="true"><span class="fmark" id="fmark">LOUDMOUTH</span></div>
+  <div class="foot__base">
+    <span>© 2026 Loudmouth Studio LLC</span>
+    <span class="foot__fine">Sample site designed by Hanflux AI. Brand, people and content are fictional.</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+</body>
+</html>

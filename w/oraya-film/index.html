@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="/shared/hx-embed.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oraya | Answer every lead in seconds</title>
+<meta name="description" content="Oraya answers every call, text and web lead in seconds, books the appointment and follows up, without adding headcount. Book a free 30-minute revenue leak audit.">
+<meta name="theme-color" content="#ffffff">
+<style>html{background:#03040b}</style>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Oraya | Answer every lead in seconds">
+<meta property="og:description" content="AI revenue infrastructure for businesses that live on the phone. Book a free 30-minute revenue leak audit and hear it live.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg transform='scale(-1,1) translate(-100,0)' fill='none' stroke-width='18' stroke-linecap='round'%3E%3Ccircle cx='50' cy='50' r='32' stroke='%233A125E' stroke-dasharray='55 146' transform='rotate(135 50 50)'/%3E%3Ccircle cx='50' cy='50' r='32' stroke='%23170A29' stroke-dasharray='55 146' transform='rotate(180 50 50)'/%3E%3Ccircle cx='50' cy='50' r='32' stroke='%231A1B4B' stroke-dasharray='55 146' transform='rotate(225 50 50)'/%3E%3Ccircle cx='50' cy='50' r='32' stroke='%231954A6' stroke-dasharray='55 146' transform='rotate(270 50 50)'/%3E%3Ccircle cx='50' cy='50' r='32' stroke='%231AB8EB' stroke-dasharray='55 146' transform='rotate(315 50 50)'/%3E%3Ccircle cx='50' cy='50' r='32' stroke='%23663096' stroke-dasharray='55 146'/%3E%3Ccircle cx='50' cy='50' r='32' stroke='%23B52579' stroke-dasharray='55 146' transform='rotate(45 50 50)'/%3E%3Ccircle cx='50' cy='50' r='32' stroke='%23791A77' stroke-dasharray='55 146' transform='rotate(90 50 50)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="film/f000.webp" fetchpriority="high">
+<link rel="modulepreload" href="assets/three.module.min.js">
+<link rel="stylesheet" href="assets/app.css?v=1017091313">
+<script>
+window.ORAYA_VIDEOS = ["leak","channels","booked","handoff","finale"];
+/* error capture for every load; if the 3D layer never starts, show a still page and report why */
+window.__errs = [];
+addEventListener('error', function(e){ window.__errs.push(String((e.error && e.error.stack) || e.message || (e.target && e.target.src) || 'error').slice(0,600)); }, true);
+addEventListener('unhandledrejection', function(e){ window.__errs.push('rejection: ' + String(e.reason && (e.reason.stack || e.reason.message) || e.reason).slice(0,600)); });
+window.__qaErrs = window.__errs;
+addEventListener('load', function(){ setTimeout(function(){
+  if (window.__worldBoot && document.documentElement.classList.contains('gl-ready')) return;
+  document.documentElement.classList.add('no-gl');
+  try {
+    var r = JSON.stringify({ sid: 'fb' + Math.random().toString(36).slice(2,8), kind: 'fallback', ua: navigator.userAgent, w: innerWidth, h: innerHeight, dpr: devicePixelRatio,
+      boot: !!window.__worldBoot, stage: window.__worldStage || 'none', errs: window.__errs.slice(0,12), url: location.pathname + location.search });
+    /* mirror: diagnostics beacon disabled */
+  } catch (x) {}
+}, 6000); });
+</script>
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+<a class="skip" href="#book">Skip to booking</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 100 100">
+    <g transform="scale(-1,1) translate(-100,0)" fill="none" stroke-width="18" stroke-linecap="round">
+      <circle cx="50" cy="50" r="32" stroke="#3A125E" stroke-dasharray="55 146" transform="rotate(135 50 50)"/>
+      <circle cx="50" cy="50" r="32" stroke="#170A29" stroke-dasharray="55 146" transform="rotate(180 50 50)"/>
+      <circle cx="50" cy="50" r="32" stroke="#1A1B4B" stroke-dasharray="55 146" transform="rotate(225 50 50)"/>
+      <circle cx="50" cy="50" r="32" stroke="#1954A6" stroke-dasharray="55 146" transform="rotate(270 50 50)"/>
+      <circle cx="50" cy="50" r="32" stroke="#1AB8EB" stroke-dasharray="55 146" transform="rotate(315 50 50)"/>
+      <circle cx="50" cy="50" r="32" stroke="#663096" stroke-dasharray="55 146"/>
+      <circle cx="50" cy="50" r="32" stroke="#B52579" stroke-dasharray="55 146" transform="rotate(45 50 50)"/>
+      <circle cx="50" cy="50" r="32" stroke="#791A77" stroke-dasharray="55 146" transform="rotate(90 50 50)"/>
+      <circle cx="50" cy="50" r="32" stroke="#3A125E" stroke-dasharray="15 186" transform="rotate(135 50 50)"/>
+    </g>
+  </symbol>
+  <symbol id="check" viewBox="0 0 20 20"><circle cx="10" cy="10" r="9.25" fill="currentColor" opacity=".12"/><path d="M6 10.3l2.6 2.6L14.2 7.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="chev" viewBox="0 0 16 16"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main id="main">
+
+<!-- S1: scroll film. The call, told in five beats. -->
+<section class="film" id="top" aria-label="What happens to a call after hours">
+  <div class="stage" id="stage">
+    <div class="scrim" id="scrim" aria-hidden="true"></div>
+
+    <div class="topbar">
+      <a class="logo-pill" href="#top" aria-label="Oraya home"><svg aria-hidden="true"><use href="#mark"/></svg>Oraya</a>
+      <a class="top-cta" href="#book" data-cta="header">Book audit</a>
+    </div>
+
+    <div class="beat top on-light" data-beat="ring">
+      <p class="tc">6:42 PM &middot; After hours</p>
+      <p class="say">Someone is ready to&nbsp;buy.</p>
+    </div>
+    <div class="beat top on-light" data-beat="leak">
+      <p class="say">Nobody picks&nbsp;up.</p>
+      <p class="sub">They hang up and call the next business on the list.</p>
+    </div>
+    <div class="beat top on-light" data-beat="answer">
+      <p class="say">Oraya answers.</p>
+      <p class="sub">In under 10 seconds, at any hour, in your brand&rsquo;s voice.</p>
+    </div>
+    <div class="beat bottom on-dark" data-beat="book">
+      <p class="say">Then it books the&nbsp;job.</p>
+      <p class="sub">It qualifies the caller, books your calendar, texts the recap and logs it all to your CRM.</p>
+    </div>
+    <div class="beat closer on-dark" data-beat="final">
+      <div class="closer-top">
+        <h1><span class="callout grad-text" id="callout">Business Owners:</span><span class="h1-line" id="heroSub">Answer every lead in seconds, without adding headcount.</span></h1>
+      </div>
+      <div class="closer-bottom">
+        <a class="btn btn-lg" href="#book" data-cta="hero">Book my free revenue audit</a>
+        <p class="micro">30 minutes. Your numbers. A live demo. No slides.</p>
+      </div>
+    </div>
+
+    <div class="hud">
+      <p class="cue" id="cue">Scroll to follow the call</p>
+      <div class="status" id="status" data-tone="light" role="status" aria-live="polite"><i class="sdot" aria-hidden="true"></i><span id="statusText">Incoming call</span><b id="statusMeta">6:42 PM</b></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================= SCENES: one phone screen each ======================= -->
+<section class="scene" id="hear" data-shape="drift">
+  <p class="kicker">Example call</p>
+  <h2>Hear how that call goes.</h2>
+  <div class="vsl" id="vsl" aria-label="Example call handled by Oraya">
+      <div class="vsl-bar">
+        <span class="live"><i></i>Live example</span>
+        <span id="vslWhen">6:42 PM · After hours</span>
+        <span class="t" id="vslTimer">00:00</span>
+      </div>
+      <div class="vsl-body" id="vslBody">
+        <div class="caller">
+          <div class="ring"><svg width="34" height="34" style="color:#fff"><use href="#phone"/></svg></div>
+          <div>
+            <div class="biz" id="vslBiz">Summit Heating &amp; Air</div>
+            <div class="state" id="vslState">Incoming call</div>
+          </div>
+          <div class="wave" id="wave" aria-hidden="true"></div>
+        </div>
+        <div class="transcript" id="transcript" aria-live="polite"></div>
+      </div>
+      <div class="vsl-foot">
+        <span class="result" id="vslResult">Booked</span>
+        <span>Example call. Fictional business.</span>
+        <button class="replay" id="replay" type="button">Replay</button>
+      </div>
+    </div>
+  <ul class="proof-row"><li>Answers in under 10 seconds</li><li>24/7, nights and weekends</li><li>Consent checked on every touch</li></ul>
+</section>
+
+<section class="scene" id="symptoms" data-shape="drift" data-video="leak">
+  <p class="kicker">Yesterday&rsquo;s phone log</p>
+  <h2>Every missed call was someone ready to&nbsp;buy.</h2>
+  <div class="glass missed" aria-label="Example of an unanswered phone log">
+    <div class="missed-head"><b>Unanswered</b><span>4 leads lost</span></div>
+    <div class="mrow"><span class="ic"><svg width="18" height="18"><use href="#phone"/></svg></span><span class="who">Unknown caller<small>Mobile · no voicemail</small></span><span class="tag">6:42 PM</span></div><div class="mrow"><span class="ic"><svg width="18" height="18"><use href="#phone"/></svg></span><span class="who">Web form lead<small>Requested a quote</small></span><span class="tag">7:15 PM</span></div><div class="mrow"><span class="ic"><svg width="18" height="18"><use href="#phone"/></svg></span><span class="who">Returning customer<small>Hung up after 4 rings</small></span><span class="tag">12:31 PM</span></div><div class="mrow"><span class="ic"><svg width="18" height="18"><use href="#phone"/></svg></span><span class="who">Unknown caller<small>Mobile · no voicemail</small></span><span class="tag">Sat 9:04 AM</span></div>
+  </div>
+  <p class="lede">Nobody called them back in time.</p>
+</section>
+
+<section class="scene" id="familiar" data-shape="drift">
+  <p class="kicker">Sound familiar?</p>
+  <ul class="sym">
+        <li>You pay for leads, then reach them hours later. Some never get a call at all.</li>
+        <li>The phone rings after 5 pm and nobody picks up. The caller dials the next business on the list.</li>
+        <li>Your team spends the morning returning yesterday's voicemails.</li>
+        <li>Booked appointments don't show, and nobody calls to reschedule.</li>
+        <li>Your CRM is full of "call me next quarter." Nobody called.</li>
+        <li>You know revenue is leaking. You can't say how much.</li>
+      </ul>
+  <h2 class="statement-line">Most businesses don&rsquo;t have a lead problem. They have a revenue infrastructure&nbsp;problem.</h2>
+  <p class="lede">Every lead depends on a person being free at the exact right minute. Oraya puts a system on every channel that answers, follows up and books on its own.</p>
+</section>
+
+<section class="scene" id="leaks" data-shape="drift" data-video="channels">
+  <p class="kicker">The four leaks</p>
+  <h2>Revenue leaks out of four&nbsp;places.</h2>
+  <p class="lede">We find all four on your audit, then plug the one costing you the most first.</p>
+  <div class="rail" data-rail>
+        <article class="slide leak-slide">
+          <div class="tile t1"><span class="k">6:42 PM</span><div class="mid"><div class="phone-ic"><svg width="28" height="28" style="color:#a5f3fc"><use href="#phone"/></svg></div></div><div class="s">Call answered<small>After hours, first ring</small></div></div>
+          <div class="slide-body"><span class="n">01</span><h3>Missed calls</h3><p>Nights, weekends, lunch hour, the Saturday rush. The caller doesn't wait for a callback. They dial the next business on the list.</p></div>
+        </article>
+        <article class="slide leak-slide">
+          <div class="tile t2"><span class="k">New web lead</span><div class="mid"><div class="bubble">Hi Dana, it's Oraya for Summit. Saw your quote request. Want me to book a time?<div class="typing"><i></i><i></i><i></i></div></div></div><div class="s">Followed up<small>Text and call within a minute</small></div></div>
+          <div class="slide-body"><span class="n">02</span><h3>Slow follow-up</h3><p>Web forms and ad leads sit in an inbox for hours. By the time someone calls, the buyer has already talked to someone else.</p></div>
+        </article>
+        <article class="slide leak-slide">
+          <div class="tile t3"><span class="k">Tomorrow</span><div class="mid"><div class="cal-mini"><i></i><i></i><i class="b"></i><i></i><i></i><i class="b"></i><i></i><i></i><i></i><i></i><i></i><i class="b"></i></div></div><div class="s">Reminder sent<small>Confirmed or rebooked</small></div></div>
+          <div class="slide-body"><span class="n">03</span><h3>No-shows</h3><p>Booked isn't sold. Without reminders and fast reschedules, your calendar quietly empties while your team waits.</p></div>
+        </article>
+        <article class="slide leak-slide">
+          <div class="tile t4"><span class="k">From your CRM</span><div class="mid"><div class="crm"><div><span>Quote, March</span><span>no reply</span></div><div class="hot"><span>Quote, May</span><span>booked</span></div><div><span>Past customer</span><span>no reply</span></div></div></div><div class="s">Lead revived<small>Consent checked first</small></div></div>
+          <div class="slide-body"><span class="n">04</span><h3>Dead leads</h3><p>Old quotes, past customers, "not right now." Leads you already paid for, sitting untouched in your CRM.</p></div>
+        </article>
+  </div>
+  <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+</section>
+
+<section class="scene" id="what" data-shape="drift" data-video="booked">
+  <p class="kicker">What Oraya does</p>
+  <h2>Answers, follows up, books and reminds. On its&nbsp;own.</h2>
+  <div class="rail rail-ui" data-rail aria-hidden="true">
+        <div class="slide"><div class="panel ui"><div class="uh"><i></i>Call summary</div>
+        <div class="kv"><span>Caller</span><b>Dana R.</b></div>
+        <div class="kv"><span>Intent</span><b>AC repair</b></div>
+        <div class="kv"><span>Outcome</span><b>Booked Tue 9:00</b></div>
+        <div class="kv"><span>CRM</span><b class="ok">Synced</b></div>
+      </div></div>
+        <div class="slide"><div class="panel ui"><div class="uh"><i></i>Your calendar</div>
+        <div class="week"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span>
+          <i></i><i class="b"></i><i></i><i></i><i class="b"></i>
+          <i class="b"></i><i></i><i></i><i class="b"></i><i></i>
+          <i></i><i></i><i class="b"></i><i></i><i></i>
+          <i></i><i class="b"></i><i></i><i></i><i class="b"></i></div>
+        <div class="kv" style="margin-top:10px"><span>Booked by Oraya</span><b>Highlighted</b></div>
+      </div></div>
+        <div class="slide"><div class="panel ui"><div class="uh"><i></i>Lead follow-up</div>
+        <div class="flow"><div>Form submitted<b>Step 1</b></div><div>Oraya calls<b>Step 2</b></div><div>Text recap sent<b>Step 3</b></div><div>Appointment set<b>Done</b></div></div>
+      </div></div>
+        <div class="slide"><div class="panel ui"><div class="uh"><i></i>Compliance check</div>
+        <div class="kv"><span>Consent on file</span><b class="ok">Yes</b></div>
+        <div class="kv"><span>AI disclosure</span><b class="ok">Played</b></div>
+        <div class="kv"><span>Recording notice</span><b class="ok">Played</b></div>
+        <div class="kv"><span>Do Not Call list</span><b class="ok">Checked</b></div>
+      </div></div>
+  </div>
+  <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <details class="more glass">
+    <summary>Everything it handles<svg><use href="#chev"/></svg></summary>
+    <ul class="checks">
+        <li><svg><use href="#check"/></svg>Answers every inbound call in seconds, 24/7, in your brand's voice.</li>
+        <li><svg><use href="#check"/></svg>Calls or texts new web and ad leads within a minute of the form fill.</li>
+        <li><svg><use href="#check"/></svg>Qualifies the buyer, then books straight into the calendar you already use.</li>
+        <li><svg><use href="#check"/></svg>Sends reminders and reschedules no-shows on its own.</li>
+        <li><svg><use href="#check"/></svg>Reopens old quotes and past customers with consent-checked outreach.</li>
+        <li><svg><use href="#check"/></svg>Hands hot or complex calls to your team live, with the full context on screen.</li>
+        <li><svg><use href="#check"/></svg>Records, transcribes and logs every conversation into your CRM.</li>
+        <li><svg><use href="#check"/></svg>Checks consent before every outbound touch and discloses AI and recording on every call.</li>
+      </ul>
+  </details>
+</section>
+
+<section class="scene scene-21" id="speed" data-shape="text21">
+  <h2>Call a lead at 30 minutes instead of 5, and your odds of qualifying them drop 21&nbsp;times.<sup><a href="#research" aria-label="Source 2">2</a></sup></h2>
+  <p class="lede">No human team can be first on every lead, every hour of every day. Oraya can, and it hands your people the conversations worth having.</p>
+  <a class="btn" href="#book" data-cta="speed">Book my free revenue audit</a>
+</section>
+
+<section class="scene" id="objection" data-shape="drift" data-video="handoff">
+  <p class="kicker">&ldquo;We already have someone on the phones.&rdquo;</p>
+  <h2>Good. Oraya makes them better, not&nbsp;redundant.</h2>
+  <p class="lede">Your people handle the conversations that need a human. Oraya covers the overflow, after-hours, lunch breaks and follow-up. Hot calls go to your team live, with the full context on screen.</p>
+  <div class="dark-panel handoff" aria-hidden="true">
+      <div class="top"><div class="av">M</div><div><b>Warm transfer to Maria, Sales</b><small>Connected</small></div></div>
+      <ul class="ctx">
+        <li><span>Caller</span>Dana R., new customer</li>
+        <li><span>Wants</span>Full system replacement, this month</li>
+        <li><span>Budget</span>Approved, wants financing options</li>
+        <li><span>History</span>Requested a quote in March</li>
+      </ul>
+      <div class="split-call"><div class="a">Oraya qualified</div><div class="h">Human closes</div></div>
+    </div>
+</section>
+
+<section class="scene" id="founders" data-shape="drift">
+  <p class="kicker">The founders</p>
+  <h2>No business should lose a customer because nobody picked&nbsp;up.</h2>
+  <div class="founder-row">
+    <div class="glass plate"><b>Frankie Alicea</b><span>Founder and CEO</span><p>A licensed insurance broker. He knows what a lead costs and how fast it goes cold.</p></div>
+    <div class="glass plate"><b>Chitraksh Mayank</b><span>Co-Founder, CTO and CLO</span><p>Trained in business law and builds in code. He designed Oraya&rsquo;s compliance layer.</p></div>
+  </div>
+  <details class="more glass note">
+    <summary>Read the founder&rsquo;s letter<svg><use href="#chev"/></svg></summary>
+    <div class="note-body">
+      <p>Most companies don't have a lead problem. They have a revenue infrastructure problem.</p><p>They spend real money to make the phone ring. Then the call comes in at 6:40 pm, or during lunch, or on a Saturday, and nobody picks up. The form fill waits until Monday. The quote that said "call me next month" never gets the call.</p><p>None of that is a people problem. Your team is busy doing the work. It's a systems problem. Every lead deserves an immediate response, and no person can give every lead one.</p><p>So we built the system that does. Oraya answers, follows up, books and reminds. And it checks consent before it touches anyone, because a fast system that gets you sued isn't a system.</p><p>Build the engine. Then let it run.</p>
+      <div class="sig" aria-hidden="true">Frankie Alicea</div>
+      <div class="sig-meta">Frankie Alicea, Founder and CEO, Oraya</div>
+    </div>
+  </details>
+</section>
+
+<section class="scene" id="weeks" data-shape="drift">
+  <p class="kicker">Install weeks</p>
+  <h2>Install weeks now&nbsp;booking.</h2>
+  <p class="lede">Every install is done for you, so we only take a few each week. Your audit comes first. If it&rsquo;s a fit, you pick your week.</p>
+  <div class="weeks" id="weekCards"></div>
+</section>
+
+<section class="scene scene-book" id="book" data-shape="calm">
+  <p class="kicker">The revenue leak audit</p>
+  <h2>30 minutes. Your numbers. A live&nbsp;demo.</h2>
+  <p class="lede">For businesses that already spend money or time to make the phone ring: insurance agencies, dealerships, home services, real estate, law firms and financial services.</p>
+  <div class="form-card" id="formCard">
+      <div id="step1">
+        <div class="form-head"><h3>Pick a time below</h3><span class="step">Step 1 of 2</span></div>
+        <p class="form-sub">Tell us about your business, then choose a slot for your free audit.</p>
+        <form id="leadForm" novalidate>
+          <div class="fgrid">
+            <div class="f"><label for="fName">Full name</label><input id="fName" name="name" autocomplete="name" required><span class="err"></span></div>
+            <div class="f"><label for="fCompany">Business name</label><input id="fCompany" name="company" autocomplete="organization" required><span class="err"></span></div>
+            <div class="f"><label for="fEmail">Work email</label><input id="fEmail" name="email" type="email" autocomplete="email" inputmode="email" required><span class="err"></span></div>
+            <div class="f"><label for="fPhone">Mobile phone</label><input id="fPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required><span class="err"></span></div>
+            <div class="f"><label for="fIndustry">Industry</label>
+              <select id="fIndustry" name="industry" required>
+                <option value="">Select one</option>
+                <option>Insurance agency</option><option>Auto dealership</option><option>Home services</option>
+                <option>Real estate</option><option>Law firm</option><option>Medical or med spa</option>
+                <option>Financial services</option><option>B2B services</option><option>Other</option>
+              </select><span class="err"></span></div>
+            <div class="f"><label for="fVolume">Leads and calls per month</label>
+              <select id="fVolume" name="volume" required>
+                <option value="">Select one</option>
+                <option>Under 50</option><option>50 to 200</option><option>200 to 500</option><option>500 to 2,000</option><option>2,000+</option>
+              </select><span class="err"></span></div>
+            <div class="f full"><label for="fLeak">Biggest leak right now</label>
+              <select id="fLeak" name="leak">
+                <option value="">Not sure yet</option>
+                <option>Missed calls</option><option>Slow lead follow-up</option><option>No-shows</option><option>Dead leads in the CRM</option>
+              </select></div>
+            <label class="consent"><input type="checkbox" id="fConsent" name="consent"><span id="consentText">Yes, Oraya may call and text me at the number above, including with automated technology and an AI voice assistant, about my audit and Oraya's services. Consent isn't required to book. Message and data rates may apply. Reply STOP to opt out.</span></label>
+          </div>
+          <div style="margin-top:20px"><button class="btn btn-block" type="submit" id="submitBtn">Continue to pick a time</button></div>
+          <p class="form-legal">By continuing you agree to our <button type="button" class="linkish" data-open="privacy">privacy notice</button>. We never sell your information.</p>
+        </form>
+      </div>
+
+      <div id="cal-wrap">
+        <div class="form-head"><h3>Pick a time below</h3><span class="step">Step 2 of 2</span></div>
+        <p class="thanks-line" id="thanksLine">Choose a slot for your free 30-minute audit.</p>
+        <div id="cal-inline"></div>
+        <div class="cal-fallback" id="calFallback">The calendar didn't load. <a id="calDirect" href="https://cal.com/oraya/30min" target="_blank" rel="noopener">Open the booking page</a> or email <a id="calMail" href="mailto:frankie@orayalabs.ai">frankie@orayalabs.ai</a>.</div>
+      </div>
+      <noscript><p class="form-legal">JavaScript is off. <a href="https://cal.com/oraya/30min">Book your audit here</a>.</p></noscript>
+    </div>
+</section>
+
+<section class="scene" id="research" data-shape="drift">
+  <p class="kicker">Don&rsquo;t take our word for it</p>
+  <h2>Take the research&rsquo;s word for&nbsp;it.</h2>
+  <div class="rail rail-r" data-rail>
+        <div class="slide"><article class="r"><div class="big">7x</div><p>In a study of 1.25 million sales leads, companies that responded within an hour were nearly 7 times as likely to qualify the lead as those that responded an hour later.</p><div class="src"><b>1. Oldroyd, McElheran and Elkington, Harvard Business Review, 2011</b><a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads" target="_blank" rel="noopener">The Short Life of Online Sales Leads</a></div></article></div>
+        <div class="slide"><article class="r"><div class="big">21x</div><p>Across 15,000+ web leads at six companies, the odds of qualifying a lead dropped 21 times when the first call came at 30 minutes instead of 5.</p><div class="src"><b>2. Lead Response Management Study, InsideSales.com and Dr. James Oldroyd (MIT Sloan), 2007</b><a href="https://content.marketingsherpa.com/heap/DG07SFSlides/LeadResponseManagementReport.pdf" target="_blank" rel="noopener">Study report (PDF)</a></div></article></div>
+        <div class="slide"><article class="r"><div class="big">23%</div><p>In an audit of 2,241 US companies, 23% never responded to a web lead at all. Among those that responded within 30 days, the average wait was 42 hours.</p><div class="src"><b>3. Oldroyd, McElheran and Elkington, Harvard Business Review, 2011</b><a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads" target="_blank" rel="noopener">The Short Life of Online Sales Leads</a></div></article></div>
+        <div class="slide"><article class="r"><div class="big">$500</div><p>Damages per violation of the TCPA's autodialer and artificial-voice rules. A court may raise it to $1,500 if the violation was willful. Fast without compliant is a liability.</p><div class="src"><b>4. 47 U.S.C. § 227(b)(3)</b><a href="https://www.law.cornell.edu/uscode/text/47/227" target="_blank" rel="noopener">Telephone Consumer Protection Act</a></div></article></div>
+  </div>
+  <div class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <p class="disclaim">Published third-party findings, not Oraya results. Your results depend on your volume, offer and team.</p>
+</section>
+
+<section class="scene" id="where" data-shape="drift">
+  <p class="kicker">Where it runs</p>
+  <h2>On the tools you already&nbsp;have.</h2>
+  <p class="lede">Your phone numbers, inbox, calendar and CRM. No rip and replace.</p>
+  <div class="marquee" aria-hidden="true">
+        <div class="row"><span>Google Calendar</span><span>Microsoft 365</span><span>HubSpot</span><span>Salesforce</span><span>GoHighLevel</span><span>ServiceTitan</span><span>Google Calendar</span><span>Microsoft 365</span><span>HubSpot</span><span>Salesforce</span><span>GoHighLevel</span><span>ServiceTitan</span></div>
+        <div class="row rev"><span>Zendesk</span><span>Twilio</span><span>Zapier</span><span>n8n</span><span>Make</span><span>Stripe</span><span>Zendesk</span><span>Twilio</span><span>Zapier</span><span>n8n</span><span>Make</span><span>Stripe</span></div>
+      </div>
+</section>
+
+<section class="scene" id="faq" data-shape="calm">
+  <p class="kicker">Before you book</p>
+  <h2>Questions owners&nbsp;ask.</h2>
+  <div class="faq-list">
+  <details><summary>Who is this for?<svg><use href="#chev"/></svg></summary><div class="a"><p>Businesses that already spend money or time making the phone ring: insurance agencies, dealerships, home services, real estate teams, law firms and service businesses. If leads and calls drive your revenue, it's for you. If you get a handful of calls a month, it isn't yet.</p></div></details>
+    <details><summary>Will it sound like a robot?<svg><use href="#chev"/></svg></summary><div class="a"><p>It's tuned to your brand and built to sound natural. You hear it live on your audit before you decide anything. It also tells callers they're speaking with an AI assistant. That disclosure is built in, not optional.</p></div></details>
+    <details><summary>We already have a receptionist or a BDC. Why add this?<svg><use href="#chev"/></svg></summary><div class="a"><p>Oraya covers what your people can't: after-hours, overflow, lunch breaks, instant lead follow-up and reminders. Hot or complex calls go to your team live, with context. Your staff spends their time on conversations that close.</p></div></details>
+    <details><summary>Will it work with our phone system and CRM?<svg><use href="#chev"/></svg></summary><div class="a"><p>It runs on the numbers, calendar and CRM you already use. We confirm your exact setup on the audit before anything is installed.</p></div></details>
+    <details><summary>What happens on the audit call?<svg><use href="#chev"/></svg></summary><div class="a"><p>30 minutes on a screen share. Bring a recent call or lead report if you have one. We run the leak math on your numbers, show you where revenue is slipping, and run Oraya live. No slides, no pressure.</p></div></details>
+    <details><summary>How fast can we go live?<svg><use href="#chev"/></svg></summary><div class="a"><p>We target 72 hours from kickoff to your first live line. We start with the leak that costs you the most, then add channels once it's working.</p></div></details>
+    <details><summary>Is it compliant?<svg><use href="#chev"/></svg></summary><div class="a"><p>Compliance is built into how it runs: consent checked before every outbound call or text, recording disclosure, AI identification, Do Not Call checks and a consent record for every contact. TCPA damages start at $500 per violation and can reach $1,500 if willful, so we treat compliance as a hard floor, not a feature.</p></div></details>
+    <details><summary>Who owns the data?<svg><use href="#chev"/></svg></summary><div class="a"><p>You do. Oraya works as your service provider. If you leave, we purge your data.</p></div></details>
+    <details><summary>How much is it?<svg><use href="#chev"/></svg></summary><div class="a"><p>Monthly, priced by the channels and volume you need. You'll see the exact number on the audit, built from your own call and lead data, before you commit to anything.</p></div></details>
+  </div>
+</section>
+
+<section class="scene scene-final" id="final" data-shape="calm" data-video="finale">
+  <h2>Ready to answer every lead in&nbsp;seconds?</h2>
+  <p class="lede">30 minutes. Your numbers. A live demo.</p>
+  <a class="btn btn-lg" href="#book" data-cta="final">Book my free revenue audit</a>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="foot-logo" href="#top"><span class="mk"><svg aria-hidden="true"><use href="#mark"/></svg></span>Oraya</a>
+      <div class="foot-links">
+        <a href="#book">Book an audit</a>
+        <a href="#faq">FAQ</a>
+        <button type="button" data-open="privacy">Privacy notice</button>
+        <a id="footMail" href="mailto:frankie@orayalabs.ai">frankie@orayalabs.ai</a>
+      </div>
+    </div>
+    <p class="foot-legal">Oraya provides AI voice, messaging and follow-up systems as a managed service. Research figures on this page are published third-party findings, not Oraya results; individual results vary with lead volume, offer, team and market. The example call on this page is a demonstration with a fictional business. Nothing on this page is legal advice. © <span id="yr">2026</span> Oraya. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky"><a class="btn" href="#book" data-cta="sticky">Book my free revenue audit</a></div>
+
+<dialog id="privacy" aria-labelledby="privTitle">
+  <div class="dlg">
+    <h3 id="privTitle">Privacy notice</h3>
+    <h4>What we collect</h4>
+    <p>The details you enter in the form (name, business, email, phone, industry and lead volume), the page you came from, and basic analytics about your visit.</p>
+    <h4>Why</h4>
+    <p>To schedule and run your audit, prepare for the call, and follow up about Oraya's services.</p>
+    <h4>Calls and texts</h4>
+    <p>We only call or text you with automated technology or an AI voice if you check the consent box. Consent isn't required to book. Reply STOP to any text to opt out.</p>
+    <h4>Sharing</h4>
+    <p>We don't sell your personal information. We share it only with the service providers that run our scheduling, messaging and analytics.</p>
+    <h4>Your choices</h4>
+    <p>To access, correct or delete your information, email <a class="privMail" href="mailto:frankie@orayalabs.ai">frankie@orayalabs.ai</a>.</p>
+    <button class="close" type="button" data-close>Close</button>
+  </div>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="assets/site.js?v=1017091313" defer></script>
+<script type="module" src="assets/world.js?v=1017091313"></script>
+</body>
+</html>

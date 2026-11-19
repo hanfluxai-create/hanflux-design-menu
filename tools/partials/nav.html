@@ -1,0 +1,29 @@
+{{offer_bar}}
+<header class="nav">
+  <a class="wordmark" href="/" aria-label="Hanflux design menu, home"><b>HANFLUX<sup aria-hidden="true">●</sup></b><span>design menu</span></a>
+  <nav class="nav-links" aria-label="Main">
+    <a class="nl" href="/websites/"{{cur:websites}}>Websites</a>
+    <a class="nl" href="/agents/"{{cur:agents}}>AI agents</a>
+    <a class="nl" href="/#pricing">Pricing</a>
+    <a class="nl" href="/#how">How it works</a>
+  </nav>
+  <div class="nav-right">
+    <button class="pick-pill" type="button" data-open-request aria-label="Your shortlist and quote"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.4A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.5c0 5.8-7.5 10.4-7.5 10.4z"/></svg><span class="n" data-pick-count>0</span></button>
+    <a class="btn btn-teal btn-sm quote-btn" href="#request" data-open-request>Get a quote</a>
+    <button class="icon-btn menu-btn" type="button" data-menu-open aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+  </div>
+</header>
+<div class="overlay-menu" role="dialog" aria-label="Menu">
+  <button class="icon-btn om-close" type="button" data-menu-close aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <p class="kicker">hanflux design menu</p>
+  <nav aria-label="Mobile">
+    <a href="/websites/"><small>01</small>Websites</a>
+    <a href="/agents/"><small>02</small>AI agents</a>
+    <a href="/#pricing"><small>03</small>Pricing</a>
+    <a href="/#how"><small>04</small>How it works</a>
+  </nav>
+  <div class="om-foot">
+    <a class="btn btn-teal" href="#request" data-open-request>Get a quote</a>
+    <a class="btn btn-ghost" href="https://wa.me/{{wa}}" target="_blank" rel="noopener">WhatsApp us</a>
+  </div>
+</div>

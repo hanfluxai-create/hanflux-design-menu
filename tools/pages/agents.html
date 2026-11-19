@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{head}}
+<title>AI agent interfaces · Hanflux Design Menu</title>
+<meta name="description" content="{{n_agents}} live interface styles for AI agents and assistants, each with Director Mode: your assistant opens the right screen and points to what it is talking about.">
+<meta property="og:title" content="AI agent interfaces · Hanflux Design Menu">
+<meta property="og:description" content="Choose the face of your AI. {{n_agents}} live interface styles with Director Mode built in.">
+<meta property="og:url" content="https://hanflux-design-menu.vercel.app/agents/">
+<link rel="canonical" href="https://hanflux-design-menu.vercel.app/agents/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="{{agent_fonts}}">
+<link rel="stylesheet" href="/assets/agents/stage.css?v={{v}}">
+<link rel="stylesheet" href="/assets/hx/agents.css?v={{v}}">
+<script defer src="/data/config.js?v={{v}}"></script>
+<script defer src="/data/sites.js?v={{v}}"></script>
+<script defer src="/assets/agents/stage.js?v={{v}}"></script>
+<script defer src="/assets/agents/styles-data.js?v={{v}}"></script>
+<script defer src="/assets/hx/shell.js?v={{v}}"></script>
+<script defer src="/assets/hx/agents.js?v={{v}}"></script>
+</head>
+<body class="agents">
+<div class="dust" aria-hidden="true"></div>
+<a class="skip" href="#menu">Skip to the styles</a>
+{{nav}}
+
+<main>
+  <section class="a-hero wrap">
+    <div class="a-hero-copy">
+      <p class="kicker rv">menu 02 · ai agents</p>
+      <h1 class="display h-xl rv">Choose the<br><span class="grad">face of your AI.</span></h1>
+      <p class="lede rv">{{n_agents}} interface styles for AI agents, apps and assistants. Every one is live. Watch the assistant open the right screen and point at exactly what it is talking about.</p>
+      <div class="cta rv">
+        <a class="btn btn-teal" href="#menu">Browse the {{n_agents}} styles</a>
+        <a class="btn btn-ghost" href="#how">How Director Mode works</a>
+      </div>
+    </div>
+    <figure class="a-hero-stage rv">
+      <figcaption><span class="chip"><i class="dot live"></i>live</span><span class="mono dim">now showing <b id="hero-now">01 · Spotlight</b></span></figcaption>
+      <div class="a-frame"><div class="stage-wrap" id="hero-stage"></div></div>
+    </figure>
+  </section>
+
+  <section class="a-how section" id="how">
+    <div class="wrap">
+      <p class="kicker rv">director mode</p>
+      <h2 class="display h-lg rv">Your AI doesn’t just answer.<br>It <span class="grad">shows</span> you.</h2>
+      <ol class="beats">
+        <li class="rv"><span class="mono teal">01</span><h3>Presence</h3><p>Only the face, centre stage. Quiet status at the edges: what is running and what needs you.</p></li>
+        <li class="rv"><span class="mono teal">02</span><h3>Cut</h3><p>Mention something and its screen opens full size. The face steps to the corner to narrate.</p></li>
+        <li class="rv"><span class="mono teal">03</span><h3>Point</h3><p>A pointer travels to the exact item. Everything else dims, and the caption names it.</p></li>
+        <li class="rv"><span class="mono teal">04</span><h3>Return</h3><p>When the topic ends, the screen folds away and the face comes back. No menus to hunt through.</p></li>
+      </ol>
+      <p class="a-note rv">Every style runs the same Director Mode. Samples use a demo brand, Aurora. Yours gets your name, colours, voice and data.</p>
+    </div>
+  </section>
+
+  <div class="w-bar a-bar">
+    <div class="wrap w-bar-in">
+      <div class="filters" id="filters" role="toolbar" aria-label="Filter styles">
+        <button type="button" class="chip" data-f="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-f="signature">Signature</button>
+        <button type="button" class="chip" data-f="futuristic">Futuristic</button>
+        <button type="button" class="chip" data-f="retro">Retro</button>
+        <button type="button" class="chip" data-f="print">Print and editorial</button>
+        <button type="button" class="chip" data-f="playful">Playful</button>
+        <button type="button" class="chip" data-f="light">Light</button>
+        <button type="button" class="chip" data-f="dark">Dark</button>
+        <button type="button" class="chip" data-f="shortlist">Shortlisted <span id="f-count">0</span></button>
+      </div>
+      <span class="w-count mono" id="count" aria-live="polite">{{n_agents}} styles</span>
+    </div>
+  </div>
+
+  <section class="a-menu wrap" id="menu" aria-label="Agent interface styles">
+    <div class="mgrid" id="grid"></div>
+    <p class="w-empty" id="empty" hidden>Nothing shortlisted yet. Tap Shortlist on any style you like.</p>
+  </section>
+
+  <section class="section">
+    <div class="wrap w-help-in rv">
+      <div>
+        <p class="kicker">found your face?</p>
+        <h2 class="display h-md">Pair it with a website<br>from the same menu.</h2>
+      </div>
+      <div class="cta">
+        <a class="btn btn-teal" href="#request" data-open-request>Get a fixed quote</a>
+        <a class="btn btn-ghost" href="/websites/">See the websites</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<dialog class="viewer" id="viewer" aria-labelledby="v-name">
+  <div class="v-top">
+    <div class="v-title"><span class="mono teal" id="v-num">01</span><h2 id="v-name" class="display">Persona</h2><span class="mono dim" id="v-tags"></span></div>
+    <button class="icon-btn" type="button" id="v-close" aria-label="Close preview"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="v-main">
+    <button class="icon-btn v-arrow" type="button" id="v-prev" aria-label="Previous style"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="v-frame"><div class="stage-wrap" id="v-stage"></div></div>
+    <button class="icon-btn v-arrow" type="button" id="v-next" aria-label="Next style"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+  <div class="v-bottom">
+    <div class="v-info"><p id="v-desc"></p><p class="best"><span class="mono">best for</span> <span id="v-best"></span></p></div>
+    <div class="seg" id="v-beats" role="group" aria-label="Freeze a beat">
+      <button type="button" data-beat="loop" aria-pressed="true">Live</button>
+      <button type="button" data-beat="face" aria-pressed="false">Presence</button>
+      <button type="button" data-beat="scene" aria-pressed="false">Cut</button>
+      <button type="button" data-beat="point" aria-pressed="false">Point</button>
+    </div>
+    <button class="btn btn-ghost btn-pick" type="button" id="v-pick" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.4A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.5c0 5.8-7.5 10.4-7.5 10.4z"/></svg><span class="lbl">Shortlist</span></button>
+  </div>
+</dialog>
+
+{{foot}}
+</body>
+</html>

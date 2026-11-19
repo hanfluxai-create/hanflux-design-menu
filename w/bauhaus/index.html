@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Formhaus · Form follows you. Live design cohorts online</title>
+<meta name="description" content="Formhaus is an online design school. Live eight-week cohorts in typography, colour theory, product design and motion, taught by working designers.">
+<meta name="theme-color" content="#f0e9dc">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f0e9dc'/%3E%3Ccircle cx='20' cy='20' r='14' fill='%23d7261e'/%3E%3Crect x='34' y='6' width='26' height='26' fill='%231f4e9e'/%3E%3Cpath d='M6 58 L32 34 L32 58Z' fill='%23111'/%3E%3Cpath d='M36 58a22 22 0 0 1 22-22v22z' fill='%23f2c230'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/gsap/CustomEase.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<div class="paper" aria-hidden="true"></div>
+<a class="skip" href="#courses">Skip to courses</a>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Formhaus, back to top">
+    <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true"><circle cx="11" cy="11" r="9" fill="#d7261e"/><rect x="22" y="2" width="16" height="18" fill="#1f4e9e"/><path d="M2 38 L20 22 L20 38Z" fill="#111"/><path d="M22 38a16 16 0 0 1 16-16v16z" fill="#f2c230"/></svg>
+    <span>Formhaus</span>
+  </a>
+  <nav class="nav__links" aria-label="Main">
+    <a href="#courses">Courses</a>
+    <a href="#making">Making</a>
+    <a href="#faculty">Faculty</a>
+    <a href="#calendar">Calendar</a>
+    <a href="#pricing">Pricing</a>
+  </nav>
+  <a class="btn btn--black btn--sm nav__cta" href="#apply">Apply now</a>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="overlay"><span>Menu</span><i aria-hidden="true"></i></button>
+</header>
+
+<div class="overlay" id="overlay" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <a href="#courses" style="--c:var(--red)"><b>01</b>Courses</a>
+    <a href="#making" style="--c:var(--yellow)"><b>02</b>Making</a>
+    <a href="#faculty" style="--c:var(--blue)"><b>03</b>Faculty</a>
+    <a href="#calendar" style="--c:var(--black)"><b>04</b>Calendar</a>
+    <a href="#pricing" style="--c:var(--red)"><b>05</b>Pricing</a>
+  </nav>
+  <a class="btn btn--black" href="#apply">Apply now</a>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="top" data-tour="4200" aria-labelledby="hero-title">
+    <div class="hero__copy">
+      <p class="label"><span class="sq" aria-hidden="true"></span>Online school of design · Est. 2019</p>
+      <h1 class="hero__title" id="hero-title"><span>Form</span> <span>follows</span> <span class="red">you.</span></h1>
+      <p class="hero__sub">Live cohorts in typography, colour and product design, taught by working designers.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--black" href="#courses">Browse courses</a>
+        <a class="btn btn--line" href="#apply">Apply now</a>
+      </div>
+      <dl class="hero__facts">
+        <div><dt>Next cohort</dt><dd>12 January 2027</dd></div>
+        <div><dt>Format</dt><dd>Live online, 8 weeks</dd></div>
+        <div><dt>Cohort size</dt><dd>24 students, max</dd></div>
+      </dl>
+    </div>
+    <figure class="comp" aria-label="An animated geometric composition that rearranges into the letters F, O, R, M and back into a poster">
+      <svg class="comp__svg" id="comp" viewBox="-40 -40 880 880" aria-hidden="true">
+        <g class="grid" id="grid"></g>
+        <g id="shapes"></g>
+      </svg>
+      <figcaption class="comp__cap"><span data-cap-no>Composition No. 07</span><span data-cap-state>Poster study</span><span>8 x 8 grid · 15 shapes</span></figcaption>
+    </figure>
+  </section>
+
+  <!-- COURSES -->
+  <section class="courses" id="courses" data-tour="3000" data-tour-offset="-0.085" aria-labelledby="courses-title">
+    <div class="sec-head">
+      <p class="label"><span class="sq" aria-hidden="true"></span>Courses</p>
+      <h2 class="h2 split" id="courses-title">Four courses. One way of seeing.</h2>
+      <p class="sec-head__lede reveal">Every course runs for eight weeks with two live sessions a week, a studio brief every Friday and written feedback on everything you make.</p>
+    </div>
+    <div class="blocks">
+      <article class="block block--red reveal-block">
+        <div class="block__top"><span class="block__no">01</span><span class="block__len">8 weeks</span></div>
+        <svg class="glyph" viewBox="0 0 120 120" aria-hidden="true"><rect x="10" y="14" width="22" height="92" fill="#111"/><path d="M32 14h44a24 24 0 0 1 0 48H32z" fill="#f0e9dc"/><circle cx="88" cy="88" r="20" fill="#f2c230"/></svg>
+        <h3>Typography</h3>
+        <p>Letters, grids and the rules worth breaking. Set type for print and screen, then draw a display face of your own.</p>
+        <ul class="block__meta"><li><b>You will make</b> A 24-page type specimen</li><li><b>Live</b> Tue and Thu, 18:00 GMT</li></ul>
+        <p class="block__price">$390</p>
+      </article>
+      <article class="block block--yellow reveal-block">
+        <div class="block__top"><span class="block__no">02</span><span class="block__len">8 weeks</span></div>
+        <svg class="glyph" viewBox="0 0 120 120" aria-hidden="true"><circle cx="44" cy="46" r="30" fill="#d7261e"/><circle cx="76" cy="46" r="30" fill="#1f4e9e" style="mix-blend-mode:multiply"/><circle cx="60" cy="74" r="30" fill="#111" opacity=".85" style="mix-blend-mode:multiply"/></svg>
+        <h3>Colour Theory</h3>
+        <p>Hue, value and temperature, learned by painting before picking. Build palettes that hold up on paper and in code.</p>
+        <ul class="block__meta"><li><b>You will make</b> A 12-swatch colour system</li><li><b>Live</b> Mon and Wed, 17:00 GMT</li></ul>
+        <p class="block__price">$390</p>
+      </article>
+      <article class="block block--blue reveal-block">
+        <div class="block__top"><span class="block__no">03</span><span class="block__len">10 weeks</span></div>
+        <svg class="glyph" viewBox="0 0 120 120" aria-hidden="true"><path d="M60 12 L104 36 L60 60 L16 36Z" fill="#f2c230"/><path d="M16 36 L60 60 L60 108 L16 84Z" fill="#f0e9dc"/><path d="M104 36 L60 60 L60 108 L104 84Z" fill="#111"/></svg>
+        <h3>Product Design</h3>
+        <p>From sketch to working prototype: research, form, materials and the honest testing in between.</p>
+        <ul class="block__meta"><li><b>You will make</b> A desk object, prototyped</li><li><b>Live</b> Tue and Sat, 15:00 GMT</li></ul>
+        <p class="block__price">$390</p>
+      </article>
+      <article class="block block--black reveal-block">
+        <div class="block__top"><span class="block__no">04</span><span class="block__len">8 weeks</span></div>
+        <svg class="glyph glyph--motion" viewBox="0 0 120 120" aria-hidden="true"><circle cx="30" cy="80" r="16" fill="#f0e9dc" opacity=".25"/><circle cx="52" cy="62" r="16" fill="#f0e9dc" opacity=".5"/><circle cx="74" cy="44" r="16" fill="#f0e9dc" opacity=".75"/><circle class="glyph__ball" cx="96" cy="26" r="16" fill="#d7261e"/><rect x="10" y="104" width="100" height="6" fill="#f2c230"/></svg>
+        <h3>Motion Basics</h3>
+        <p>Timing, easing and rhythm. Make shapes move with weight, then make interfaces feel alive.</p>
+        <ul class="block__meta"><li><b>You will make</b> A 30-second title sequence</li><li><b>Live</b> Wed and Fri, 18:30 GMT</li></ul>
+        <p class="block__price">$390</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- LEARN BY MAKING -->
+  <section class="making" id="making" data-tour="3600" data-tour-offset="-0.085" aria-labelledby="making-title">
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="label"><span class="sq" aria-hidden="true"></span>Learn by making</p>
+        <h2 class="h2 split" id="making-title">Make a poster a day. Keep the good ones.</h2>
+      </div>
+      <p class="sec-head__lede reveal">Every student starts the morning with a fifteen-minute composition study: one grid, five shapes, three colours. The wall below draws new ones as you watch.</p>
+    </div>
+    <div class="wall" id="wall">
+      <figure class="poster"><canvas aria-hidden="true"></canvas><figcaption><b data-p-title>Study 214</b><span data-p-by>Mara Lindqvist · Colour Theory</span></figcaption></figure>
+      <figure class="poster"><canvas aria-hidden="true"></canvas><figcaption><b data-p-title>Study 215</b><span data-p-by>Kenji Arano · Typography</span></figcaption></figure>
+      <figure class="poster"><canvas aria-hidden="true"></canvas><figcaption><b data-p-title>Study 216</b><span data-p-by>Ama Boateng · Motion Basics</span></figcaption></figure>
+      <figure class="poster"><canvas aria-hidden="true"></canvas><figcaption><b data-p-title>Study 217</b><span data-p-by>Lucía Ferrer · Product Design</span></figcaption></figure>
+      <figure class="poster"><canvas aria-hidden="true"></canvas><figcaption><b data-p-title>Study 218</b><span data-p-by>Theo Brandt · Typography</span></figcaption></figure>
+      <figure class="poster"><canvas aria-hidden="true"></canvas><figcaption><b data-p-title>Study 219</b><span data-p-by>Priya Raman · Colour Theory</span></figcaption></figure>
+      <figure class="poster"><canvas aria-hidden="true"></canvas><figcaption><b data-p-title>Study 220</b><span data-p-by>Oskar Nyberg · Motion Basics</span></figcaption></figure>
+      <figure class="poster"><canvas aria-hidden="true"></canvas><figcaption><b data-p-title>Study 221</b><span data-p-by>Hana Sato · Typography</span></figcaption></figure>
+    </div>
+    <p class="wall__note"><span class="live" aria-hidden="true"></span><span data-wall-count>1,284 studies made this cohort</span></p>
+  </section>
+
+  <!-- FACULTY -->
+  <section class="faculty" id="faculty" data-tour="2800" data-tour-offset="-0.085" aria-labelledby="faculty-title">
+    <div class="sec-head">
+      <p class="label"><span class="sq" aria-hidden="true"></span>Faculty</p>
+      <h2 class="h2 split" id="faculty-title">Taught by people who still make things.</h2>
+    </div>
+    <div class="people">
+      <article class="person reveal-block">
+        <svg class="mono" viewBox="0 0 200 200" role="img" aria-label="Monogram IM"><rect x="0" y="0" width="200" height="200" fill="#f2c230"/><rect class="m" x="28" y="40" width="26" height="120" fill="#111"/><rect class="m" x="76" y="40" width="26" height="120" fill="#111"/><rect class="m" x="148" y="40" width="26" height="120" fill="#111"/><path class="m" d="M102 40 L148 40 L125 108Z" fill="#d7261e"/><circle class="m" cx="41" cy="22" r="9" fill="#1f4e9e"/></svg>
+        <div class="person__body">
+          <p class="person__role">Typography lead</p>
+          <h3>Ilse Marchetti</h3>
+          <p>Type designer and editorial art director. Has drawn three retail typefaces and taught type for fourteen years.</p>
+          <p class="person__next">Next teaching: Typography, 12 January</p>
+        </div>
+      </article>
+      <article class="person reveal-block">
+        <svg class="mono" viewBox="0 0 200 200" role="img" aria-label="Monogram TO"><rect x="0" y="0" width="200" height="200" fill="#1f4e9e"/><rect class="m" x="20" y="40" width="88" height="26" fill="#f0e9dc"/><rect class="m" x="51" y="40" width="26" height="120" fill="#f0e9dc"/><circle class="m" cx="140" cy="100" r="44" fill="#f2c230"/><circle class="m" cx="140" cy="100" r="17" fill="#1f4e9e"/><path class="m" d="M20 160h40v-40z" fill="#d7261e"/></svg>
+        <div class="person__body">
+          <p class="person__role">Product Design lead</p>
+          <h3>Tomás Okoye-Lund</h3>
+          <p>Industrial designer behind forty shipped products, from kitchen tools to hearing aids. Prototypes everything twice.</p>
+          <p class="person__next">Next teaching: Product Design, 2 February</p>
+        </div>
+      </article>
+      <article class="person reveal-block">
+        <svg class="mono" viewBox="0 0 200 200" role="img" aria-label="Monogram NH"><rect x="0" y="0" width="200" height="200" fill="#d7261e"/><rect class="m" x="22" y="40" width="26" height="120" fill="#f0e9dc"/><path class="m" d="M48 40 L76 40 L76 160Z" fill="#111"/><rect class="m" x="76" y="40" width="26" height="120" fill="#f0e9dc"/><rect class="m" x="122" y="40" width="26" height="120" fill="#f0e9dc"/><rect class="m" x="152" y="40" width="26" height="120" fill="#f0e9dc"/><rect class="m" x="122" y="87" width="56" height="26" fill="#f2c230"/></svg>
+        <div class="person__body">
+          <p class="person__role">Colour and Motion lead</p>
+          <h3>Noor Haddad</h3>
+          <p>Motion director and painter. Ten years of title sequences and brand systems, and a sketchbook for every one.</p>
+          <p class="person__next">Next teaching: Colour Theory, 19 January</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section class="calendar" id="calendar" data-tour="2800" data-tour-offset="-0.085" aria-labelledby="cal-title">
+    <div class="sec-head sec-head--split">
+      <div>
+        <p class="label"><span class="sq" aria-hidden="true"></span>Cohort calendar</p>
+        <h2 class="h2 split" id="cal-title">Winter to summer, week by week.</h2>
+      </div>
+      <p class="sec-head__lede reveal">Applications for every January and February cohort close on 15 December. Seats are confirmed in the order applications are accepted.</p>
+    </div>
+    <div class="gantt" role="table" aria-label="Cohort dates, December 2026 to June 2027">
+      <div class="gantt__months" role="row"><span role="columnheader" class="gantt__corner">Course</span><span role="columnheader" class="gantt__mo"><i>Dec</i><i>Jan</i><i>Feb</i><i>Mar</i><i>Apr</i><i>May</i><i>Jun</i></span></div>
+      <div class="gantt__row" role="row" style="--s:6;--e:14;--c:var(--red)"><span role="rowheader" class="gantt__name"><i class="dot"></i>Typography</span><span role="cell" class="gantt__track"><b class="bar"><span>12 Jan to 9 Mar</span></b><em class="seats">5 seats left</em></span></div>
+      <div class="gantt__row gantt__row--yellow" role="row" style="--s:7;--e:15;--c:var(--yellow)"><span role="rowheader" class="gantt__name"><i class="dot"></i>Colour Theory</span><span role="cell" class="gantt__track"><b class="bar"><span>19 Jan to 16 Mar</span></b><em class="seats">9 seats left</em></span></div>
+      <div class="gantt__row gantt__row--mleft" role="row" style="--s:9;--e:19;--c:var(--blue)"><span role="rowheader" class="gantt__name"><i class="dot"></i>Product Design</span><span role="cell" class="gantt__track"><b class="bar"><span>2 Feb to 13 Apr</span></b><em class="seats">3 seats left</em></span></div>
+      <div class="gantt__row gantt__row--mleft" role="row" style="--s:12;--e:20;--c:var(--black)"><span role="rowheader" class="gantt__name"><i class="dot"></i>Motion Basics</span><span role="cell" class="gantt__track"><b class="bar"><span>23 Feb to 20 Apr</span></b><em class="seats">12 seats left</em></span></div>
+      <div class="gantt__row gantt__row--left" role="row" style="--s:22;--e:30;--c:var(--red)"><span role="rowheader" class="gantt__name"><i class="dot"></i>Typography</span><span role="cell" class="gantt__track"><b class="bar"><span>4 May to 29 Jun</span></b><em class="seats">Opens 1 March</em></span></div>
+      <div class="gantt__close" aria-hidden="true" style="--s:2"><span><i class="hide-m">Applications </i>close 15 Dec</span></div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing" data-tour="2800" data-tour-offset="-0.085" aria-labelledby="pricing-title">
+    <div class="sec-head">
+      <p class="label"><span class="sq" aria-hidden="true"></span>Pricing</p>
+      <h2 class="h2 split" id="pricing-title">Pay per course, or take them all.</h2>
+    </div>
+    <div class="plans">
+      <article class="plan reveal-block">
+        <svg class="plan__shape" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46" fill="#d7261e"/></svg>
+        <p class="plan__name">One course</p>
+        <p class="plan__price"><b>$390</b><span>per course</span></p>
+        <ul>
+          <li>Eight weeks, sixteen live sessions</li>
+          <li>Written feedback on every brief</li>
+          <li>Recordings for twelve months</li>
+          <li>Certificate and portfolio piece</li>
+        </ul>
+        <a class="btn btn--line btn--block" href="#apply">Choose a course</a>
+      </article>
+      <article class="plan plan--all reveal-block">
+        <svg class="plan__shape" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 4 L96 92 L4 92Z" fill="#f2c230"/></svg>
+        <p class="plan__flag">Save $270</p>
+        <p class="plan__name">All access</p>
+        <p class="plan__price"><b>$1,290</b><span>all four courses</span></p>
+        <ul>
+          <li>Every course in the calendar for a year</li>
+          <li>One-to-one portfolio review</li>
+          <li>Monthly alumni critique nights</li>
+          <li>Recordings for life</li>
+        </ul>
+        <a class="btn btn--yellow btn--block" href="#apply">Get all access</a>
+      </article>
+    </div>
+    <p class="pricing__note reveal"><b>Scholarships.</b> One seat in five is fully funded. Tick the scholarship box when you apply, it does not affect your place.</p>
+  </section>
+
+  <!-- ADMISSIONS -->
+  <section class="apply" id="apply" data-tour="3000" data-tour-offset="-0.085" aria-labelledby="apply-title">
+    <div class="apply__art" aria-hidden="true">
+      <svg viewBox="0 0 400 400"><rect class="a1" x="40" y="40" width="160" height="160" fill="#1f4e9e"/><circle class="a2" cx="270" cy="130" r="90" fill="#f2c230"/><path class="a3" d="M40 360 L200 200 L200 360Z" fill="#111"/><path class="a4" d="M220 360a140 140 0 0 1 140-140v140z" fill="#f0e9dc"/></svg>
+    </div>
+    <div class="apply__copy">
+      <p class="label label--light"><span class="sq" aria-hidden="true"></span>Admissions</p>
+      <h2 class="apply__title split" id="apply-title">January cohorts close 15 December.</h2>
+      <p class="reveal">No portfolio needed for Colour Theory or Motion Basics. Typography and Product Design ask for three things you have made, in any medium.</p>
+      <form class="form reveal" novalidate>
+        <label><span>Full name</span><input name="name" autocomplete="name" required></label>
+        <label><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+        <label class="form__wide"><span>Course</span>
+          <select name="course"><option>Typography, 12 January</option><option>Colour Theory, 19 January</option><option>Product Design, 2 February</option><option>Motion Basics, 23 February</option><option>All access, from January</option></select>
+        </label>
+        <label class="check form__wide"><input type="checkbox" name="scholarship"><span>I would like to be considered for a scholarship</span></label>
+        <button class="btn btn--paper form__wide" type="submit">Apply now</button>
+        <p class="form__msg form__wide" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-tour="2000">
+  <p class="footer__word" aria-hidden="true"><span>F</span><span>O</span><span>R</span><span>M</span><span>H</span><span>A</span><span>U</span><span>S</span></p>
+  <div class="footer__grid">
+    <div><h3>School</h3><a href="#courses">Courses</a><a href="#faculty">Faculty</a><a href="#calendar">Calendar</a><a href="#pricing">Pricing</a></div>
+    <div><h3>Students</h3><a href="#making">Daily studies</a><a href="#pricing">Scholarships</a><a href="#apply">Admissions</a><a href="#faculty">Alumni nights</a></div>
+    <div><h3>Contact</h3><a href="mailto:hello@formhaus.school">hello@formhaus.school</a><a href="mailto:admissions@formhaus.school">admissions@formhaus.school</a><p>Live sessions run on GMT. Replays are posted within two hours.</p></div>
+  </div>
+  <div class="footer__base">
+    <p>© 2026 Formhaus School of Design.</p>
+    <p>Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+  </div>
+</footer>
+</body>
+</html>

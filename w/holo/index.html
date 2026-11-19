@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Prism · The card that pays you back in light</title>
+<meta name="description" content="Prism is an 18 g stainless-steel card with up to 3% back on everything and no annual fee. Join the waitlist.">
+<meta name="theme-color" content="#0b0d12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237af0ff'/%3E%3Cstop offset='.4' stop-color='%23b18cff'/%3E%3Cstop offset='.7' stop-color='%23ff8ad8'/%3E%3Cstop offset='1' stop-color='%23ffe28a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%230b0d12'/%3E%3Cpath d='M16 6 26 24H6Z' fill='none' stroke='url(%23g)' stroke-width='3' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="holoG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7af0ff"/><stop offset=".35" stop-color="#b18cff"/><stop offset=".68" stop-color="#ff8ad8"/><stop offset="1" stop-color="#ffe28a"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="logo" href="#top" aria-label="Prism home">
+      <svg viewBox="0 0 28 24" aria-hidden="true"><path d="M14 2 26 22H2Z" fill="none" stroke="url(#holoG)" stroke-width="2.6" stroke-linejoin="round"/></svg>
+      <span>PRISM</span>
+    </a>
+    <nav class="links" aria-label="Primary">
+      <a href="#anatomy">The card</a>
+      <a href="#app">App</a>
+      <a href="#security">Security</a>
+      <a href="#compare">Compare</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-holo btn-sm nav-cta magnetic" href="#waitlist"><span>Join the waitlist</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <a href="#anatomy">The card</a>
+    <a href="#app">App</a>
+    <a href="#security">Security</a>
+    <a href="#compare">Compare</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <a class="btn btn-holo menu-cta" href="#waitlist"><span>Join the waitlist</span></a>
+</div>
+
+<main id="main">
+  <!-- Sticky WebGL stage: hero, flip and exploded view -->
+  <div class="track" id="track">
+    <span class="mark" data-tour="3400" style="top:0"></span>
+    <span class="mark" data-tour="2600" id="markFlip"></span>
+    <span class="mark" data-tour="3600" id="markLayers"></span>
+
+    <div class="stage" id="stage">
+      <canvas id="gl" aria-label="A stainless steel Prism card with a holographic finish, rotating to show its back and its layers" role="img"></canvas>
+      <svg class="leaders" id="leaders" aria-hidden="true"></svg>
+      <ul class="labels" id="labels" aria-label="What the card is made of">
+        <li data-i="0"><b>Holo film</b><span>12-micron thin film that shifts colour with every angle</span></li>
+        <li data-i="1"><b><span class="lf">EMV chip and NFC antenna</span><span class="ls">Chip and antenna</span></b><span>Tap to pay anywhere contactless is accepted</span></li>
+        <li data-i="2"><b><span class="lf">18 g steel core</span><span class="ls">18 g steel</span></b><span>Laser-cut 316L stainless, edges hand finished</span></li>
+        <li data-i="3"><b>Etched back</b><span>3% back on everything, written where you can see it</span></li>
+      </ul>
+
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="wrap hero-in">
+          <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Prism Steel, waitlist open</p>
+          <h1 id="hero-title" class="display" data-split>The card that pays you back in light.</h1>
+          <p class="lede" data-rise>Up to 3% back on everything. 18 g stainless steel. No annual fee.</p>
+          <div class="hero-cta" data-rise>
+            <a class="btn btn-holo magnetic" href="#waitlist"><span>Join the waitlist</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+            <a class="text-link" href="#anatomy">See how it's made</a>
+          </div>
+          <ul class="trust" data-rise>
+            <li>No credit check to join</li>
+            <li>Ships spring 2027</li>
+            <li><b>48,210</b> already in line</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="captions" id="anatomy" aria-label="How the card is built">
+        <div class="cap" data-cap="0">
+          <p class="eyebrow"><span class="num">01</span>Flip it over</p>
+          <h2 class="cap-title">The best line on the card is on the back.</h2>
+          <p class="cap-body">3% back on everything, laser etched into the steel. Groceries, rent, flights, the 2 AM noodles. No categories to activate.</p>
+        </div>
+        <div class="cap" data-cap="1">
+          <p class="eyebrow"><span class="num">02</span>Inside the card</p>
+          <h2 class="cap-title">Four layers. Zero plastic.</h2>
+          <p class="cap-body">Steel gives it weight, the film gives it colour, and the antenna lets you tap to pay without taking it out of your hand.</p>
+        </div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true"><span></span>Scroll to turn the card</div>
+    </div>
+  </div>
+
+  <!-- BENEFITS -->
+  <section class="benefits" id="benefits" data-tour="3000" aria-labelledby="ben-title">
+    <div class="wrap">
+      <h2 id="ben-title" class="h2" data-split>Three numbers that do the talking.</h2>
+      <div class="ben-grid">
+        <article class="ben" data-rise>
+          <p class="ben-num"><span data-count="3">3</span><i>%</i></p>
+          <h3>Back on everything</h3>
+          <p>Not on rotating categories, not after a spend threshold. On rent, groceries and every coffee, paid out daily.</p>
+        </article>
+        <article class="ben" data-rise>
+          <p class="ben-num"><span data-count="18">18</span><i>g</i></p>
+          <h3>Of stainless steel</h3>
+          <p>A laser-cut 316L core under a 12-micron holo film. It lands on the table with a quiet, expensive clink.</p>
+        </article>
+        <article class="ben" data-rise>
+          <p class="ben-num"><i>$</i><span data-count="0" data-from="695">0</span></p>
+          <h3>Annual fee, every year</h3>
+          <p>Most metal cards charge $95 to $695 a year for the privilege. Prism charges nothing, not even in year two.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <section class="app" id="app" data-tour="3200" aria-labelledby="app-title">
+    <div class="wrap app-grid">
+      <div class="app-copy">
+        <p class="eyebrow"><span class="num">03</span>The Prism app</p>
+        <h2 id="app-title" class="h2" data-split>Watch every dollar find its way back.</h2>
+        <p class="sec-lede" data-rise>Spending sorted the moment you tap. Cashback lands in your balance every morning, ready to move to your bank or put toward your statement.</p>
+        <ul class="ticks" data-rise>
+          <li>Live spend by category, no setup</li>
+          <li>Cashback paid daily, in dollars, not points</li>
+          <li>Statement credits in one tap</li>
+        </ul>
+      </div>
+      <div class="phones" aria-label="Two screens of the Prism app">
+        <div class="phone p1" data-rise>
+          <div class="screen">
+            <div class="sb"><span>9:41</span><span class="sb-r"><i></i><i></i><i></i></span></div>
+            <p class="ph-k">November spending</p>
+            <div class="ring">
+              <svg viewBox="0 0 120 120" role="img" aria-label="Spending ring: travel $760, groceries $642, dining $418, bills $364">
+                <circle class="trk" cx="60" cy="60" r="46"/>
+                <circle class="seg s1" cx="60" cy="60" r="46" pathLength="100" style="--len:34.8;--off:0"/>
+                <circle class="seg s2" cx="60" cy="60" r="46" pathLength="100" style="--len:29.4;--off:-34.8"/>
+                <circle class="seg s3" cx="60" cy="60" r="46" pathLength="100" style="--len:19.1;--off:-64.2"/>
+                <circle class="seg s4" cx="60" cy="60" r="46" pathLength="100" style="--len:16.7;--off:-83.3"/>
+              </svg>
+              <div class="ring-c"><b>$2,184.60</b><span>+$65.54 back</span></div>
+            </div>
+            <ul class="cats">
+              <li><i class="c1"></i>Travel<b>$760.00</b></li>
+              <li><i class="c2"></i>Groceries<b>$642.10</b></li>
+              <li><i class="c3"></i>Dining<b>$418.30</b></li>
+              <li><i class="c4"></i>Bills<b>$364.20</b></li>
+            </ul>
+          </div>
+        </div>
+        <div class="phone p2" data-rise>
+          <div class="screen">
+            <div class="sb"><span>9:41</span><span class="sb-r"><i></i><i></i><i></i></span></div>
+            <div class="bal">
+              <p class="ph-k">Cashback balance</p>
+              <p class="bal-n">$214.87</p>
+              <span class="bal-btn">Move to bank</span>
+            </div>
+            <p class="ph-k feed-k">Today</p>
+            <ul class="feed">
+              <li><span class="mi m1">T</span><span class="fd"><b>Tidewater Grocers</b>Groceries, $86.20</span><em>+$2.59</em></li>
+              <li><span class="mi m2">J</span><span class="fd"><b>Juniper Air</b>Travel, $412.00</span><em>+$12.36</em></li>
+              <li><span class="mi m3">M</span><span class="fd"><b>Marrow Kitchen</b>Dining, $54.80</span><em>+$1.64</em></li>
+              <li><span class="mi m4">G</span><span class="fd"><b>Gridline Electric</b>Bills, $118.40</span><em>+$3.55</em></li>
+              <li><span class="mi m5">K</span><span class="fd"><b>Kiln Coffee</b>Dining, $6.40</span><em>+$0.19</em></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section class="security" id="security" data-tour="3000" aria-labelledby="sec-title">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow"><span class="num">04</span>Security</p>
+        <h2 id="sec-title" class="h2" data-split>Heavy card. Light touch. Locked tight.</h2>
+      </header>
+      <div class="sec-grid">
+        <article class="sec-card" data-rise>
+          <div class="sv sv-bio" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <g class="fp">
+                <path d="M40 92c-6-9-9-19-9-30 0-17 13-31 29-31s29 14 29 31"/>
+                <path d="M48 98c-6-10-9-22-9-36 0-12 9-22 21-22s21 10 21 22c0 6-1 11-2 16"/>
+                <path d="M57 101c-5-12-8-25-8-39 0-6 5-11 11-11s11 5 11 11c0 13 3 25 8 35"/>
+                <path d="M60 62c0 15 4 29 11 41"/>
+                <path d="M89 78c-2 8-4 14-7 19"/>
+              </g>
+              <circle class="scan" cx="60" cy="66" r="50"/>
+            </svg>
+          </div>
+          <h3>Biometric lock</h3>
+          <p>Card number, CVV and expiry stay hidden in the app until your face or fingerprint says otherwise.</p>
+        </article>
+        <article class="sec-card" data-rise>
+          <div class="sv sv-virtual" aria-hidden="true">
+            <span class="vc v1"><b>Streaming</b>&bull;&bull;&bull;&bull; 1186</span>
+            <span class="vc v2"><b>Gym trial</b>&bull;&bull;&bull;&bull; 5530</span>
+            <span class="vc v3"><b>Online shopping</b>&bull;&bull;&bull;&bull; 2047</span>
+          </div>
+          <h3>Virtual cards</h3>
+          <p>Make a card for every subscription, with its own number and limit. Delete it when the free trial ends.</p>
+        </article>
+        <article class="sec-card" data-rise>
+          <div class="sv sv-freeze" aria-hidden="true">
+            <div class="toggle"><span class="knob"></span></div>
+            <p class="frz"><span class="on">Card active</span><span class="off">Card frozen</span></p>
+          </div>
+          <h3>Instant freeze</h3>
+          <p>Misplaced it? Freeze it in one tap. Unfreeze when it turns up in your other jacket.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section class="compare" id="compare" data-tour="3000" aria-labelledby="cmp-title">
+    <div class="wrap">
+      <header class="sec-head center">
+        <p class="eyebrow"><span class="num">05</span>Compare</p>
+        <h2 id="cmp-title" class="h2" data-split>Prism, next to the usual suspects.</h2>
+      </header>
+      <div class="table-wrap" data-rise>
+        <table class="cmp">
+          <caption class="sr-only">Prism compared with a typical cashback card</caption>
+          <thead>
+            <tr><th scope="col"><span class="sr-only">Feature</span></th><th scope="col" class="prism-col"><span class="th-prism">Prism</span></th><th scope="col">Typical card</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Cashback</th><td class="prism-col"><b>3% on everything</b></td><td>1% to 1.5%, or 5% on rotating categories</td></tr>
+            <tr><th scope="row">Annual fee</th><td class="prism-col"><b>$0</b></td><td>$0 for plastic, $95 to $695 for metal</td></tr>
+            <tr><th scope="row">Foreign transaction fee</th><td class="prism-col"><b>0%</b></td><td>Up to 3%</td></tr>
+            <tr><th scope="row">Card material</th><td class="prism-col"><b>18 g stainless steel</b></td><td>Plastic</td></tr>
+            <tr><th scope="row">Rewards paid</th><td class="prism-col"><b>Daily, in cash</b></td><td>Monthly, in points</td></tr>
+            <tr><th scope="row">Virtual cards</th><td class="prism-col"><b>Unlimited</b></td><td>Limited or none</td></tr>
+            <tr><th scope="row">Freeze your card</th><td class="prism-col"><b>One tap in the app</b></td><td>Call support and wait</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTES -->
+  <section class="quotes" id="members" data-tour="2800" aria-labelledby="q-title">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow"><span class="num">06</span>From the beta</p>
+        <h2 id="q-title" class="h2" data-split>Early members, early opinions.</h2>
+      </header>
+      <div class="q-grid">
+        <figure class="q" data-rise>
+          <blockquote><p>&ldquo;I put rent on Prism and the cashback covered my phone bill. Every single month of the beta.&rdquo;</p></blockquote>
+          <figcaption><span class="av">LO</span><span><b>Leah Okafor</b>Product designer, Austin</span></figcaption>
+        </figure>
+        <figure class="q" data-rise>
+          <blockquote><p>&ldquo;It is genuinely heavy. My barista stopped the line to ask what it was made of.&rdquo;</p></blockquote>
+          <figcaption><span class="av">ML</span><span><b>Marcus Lindqvist</b>Line cook, Portland</span></figcaption>
+        </figure>
+        <figure class="q" data-rise>
+          <blockquote><p>&ldquo;One virtual card per subscription. I finally found and killed the gym I forgot I was paying for.&rdquo;</p></blockquote>
+          <figcaption><span class="av">PD</span><span><b>Priya Desai</b>ER nurse, Chicago</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq" data-tour="2800" aria-labelledby="faq-title">
+    <div class="wrap faq-grid">
+      <header class="faq-head">
+        <p class="eyebrow"><span class="num">07</span>FAQ</p>
+        <h2 id="faq-title" class="h2" data-split>Good questions, straight answers.</h2>
+        <p class="sec-lede" data-rise>Still curious? Write to <a href="mailto:hello@prismcard.co">hello@prismcard.co</a> and a human replies within a day.</p>
+      </header>
+      <div class="acc" data-rise>
+        <details open>
+          <summary>When does Prism ship?</summary>
+          <p>We invite the waitlist in batches from spring 2027. Your place in line decides your batch, and every friend who joins with your link moves you up 500 spots.</p>
+        </details>
+        <details>
+          <summary>Is there a credit check to join the waitlist?</summary>
+          <p>No. Joining the waitlist is free and has no effect on your credit score. A check only happens if you accept an invitation and choose to apply.</p>
+        </details>
+        <details>
+          <summary>How does 3% back actually work?</summary>
+          <p>You earn 3% on every purchase up to $3,000 of spend a month and 1.5% after that. Cashback lands in your balance daily, in dollars, with nothing to activate.</p>
+        </details>
+        <details>
+          <summary>Is there really no annual fee?</summary>
+          <p>Really. No annual fee, no foreign transaction fees and no charge for virtual cards. If we ever launch a paid tier, the card you hold stays free.</p>
+        </details>
+        <details>
+          <summary>What is the card made of?</summary>
+          <p>An 18 g core of laser-cut 316L stainless steel, a 12-micron holographic film on the front and a laser-etched back. Send it back when it expires and we recycle the steel.</p>
+        </details>
+        <details>
+          <summary>Can I use Prism abroad?</summary>
+          <p>Yes, anywhere contactless cards are accepted, with 0% foreign transaction fees and live exchange rates shown in the app.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="waitlist" id="waitlist" data-tour="3600" aria-labelledby="wl-title">
+    <div class="wrap wl-grid">
+      <div class="wl-copy">
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Waitlist, batch 3 filling now</p>
+        <h2 id="wl-title" class="h2 big" data-split>Get in line for the light.</h2>
+        <p class="counter" data-rise><b id="ahead">48,210</b> people ahead of you <span class="joined" id="joined" aria-live="polite">+1 joined just now</span></p>
+        <form class="wl-form" id="wlForm" novalidate data-rise>
+          <label class="sr-only" for="wlEmail">Email address</label>
+          <input id="wlEmail" type="email" name="email" placeholder="you@email.com" autocomplete="email" required>
+          <button class="btn btn-holo magnetic" type="submit"><span>Join the waitlist</span></button>
+          <p class="wl-ok" role="status" aria-live="polite"></p>
+        </form>
+        <p class="wl-note" data-rise>Free to join. No credit check. Unsubscribe in one click.</p>
+      </div>
+      <div class="mini-card-wrap" aria-hidden="true" data-rise>
+        <div class="mini-card" id="miniCard">
+          <div class="mc-foil"></div>
+          <div class="mc-glare"></div>
+          <span class="mc-logo">PRISM</span>
+          <span class="mc-chip"></span>
+          <span class="mc-num">&bull;&bull;&bull;&bull; 0742</span>
+          <span class="mc-name">AANYA KAPOOR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="logo" href="#top" aria-label="Prism home">
+          <svg viewBox="0 0 28 24" aria-hidden="true"><path d="M14 2 26 22H2Z" fill="none" stroke="url(#holoG)" stroke-width="2.6" stroke-linejoin="round"/></svg>
+          <span>PRISM</span>
+        </a>
+        <p class="foot-tag">A stainless-steel card that pays you back in light.</p>
+        <p class="foot-contact"><a href="mailto:hello@prismcard.co">hello@prismcard.co</a><br>Prism Cards, 88 Mercer Street, New York, NY 10012</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div><h3>Card</h3><a href="#anatomy">Materials</a><a href="#benefits">Rewards</a><a href="#compare">Compare</a></div>
+        <div><h3>App</h3><a href="#app">Spending</a><a href="#security">Security</a><a href="#faq">FAQ</a></div>
+        <div><h3>Company</h3><a href="#waitlist">Careers</a><a href="#waitlist">Press</a><a href="#waitlist">Contact</a></div>
+      </nav>
+    </div>
+    <div class="fine">
+      <p><b>Sample product, not a real financial offer.</b> Prism is a fictional card created to demonstrate a website design. No credit is offered, no application can be made and no personal data is collected. Rates, fees and features shown are illustrative only.</p>
+      <p class="hx-line">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+    <p class="copy">&copy; 2026 Prism Cards</p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{head}}
+<title>Websites · Hanflux Design Menu</title>
+<meta name="description" content="{{n_sites}} websites running live on desktop and phone: immersive 3D, motion design and clean business sites. Shortlist a design and get a fixed quote from Hanflux AI within 24 hours.">
+<meta property="og:title" content="Websites, running live · Hanflux Design Menu">
+<meta property="og:description" content="{{n_sites}} live website designs, from Essential business sites to Flagship WebGL. Pick one, add features, get a fixed quote.">
+<meta property="og:url" content="https://hanflux-design-menu.vercel.app/websites/">
+<link rel="canonical" href="https://hanflux-design-menu.vercel.app/websites/">
+<link rel="stylesheet" href="/assets/hx/frames.css?v={{v}}">
+<link rel="stylesheet" href="/assets/hx/websites.css?v={{v}}">
+<script defer src="/data/config.js?v={{v}}"></script>
+<script defer src="/data/sites.js?v={{v}}"></script>
+<script defer src="/assets/hx/frames.js?v={{v}}"></script>
+<script defer src="/assets/hx/shell.js?v={{v}}"></script>
+<script defer src="/assets/hx/websites.js?v={{v}}"></script>
+</head>
+<body class="websites">
+<div class="dust" aria-hidden="true"></div>
+<a class="skip" href="#grid">Skip to the designs</a>
+{{nav}}
+
+<main>
+  <section class="w-hero">
+    <div class="w-glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <p class="kicker rv">menu 01 · websites</p>
+      <h1 class="display h-xl rv">Websites,<br><span class="grad">running live.</span></h1>
+      <p class="lede rv">Every card below is a real website playing on a desktop and a phone at the same time. Tap one to look closer, add the features you need and get a fixed quote. They are examples: we can mix them, match your brand, or design something fully custom.</p>
+      <div class="w-offer offer-only rv"><span class="off-sticker">Launch offer · up to {{off_max}} off</span><span class="offer-note">launch prices end in <b data-countdown>{{offer_ends}}</b></span></div>
+      <div class="legend rv" aria-label="Tiers">{{legend}}</div>
+    </div>
+  </section>
+
+  <div class="w-bar" id="filters-bar">
+    <div class="wrap w-bar-in">
+      <div class="filters" id="filters" role="toolbar" aria-label="Filter designs">
+        <button type="button" class="chip" data-f="all" aria-pressed="true">All</button>
+        <button type="button" class="chip" data-f="t:flagship">Flagship 3D</button>
+        <button type="button" class="chip" data-f="t:signature">Signature motion</button>
+        <button type="button" class="chip" data-f="t:growth">Growth</button>
+        <button type="button" class="chip" data-f="t:essential">Essential</button>
+        <button type="button" class="chip" data-f="live">Built by Hanflux</button>
+        <button type="button" class="chip" data-f="g:dark">Dark</button>
+        <button type="button" class="chip" data-f="g:light">Light</button>
+        <button type="button" class="chip" data-f="g:playful">Playful</button>
+        <button type="button" class="chip" data-f="g:luxury">Luxury</button>
+        <button type="button" class="chip" data-f="picks">Shortlisted <span data-pick-wcount>0</span></button>
+      </div>
+      <span class="w-count mono" id="w-count" aria-live="polite">{{n_sites}} designs</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="shared" id="shared" hidden>
+      <span class="kicker plain">shared with you</span>
+      <span id="shared-list"></span>
+      <button class="btn btn-ghost btn-xs" type="button" id="shared-show">Show only these</button>
+    </div>
+  </div>
+
+  <section class="w-grid wrap" id="grid" aria-label="Website designs">
+{{cards}}
+    <p class="w-empty" id="w-empty" hidden>Nothing here yet. Tap the heart on any design to shortlist it.</p>
+  </section>
+
+  <section class="w-help section">
+    <div class="wrap w-help-in rv">
+      <div>
+        <p class="kicker">not sure yet?</p>
+        <h2 class="display h-md">Tell us about your business.<br>We will suggest three designs.</h2>
+      </div>
+      <div class="cta">
+        <a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_help}}" target="_blank" rel="noopener">Ask on WhatsApp</a>
+        <a class="btn btn-ghost" href="https://cal.com/chitraksh-mayank-lhab1f/15min" target="_blank" rel="noopener">Book a 15-minute call</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="qbar" id="qbar" aria-live="polite">
+  <div class="qbar-in">
+    <div class="qb-txt"><b id="qb-n">0 designs</b><span id="qb-est" class="dim"></span></div>
+    <button class="btn btn-ghost btn-sm" type="button" data-copy-share>Share</button>
+    <button class="btn btn-teal btn-sm" type="button" data-open-request>Get a quote</button>
+  </div>
+</div>
+
+{{foot}}
+</body>
+</html>

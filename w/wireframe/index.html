@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<title>Arcline Studio · Buildings drawn with light</title>
+<meta name="description" content="Arcline Studio is an architecture practice in Bengaluru and Lisbon designing homes, libraries and pavilions that sit lightly on their land.">
+<meta name="theme-color" content="#f1f0ec">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f1f0ec'/%3E%3Cpath d='M6 26A20 20 0 0 1 26 6' fill='none' stroke='%23121212' stroke-width='2.4'/%3E%3Cpath d='M3 26H29' stroke='%23121212' stroke-width='2.4'/%3E%3Ccircle cx='26' cy='6' r='3' fill='%23ff4d00'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vendor/lenis/lenis.css">
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<canvas id="stage" aria-hidden="true"></canvas>
+<div class="labels" id="labels" aria-hidden="true"></div>
+<div class="crop" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Arcline Studio, back to top">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 26A20 20 0 0 1 26 6" /><path d="M3 26H29" /><circle cx="26" cy="6" r="2.6" /></svg>
+    <span class="brand-name">Arcline</span><span class="brand-sub">Studio</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#work">Work</a><a href="#process">Process</a><a href="#approach">Approach</a><a href="#studio">Studio</a><a href="#contact">Contact</a>
+  </nav>
+  <div class="nav-right">
+    <p class="nav-clock" aria-label="Local time in our studios"><span>BLR <b data-clock="Asia/Kolkata">15:40</b></span><span>LIS <b data-clock="Europe/Lisbon">10:10</b></span></p>
+    <a class="btn btn-ink btn-sm" href="#contact"><span>Start a project</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="menu-lines" aria-hidden="true"><i></i><i></i></span><span class="menu-txt">Menu</span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <a href="#work"><small>01</small>Work</a>
+    <a href="#process"><small>02</small>Process</a>
+    <a href="#approach"><small>03</small>Approach</a>
+    <a href="#studio"><small>04</small>Studio</a>
+    <a href="#contact"><small>05</small>Contact</a>
+  </nav>
+  <div class="menu-foot">
+    <p>hello@arcline.studio</p>
+    <p>Bengaluru · Lisbon</p>
+  </div>
+</div>
+
+<main id="main">
+  <!-- HERO: sticky, scroll explodes the drawing, then fills it with light -->
+  <section class="hero" id="top" aria-label="Arcline Studio introduction">
+    <span class="tm tm-0" data-tour="3400" aria-hidden="true"></span>
+    <span class="tm tm-1" data-tour="2800" aria-hidden="true"></span>
+    <span class="tm tm-2" data-tour="3000" aria-hidden="true"></span>
+    <div class="hero-sticky">
+      <div class="sheet-meta" aria-hidden="true">
+        <span class="sq"></span>
+        <span class="sm-line sm-0">A-101 · Casa Lumen, Goa · Axonometric · 1:200</span>
+        <span class="sm-line sm-1">A-102 · Casa Lumen, Goa · Exploded axonometric</span>
+        <span class="sm-line sm-2">A-103 · Casa Lumen, Goa · Light study, 18:40</span>
+      </div>
+
+      <div class="cap cap-intro">
+        <p class="eyebrow">Architecture · Bengaluru and Lisbon</p>
+        <h1 class="display" id="hero-title">Buildings drawn with light.</h1>
+        <p class="lede">Arcline designs homes, libraries and pavilions that sit lightly on their land.</p>
+        <div class="ctas">
+          <a class="btn btn-ink magnetic" href="#work"><span>See the work</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a class="btn btn-line magnetic" href="#contact"><span>Start a project</span></a>
+        </div>
+      </div>
+
+      <div class="cap cap-explode" aria-hidden="true">
+        <p class="eyebrow"><span class="dot"></span>Exploded axonometric</p>
+        <p class="cap-h">Six plates. One quiet idea.</p>
+        <p class="cap-p">Plinth, pavilion, slab, upper volume, roof, roof room. Every Arcline building is drawn plate by plate, so each layer carries exactly one job.</p>
+      </div>
+
+      <div class="cap cap-light" aria-hidden="true">
+        <p class="eyebrow"><span class="dot"></span>Casa Lumen at dusk</p>
+        <p class="cap-big">From line to light.</p>
+        <p class="cap-p">640 m² on a laterite plinth, completed 2024. The same drawing, now holding the evening sun.</p>
+      </div>
+
+      <div class="hero-foot" aria-hidden="true">
+        <div class="scalebar"><i></i><i></i><i></i><i></i><span>0</span><span>5</span><span>10</span><span>20 m</span></div>
+        <p class="scroll-hint"><span class="sh-line"></span><span class="sh-txt">Scroll to take it apart</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work" data-tour="2200">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="label"><span>01</span>Selected work</p>
+        <h2 class="h2" data-split>Four buildings, four landscapes.</h2>
+        <p class="sec-intro" data-reveal>Forty-two buildings completed in India and Portugal since 2011. These four show how we work: one clear idea, drawn until it feels inevitable.</p>
+      </header>
+
+      <div class="projects">
+        <article class="proj" data-axo="casaLumen" data-label="Axonometric line drawing of Casa Lumen: a cantilevered upper floor over a glass pavilion on a plinth by the sea">
+          <a class="proj-link" href="#contact" aria-label="Casa Lumen, Goa. Ask us about a house like this">
+            <div class="proj-draw"><div class="proj-svg"></div><span class="pc pc-tl">A-01</span><span class="pc pc-tr">1:250</span><span class="pc pc-bl">Axonometric</span><span class="pc pc-br">Casa Lumen</span></div>
+            <div class="proj-meta">
+              <span class="proj-num">01</span>
+              <div class="proj-title"><h3>Casa Lumen</h3><p>Goa, India</p></div>
+              <dl class="proj-facts"><div><dt>Year</dt><dd>2024</dd></div><div><dt>Area</dt><dd>640 m²</dd></div><div><dt>Type</dt><dd>Private house</dd></div></dl>
+            </div>
+            <p class="proj-desc">A cantilevered upper floor floats over a glass pavilion and a laterite plinth, so the whole ground floor opens to the sea breeze.</p>
+          </a>
+        </article>
+        <article class="proj" data-axo="longHouse" data-label="Axonometric line drawing of The Long House: three linear volumes with mono-pitch roofs stepping down a coffee slope">
+          <a class="proj-link" href="#contact" aria-label="The Long House, Coorg. Ask us about a house like this">
+            <div class="proj-draw"><div class="proj-svg"></div><span class="pc pc-tl">A-02</span><span class="pc pc-tr">1:400</span><span class="pc pc-bl">Axonometric</span><span class="pc pc-br">The Long House</span></div>
+            <div class="proj-meta">
+              <span class="proj-num">02</span>
+              <div class="proj-title"><h3>The Long House</h3><p>Coorg, India</p></div>
+              <dl class="proj-facts"><div><dt>Year</dt><dd>2023</dd></div><div><dt>Area</dt><dd>410 m²</dd></div><div><dt>Type</dt><dd>Estate residence</dd></div></dl>
+            </div>
+            <p class="proj-desc">A 46 metre bar steps down a coffee slope in three moves, shaded by 1,200 teak louvres cut on site.</p>
+          </a>
+        </article>
+        <article class="proj" data-axo="kilnPavilion" data-label="Axonometric line drawing of Kiln Pavilion: four brick kilns under a thin steel canopy on a paved square">
+          <a class="proj-link" href="#contact" aria-label="Kiln Pavilion, Lisbon. Ask us about a pavilion like this">
+            <div class="proj-draw"><div class="proj-svg"></div><span class="pc pc-tl">A-03</span><span class="pc pc-tr">1:200</span><span class="pc pc-bl">Axonometric</span><span class="pc pc-br">Kiln Pavilion</span></div>
+            <div class="proj-meta">
+              <span class="proj-num">03</span>
+              <div class="proj-title"><h3>Kiln Pavilion</h3><p>Lisbon, Portugal</p></div>
+              <dl class="proj-facts"><div><dt>Year</dt><dd>2025</dd></div><div><dt>Area</dt><dd>180 m²</dd></div><div><dt>Type</dt><dd>Public pavilion</dd></div></dl>
+            </div>
+            <p class="proj-desc">Four brick kilns under one thin steel canopy: a shaded room for a ceramics festival that the city decided to keep.</p>
+          </a>
+        </article>
+        <article class="proj" data-axo="arcLibrary" data-label="Axonometric line drawing of Arc Library: five barrel vaults with semicircular windows above a glazed reading hall">
+          <a class="proj-link" href="#contact" aria-label="Arc Library, Pune. Ask us about a library like this">
+            <div class="proj-draw"><div class="proj-svg"></div><span class="pc pc-tl">A-04</span><span class="pc pc-tr">1:500</span><span class="pc pc-bl">Axonometric</span><span class="pc pc-br">Arc Library</span></div>
+            <div class="proj-meta">
+              <span class="proj-num">04</span>
+              <div class="proj-title"><h3>Arc Library</h3><p>Pune, India</p></div>
+              <dl class="proj-facts"><div><dt>Year</dt><dd>2022</dd></div><div><dt>Area</dt><dd>2,300 m²</dd></div><div><dt>Type</dt><dd>Public library</dd></div></dl>
+            </div>
+            <p class="proj-desc">Five concrete vaults pull north light deep into reading rooms for 300 people, without glare on a single page.</p>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS: sticky, drives the model -->
+  <section class="process" id="process" aria-labelledby="process-title">
+    <span class="tm pm-0" data-tour="2600" aria-hidden="true"></span>
+    <span class="tm pm-1" data-tour="2400" aria-hidden="true"></span>
+    <span class="tm pm-2" data-tour="2600" aria-hidden="true"></span>
+    <span class="tm pm-3" data-tour="2800" aria-hidden="true"></span>
+    <div class="process-sticky">
+      <div class="process-copy">
+        <p class="label"><span>02</span>Process</p>
+        <h2 class="h2" id="process-title">How a building gets drawn.</h2>
+        <ol class="steps">
+          <li class="step is-on" data-step="0">
+            <span class="step-n">01</span>
+            <div class="step-body"><h3>Sketch</h3>
+              <p>We walk the site with charcoal and trace until one line feels right: where the light lands, where the wind moves, where the ground wants to be left alone.</p>
+              <p class="step-meta">Weeks 1 to 3 · site walks, trace, charcoal</p></div>
+          </li>
+          <li class="step" data-step="1">
+            <span class="step-n">02</span>
+            <div class="step-body"><h3>Model</h3>
+              <p>That line becomes a white massing model, in card and in code, so you can turn it in your hands and walk it in VR before anything is fixed.</p>
+              <p class="step-meta">Weeks 4 to 8 · card models, sun studies</p></div>
+          </li>
+          <li class="step" data-step="2">
+            <span class="step-n">03</span>
+            <div class="step-body"><h3>Detail</h3>
+              <p>Every junction is drawn at 1:5. Structure, services and finishes live in one coordinated model, so the site never has to guess.</p>
+              <p class="step-meta">Months 3 to 6 · about 380 drawings per house</p></div>
+          </li>
+          <li class="step" data-step="3">
+            <span class="step-n">04</span>
+            <div class="step-body"><h3>Build</h3>
+              <p>We stay on site through handover: weekly visits, a mock-up of every critical junction, and a last walk-through with you at dusk.</p>
+              <p class="step-meta">12 to 20 months · site, handover, aftercare</p></div>
+          </li>
+        </ol>
+        <div class="process-bar" aria-hidden="true"><i></i></div>
+      </div>
+      <p class="process-sheet" aria-hidden="true"><span class="ps-n">A-104</span> <span class="ps-t">Sketch</span></p>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="approach" id="approach" data-tour="2200">
+    <div class="wrap">
+      <p class="label"><span>03</span>Approach</p>
+      <div class="approach-top">
+        <p class="manifesto" data-words>We take as little from a site as we can, and give back more light than we block.</p>
+        <figure class="sunpath" data-sun>
+          <svg viewBox="0 0 560 400" role="img" aria-label="Sun path study over the section of Casa Lumen: the low winter sun reaches deep into the glass pavilion, the high summer sun is stopped by the roof overhang">
+            <g class="sp-sky">
+              <path class="sp-arc" d="M40 320A240 250 0 0 1 520 320"/>
+              <path class="sp-arc sp-w" d="M60 320A220 165 0 0 1 500 320"/>
+              <g class="sp-hours"></g>
+            </g>
+            <path class="sp-ground" d="M14 320H546"/>
+            <path class="sp-hatch" d="M30 320l-8 10M50 320l-8 10M70 320l-8 10M90 320l-8 10M110 320l-8 10M130 320l-8 10M150 320l-8 10M170 320l-8 10M190 320l-8 10M210 320l-8 10M230 320l-8 10M250 320l-8 10M270 320l-8 10M290 320l-8 10M310 320l-8 10M330 320l-8 10M350 320l-8 10M370 320l-8 10M390 320l-8 10M410 320l-8 10M430 320l-8 10M450 320l-8 10M470 320l-8 10M490 320l-8 10M510 320l-8 10M530 320l-8 10"/>
+            <g class="sp-house">
+              <path d="M150 320V308H430V320"/>
+              <path class="sp-glass" d="M190 308V248H350V308"/>
+              <path d="M190 268H350" class="sp-thin"/>
+              <path d="M160 248H470V242H160Z"/>
+              <path d="M220 242V186H470V242"/>
+              <path d="M240 200H455V226H240Z" class="sp-thin"/>
+              <path d="M200 186H490V180H200Z"/>
+              <path d="M398 308V248M440 308V248"/>
+            </g>
+            <path class="sp-ray" d="M0 0"/>
+            <path class="sp-ray sp-ray-s" d="M0 0"/>
+            <path class="sp-patch" d="M0 0"/>
+            <circle class="sp-sun" r="8" cx="0" cy="0"/>
+            <circle class="sp-sun sp-sun-s" r="6" cx="0" cy="0"/>
+            <text class="sp-t" x="282" y="60" text-anchor="middle">21 JUN · 12:30</text>
+            <text class="sp-t sp-tw" x="94" y="200">21 DEC</text>
+            <text class="sp-t sp-tn" x="546" y="344" text-anchor="end">Section A-A · 1:200</text>
+          </svg>
+          <figcaption><span class="sp-k sp-kw"></span>Winter sun reaches 6.2 m into the pavilion <span class="sp-k sp-ks"></span>Summer sun stops at the 1 000 overhang</figcaption>
+        </figure>
+      </div>
+      <ol class="principles">
+        <li data-reveal>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 38H44"/><path d="M9 38l-3 4M15 38l-3 4M21 38l-3 4M27 38l-3 4M33 38l-3 4M39 38l-3 4" class="thin"/><path d="M12 15H36V25H12Z"/><path d="M16 25V38M32 25V38"/><circle cx="36" cy="15" r="1.6" class="dotfill"/></svg>
+          <h3>Sit lightly</h3>
+          <p>Pilotis, plinths and cantilevers keep the ground breathing. On the Long House, 70% of the slope was never touched.</p>
+        </li>
+        <li data-reveal>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 42V26H40V42"/><path d="M5 20A19 19 0 0 1 43 20" class="thin"/><circle cx="31" cy="9" r="3.2" class="dotfill"/><path d="M29 13L19 36" class="dash"/></svg>
+          <h3>Light first</h3>
+          <p>We model sun paths before floor plans. Every room gets at least two hours of direct light in winter.</p>
+        </li>
+        <li data-reveal>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="6"/><circle cx="24" cy="24" r="13" class="thin"/><circle cx="24" cy="24" r="20" class="dash"/><circle cx="24" cy="24" r="1.8" class="dotfill"/><path d="M35 13l3-3M8 31l-3 3"/></svg>
+          <h3>Build with what is near</h3>
+          <p>Laterite in Goa, granite in Coorg, cork and lime in Lisbon. 80% of our materials come from within 200 km of site.</p>
+        </li>
+        <li data-reveal>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 11H29V33H7Z"/><path d="M19 19H41V41H19Z" class="thin"/><path d="M25 30l4 4 7-8" class="accent"/></svg>
+          <h3>Draw it twice</h3>
+          <p>Every junction is drawn by two people before it reaches site. Slower on paper, much faster on site.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- STUDIO -->
+  <section class="studio" id="studio" data-tour="2200">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="label"><span>04</span>Studio</p>
+        <h2 class="h2" data-split>Two studios, one drawing board.</h2>
+        <p class="sec-intro" data-reveal>Twenty-eight architects, engineers and model makers between Indiranagar and Príncipe Real, working as one team across a five and a half hour time difference.</p>
+      </header>
+
+      <div class="clocks" data-reveal>
+        <div class="clock">
+          <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36"/><g class="ticks"></g><path class="hh" d="M40 40V22"/><path class="mh" d="M40 40V12"/><circle cx="40" cy="40" r="2.4" class="dotfill"/></svg>
+          <div><p class="clock-city">Bengaluru</p><p class="clock-time"><b data-clock="Asia/Kolkata">15:40</b> IST</p><p class="clock-addr">2nd floor, 41 Fourth Cross, Indiranagar</p></div>
+        </div>
+        <div class="clock">
+          <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36"/><g class="ticks"></g><path class="hh" d="M40 40V22"/><path class="mh" d="M40 40V12"/><circle cx="40" cy="40" r="2.4" class="dotfill"/></svg>
+          <div><p class="clock-city">Lisbon</p><p class="clock-time"><b data-clock="Europe/Lisbon">10:10</b> local</p><p class="clock-addr">Rua da Palmeira 18, Príncipe Real</p></div>
+        </div>
+      </div>
+
+      <div class="partners">
+        <article class="partner" data-reveal>
+          <svg class="mono" viewBox="0 0 64 64" role="img" aria-label="Monogram MR"><rect x="1" y="1" width="62" height="62" class="frame"/><path d="M12 46V18L22 33L32 18V46"/><path d="M39 46V18H45A7.5 7.5 0 0 1 45 33H39M45 33L52 46"/><circle cx="52" cy="12" r="2.2" class="dotfill"/></svg>
+          <h3>Meera Raghavan</h3>
+          <p class="role">Founding partner · Bengaluru</p>
+          <p>Trained as a structural engineer before architecture, which is why our cantilevers are honest. Leads the houses and the Indian studio.</p>
+        </article>
+        <article class="partner" data-reveal>
+          <svg class="mono" viewBox="0 0 64 64" role="img" aria-label="Monogram TV"><rect x="1" y="1" width="62" height="62" class="frame"/><path d="M10 18H31M20.5 18V46"/><path d="M34 18L42 46L50 18"/><circle cx="52" cy="52" r="2.2" class="dotfill"/></svg>
+          <h3>Tomás Valente</h3>
+          <p class="role">Partner · Lisbon</p>
+          <p>Opened the Lisbon studio in 2016. Runs the pavilions and public work, and insists every model is built at 1:50 before it is built at 1:1.</p>
+        </article>
+        <article class="partner" data-reveal>
+          <svg class="mono" viewBox="0 0 64 64" role="img" aria-label="Monogram AN"><rect x="1" y="1" width="62" height="62" class="frame"/><path d="M10 46L20 18L30 46M14 36H26"/><path d="M37 46V18L51 46V18"/><circle cx="12" cy="12" r="2.2" class="dotfill"/></svg>
+          <h3>Anaya Nair</h3>
+          <p class="role">Partner · Design technology</p>
+          <p>Writes the tools behind the drawings: daylight models, parametric facades, and the line work you are looking at right now.</p>
+        </article>
+      </div>
+
+      <div class="figures">
+        <div data-reveal><p class="fig"><span data-count="28">28</span></p><p>people in two studios</p></div>
+        <div data-reveal><p class="fig"><span data-count="42">42</span></p><p>buildings completed since 2011</p></div>
+        <div data-reveal><p class="fig"><span data-count="380">380</span></p><p>drawings for an average house</p></div>
+        <div data-reveal><p class="fig"><span data-count="80">80</span><small>%</small></p><p>materials sourced within 200 km</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECOGNITION -->
+  <section class="recog" id="recognition" data-tour="1800">
+    <div class="wrap">
+      <p class="label"><span>05</span>Recognition</p>
+      <ul class="recog-list">
+        <li data-reveal><span class="r-year">2025</span><span class="r-what">Shortlisted, regional design biennale</span><span class="r-proj">Kiln Pavilion</span></li>
+        <li data-reveal><span class="r-year">2024</span><span class="r-what">Winner, national award for residential architecture</span><span class="r-proj">Casa Lumen</span></li>
+        <li data-reveal><span class="r-year">2024</span><span class="r-what">Commendation, international timber design prize</span><span class="r-proj">The Long House</span></li>
+        <li data-reveal><span class="r-year">2023</span><span class="r-what">Finalist, public library of the year</span><span class="r-proj">Arc Library</span></li>
+        <li data-reveal><span class="r-year">2022</span><span class="r-what">Exhibited, “Building for the monsoon”, travelling exhibition</span><span class="r-proj">Arc Library</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" data-tour="2600">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <p class="label label-inv"><span>06</span>Start a project</p>
+        <h2 class="h2" data-split>Let’s draw your building.</h2>
+        <p class="contact-p" data-reveal>Tell us about the site, the people who will use it and when you hope to move in. Meera or Tomás will reply within two working days, usually with a few questions about the land.</p>
+        <div class="contact-actions" data-reveal>
+          <a class="btn btn-paper" href="#contact-form"><span>WhatsApp the Bengaluru studio</span></a>
+          <a class="btn btn-line-inv" href="#contact-form"><span>Book a studio visit</span></a>
+        </div>
+        <dl class="contact-dl" data-reveal>
+          <div><dt>New projects</dt><dd><a href="mailto:hello@arcline.studio">hello@arcline.studio</a></dd></div>
+          <div><dt>Lisbon studio</dt><dd><a href="mailto:lisboa@arcline.studio">lisboa@arcline.studio</a></dd></div>
+          <div><dt>Careers</dt><dd><a href="mailto:careers@arcline.studio">careers@arcline.studio</a></dd></div>
+        </dl>
+      </div>
+
+      <form class="form" id="contact-form" novalidate>
+        <div class="form-inner">
+          <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Meera Iyer"></div>
+          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required placeholder="meera@example.com"></div>
+          <fieldset class="field chips">
+            <legend>What are we drawing?</legend>
+            <label><input type="radio" name="type" value="Home" checked><span>Home</span></label>
+            <label><input type="radio" name="type" value="Library or civic"><span>Library or civic</span></label>
+            <label><input type="radio" name="type" value="Pavilion"><span>Pavilion</span></label>
+            <label><input type="radio" name="type" value="Interior"><span>Interior</span></label>
+            <label><input type="radio" name="type" value="Masterplan"><span>Masterplan</span></label>
+          </fieldset>
+          <div class="field-row">
+            <div class="field"><label for="f-loc">Site location</label><input id="f-loc" name="location" type="text" placeholder="Alibag, Maharashtra"></div>
+            <div class="field"><label for="f-size">Site size</label>
+              <select id="f-size" name="size"><option>Under 500 m²</option><option selected>500 to 2,000 m²</option><option>2,000 to 10,000 m²</option><option>Over 1 hectare</option></select></div>
+          </div>
+          <fieldset class="field chips">
+            <legend>When would you like to start?</legend>
+            <label><input type="radio" name="when" value="This year" checked><span>This year</span></label>
+            <label><input type="radio" name="when" value="Next year"><span>Next year</span></label>
+            <label><input type="radio" name="when" value="Just exploring"><span>Just exploring</span></label>
+          </fieldset>
+          <div class="field"><label for="f-msg">About the site</label><textarea id="f-msg" name="message" rows="3" placeholder="A west-facing plot with old mango trees we want to keep."></textarea></div>
+          <button class="btn btn-orange btn-wide" type="submit"><span>Send inquiry</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+          <p class="form-note">We reply to every inquiry. Your details stay with the two of us.</p>
+        </div>
+        <div class="form-done" role="status" aria-live="polite" hidden>
+          <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28"/><path d="M20 33l8 8 16-18"/></svg>
+          <p class="fd-h">Inquiry received.</p>
+          <p class="fd-p">Thank you<span class="fd-name"></span>. Your note is with Meera and Tomás. Expect a reply within two working days, with a few questions about your site.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-tour="2200">
+  <div class="wrap">
+    <p class="foot-word" aria-hidden="true">Arcline</p>
+    <div class="foot-grid">
+      <div><p class="ft-h">Bengaluru</p><p>2nd floor, 41 Fourth Cross<br>Indiranagar, Bengaluru 560038</p></div>
+      <div><p class="ft-h">Lisbon</p><p>Rua da Palmeira 18<br>Príncipe Real, 1200-312 Lisbon</p></div>
+      <div><p class="ft-h">Contact</p><p><a href="mailto:hello@arcline.studio">hello@arcline.studio</a><br><a href="mailto:press@arcline.studio">press@arcline.studio</a></p></div>
+      <div><p class="ft-h">Elsewhere</p><p><a href="#top">Instagram</a><br><a href="#top">LinkedIn</a></p></div>
+    </div>
+    <div class="foot-bottom">
+      <p>© 2026 Arcline Studio LLP</p>
+      <p class="hanflux">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+      <a href="#top" class="totop">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
