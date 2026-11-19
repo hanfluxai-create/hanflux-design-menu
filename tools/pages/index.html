@@ -8,6 +8,7 @@
 <meta property="og:description" content="Pick the design. Watch it live. {{n_sites}} website designs, from clean business sites to immersive 3D. Launch prices up to {{off_max}} off.">
 <meta property="og:url" content="https://hanflux-design-menu.vercel.app/">
 <link rel="canonical" href="https://hanflux-design-menu.vercel.app/">
+<link rel="preload" href="/assets/hx/brand/lotus.webp" as="image" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="/assets/hx/frames.css?v={{v}}">
 <link rel="stylesheet" href="/assets/hx/home.css?v={{v}}">
 <script defer src="/data/config.js?v={{v}}"></script>
@@ -15,46 +16,47 @@
 <script defer src="/assets/hx/frames.js?v={{v}}"></script>
 <script defer src="/assets/hx/shell.js?v={{v}}"></script>
 <script defer src="/assets/hx/lead.js?v={{v}}"></script>
-<script defer src="/assets/hx/hero-gl.js?v={{v}}"></script>
+<script defer src="/assets/hx/bloom.js?v={{v}}"></script>
 <script defer src="/assets/hx/home.js?v={{v}}"></script>
 </head>
 <body class="home">
-<div class="dust" aria-hidden="true"></div>
 <a class="skip" href="#doors">Skip to the menus</a>
 {{nav}}
 
 <main>
   <section class="hero" aria-labelledby="hero-title">
-    <canvas class="hero-gl" data-hero-gl aria-hidden="true"></canvas>
-    <div class="hero-fade" aria-hidden="true"></div>
     <div class="hero-in wrap">
-      <p class="kicker rv">design menu · vol. 02</p>
-      <h1 class="display h-xl rv" id="hero-title">Pick the design.<br><span class="grad">Watch it live.</span></h1>
-      <p class="lede rv">Real websites, running live on desktop and phone. Pick one, mix a few, or ask for something fully custom, and get a fixed quote within 24 hours.</p>
-      <div class="cta rv">
-        <a class="btn btn-teal" href="/websites/">Browse {{n_sites}} websites<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <div class="hero-mark" aria-hidden="true">
+        <canvas class="bloom" data-bloom data-anchor=".lotus" data-scroll="1"></canvas>
+        <div class="lotus-wrap"><img class="lotus" src="/assets/hx/brand/lotus.webp" width="510" height="364" alt="" fetchpriority="high"></div>
+      </div>
+      <p class="kicker low hero-k">the design menu · vol. 02</p>
+      <h1 class="display h-xl" id="hero-title"><span class="ln"><span>Pick the design.</span></span> <span class="ln"><span>Watch it live.</span></span></h1>
+      <p class="lede hero-l">Real websites, running live on desktop and phone. Pick one, mix a few, or ask for something fully custom, and get a fixed quote within 24 hours.</p>
+      <div class="cta hero-c">
+        <a class="btn btn-teal" href="/websites/" data-bloom-wave>Browse {{n_sites}} websites<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn-ghost" href="#pricing">See launch pricing</a>
       </div>
-      <div class="hud rv" aria-label="What is inside">
-        <span class="chip"><i class="dot live"></i>{{n_sites}} live websites</span>
-        <span class="chip">fixed quote in 24 hours</span>
-        <span class="chip offer-only" style="border-color:rgba(255,61,127,.6);color:#ffb3cd">launch offer · up to {{off_max}} off</span>
-      </div>
     </div>
-    <div class="hero-foot wrap" aria-hidden="true"><span class="mono">scroll</span><i></i><span class="mono">real-time webgl</span></div>
+    <div class="hero-stats wrap" aria-label="What is inside">
+      <div class="stat tabrule"><b class="num" data-count="{{n_sites}}">{{n_sites}}</b><span>live website designs</span></div>
+      <div class="stat tabrule"><b class="num" data-count="2">2</b><span>screens: desktop and phone</span></div>
+      <div class="stat tabrule"><b class="num"><span data-count="24">24</span>h</b><span>to a fixed quote</span></div>
+      <div class="stat tabrule offer-only"><b class="num"><span data-count="{{off_num}}">{{off_num}}</span>%</b><span>off, launch offer</span></div>
+    </div>
   </section>
 
   <section class="doors section" id="doors" aria-label="The website menu">
     <div class="wrap">
-      <article class="door door-web rv">
+      <article class="door door-web">
         <div class="door-copy">
-          <p class="kicker">menu 01 · websites</p>
-          <h2 class="display h-lg">Websites</h2>
-          <p class="lede">{{n_sites}} live designs, from a quiet law-firm site to a 3D world you scroll through. Every one runs here for real, on a desktop and a phone, side by side.</p>
-          <div class="feat-pick" role="group" aria-label="Switch the live preview" id="feat-pick"></div>
-          <a class="btn btn-teal" href="/websites/">Open the website menu<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p class="kicker rv">menu 01 · websites</p>
+          <h2 class="display h-lg rv">One menu.<br>Every design, live.</h2>
+          <p class="lede rv">{{n_sites}} live designs, from a quiet law-firm site to a 3D world you scroll through. Every one runs here for real, on a desktop and a phone, side by side.</p>
+          <div class="feat-pick rv" role="group" aria-label="Switch the live preview" id="feat-pick"></div>
+          <a class="btn btn-teal rv" href="/websites/">Open the website menu<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-        <div class="door-stage"><div class="stage combo" id="feat-stage"></div></div>
+        <div class="door-stage rv"><div class="stage combo" id="feat-stage"></div></div>
       </article>
     </div>
   </section>
@@ -62,30 +64,14 @@
   <section class="custom section" id="custom" aria-labelledby="custom-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">not a template shop</p><h2 class="display h-lg rv" id="custom-title">These are examples.<br><span class="grad">Yours is made for you.</span></h2></div>
+        <div><p class="kicker rv">not a template shop</p><h2 class="display h-lg rv" id="custom-title">These are examples.<br>Yours is made for you.</h2></div>
         <p class="lede rv">Every design in the menu is a starting point. Take one as it is, mix two or three, match the brand or app you already have, or ask for something nobody has seen yet.</p>
       </div>
       <div class="kinds">
-        <article class="kcard rv"><span class="kn mono">01</span><h3>One design, your content</h3><p>Pick a style from the menu. We rebuild it around your brand, your words and your photos.</p><button class="btn btn-ghost btn-sm" type="button" data-open-request data-kind-pick="This design, my content">Start with one design</button></article>
-        <article class="kcard rv"><span class="kn mono">02</span><h3>Mix the designs</h3><p>The glow of one, the 3D of another, the layout of a third. We blend them into one site that feels like yours.</p><button class="btn btn-ghost btn-sm" type="button" data-open-request data-kind-pick="Mix two or more designs">Mix designs</button></article>
-        <article class="kcard rv"><span class="kn mono">03</span><h3>Match your brand or UI</h3><p>Send your logo, app or current site. We design a site that belongs with it, only sharper and faster.</p><button class="btn btn-ghost btn-sm" type="button" data-open-request data-kind-pick="Match my brand or current UI">Match my brand</button></article>
-        <article class="kcard kfeat rv"><span class="kn mono">04</span><h3>Fully custom</h3><p>A concept made only for you, from first sketch to launch, at any tier. Nobody else gets it.</p><button class="btn btn-teal btn-sm" type="button" data-open-request data-kind-pick="Something fully custom">Ask for a custom design</button></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="offer section offer-only" aria-labelledby="offer-title">
-    <div class="wrap">
-      <div class="poster rv">
-        <span class="tape t1" aria-hidden="true"></span><span class="tape t2" aria-hidden="true"></span>
-        <span class="off-sticker big">{{offer_label}}</span>
-        <h2 class="display" id="offer-title">Up to <em>{{off_max}}</em> off<br>every website.</h2>
-        <p class="poster-p">Book before {{offer_ends_label}} and lock in launch prices. Flagship 3D sites from <s class="was">{{flag_was}}</s> <b class="now">{{flag_now}}</b>. Business sites from <s class="was">{{ess_was}}</s> <b class="now">{{ess_now}}</b>.</p>
-        <div class="cd-big" role="timer" aria-label="Time left on the launch offer">
-          <div><b data-cd="d">00</b><small>days</small></div><i>:</i><div><b data-cd="h">00</b><small>hours</small></div><i>:</i><div><b data-cd="m">00</b><small>minutes</small></div><i>:</i><div><b data-cd="s">00</b><small>seconds</small></div>
-        </div>
-        <div class="cta"><a class="btn btn-teal" href="#request" data-open-request>Claim launch pricing</a><a class="btn btn-ghost" href="/websites/">See the designs</a></div>
-        <p class="poster-fine">{{offer_note}}</p>
+        <article class="kcard tabrule rv"><p class="kn mono"><b>01</b> as it is</p><h3>One design, your content</h3><p>Pick a style from the menu. We rebuild it around your brand, your words and your photos.</p><button class="lnk" type="button" data-open-request data-kind-pick="This design, my content">Start with one design<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
+        <article class="kcard tabrule rv"><p class="kn mono"><b>02</b> blend</p><h3>Mix the designs</h3><p>The glow of one, the 3D of another, the layout of a third. We blend them into one site that feels like yours.</p><button class="lnk" type="button" data-open-request data-kind-pick="Mix two or more designs">Mix designs<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
+        <article class="kcard tabrule rv"><p class="kn mono"><b>03</b> match</p><h3>Match your brand or UI</h3><p>Send your logo, app or current site. We design a site that belongs with it, only sharper and faster.</p><button class="lnk" type="button" data-open-request data-kind-pick="Match my brand or current UI">Match my brand<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
+        <article class="kcard kfeat tabrule rv"><p class="kn mono"><b>04</b> bespoke</p><h3>Fully custom</h3><p>A concept made only for you, from first sketch to launch, at any tier. Nobody else gets it.</p><button class="lnk" type="button" data-open-request data-kind-pick="Something fully custom">Ask for a custom design<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
       </div>
     </div>
   </section>
@@ -94,6 +80,7 @@
     <div class="wrap">
       <p class="kicker rv">how it works</p>
       <h2 class="display h-lg rv" id="how-title">From “I like that one”<br>to live in weeks.</h2>
+      <div class="how-line rv" aria-hidden="true"><i></i></div>
       <ol class="steps">
         <li class="rv"><span class="sn mono">01</span><h3>Pick a design</h3><p>Watch every design run live on desktop and phone. Shortlist the ones that feel like you.</p></li>
         <li class="rv"><span class="sn mono">02</span><h3>Add what you need</h3><p>Booking, WhatsApp, payments, a shop, an AI chat assistant or a voice receptionist. The estimate updates as you go.</p></li>
@@ -111,8 +98,28 @@
       </div>
       <div class="tiers" id="tiers">{{tiers}}</div>
       <div class="addons-strip rv">
-        <p class="kicker plain">add-ons for any tier</p>
+        <p class="kicker">add-ons for any tier</p>
         <div class="addon-row">{{addons}}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="offer section offer-only" aria-labelledby="offer-title">
+    <div class="wrap">
+      <div class="offer-card rv">
+        <div class="oc-copy">
+          <span class="off-sticker big">{{offer_label}}</span>
+          <h2 class="display h-lg" id="offer-title">Up to <em>{{off_max}}</em> off every website.</h2>
+          <p class="oc-p">Book before {{offer_ends_label}} and lock in launch prices. Flagship 3D sites from <s class="was">{{flag_was}}</s> <b class="now">{{flag_now}}</b>. Business sites from <s class="was">{{ess_was}}</s> <b class="now">{{ess_now}}</b>.</p>
+          <div class="cta"><a class="btn btn-teal" href="#request" data-open-request>Claim launch pricing</a><a class="btn btn-ghost" href="/websites/">See the designs</a></div>
+        </div>
+        <div class="oc-time">
+          <p class="kicker">launch prices end in</p>
+          <div class="cd-big" role="timer" aria-label="Time left on the launch offer">
+            <div class="tabrule"><b class="num" data-cd="d">00</b><small>days</small></div><div class="tabrule"><b class="num" data-cd="h">00</b><small>hours</small></div><div class="tabrule"><b class="num" data-cd="m">00</b><small>minutes</small></div><div class="tabrule"><b class="num" data-cd="s">00</b><small>seconds</small></div>
+          </div>
+          <p class="oc-fine">{{offer_note}}</p>
+        </div>
       </div>
     </div>
   </section>
@@ -128,13 +135,19 @@
   </section>
 
   <section class="final section" aria-labelledby="final-title">
-    <div class="wrap final-in rv">
-      <p class="kicker">ready when you are</p>
-      <h2 class="display h-xl" id="final-title">Tell us what<br><span class="grad">you are building.</span></h2>
-      <div class="cta">
-        <a class="btn btn-teal" href="#request" data-open-request>Get a fixed quote</a>
-        <a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener">WhatsApp us</a>
-        <a class="btn btn-ghost" href="https://cal.com/chitraksh-mayank-lhab1f/15min" target="_blank" rel="noopener">Book a 15-minute call</a>
+    <div class="wrap">
+      <div class="final-panel rv">
+        <canvas class="bloom" data-bloom data-tone="dark" data-cx=".5" data-cy="1.14" data-rx=".5" data-ry="1" data-ri="78" data-a0="186" data-a1="354" data-n="58" data-seed="5" aria-hidden="true"></canvas>
+        <div class="final-in">
+          <p class="kicker dotk">ready when you are</p>
+          <h2 class="display h-xl" id="final-title">Tell us what<br>you are building.</h2>
+          <div class="cta">
+            <a class="btn btn-light" href="#request" data-open-request data-bloom-wave>Get a fixed quote<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener">WhatsApp us</a>
+            <a class="btn btn-line" href="https://cal.com/chitraksh-mayank-lhab1f/15min" target="_blank" rel="noopener">Book a 15-minute call</a>
+          </div>
+        </div>
+        <div class="final-meta mono"><a href="https://wa.me/{{wa}}" target="_blank" rel="noopener">{{wa_label}}</a><a href="https://hanflux.ai" target="_blank" rel="noopener">hanflux.ai</a></div>
       </div>
     </div>
   </section>

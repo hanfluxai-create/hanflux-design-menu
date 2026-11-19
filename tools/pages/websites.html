@@ -15,19 +15,22 @@
 <script defer src="/assets/hx/frames.js?v={{v}}"></script>
 <script defer src="/assets/hx/shell.js?v={{v}}"></script>
 <script defer src="/assets/hx/lead.js?v={{v}}"></script>
+<script defer src="/assets/hx/bloom.js?v={{v}}"></script>
 <script defer src="/assets/hx/websites.js?v={{v}}"></script>
 </head>
 <body class="websites">
-<div class="dust" aria-hidden="true"></div>
 <a class="skip" href="#grid">Skip to the designs</a>
 {{nav}}
 
 <main>
   <section class="w-hero">
-    <div class="w-glow" aria-hidden="true"></div>
+    <div class="w-mark" aria-hidden="true">
+      <canvas class="bloom" data-bloom data-anchor=".lotus" data-seed="29" data-n="76"></canvas>
+      <div class="lotus-wrap"><img class="lotus" src="/assets/hx/brand/lotus.webp" width="510" height="364" alt="" fetchpriority="high"></div>
+    </div>
     <div class="wrap">
-      <p class="kicker rv">menu 01 · websites</p>
-      <h1 class="display h-xl rv">Websites,<br><span class="grad">running live.</span></h1>
+      <p class="kicker dotk rv">menu 01 · websites</p>
+      <h1 class="display h-xl rv">Websites, running live.</h1>
       <p class="lede rv">Every card below is a real website playing on a desktop and a phone at the same time. Tap one to look closer, add the features you need and get a fixed quote. They are examples: we can mix them, match your brand, or design something fully custom.</p>
       <div class="w-offer offer-only rv"><span class="off-sticker">Launch offer · up to {{off_max}} off</span><span class="offer-note">launch prices end in <b data-countdown>{{offer_ends}}</b></span></div>
       <div class="legend rv" aria-label="Tiers">{{legend}}</div>
@@ -70,7 +73,7 @@
   <section class="w-help section">
     <div class="wrap w-help-in rv">
       <div>
-        <p class="kicker">not sure yet?</p>
+        <p class="kicker dotk">not sure yet?</p>
         <h2 class="display h-md">Tell us about your business.<br>We will suggest three designs.</h2>
       </div>
       <div class="cta">

@@ -36,8 +36,8 @@ const partial = (name, cur) => {
   h = h.replace(/\{\{cur:(\w+)\}\}/g, (_, k) => (k === cur ? ' aria-current="page"' : ''));
   return h;
 };
-function render(tpl, vars, cur) {
-  let h = tpl.replace('{{head}}', partial('head')).replace('{{nav}}', partial('nav', cur)).replace('{{foot}}', partial('foot'));
+function render(tpl, vars, cur, suffix = '') {
+  let h = tpl.replace('{{head}}', partial('head' + suffix)).replace('{{nav}}', partial('nav' + suffix, cur)).replace('{{foot}}', partial('foot' + suffix));
   const all = { ...offerVars, n_ex: exs.length, wa: C.whatsapp, wa_label: esc(C.whatsappLabel), v: V, n_sites: nSites, n_agents: LOOKS.length, agent_fonts: esc(AGENT_FONTS), from_min: money(Math.min(...Object.values(C.tiers).map((t) => t.from))), ...vars };
   h = h.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in all ? String(all[k]) : m));
   const left = h.match(/\{\{[^}]+\}\}/g);
@@ -49,34 +49,36 @@ const tierBadge = (t) => `<span class="tier tier-${t}">${esc(C.tiers[t].name)}</
 const OFFER = C.offer && C.offer.on ? C.offer : null;
 const offPct = (t) => C.tiers[t].was ? Math.round((1 - C.tiers[t].from / C.tiers[t].was) * 100) : 0;
 const maxPct = Math.max(...Object.keys(C.tiers).map(offPct));
-const priceHtml = (t, cls = '') => C.tiers[t].was ? `<s class="was${cls}">${money(C.tiers[t].was)}</s> <span class="now">${money(C.tiers[t].from)}</span>` : money(C.tiers[t].from);
+const priceHtml = (t, cls = '') => C.tiers[t].was ? `<s class="was${cls}">${money(C.tiers[t].was)}</s> <span class="now">${money(C.tiers[t].from)}</span>` : `<span class="amt">${money(C.tiers[t].from)}</span>`;
 const daysLeft = OFFER ? Math.max(0, Math.ceil((new Date(OFFER.ends) - Date.now()) / 864e5)) : 0;
 const offerItems = OFFER ? [OFFER.label, `Up to ${maxPct}% off every website`, `Ends ${OFFER.endsLabel}`, 'Fixed quote in 24 hours', 'Custom designs welcome', 'Mix any styles you like'] : [];
 const offerVars = {
   offer_script: OFFER ? `<script>(function(){try{document.documentElement.classList.add(Date.now()<${new Date(OFFER.ends).getTime()}?'has-offer':'offer-over')}catch(e){}})()</script>` : '',
   offer_bar: OFFER ? `<div class="offer-bar" role="region" aria-label="${esc(OFFER.label)}"><div class="track" aria-hidden="true">${offerItems.map((x) => `<span>${esc(x)}</span>`).join('').repeat(4)}</div><span class="sr">${esc(OFFER.label)}: up to ${maxPct}% off every website until ${esc(OFFER.endsLabel)}.</span><a class="ob-cta" href="#request" data-open-request>ends in <b data-countdown>${daysLeft} days</b></a></div>` : '',
-  offer_note: OFFER ? esc(OFFER.note) : '', offer_ends: `${daysLeft} days`, off_max: maxPct + '%'
+  offer_note: OFFER ? esc(OFFER.note) : '', offer_ends: `${daysLeft} days`, off_max: maxPct + '%', off_num: maxPct
 };
 
 // ---------- home ----------
 const order = ['essential', 'growth', 'signature', 'flagship'];
 const tiersHtml = order.map((t, i) => {
   const ex = sale.filter((s) => s.tier === t).slice(0, 4);
-  return `<article class="tcard rv${t === 'flagship' ? ' top' : ''}">${tierBadge(t)}
-    ${C.tiers[t].was ? `<span class="off-sticker t-stk offer-only">${offPct(t)}% off</span>` : ''}
-    <div class="tp" data-price-block><small>from</small>${priceHtml(t, ' tp-was')}</div><div class="tw">${esc(C.tiers[t].weeks)}</div>
+  return `<article class="tcard t-${t} rv${t === 'flagship' ? ' top' : ''}">
+    <p class="tw">${esc(C.tiers[t].weeks)}</p>
+    <h3 class="tn">${esc(C.tiers[t].name)}</h3>
+    <div class="tp" data-price-block><small>from</small>${priceHtml(t, ' tp-was')}</div>
+    ${C.tiers[t].was ? `<span class="off-sticker t-stk offer-only">${offPct(t)}% off · launch</span>` : ''}
     <p>${esc(C.tiers[t].blurb)}</p>
     <div class="ex">${ex.map((s) => `<a href="/websites/${s.slug}/">${esc(s.name)}</a>`).join('')}</div>
-    <a class="btn btn-ghost btn-sm go" href="/websites/?tier=${t}">See ${esc(C.tiers[t].name)} designs${ARROW}</a></article>`;
+    <a class="lnk go" href="/websites/?tier=${t}">See ${esc(C.tiers[t].name)} designs${ARROW.replace('class="ic" ', '')}</a></article>`;
 }).join('\n');
-const addonsHtml = C.addons.slice(0, 8).map((a) => `<span class="chip">${esc(a.name)}${C.showPrices ? ' · ' + money(a.from) + (a.monthly ? '/mo' : '') : ''}</span>`).join('') + (C.addons.length > 8 ? `<a class="chip" href="/websites/" style="color:var(--teal);border-color:var(--hair-teal)">+${C.addons.length - 8} more on every design</a>` : '');
+const addonsHtml = C.addons.slice(0, 8).map((a) => `<span class="chip">${esc(a.name)}${C.showPrices ? ' · ' + money(a.from) + (a.monthly ? '/mo' : '') : ''}</span>`).join('') + (C.addons.length > 8 ? `<a class="chip" href="/websites/">+${C.addons.length - 8} more on every design</a>` : '');
 const work = [...exs, ...sale.filter((s) => s.live)];
 const workHtml = work.map((s, i) => `<li class="rv"><a class="row" href="/websites/${s.slug}/"><span class="wn">${pad(i + 1)}</span><span class="wt">${esc(s.brand)} <small>${esc(s.industry)} · ${isEx(s) ? `“${esc(s.name)}” · example, not for sale` : `client site · in the menu as “${esc(s.name)}”`}</small></span><span class="wu">${esc(hostOf(s))}</span><span class="wa">${ARROW.replace('class="ic" ', '')}</span></a></li>`).join('\n');
 const waHello = encodeURIComponent('Hi Hanflux, I saw your design menu and I would like to talk about a website.');
 write('index.html', render(T('pages/index.html'), { tiers: tiersHtml, addons: addonsHtml, work: workHtml, wa_hello: waHello, offer_label: OFFER ? esc(OFFER.label) : '', offer_ends_label: OFFER ? esc(OFFER.endsLabel) : '', flag_was: money(C.tiers.flagship.was || C.tiers.flagship.from), flag_now: money(C.tiers.flagship.from), ess_was: money(C.tiers.essential.was || C.tiers.essential.from), ess_now: money(C.tiers.essential.from) }, 'home'));
 
 // ---------- websites ----------
-const legend = order.map((t) => `<span class="tier tier-${t}">${esc(C.tiers[t].name)} <b data-price-block>from ${priceHtml(t)}</b></span>`).join('');
+const legend = order.map((t) => `<div class="lg t-${t} tabrule"><span class="lg-n">${esc(C.tiers[t].name)}</span><span class="lg-p" data-price-block><small>from</small>${priceHtml(t)}</span></div>`).join('');
 const saleCard = (s, i) => `    <article class="wcard rv" id="s-${s.slug}" data-slug="${s.slug}" style="--accent:${s.accent}">
       <a class="wc-hit" href="/websites/${s.slug}/" aria-label="${esc(s.name)}: open the live preview and pricing"></a>
       <div class="wc-top"><span class="wc-n mono">${pad(i + 1)}</span>${tierBadge(s.tier)}${s.live || s.origin ? '<span class="tier built">Built by Hanflux</span>' : ''}<span class="wc-from mono" data-price-block>from ${priceHtml(s.tier)}</span><span class="wc-live mono"><i class="dot"></i>live</span></div>
@@ -110,7 +112,7 @@ const exCards = exs.map(exCard).join('\n');
 const customCard = (n) => `    <article class="wcard ccard rv" data-custom="${n}">
       <div class="cc-in">
         <p class="kicker">${n === 1 ? 'not seeing your style?' : 'still deciding?'}</p>
-        <h2 class="display cc-t">${n === 1 ? 'These are examples.<br><span class="grad">Yours is made for you.</span>' : 'Mix them. Match your brand.<br><span class="grad">Or go fully custom.</span>'}</h2>
+        <h2 class="display cc-t">${n === 1 ? 'These are examples.<br>Yours is made for you.' : 'Mix them. Match your brand.<br>Or go fully custom.'}</h2>
         <p class="cc-p">${n === 1 ? 'Take any design as it is, blend two or three together, match the brand or app you already have, or ask for something nobody has seen yet.' : 'Tell us what you like from any of these designs and what your business needs. We will come back with a tailored concept and a fixed quote within 24 hours.'}</p>
         <div class="cc-kinds"><span class="chip">This design, my content</span><span class="chip">Mix designs</span><span class="chip">Match my brand or UI</span><span class="chip">Fully custom</span></div>
         <div class="wc-actions"><button class="btn btn-teal btn-sm" type="button" data-open-request data-kind-pick="${n === 1 ? 'Something fully custom' : 'Mix two or more designs'}">${n === 1 ? 'Ask for a custom design' : 'Describe your mix'}</button><a class="btn btn-ghost btn-sm" href="https://wa.me/${C.whatsapp}?text=${encodeURIComponent('Hi Hanflux, I would like a custom website design.')}" target="_blank" rel="noopener">WhatsApp us</a></div>
@@ -122,7 +124,7 @@ const withCustom = parts.slice(0, 6).join('\n    <article class="wcard rv"') + '
 const exSection = exs.length ? `<section class="w-ex section" id="our-work" aria-labelledby="ex-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">our own work</p><h2 class="display h-lg rv" id="ex-title">Built for our own brands.<br><span class="grad">Shown, never sold.</span></h2></div>
+        <div><p class="kicker rv">our own work</p><h2 class="display h-lg rv" id="ex-title">Built for our own brands.<br>Shown, never sold.</h2></div>
         <p class="lede rv">Hanflux and Oraya are our own companies. Their sites are here so you can see our craft running live. They are examples, not designs for sale. Like what you see? We design something original for you at the same level.</p>
       </div>
       <div class="w-grid ex-grid">
@@ -175,7 +177,8 @@ order2.forEach((s, i) => {
 });
 
 // ---------- agents ----------
-write('agents/index.html', render(T('pages/agents.html'), {}, 'agents'));
+// private page behind the PIN gate: it keeps the earlier dark shell (base-dark.css and the -dark partials)
+write('agents/index.html', render(T('pages/agents.html'), {}, 'agents', '-dark'));
 
 // ---------- sitemap, robots ----------
 const urls = ['/', '/websites/', ...order2.map((s) => `/websites/${s.slug}/`)];

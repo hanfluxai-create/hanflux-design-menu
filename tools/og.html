@@ -1,45 +1,45 @@
 <!doctype html>
 <html><head><meta charset="utf-8">
 <link rel="stylesheet" href="/assets/hx/base.css">
+<link rel="stylesheet" href="/assets/hx/frames.css">
 <style>
-  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #05060a; }
-  .og { position: relative; width: 1200px; height: 630px; overflow: hidden;
-    background: radial-gradient(700px 500px at 88% 10%, rgba(124,92,255,.28), transparent 60%), radial-gradient(600px 420px at 10% 100%, rgba(39,242,192,.18), transparent 60%), #05060a; }
-  .grid { position: absolute; left: -10%; right: -10%; bottom: -40px; height: 300px; transform: perspective(500px) rotateX(62deg); transform-origin: bottom;
-    background-image: linear-gradient(rgba(39,242,192,.35) 1px, transparent 1px), linear-gradient(90deg, rgba(39,242,192,.35) 1px, transparent 1px); background-size: 60px 60px;
-    -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 90%); mask-image: linear-gradient(to top, #000 10%, transparent 90%); }
-  .copy { position: absolute; left: 64px; top: 70px; width: 560px; }
-  .copy h1 { font: 600 82px/.92 var(--font-display); letter-spacing: -.025em; margin: 22px 0 22px; color: #eef0f6; }
-  .copy p { font: 400 22px/1.4 var(--font-body); color: #9aa0b4; margin: 0; }
-  .wm { position: absolute; left: 64px; bottom: 54px; display: flex; align-items: center; gap: 14px; }
-  .wm b { font: 700 26px/1 var(--font-display); letter-spacing: .06em; color: #eef0f6; }
-  .wm b sup { color: #27f2c0; font-size: 12px; }
-  .wm span { font: 500 15px/1 var(--font-mono); color: #7a8195; }
-  .devs { position: absolute; right: -40px; top: 92px; width: 560px; }
-  .lap { border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,.16); box-shadow: 0 40px 90px rgba(0,0,0,.7); background: #0b0d13; }
-  .lap .bar { height: 24px; background: #12151e; display: flex; align-items: center; gap: 6px; padding: 0 10px; }
-  .lap .bar i { width: 8px; height: 8px; border-radius: 50%; background: #3a3f4d; } .lap .bar i:nth-child(1){background:#ff5f57} .lap .bar i:nth-child(2){background:#febc2e} .lap .bar i:nth-child(3){background:#28c840}
-  .lap img { display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; }
-  .ph { position: absolute; width: 150px; border-radius: 24px; padding: 5px; background: linear-gradient(145deg, #2a2f3c, #0c0e14 40%, #1b1f2a); box-shadow: 0 0 0 1px rgba(255,255,255,.16), 0 30px 70px rgba(0,0,0,.8); }
-  .ph img { display: block; width: 100%; aspect-ratio: 390/844; object-fit: cover; object-position: top; border-radius: 19px; }
-  .ph.a { left: -70px; top: 170px; } .ph.b { right: 70px; top: 250px; }
-  .live { position: absolute; left: 0; top: -40px; display: inline-flex; align-items: center; gap: 8px; font: 500 14px/1 var(--font-mono); color: #27f2c0; }
-  .live i { width: 9px; height: 9px; border-radius: 50%; background: #27f2c0; box-shadow: 0 0 12px #27f2c0; }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #fff; }
+  .og { position: relative; width: 1200px; height: 630px; overflow: hidden; background: #fff; }
+  .og::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 8px; background: var(--spectrum); z-index: 5; }
+  .top { position: absolute; left: 64px; right: 64px; top: 52px; display: flex; align-items: center; justify-content: space-between; }
+  .top .wm { display: flex; align-items: center; gap: 14px; }
+  .top .wm img.l { width: 46px; height: 46px; } .top .wm img.t { height: 21px; width: auto; }
+  .top .kicker { font-size: 13px; }
+  .copy { position: absolute; left: 64px; top: 168px; width: 560px; }
+  .copy h1 { font: 600 80px/1 var(--font-display); letter-spacing: -.042em; margin: 22px 0 24px; color: var(--ink); }
+  .copy p.l { font: 400 22px/1.45 var(--font-body); color: var(--ink-dim); margin: 0; max-width: 21em; }
+  .foot { position: absolute; left: 64px; bottom: 50px; font: 400 14px/1 var(--font-mono); color: var(--ink-faint); letter-spacing: .04em; display: flex; align-items: center; gap: 14px; }
+  .foot::before { content: ""; width: 26px; height: 3px; border-radius: 3px; background: var(--spectrum); }
+  .mark { position: absolute; right: -120px; top: -40px; width: 760px; height: 560px; display: grid; place-items: center; opacity: .9; }
+  .mark .lotus { width: 150px; opacity: 0; }
+  .devs { position: absolute; right: 56px; top: 176px; width: 500px; }
+  .devs .dev-d .vp img, .devs .dev-m .vp img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .devs .dev-m { width: 150px; right: -18px; bottom: -80px; border-radius: 26px; padding: 5px; }
+  .devs .dev-m .vp { border-radius: 21px; }
+  .devs .d-bar { height: 28px; } .devs .d-dots i { width: 9px; height: 9px; }
+  .live { position: absolute; left: 400px; bottom: 50px; display: inline-flex; align-items: center; gap: 10px; font: 500 13px/1 var(--font-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--ink); height: 14px; }
+  .live i { width: 9px; height: 9px; border-radius: 50%; background: var(--s-orange); }
 </style></head>
 <body>
 <div class="og">
-  <div class="grid"></div>
+  <div class="mark"><canvas class="bloom on" data-bloom data-anchor=".lotus" data-still="1" data-seed="29"></canvas><div class="lotus-wrap" style="position:static"><img class="lotus" src="/assets/hx/brand/lotus.webp" width="510" height="364" alt=""></div></div>
+  <div class="top"><span class="wm"><img class="l" src="/assets/hx/brand/lotus.webp" alt=""><img class="t" src="/assets/hx/brand/wordmark.svg" alt=""></span><p class="kicker dotk">design menu</p></div>
   <div class="copy">
-    <p class="kicker" style="font-size:15px">design menu · vol. 02</p>
-    <h1>Pick the design.<br><span class="grad">Watch it live.</span></h1>
-    <p>Live website designs from Hanflux AI. Shortlist one, mix a few or go custom, and get a fixed quote in 24 hours.</p>
+    <p class="kicker low" style="font-size:14px">the design menu · vol. 02</p>
+    <h1>Pick the design.<br>Watch it live.</h1>
+    <p class="l">Live website designs from Hanflux AI. Shortlist one, mix a few or go custom, and get a fixed quote in 24 hours.</p>
   </div>
   <div class="devs">
-    <span class="live"><i></i>LIVE_COUNT live designs</span>
-    <div class="lap"><div class="bar"><i></i><i></i><i></i></div><img src="/posters/LAP-d.webp"></div>
-    <div class="ph a"><img src="/posters/PHA-m.webp"></div>
-    <div class="ph b"><img src="/posters/PHB-m.webp"></div>
+    <div class="dev-d"><div class="d-bar"><span class="d-dots"><i></i><i></i><i></i></span><span class="d-url">hanflux-design-menu.vercel.app</span></div><div class="vp"><img src="/posters/LAP-d.webp" alt=""></div></div>
+    <div class="dev-m"><div class="vp"><img src="/posters/PHA-m.webp" alt=""></div><span class="isl"></span></div>
   </div>
-  <div class="wm"><b>HANFLUX<sup>●</sup></b><span>hanflux-design-menu.vercel.app</span></div>
+  <div class="foot">hanflux-design-menu.vercel.app</div>
+  <span class="live"><i></i>LIVE_COUNT live designs</span>
 </div>
+<script src="/assets/hx/bloom.js"></script>
 </body></html>

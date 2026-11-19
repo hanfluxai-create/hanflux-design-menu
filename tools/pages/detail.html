@@ -18,7 +18,6 @@
 <script defer src="/assets/hx/detail.js?v={{v}}"></script>
 </head>
 <body class="detail" data-slug="{{slug}}" style="--accent: {{accent}}">
-<div class="dust" aria-hidden="true"></div>
 <a class="skip" href="#buy">Skip to pricing</a>
 {{nav}}
 
@@ -28,7 +27,7 @@
       <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/websites/">websites</a><span aria-hidden="true">/</span><span>{{slug}}</span></nav>
       <div class="d-title">
         <div>
-          <p class="kicker">{{n}} · {{family_lc}} · {{sample_line}}</p>
+          <p class="kicker dotk">{{n}} · {{family_lc}} · {{sample_line}}</p>
           <h1 class="display h-lg">{{name}}</h1>
           <p class="lede">{{pitch}}</p>
         </div>
@@ -36,17 +35,19 @@
       </div>
     </div>
     <div class="wrap d-stage-wrap">
-      <div class="d-controls">
-        <div class="seg" role="group" aria-label="Preview">
-          <button type="button" data-view="both" aria-pressed="true">Both</button>
-          <button type="button" data-view="d" aria-pressed="false">Desktop</button>
-          <button type="button" data-view="m" aria-pressed="false">Phone</button>
+      <div class="d-studio">
+        <div class="d-controls">
+          <div class="seg" role="group" aria-label="Preview">
+            <button type="button" data-view="both" aria-pressed="true">Both</button>
+            <button type="button" data-view="d" aria-pressed="false">Desktop</button>
+            <button type="button" data-view="m" aria-pressed="false">Phone</button>
+          </div>
+          <button type="button" class="chip tour-t" data-tour-toggle aria-pressed="true"><i class="dot live"></i><span>Auto tour</span></button>
+          <a class="chip" href="/w/{{slug}}/?from=menu{{ex_q}}" target="_blank" rel="noopener">Full screen<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" style="stroke:currentColor;fill:none;stroke-width:2"><path d="M14 5h5v5M19 5l-8 8M10 5H5v14h14v-5"/></svg></a>
+          <p class="d-hint mono" id="d-hint">auto tour is on · switch it off to scroll the site yourself</p>
         </div>
-        <button type="button" class="chip tour-t" data-tour-toggle aria-pressed="true"><i class="dot live"></i><span>Auto tour</span></button>
-        <a class="chip" href="/w/{{slug}}/?from=menu{{ex_q}}" target="_blank" rel="noopener">Full screen<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" style="stroke:currentColor;fill:none;stroke-width:2"><path d="M14 5h5v5M19 5l-8 8M10 5H5v14h14v-5"/></svg></a>
+        <div class="stage combo big" id="d-stage"></div>
       </div>
-      <div class="stage combo big" id="d-stage"></div>
-      <p class="d-hint mono" id="d-hint">auto tour is on · switch it off to scroll the site yourself</p>
     </div>
   </section>
 
@@ -63,6 +64,15 @@
       {{live_block}}
       <div class="block note">
         <p>{{note}}</p>
+      </div>
+      <div class="block d-steps">
+        <h3 class="mono-h">what happens next</h3>
+        <ol>
+          <li class="tabrule"><span>01</span><b>Pick a design</b><p>Shortlist this one, or a few that feel like you.</p></li>
+          <li class="tabrule"><span>02</span><b>Add what you need</b><p>Tick the add-ons. The estimate updates as you go.</p></li>
+          <li class="tabrule"><span>03</span><b>Get a fixed quote</b><p>A fixed price and timeline within 24 hours.</p></li>
+          <li class="tabrule"><span>04</span><b>We build it for you</b><p>Your brand, your words, your domain, tested on real phones.</p></li>
+        </ol>
       </div>
       {{custom_block}}
     </div>

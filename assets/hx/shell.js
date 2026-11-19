@@ -119,8 +119,16 @@
   function initNav() {
     var nav = $('.nav');
     if (nav) {
-      var onS = function () { nav.classList.toggle('solid', W.scrollY > 8); };
-      W.addEventListener('scroll', onS, { passive: true }); onS();
+      // solid bar after the first few pixels, and a spectrum line that tracks how far down the page you are
+      var prog = $('.nav-prog', nav), tick = 0, wasSolid = null;
+      var paint = function () {
+        tick = 0;
+        var y = W.scrollY, solid = y > 8;
+        if (solid !== wasSolid) { wasSolid = solid; nav.classList.toggle('solid', solid); }
+        if (prog) { var max = D.documentElement.scrollHeight - W.innerHeight; prog.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0).toFixed(4) + ')'; }
+      };
+      var onS = function () { if (!tick) tick = requestAnimationFrame(paint); };
+      W.addEventListener('scroll', onS, { passive: true }); W.addEventListener('resize', onS, { passive: true }); paint();
     }
     var om = $('.overlay-menu');
     $$('[data-menu-open]').forEach(function (b) { b.addEventListener('click', function () { om.classList.add('open'); D.body.style.overflow = 'hidden'; }); });
@@ -267,9 +275,46 @@
 
   /* ---------- reveals ---------- */
   function initReveals() {
-    var els = $$('.rv'); if (!els.length) return;
-    if (!('IntersectionObserver' in W)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
-    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    var els = $$('.rv');
+    if (els.length) {
+      if (!('IntersectionObserver' in W)) els.forEach(function (e) { e.classList.add('in'); });
+      else {
+        // things that arrive together come in one after another
+        var io = new IntersectionObserver(function (es) {
+          var k = 0;
+          es.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var t = e.target; t.style.transitionDelay = Math.min(k++, 6) * 70 + 'ms';
+            t.classList.add('in'); io.unobserve(t);
+            setTimeout(function () { t.style.transitionDelay = ''; }, 1400);
+          });
+        }, { rootMargin: '0px 0px -7% 0px', threshold: 0.06 });
+        els.forEach(function (e) { io.observe(e); });
+      }
+    }
+    initCounts();
+  }
+  // numbers marked data-count run up to their value once, when first seen
+  function initCounts() {
+    var els = $$('[data-count]'); if (!els.length) return;
+    var reduce = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in W)) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        var el = e.target, to = +el.getAttribute('data-count') || 0, t0 = 0, dur = 1300 + Math.min(600, to * 12);
+        if (to < 2) return;
+        el.textContent = '0';
+        var step = function (now) {
+          if (!t0) t0 = now;
+          var u = Math.min(1, (now - t0) / dur), v = 1 - Math.pow(1 - u, 4);
+          el.textContent = String(Math.round(to * v));
+          if (u < 1) requestAnimationFrame(step);
+        };
+        setTimeout(function () { requestAnimationFrame(step); }, 700);
+      });
+    }, { threshold: 0.4 });
     els.forEach(function (e) { io.observe(e); });
   }
 

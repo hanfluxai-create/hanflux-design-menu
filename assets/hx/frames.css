@@ -1,33 +1,39 @@
-/* Device frames: a desktop browser and a phone, both hosting a live, scaled iframe. */
-.stage { position: relative; --accent: var(--teal); }
-.dev-d { position: relative; border-radius: 14px; overflow: hidden; background: #0b0d13; border: 1px solid rgba(255,255,255,.12);
-  box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 30px 80px -30px rgba(0,0,0,.8), 0 0 0 1px rgba(0,0,0,.6); }
-.d-bar { height: 26px; display: flex; align-items: center; gap: 10px; padding: 0 10px; background: linear-gradient(#141722, #10131b); border-bottom: 1px solid rgba(255,255,255,.07); }
+/* Device frames: a desktop browser and a phone, both hosting a live, scaled iframe.
+   Light aluminium chrome and layered soft shadows, so the frames sit on the white page like product shots. */
+.stage { position: relative; --accent: var(--s-blue); }
+.dev-d { position: relative; border-radius: 12px; background: #fff; border: 1px solid rgba(26, 27, 69, .16);
+  box-shadow: 0 1px 1px rgba(26,27,69,.05), 0 10px 22px -10px rgba(26,27,69,.2), 0 34px 70px -34px rgba(26,27,69,.45); }
+.dev-d > * { position: relative; }
+.d-bar { height: 26px; display: flex; align-items: center; gap: 10px; padding: 0 10px; background: linear-gradient(#fafbfd, #eff1f6); border-bottom: 1px solid rgba(26, 27, 69, .1); border-radius: 11px 11px 0 0; }
 .d-dots { display: inline-flex; gap: 5px; flex: none; }
-.d-dots i { width: 7px; height: 7px; border-radius: 50%; background: #3a3f4d; }
+.d-dots i { width: 7px; height: 7px; border-radius: 50%; background: #d7dae4; box-shadow: inset 0 0 0 .5px rgba(0,0,0,.12); }
 .d-dots i:nth-child(1) { background: #ff5f57; } .d-dots i:nth-child(2) { background: #febc2e; } .d-dots i:nth-child(3) { background: #28c840; }
-.d-url { flex: 1; min-width: 0; height: 16px; border-radius: 6px; background: rgba(255,255,255,.06); display: flex; align-items: center; justify-content: center; gap: 5px;
-  font: 500 9.5px/1 var(--font-mono); color: #a3a9bb; letter-spacing: .02em; white-space: nowrap; overflow: hidden; }
+.d-url { flex: 1; min-width: 0; height: 16px; border-radius: 6px; background: #fff; box-shadow: inset 0 0 0 1px rgba(26,27,69,.09); display: flex; align-items: center; justify-content: center; gap: 5px;
+  font: 400 9.5px/1 var(--font-mono); color: #6a6e90; letter-spacing: .02em; white-space: nowrap; overflow: hidden; margin-right: 32px; }
 .d-url svg { width: 8px; height: 8px; stroke: currentColor; fill: none; stroke-width: 2; flex: none; }
 .vp { position: relative; overflow: hidden; background: var(--frame-bg, #0b0d13); }
-.dev-d .vp { aspect-ratio: 1280 / 800; }
-.dev-m { position: absolute; z-index: 2; border-radius: 22px; padding: 5px; background: linear-gradient(145deg, #2a2f3c, #0c0e14 40%, #1b1f2a);
-  box-shadow: 0 0 0 1px rgba(255,255,255,.14), 0 30px 70px -18px rgba(0,0,0,.9), 0 0 40px -10px color-mix(in srgb, var(--accent) 40%, transparent); }
-.dev-m .vp { aspect-ratio: 390 / 844; border-radius: 17px; }
-.dev-m .isl { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 28%; height: 9px; border-radius: 99px; background: #000; z-index: 3; }
+.dev-d .vp { aspect-ratio: 1280 / 800; border-radius: 0 0 11px 11px; }
+.dev-m { position: absolute; z-index: 2; border-radius: 22px; padding: 4.5px; background: #101124;
+  box-shadow: 0 0 0 1px #5d6079, 0 0 0 2.5px #d9dbe6, 0 0 0 3.5px #9c9fb5, 0 14px 26px -10px rgba(26,27,69,.35), 0 36px 60px -26px rgba(26,27,69,.55); }
+.dev-m::before, .dev-m::after { content: ""; position: absolute; width: 3px; border-radius: 2px; background: linear-gradient(90deg, #8f92a8, #d9dbe6); z-index: -1; }
+.dev-m::before { left: -5.5px; top: 22%; height: 9%; box-shadow: 0 calc(100% + 6px) 0 0 #b3b6c8; }
+.dev-m::after { right: -5.5px; top: 28%; height: 13%; background: linear-gradient(270deg, #8f92a8, #d9dbe6); }
+.dev-m .vp { aspect-ratio: 390 / 844; border-radius: 18px; }
+.dev-m .isl { position: absolute; top: 9.5px; left: 50%; transform: translateX(-50%); width: 27%; height: 8.5px; border-radius: 99px; background: #000; z-index: 3; }
 .vp iframe { position: absolute; top: 0; left: 0; border: 0; max-width: none; max-height: none; transform-origin: 0 0; background: transparent; pointer-events: none; opacity: 0; transition: opacity .7s ease; }
 .vp.live iframe { opacity: 1; }
 .vp.interactive iframe { pointer-events: auto; }
-.poster { position: absolute; inset: 0; background-size: cover; background-position: center top; transition: opacity .8s ease; }
+.vp .poster { position: absolute; inset: 0; background-size: cover; background-position: center top; transition: opacity .8s ease; }
 .vp.live .poster { opacity: 0; }
-.poster .pfall { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 8%;
+.vp .poster .pfall { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 8%;
   background: radial-gradient(120% 90% at 30% 20%, color-mix(in srgb, var(--accent) 38%, transparent), transparent 60%), var(--frame-bg, #0b0d13); }
-.poster .pfall b { font: 600 clamp(14px, 3.4vw, 40px)/1 var(--font-display); letter-spacing: -.01em; color: #fff; mix-blend-mode: difference; }
-.vp .prog { position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: var(--accent); z-index: 4; opacity: .9; transition: width .25s linear; box-shadow: 0 0 10px var(--accent); }
-.vp .loading { position: absolute; right: 8px; top: 8px; z-index: 4; display: none; align-items: center; gap: 6px; padding: 4px 7px; border-radius: 99px; background: rgba(0,0,0,.55); font: 500 9px/1 var(--font-mono); color: #fff; letter-spacing: .04em; }
+.vp .poster .pfall b { font: 600 clamp(14px, 3.4vw, 40px)/1 var(--font-display); letter-spacing: -.02em; color: #fff; mix-blend-mode: difference; }
+.vp .prog { position: absolute; left: 0; bottom: 0; height: 2px; width: 0; background: var(--spectrum); background-size: 100vw 100%; z-index: 4; transition: width .25s linear; }
+.vp .loading { position: absolute; right: 8px; top: 8px; z-index: 4; display: none; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 99px; background: rgba(26,27,69,.72); font: 500 9px/1 var(--font-mono); color: #fff; letter-spacing: .08em; text-transform: uppercase; }
 .vp.mounting .loading { display: inline-flex; }
 .vp.mounting .loading i { width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid #fff; border-right-color: transparent; animation: spin .7s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
+.dev-m .vp .loading { font-size: 0; letter-spacing: 0; gap: 0; padding: 5px; top: auto; bottom: 8px; right: 8px; }
 
 /* composition used by cards: desktop full width, phone overlapping bottom right */
 .stage.combo { padding-bottom: 22%; }
