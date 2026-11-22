@@ -189,8 +189,8 @@ const withCustom = parts.slice(0, 6).join('\n    <article class="wcard rv"') + '
 const exSection = exs.length ? `<section class="w-ex section" id="our-work" aria-labelledby="ex-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">our own work</p><h2 class="display h-lg rv" id="ex-title">Sites we built for<br>our own companies.</h2></div>
-        <p class="lede rv">Hanflux and Oraya are our own companies, so these designs stay theirs. Like the level? We make an original one for you, with the same craft and the same checks.</p>
+        <div><p class="kicker rv">our own work</p><h2 class="display h-lg rv" id="ex-title">Our own site,<br>made in the same factory.</h2></div>
+        <p class="lede rv">hanflux.ai is our own site, so its design stays ours. Like the level? We make an original one for you, with the same craft and the same checks.</p>
       </div>
       <div class="w-grid ex-grid">
 ${exCards}
@@ -247,6 +247,14 @@ order2.forEach((s, i) => {
 // ---------- order ----------
 const designOptions = sale.map((s) => `<button class="o-opt" type="button" data-design="${s.slug}"><img src="/posters/${s.slug}-m.webp" alt="" width="300" height="649" loading="lazy" decoding="async"><span class="oo-n">${esc(s.name)}</span><span class="oo-m">${esc(s.industry)}</span><span class="oo-p">${priceNow(s.tier)} <small>· ${esc(kindOf(s.tier))}</small></span></button>`).join('');
 write('order/index.html', render(T('pages/order.html'), { design_options: designOptions, addon_rows: addonRows }, 'order'));
+
+// ---------- price book for the payment endpoint (api/pay.js): the server never trusts a price from the browser ----------
+fs.writeFileSync(path.join(ROOT, 'api/_prices.json'), JSON.stringify({
+  site: C.site, offerEnds: OFFER ? new Date(OFFER.ends).getTime() : 0, upfrontPct: Math.max(1, Math.min(100, +(C.payment || {}).upfrontPct || 100)),
+  tiers: Object.fromEntries(order.map((t) => [t, { name: C.tiers[t].name, inr: C.tiers[t].inr, usd: C.tiers[t].usd }])),
+  sites: Object.fromEntries(sale.map((s) => [s.slug, { name: s.name, tier: s.tier }])),
+  addons: Object.fromEntries(C.addons.map((a) => [a.id, { inr: a.inr, usd: a.usd, monthly: !!a.monthly }]))
+}, null, 1) + '\n');
 
 // ---------- agents ----------
 // private page behind the PIN gate: it keeps the earlier dark shell (base-dark.css and the -dark partials)

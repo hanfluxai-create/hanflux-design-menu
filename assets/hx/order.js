@@ -29,6 +29,10 @@
     return { s: s, base: base, reg: reg, once: once, mo: mo, list: list, total: total, now: Math.round(total * pct / 100), pct: pct, fixed: !!s };
   }
   function payLink() { var l = (PAY.razorpay || {})[X.cur()]; return l && /^https:\/\//.test(l) ? l : ''; }
+  // online payment: /api/pay/ makes a Razorpay link for the exact amount (only once the keys are set in Vercel)
+  var online = false;
+  if (PAY.online && W.fetch) fetch('/api/pay/', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : {}; }).then(function (j) { online = !!(j && j.ready); if (S.step === 4) go(4); }).catch(function () {});
+  function canPay(t) { return t.fixed && (online || !!payLink()); }
 
   /* ---------- step 1: the design ---------- */
   function renderPick() {
@@ -112,7 +116,7 @@
     $('#o-review').innerHTML = '<div class="o-rev-sum">' + summaryHtml(t) + '<button class="lnk" type="button" data-go="1">Change design or features</button></div>' +
       '<dl class="o-rev">' + rows.map(function (r, i) { return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl>' +
       '<div class="o-rev-edit"><button class="lnk" type="button" data-go="2">Edit business</button><button class="lnk" type="button" data-go="3">Edit contact</button></div>';
-    $('#o-pay').innerHTML = t.fixed && link
+    $('#o-pay').innerHTML = canPay(t)
       ? '<p class="op-h">Pay <b>' + money(t.now) + '</b> to start' + (t.pct < 100 ? ' (' + t.pct + '% of ' + money(t.total) + ')' : '') + '</p><p class="op-s">Secure payment by Razorpay: UPI, cards or net banking. The payment page opens in a new tab.</p>'
       : '<p class="op-h">' + (t.fixed ? 'Place your order now, pay after our call' : 'Place your order, we confirm the price on the call') + '</p><p class="op-s">We call you within ' + (C.callWithinHours || 24) + ' hours to confirm everything and send your secure Razorpay payment link. Building starts once payment is in.</p>';
     if (S.custom && S.custom.length) $('#o-pay').innerHTML += '<p class="op-s op-c">Custom work (' + esc(S.custom.join(', ')) + ') is scoped on the call and priced separately, with its own timeline.</p>';
@@ -145,7 +149,7 @@
     $('#o-title').textContent = TITLES[n];
     $('[data-back]').hidden = n === 1;
     var nx = $('[data-next]'), t = totals();
-    if (n === 4) { renderReview(); nx.textContent = t.fixed && payLink() ? 'Pay ' + money(t.now) : 'Place my order'; }
+    if (n === 4) { renderReview(); nx.textContent = canPay(t) ? 'Pay ' + money(t.now) : 'Place my order'; }
     else nx.textContent = 'Continue';
     err.hidden = true;
     var top = $('.o-head').getBoundingClientRect().top + W.scrollY - 70;
@@ -166,37 +170,80 @@
   }
   function place() {
     for (var k = 1; k <= 3; k++) if (!valid(k)) { go(k); valid(k); return; }
-    var t = totals(), f = S.f, link = t.fixed ? payLink() : '', id = orderId();
-    var payWin = link ? W.open(link, '_blank', 'noopener') : null; // open at once, inside the tap, so it is not blocked
+    var t = totals(), f = S.f, id = orderId(), nx = $('[data-next]');
     var design = t.s ? t.s.name + ' (' + C.tiers[t.s.tier].name + ' plan)' : 'help me choose';
     var addons = t.list.map(function (x) { return x.a.name + ' ' + money(x.p) + (x.a.monthly ? '/mo' : ''); }).join(', ') || 'none';
-    W.HXLead && W.HXLead.post({
-      order_id: id, name: f.name, whatsapp: f.phone, email: f.email, best_time_to_call: S.call,
-      business: f.business, what_they_do: f.what, city: f.city, current_site: f.current_site || 'none', social: f.social || 'none',
-      logo: S.logo || 'not said', domain: S.domain === 'I have one' ? (f.domain_name || 'has one') : (S.domain || 'not said'), pages: S.pages.join(', '),
-      custom_order: (S.custom || []).join(', ') || 'none', design: design, addons: addons, total: t.fixed ? money(t.total) : 'to confirm on the call', pay_now: t.fixed ? money(t.now) : 'after the call', monthly: t.mo ? money(t.mo) + '/mo' : 'none',
-      payment: link ? 'Razorpay page opened' : 'send the Razorpay link after the call', notes: f.notes || '', source: 'order page', _honey: form.elements._honey.value
-    }, 'NEW ORDER ' + id + ': ' + (f.name || '') + ' · ' + design + ' · ' + (t.fixed ? money(t.total) : 'price on call'));
-    S.placed = { id: id, at: Date.now() }; save();
-    try { localStorage.removeItem(KEY); localStorage.setItem('hx-lead', JSON.stringify({ sent: Date.now(), via: 'order' })); } catch (e) {}
-
-    var wa = ['Hi Hanflux, I just placed order ' + id + '.', '', 'Design: ' + design, 'Add-ons: ' + addons, 'Total: ' + (t.fixed ? money(t.total) : 'to confirm'), '', 'Business: ' + f.business + ', ' + f.city, 'Name: ' + f.name, 'WhatsApp: ' + f.phone].join('\n');
+    var lead = function (payment, extra) {
+      return W.HXLead && W.HXLead.post(Object.assign({
+        order_id: id, name: f.name, whatsapp: f.phone, email: f.email, best_time_to_call: S.call,
+        business: f.business, what_they_do: f.what, city: f.city, current_site: f.current_site || 'none', social: f.social || 'none',
+        logo: S.logo || 'not said', domain: S.domain === 'I have one' ? (f.domain_name || 'has one') : (S.domain || 'not said'), pages: S.pages.join(', '),
+        custom_order: (S.custom || []).join(', ') || 'none', design: design, addons: addons,
+        total: t.fixed ? money(t.total) : 'to confirm on the call', pay_now: t.fixed ? money(t.now) : 'after the call', monthly: t.mo ? money(t.mo) + '/mo' : 'none',
+        payment: payment, notes: f.notes || '', source: 'order page', _honey: form.elements._honey.value
+      }, extra || {}), 'NEW ORDER ' + id + ': ' + (f.name || '') + ' · ' + design + ' · ' + (t.fixed ? money(t.total) : 'price on call'));
+    };
+    var waText = ['Hi Hanflux, I just placed order ' + id + '.', '', 'Design: ' + design, 'Add-ons: ' + addons, 'Total: ' + (t.fixed ? money(t.total) : 'to confirm'), '', 'Business: ' + f.business + ', ' + f.city, 'Name: ' + f.name, 'WhatsApp: ' + f.phone].join('\n');
+    var remember = function () {
+      S.placed = { id: id, at: Date.now() };
+      try { localStorage.removeItem(KEY); localStorage.setItem('hx-lead', JSON.stringify({ sent: Date.now(), via: 'order' })); localStorage.setItem('hx-last-order', JSON.stringify({ id: id, name: f.name, phone: f.phone, design: design, total: t.fixed ? money(t.total) : '' })); } catch (e) {}
+    };
+    var finish = function (mode, link) { remember(); showDone(mode, { id: id, name: f.name, phone: f.phone, amount: t.fixed ? money(t.now) : '', link: link, wa: waText }); };
+    // 1. online: the server makes a Razorpay link for the exact amount, and the client goes straight to it
+    if (t.fixed && online) {
+      nx.disabled = true; nx.textContent = 'Opening secure payment…';
+      fetch('/api/pay/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ order: id, design: t.s.slug, addons: t.list.map(function (x) { return x.a.id; }), cur: X.cur(), name: f.name, phone: f.phone, email: f.email }) })
+        .then(function (r) { return r.json().then(function (j) { return r.ok && j.url ? j : Promise.reject(j); }); })
+        .then(function (j) {
+          remember();
+          var goPay = function () { location.href = j.url; };
+          Promise.resolve(lead('Razorpay link sent to the client', { razorpay_link: j.url })).then(goPay, goPay);
+          setTimeout(goPay, 2500);
+        })
+        .catch(function () { nx.disabled = false; lead('online link failed: send the Razorpay link after the call'); finish(payLink() ? 'link' : 'call', payLink()); });
+      return;
+    }
+    // 2. a fixed payment page, if one is set; 3. otherwise we call and send the link
+    var link = t.fixed ? payLink() : '';
+    if (link) W.open(link, '_blank', 'noopener');
+    lead(link ? 'Razorpay page opened' : 'send the Razorpay link after the call');
+    finish(link ? 'link' : 'call', link);
+  }
+  function showDone(mode, o) {
     $$('.ostep').forEach(function (s) { s.hidden = true; });
     $('.o-head').hidden = true; $('#o-bar').hidden = true; err.hidden = true;
     var done = $('#o-done'); done.hidden = false;
-    $('#o-id').textContent = 'order ' + id;
-    var first = (f.name || '').split(' ')[0];
-    $('#o-done-t').textContent = link ? 'Thank you, ' + first + '. Now finish paying.' : 'Order placed. Thank you, ' + first + '.';
-    $('#o-done-p').textContent = link
-      ? 'The Razorpay payment page opened in a new tab for ' + money(t.now) + '. Once you pay, you get a receipt by email, and we call you on ' + f.phone + ' within ' + (C.callWithinHours || 24) + ' hours to start.'
-      : 'We call you on ' + f.phone + ' within ' + (C.callWithinHours || 24) + ' hours to confirm everything and send your secure payment link. Building starts once payment is in, and your site is live within ' + (C.liveHours || 48) + ' hours of payment.';
-    var again = $('#o-pay-again'); if (link) { again.href = link; again.hidden = false; again.textContent = payWin ? 'Open the payment page again' : 'Open the payment page'; }
-    $('#o-wa').href = 'https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent(wa);
+    $('#o-id').textContent = 'order ' + o.id;
+    var first = (o.name || '').split(' ')[0];
+    var hrs = C.callWithinHours || 24, live = C.liveHours || 48;
+    var T = {
+      paid: ['Payment received. Thank you' + (first ? ', ' + first : '') + '.', 'We call you on ' + o.phone + ' within ' + hrs + ' hours to collect your domain, logo, photos and text. Your site is live within ' + live + ' hours of your payment. Your receipt is on its way by email.'],
+      check: ['Thank you' + (first ? ', ' + first : '') + '.', 'We are confirming your payment with Razorpay and will call you on ' + o.phone + ' within ' + hrs + ' hours. If you paid, you also get a receipt by email.'],
+      link: ['Thank you, ' + first + '. Now finish paying.', 'The Razorpay payment page opened in a new tab. Enter ' + o.amount + ' and your order number ' + o.id + '. Once you pay, we call you on ' + o.phone + ' within ' + hrs + ' hours.'],
+      call: ['Order placed. Thank you, ' + first + '.', 'We call you on ' + o.phone + ' within ' + hrs + ' hours to confirm everything and send your secure payment link. Building starts once payment is in, and your site is live within ' + live + ' hours of payment.']
+    }[mode];
+    $('#o-done-t').textContent = T[0];
+    $('#o-done-p').textContent = T[1];
+    var again = $('#o-pay-again'); again.hidden = !(mode === 'link' && o.link); if (o.link) again.href = o.link;
+    $('#o-wa').href = 'https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent(o.wa || ('Hi Hanflux, about my order ' + o.id + '.'));
     W.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // back from Razorpay: /order/?paid=1&razorpay_... (the server checks the signature)
+  if (q.get('paid') === '1') {
+    var last = {}; try { last = JSON.parse(localStorage.getItem('hx-last-order') || '{}') || {}; } catch (e) {}
+    var ref = q.get('razorpay_payment_link_reference_id') || last.id || '';
+    $$('.ostep').forEach(function (s) { s.hidden = true; }); $('#o-bar').hidden = true;
+    fetch('/api/verify/' + location.search, { cache: 'no-store' }).then(function (r) { return r.json(); }).catch(function () { return { ok: false }; }).then(function (j) {
+      showDone(j.ok ? 'paid' : 'check', { id: ref, name: last.name || '', phone: last.phone || 'your number', wa: 'Hi Hanflux, I just paid for order ' + ref + '.' });
+      if (j.ok && W.HXLead) W.HXLead.post({ order_id: ref, name: last.name, whatsapp: last.phone, design: last.design, total: last.total, payment_id: q.get('razorpay_payment_id'), status: 'PAID (signature verified)', source: 'order page' }, 'PAID ' + ref + ': ' + (last.name || '') + ' · ' + (last.total || ''));
+      if (history.replaceState) history.replaceState(null, '', '/order/');
+    });
+    return;
+  }
+
   function renderAll() { renderPick(); renderSum(); syncChips(); if (S.step === 4) renderReview(); go(S.step); }
-  X.onChange(function () { renderPick(); renderSum(); if (S.step === 4) renderReview(); var nx = $('[data-next]'); if (S.step === 4) { var t = totals(); nx.textContent = t.fixed && payLink() ? 'Pay ' + money(t.now) : 'Place my order'; } });
+  X.onChange(function () { renderPick(); renderSum(); if (S.step === 4) renderReview(); var nx = $('[data-next]'); if (S.step === 4) { var t = totals(); nx.textContent = canPay(t) ? 'Pay ' + money(t.now) : 'Place my order'; } });
   if (S.logo === 'No, make one for me') $('#o-logo-hint').hidden = false;
   renderAll();
   W.scrollTo(0, 0);

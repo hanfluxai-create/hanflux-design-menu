@@ -46,10 +46,13 @@ window.HX_CONFIG = {
   liveHours: 48, callWithinHours: 24,
 
   // Ordering (/order/): the client picks a design and add-ons, answers a few questions about the business,
-  // then pays. Paste your Razorpay payment page links below (one for rupees, one for dollars). Until a
-  // link is set, the order is placed without paying online: we call within 24 hours and send the link.
-  // Building starts once payment is in. upfrontPct: share of the total paid to start (100 = full price).
+  // then pays. online: the order page asks /api/pay/ for a Razorpay payment link for the exact amount
+  // (switched on once RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET are set in the Vercel project). Optional
+  // fallback: a fixed Razorpay payment page per currency. With neither, the order is placed without paying
+  // online: we call within 24 hours and send the link. Building starts once payment is in.
+  // upfrontPct: share of the total paid to start (100 = full price).
   payment: {
+    online: true,
     razorpay: { inr: '', usd: '' },
     upfrontPct: 100
   },

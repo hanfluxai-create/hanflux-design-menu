@@ -1,0 +1,217 @@
+{
+ "site": "https://hanflux-design-menu.vercel.app",
+ "offerEnds": 1798741799000,
+ "upfrontPct": 100,
+ "tiers": {
+  "essential": {
+   "name": "Essential",
+   "inr": {
+    "from": 40000,
+    "was": 50000
+   },
+   "usd": {
+    "from": 600,
+    "was": 750
+   }
+  },
+  "growth": {
+   "name": "Growth",
+   "inr": {
+    "from": 55000,
+    "was": 70000
+   },
+   "usd": {
+    "from": 850,
+    "was": 1100
+   }
+  },
+  "signature": {
+   "name": "Signature",
+   "inr": {
+    "from": 75000,
+    "was": 95000
+   },
+   "usd": {
+    "from": 1200,
+    "was": 1500
+   }
+  },
+  "flagship": {
+   "name": "Flagship",
+   "inr": {
+    "from": 95000,
+    "was": 120000
+   },
+   "usd": {
+    "from": 1600,
+    "was": 2000
+   }
+  }
+ },
+ "sites": {
+  "particles": {
+   "name": "Particle Field",
+   "tier": "flagship"
+  },
+  "liquid": {
+   "name": "Liquid Chrome",
+   "tier": "flagship"
+  },
+  "holo": {
+   "name": "Holographic",
+   "tier": "flagship"
+  },
+  "neon": {
+   "name": "Neon Nights",
+   "tier": "signature"
+  },
+  "glass": {
+   "name": "Glass",
+   "tier": "growth"
+  },
+  "vhs": {
+   "name": "Retro VHS",
+   "tier": "signature"
+  },
+  "iso": {
+   "name": "Isometric",
+   "tier": "flagship"
+  },
+  "deco": {
+   "name": "Art Deco",
+   "tier": "signature"
+  },
+  "pixel": {
+   "name": "Pixel Quest",
+   "tier": "signature"
+  },
+  "comic": {
+   "name": "Comic Book",
+   "tier": "signature"
+  },
+  "kinetic": {
+   "name": "Kinetic Type",
+   "tier": "signature"
+  },
+  "clay": {
+   "name": "Clay 3D",
+   "tier": "signature"
+  },
+  "ascii": {
+   "name": "ASCII Terminal",
+   "tier": "signature"
+  },
+  "mesh": {
+   "name": "Gradient Mesh",
+   "tier": "growth"
+  },
+  "wireframe": {
+   "name": "Wireframe 3D",
+   "tier": "flagship"
+  },
+  "halftone": {
+   "name": "Halftone",
+   "tier": "growth"
+  },
+  "flap": {
+   "name": "Split-Flap",
+   "tier": "signature"
+  },
+  "bauhaus": {
+   "name": "Bauhaus",
+   "tier": "growth"
+  },
+  "bento": {
+   "name": "Bento",
+   "tier": "growth"
+  },
+  "blueprint": {
+   "name": "Blueprint",
+   "tier": "growth"
+  },
+  "editorial": {
+   "name": "Editorial",
+   "tier": "growth"
+  },
+  "brutal": {
+   "name": "Neo-Brutal",
+   "tier": "growth"
+  },
+  "swiss": {
+   "name": "Swiss Minimal",
+   "tier": "essential"
+  }
+ },
+ "addons": {
+  "whatsapp": {
+   "inr": 2000,
+   "usd": 50,
+   "monthly": false
+  },
+  "booking": {
+   "inr": 6000,
+   "usd": 150,
+   "monthly": false
+  },
+  "payments": {
+   "inr": 6000,
+   "usd": 150,
+   "monthly": false
+  },
+  "store": {
+   "inr": 15000,
+   "usd": 400,
+   "monthly": false
+  },
+  "aichat": {
+   "inr": 12000,
+   "usd": 300,
+   "monthly": false
+  },
+  "voice": {
+   "inr": 20000,
+   "usd": 500,
+   "monthly": false
+  },
+  "leads": {
+   "inr": 8000,
+   "usd": 200,
+   "monthly": false
+  },
+  "seo": {
+   "inr": 6000,
+   "usd": 150,
+   "monthly": false
+  },
+  "copy": {
+   "inr": 6000,
+   "usd": 150,
+   "monthly": false
+  },
+  "brand": {
+   "inr": 8000,
+   "usd": 200,
+   "monthly": false
+  },
+  "cms": {
+   "inr": 6000,
+   "usd": 150,
+   "monthly": false
+  },
+  "language": {
+   "inr": 6000,
+   "usd": 150,
+   "monthly": false
+  },
+  "newsletter": {
+   "inr": 5000,
+   "usd": 120,
+   "monthly": false
+  },
+  "care": {
+   "inr": 1500,
+   "usd": 40,
+   "monthly": true
+  }
+ }
+}
