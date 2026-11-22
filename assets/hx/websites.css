@@ -55,10 +55,6 @@
 .wcard.is-live .wc-hit::before { transform: scaleX(1); }
 @media (hover: hover) { .wcard:hover .wc-hit::before { transform: scaleX(1); } }
 .wc-top { position: relative; z-index: 2; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 14px; pointer-events: none; min-width: 0; }
-.wc-n { font-size: 11px; letter-spacing: .1em; color: var(--ink-faint); margin-right: 4px; }
-.wc-from { font: 400 12px/1 var(--font-mono); color: var(--ink-dim); letter-spacing: .01em; }
-.wc-from .was { margin-right: 4px; }
-.wc-from .now { font-weight: 500; }
 .wc-live { margin-left: auto; display: inline-flex; align-items: center; gap: 7px; font-size: 10px; color: var(--ink-faint); letter-spacing: .16em; text-transform: uppercase; transition: color .4s; }
 .wc-live .dot { background: var(--hair-2); width: 6px; height: 6px; transition: background-color .4s; }
 .wcard.is-live .wc-live { color: var(--ink); }
@@ -83,7 +79,6 @@
   .wcard .stage.combo .dev-m { width: 26%; right: 0; }
   .wc-meta { margin-top: calc(-20% + 16px); padding-right: 30%; }
 }
-@media (max-width: 520px) { .wc-from { display: none; } .wcard .tier { padding: 6px 9px 6px 8px; font-size: 9.5px; } }
 @media (max-width: 420px) {
   .wc-pitch { -webkit-line-clamp: 2; font-size: 14px; }
   .wc-name { font-size: 23px; }
@@ -95,20 +90,6 @@
 .w-help-in h2 { margin-top: 16px; }
 .w-help-in .cta { margin: 0; justify-content: flex-end; display: flex; flex-wrap: wrap; gap: 10px; }
 @media (max-width: 860px) { .w-help-in { grid-template-columns: 1fr; } .w-help-in .cta { justify-content: flex-start; } }
-
-/* quote bar */
-.qbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 35; padding: 0 12px calc(12px + var(--safe-b)); transform: translateY(130%); transition: transform .55s var(--ease-out); pointer-events: none; }
-.qbar.show { transform: none; }
-.qbar-in { pointer-events: auto; max-width: 680px; margin: 0 auto; display: flex; align-items: center; gap: 8px; padding: 8px 8px 8px 20px; border-radius: 999px;
-  background: var(--ink); color: #fff; box-shadow: 0 18px 44px -12px rgba(26,27,69,.6); }
-.qb-txt { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; font-size: 14px; line-height: 1.2; }
-.qb-txt b { font-weight: 600; color: #fff; }
-.qb-txt span { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #b9bbdb; }
-.qbar .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.3); box-shadow: none; }
-.qbar .btn-ghost:hover { border-color: #fff; }
-.qbar .btn-teal { background: #fff; color: var(--ink); box-shadow: none; }
-.qbar .btn-teal::before { display: none; }
-@media (max-width: 420px) { .qbar [data-copy-share] { display: none; } }
 
 /* custom-design cards in the grid */
 .ccard { justify-content: center; background: var(--paper-2); border-color: transparent; overflow: hidden; }
@@ -136,4 +117,24 @@
   .qbar-in { padding-left: 16px; }
   .qb-txt { font-size: 13px; }
   .cc-in { padding: 14px 8px; }
+}
+
+/* cards: what kind of business first, then the design, the price and one clear action */
+.wc-type { font: 500 10.5px/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); margin-right: auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wcard .tier { flex: none; }
+.wc-price { margin: 10px 0 0; font-size: 15px; color: var(--ink); }
+.wc-price .was { margin-right: 6px; font-size: .9em; }
+.wc-price .now { font-weight: 600; }
+.wcard .wc-actions .btn-pick { padding: 0 14px; }
+.f-sep { flex: none; width: 1px; height: 22px; background: var(--hair-2); align-self: center; margin: 0 4px; }
+.f-now { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 18px; font-size: 14.5px; color: var(--ink-2); }
+.f-now[hidden] { display: none; }
+.w-offer { gap: 12px 18px; }
+.lg .lg-n { white-space: nowrap; }
+@media (max-width: 560px) {
+  .wc-top { margin-bottom: 12px; gap: 6px; }
+  .wcard .tier { padding: 6px 9px 6px 8px; font-size: 9.5px; }
+  .wc-type { font-size: 10px; letter-spacing: .1em; }
+  .wc-pitch { -webkit-line-clamp: 2; font-size: 14px; }
+  .lg .lg-n { font-size: 9.5px; letter-spacing: .1em; white-space: normal; }
 }

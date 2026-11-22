@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 {{head}}
-<title>Websites · Hanflux Design Menu</title>
-<meta name="description" content="{{n_sites}} websites running live on desktop and phone: immersive 3D, motion design and clean business sites. Shortlist a design and get a fixed quote from Hanflux AI within 24 hours.">
-<meta property="og:title" content="Websites, running live · Hanflux Design Menu">
-<meta property="og:description" content="{{n_sites}} live website designs, from Essential business sites to Flagship WebGL. Pick one, add features, get a fixed quote.">
+<title>Website designs you can watch live · Hanflux AI</title>
+<meta name="description" content="{{n_sites}} real, working website designs for shops, cafés, clinics, hotels, startups and more. Watch each one live on a phone and a laptop, see the price and go live within 48 hours with Hanflux AI.">
+<meta property="og:title" content="Pick a design for your business · Hanflux AI">
+<meta property="og:description" content="{{n_sites}} real website designs you can watch working on your phone. Fixed price, live within 48 hours.">
 <meta property="og:url" content="https://hanflux-design-menu.vercel.app/websites/">
 <link rel="canonical" href="https://hanflux-design-menu.vercel.app/websites/">
 <link rel="stylesheet" href="/assets/hx/frames.css?v={{v}}">
@@ -26,14 +26,14 @@
   <section class="w-hero">
     <div class="w-mark" aria-hidden="true">
       <canvas class="bloom" data-bloom data-anchor=".lotus" data-seed="29" data-n="76"></canvas>
-      <div class="lotus-wrap"><img class="lotus" src="/assets/hx/brand/lotus.webp" width="510" height="364" alt="" fetchpriority="high"></div>
+      <div class="lotus-wrap"><img class="lotus" src="/assets/hx/brand/lotus.webp" srcset="/assets/hx/brand/lotus-300.webp 300w, /assets/hx/brand/lotus.webp 510w" sizes="(max-width: 860px) 100px, 150px" width="510" height="364" alt=""></div>
     </div>
     <div class="wrap">
-      <p class="kicker dotk rv">menu 01 · websites</p>
-      <h1 class="display h-xl rv">Websites, running live.</h1>
-      <p class="lede rv">Every card below is a real website playing on a desktop and a phone at the same time. Tap one to look closer, add the features you need and get a fixed quote. They are examples: we can mix them, match your brand, or design something fully custom.</p>
-      <div class="w-offer offer-only rv"><span class="off-sticker">Launch offer · up to {{off_max}} off</span><span class="offer-note">launch prices end in <b data-countdown>{{offer_ends}}</b></span></div>
-      <div class="legend rv" aria-label="Tiers">{{legend}}</div>
+      <p class="kicker dotk rv">{{n_sites}} designs · tap one to watch it live</p>
+      <h1 class="display h-xl rv">Pick a design for your business.</h1>
+      <p class="lede rv">Every card is a real, working website. Tap a design to watch it on a phone and a laptop, see the price and add what you need. We rebuild it with your name, photos and words, and it goes live within 48 hours of payment.</p>
+      <div class="w-offer rv">{{cur_switch}}<span class="offer-note offer-only">launch prices end in <b data-countdown>{{offer_ends}}</b></span></div>
+      <div class="legend rv" aria-label="Plans and prices">{{legend}}</div>
     </div>
   </section>
 
@@ -41,15 +41,10 @@
     <div class="wrap w-bar-in">
       <div class="filters" id="filters" role="toolbar" aria-label="Filter designs">
         <button type="button" class="chip" data-f="all" aria-pressed="true">All</button>
-        <button type="button" class="chip" data-f="t:flagship">Flagship 3D</button>
-        <button type="button" class="chip" data-f="t:signature">Signature motion</button>
-        <button type="button" class="chip" data-f="t:growth">Growth</button>
-        <button type="button" class="chip" data-f="t:essential">Essential</button>
-        <button type="button" class="chip" data-f="g:dark">Dark</button>
-        <button type="button" class="chip" data-f="g:light">Light</button>
-        <button type="button" class="chip" data-f="g:playful">Playful</button>
-        <button type="button" class="chip" data-f="g:luxury">Luxury</button>
-        <button type="button" class="chip" data-f="picks">Shortlisted <span data-pick-wcount>0</span></button>
+        {{biz_filters}}
+        <span class="f-sep" aria-hidden="true"></span>
+        {{tier_filters}}
+        <button type="button" class="chip" data-f="picks">Saved <span data-pick-wcount>0</span></button>
       </div>
       <span class="w-count mono" id="w-count" aria-live="polite">{{n_sites}} designs</span>
     </div>
@@ -61,11 +56,12 @@
       <span id="shared-list"></span>
       <button class="btn btn-ghost btn-xs" type="button" id="shared-show">Show only these</button>
     </div>
+    <div class="f-now" id="f-now" hidden><span id="f-now-t"></span><button class="btn btn-ghost btn-xs" type="button" data-f-reset>Show all designs</button></div>
   </div>
 
   <section class="w-grid wrap" id="grid" aria-label="Website designs">
 {{cards}}
-    <p class="w-empty" id="w-empty" hidden>Nothing here yet. Tap the heart on any design to shortlist it.</p>
+    <p class="w-empty" id="w-empty" hidden>Nothing here yet. Tap Save on any design to keep it here.</p>
   </section>
 
   {{examples}}
@@ -74,11 +70,11 @@
     <div class="wrap w-help-in rv">
       <div>
         <p class="kicker dotk">not sure yet?</p>
-        <h2 class="display h-md">Tell us about your business.<br>We will suggest three designs.</h2>
+        <h2 class="display h-md">Tell us about your business.<br>We will pick three designs for you.</h2>
       </div>
       <div class="cta">
-        <a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_help}}" target="_blank" rel="noopener">Ask on WhatsApp</a>
-        <a class="btn btn-ghost" href="https://cal.com/chitraksh-mayank-lhab1f/15min" target="_blank" rel="noopener">Book a 15-minute call</a>
+        <button class="btn btn-teal" type="button" data-open-plan>Get my free website plan</button>
+        <a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_help}}" target="_blank" rel="noopener">{{wa_ic}}Ask on WhatsApp</a>
       </div>
     </div>
   </section>
@@ -86,9 +82,9 @@
 
 <div class="qbar" id="qbar" aria-live="polite">
   <div class="qbar-in">
-    <div class="qb-txt"><b id="qb-n">0 designs</b><span id="qb-est" class="dim"></span></div>
-    <button class="btn btn-ghost btn-sm" type="button" data-copy-share>Share</button>
-    <button class="btn btn-teal btn-sm" type="button" data-open-request>Get a quote</button>
+    <div class="qb-txt"><b id="qb-n">From {{price_from}}</b><span id="qb-est">fixed price · live in 48 hours</span></div>
+    <a class="qb-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener" aria-label="WhatsApp us">{{wa_ic}}</a>
+    <button class="btn btn-teal btn-sm" type="button" id="qb-go">Free plan</button>
   </div>
 </div>
 

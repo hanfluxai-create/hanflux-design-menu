@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+{{head}}
+<title>Order your website · Hanflux AI</title>
+<meta name="description" content="Order your website from Hanflux AI: pick your design and features, tell us about your business, pay securely and get a call within 24 hours. Live within 48 hours of payment.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Order your website · Hanflux AI">
+<meta property="og:url" content="https://hanflux-design-menu.vercel.app/order/">
+<link rel="canonical" href="https://hanflux-design-menu.vercel.app/order/">
+<link rel="stylesheet" href="/assets/hx/order.css?v={{v}}">
+<script defer src="/data/config.js?v={{v}}"></script>
+<script defer src="/data/sites.js?v={{v}}"></script>
+<script defer src="/assets/hx/shell.js?v={{v}}"></script>
+<script defer src="/assets/hx/lead.js?v={{v}}"></script>
+<script defer src="/assets/hx/order.js?v={{v}}"></script>
+</head>
+<body class="order">
+<a class="skip" href="#order">Skip to the order form</a>
+{{nav}}
+
+<main class="o-main wrap" id="order">
+  <div class="o-head">
+    <p class="kicker dotk">order your website</p>
+    <h1 class="display h-lg" id="o-title">Four quick steps.</h1>
+    <ol class="o-prog" aria-label="Steps">
+      <li data-p="1" aria-current="step"><b>1</b><span>Design</span></li>
+      <li data-p="2"><b>2</b><span>Business</span></li>
+      <li data-p="3"><b>3</b><span>Contact</span></li>
+      <li data-p="4"><b>4</b><span>Pay</span></li>
+    </ol>
+  </div>
+
+  <form class="o-form" id="o-form" novalidate>
+    <!-- step 1: design and features -->
+    <section class="ostep" data-step="1" aria-labelledby="s1-t">
+      <h2 class="o-t sr" id="s1-t">Your design</h2>
+      <div class="o-pick" id="o-pick"></div>
+      <button class="lnk o-change" type="button" data-change>Change design{{arrow_l}}</button>
+      <div class="o-list" id="o-list" hidden>
+        <p class="o-sub">Tap a design to pick it. <a class="teal" href="/websites/" target="_blank" rel="noopener">Watch them live</a> in the menu.</p>
+        <div class="o-grid">{{design_options}}</div>
+        <button class="o-opt o-suggest" type="button" data-design="suggest"><span class="oo-n">Not sure yet</span><span class="oo-m">Help me choose on the call. We confirm the price before you pay.</span></button>
+      </div>
+      <h2 class="o-t o-t2">Add features <small>optional</small></h2>
+      <ul class="addons" id="d-addons">{{addon_rows}}</ul>
+      <div class="o-cur">{{cur_switch}}</div>
+    </section>
+
+    <!-- step 2: the business -->
+    <section class="ostep" data-step="2" aria-labelledby="s2-t" hidden>
+      <h2 class="o-t sr" id="s2-t">About your business</h2>
+      <p class="o-sub">So we can plan your site before we call.</p>
+      <div class="fgrid">
+        <div class="field full"><label for="o-biz">Business name</label><input id="o-biz" name="business" autocomplete="organization" maxlength="120" required></div>
+        <div class="field full"><label for="o-what">What does your business do?</label><textarea id="o-what" name="what" maxlength="600" required placeholder="For example: a dental clinic in Indiranagar, Bengaluru. We want more appointment bookings."></textarea></div>
+        <div class="field full"><label for="o-city">City and country</label><input id="o-city" name="city" autocomplete="address-level2" maxlength="80" required placeholder="Bengaluru, India"></div>
+        <div class="field full"><label for="o-site">Current website <span class="opt">if any</span></label><input id="o-site" name="current_site" type="url" inputmode="url" maxlength="200" placeholder="https://"></div>
+        <div class="field full"><label for="o-social">Instagram or Google Maps link <span class="opt">optional</span></label><input id="o-social" name="social" inputmode="url" maxlength="200"></div>
+        <div class="field full"><p class="flbl">Do you have a logo?</p><div class="o-chips" data-radio="logo"><button type="button" class="chip" data-v="Yes">Yes</button><button type="button" class="chip" data-v="No, make one for me">No, make one for me</button><button type="button" class="chip" data-v="Not sure">Not sure</button></div><p class="o-hint" id="o-logo-hint" hidden>We added the Logo and brand kit to your order. You can remove it in step 1.</p></div>
+        <div class="field full"><p class="flbl">Your web address (domain)</p><div class="o-chips" data-radio="domain"><button type="button" class="chip" data-v="I have one">I have one</button><button type="button" class="chip" data-v="I need one">I need one</button><button type="button" class="chip" data-v="Not sure">Not sure</button></div><input id="o-domain" name="domain_name" maxlength="120" placeholder="yourbusiness.com" hidden></div>
+        <div class="field full"><p class="flbl">Pages you need <span class="opt">tap all that apply</span></p><div class="o-chips" data-multi="pages"><button type="button" class="chip" data-v="Home" aria-pressed="true">Home</button><button type="button" class="chip" data-v="About">About</button><button type="button" class="chip" data-v="Services">Services</button><button type="button" class="chip" data-v="Prices">Prices</button><button type="button" class="chip" data-v="Gallery">Gallery</button><button type="button" class="chip" data-v="Reviews">Reviews</button><button type="button" class="chip" data-v="Booking">Booking</button><button type="button" class="chip" data-v="Blog">Blog</button><button type="button" class="chip" data-v="Shop">Shop</button><button type="button" class="chip" data-v="Contact" aria-pressed="true">Contact</button></div></div>
+        <div class="field full"><p class="flbl">Need anything custom? <span class="opt">optional</span></p><div class="o-chips" data-multi="custom"><button type="button" class="chip" data-v="Backend for orders or payments">Backend for orders or payments</button><button type="button" class="chip" data-v="Custom features or a portal">Custom features or a portal</button><button type="button" class="chip" data-v="AI features">AI features</button><button type="button" class="chip" data-v="Connect to my software">Connect to my software</button></div><p class="o-hint" id="o-custom-hint" hidden>Custom work is a separate custom order: we scope it on the call, price it separately and agree its timeline. The 48-hour promise covers your website.</p></div>
+        <div class="field full"><label for="o-notes">Anything else? <span class="opt">optional</span></label><textarea id="o-notes" name="notes" maxlength="1500" placeholder="Sites you like, colours, anything we should know"></textarea></div>
+      </div>
+    </section>
+
+    <!-- step 3: contact -->
+    <section class="ostep" data-step="3" aria-labelledby="s3-t" hidden>
+      <h2 class="o-t sr" id="s3-t">Your details</h2>
+      <p class="o-sub">We call you on this number within 24 hours.</p>
+      <div class="fgrid">
+        <div class="field full"><label for="o-name">Your name</label><input id="o-name" name="name" autocomplete="name" maxlength="80" required></div>
+        <div class="field full"><label for="o-phone">WhatsApp number</label><input id="o-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="24" required placeholder="+91 98xxx xxxxx"></div>
+        <div class="field full"><label for="o-email">Email <span class="opt">for your receipt</span></label><input id="o-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="120" required></div>
+        <div class="field full"><p class="flbl">Best time to call</p><div class="o-chips" data-radio="call"><button type="button" class="chip" data-v="Any time" aria-pressed="true">Any time</button><button type="button" class="chip" data-v="Morning">Morning</button><button type="button" class="chip" data-v="Afternoon">Afternoon</button><button type="button" class="chip" data-v="Evening">Evening</button></div></div>
+        <input class="ld-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      </div>
+    </section>
+
+    <!-- step 4: review and pay -->
+    <section class="ostep" data-step="4" aria-labelledby="s4-t" hidden>
+      <h2 class="o-t sr" id="s4-t">Review and pay</h2>
+      <div class="o-review" id="o-review"></div>
+      <div class="o-pay" id="o-pay"></div>
+      <ol class="o-next">
+        <li><b>Pay securely</b><span>UPI, cards or net banking through Razorpay. You get a receipt by email.</span></li>
+        <li><b>We call you within 24 hours</b><span>To collect your domain, logo, photos, text and any technical details.</span></li>
+        <li><b>Live within 48 hours of payment</b><span>Within 24 hours of the call, on your own domain. As many changes as you want before launch.</span></li>
+      </ol>
+      <p class="o-terms">Building starts once payment is in. After launch you get 30 days of small fixes, like a new button or a changed link. By ordering you agree to our <a class="teal" href="https://hanflux.ai/terms" target="_blank" rel="noopener">terms</a>.</p>
+    </section>
+
+    <p class="ld-err o-err" role="alert" hidden></p>
+
+    <!-- placed -->
+    <section class="o-done" id="o-done" hidden aria-live="polite">
+      <span class="ld-tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+      <p class="kicker" id="o-id"></p>
+      <h2 class="display h-md" id="o-done-t">Order placed.</h2>
+      <p class="o-done-p" id="o-done-p"></p>
+      <div class="o-done-cta">
+        <a class="btn btn-teal" id="o-pay-again" href="#" target="_blank" rel="noopener" hidden>Open the payment page</a>
+        <a class="btn btn-wa" id="o-wa" href="#" target="_blank" rel="noopener">{{wa_ic}}Send my order on WhatsApp</a>
+        <a class="btn btn-ghost" href="/websites/">Back to the designs</a>
+      </div>
+    </section>
+  </form>
+
+  <aside class="o-side" aria-label="Your order">
+    <div class="o-sum" id="o-sum"></div>
+    <p class="fine">Questions first? <a class="teal" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener">WhatsApp us</a> or <a class="teal" href="https://cal.com/chitraksh-mayank-lhab1f/15min" target="_blank" rel="noopener">book a 15-minute call</a>.</p>
+  </aside>
+</main>
+
+<div class="o-bar" id="o-bar">
+  <div class="o-bar-in">
+    <button class="btn btn-ghost btn-sm" type="button" data-back hidden>Back</button>
+    <div class="ob-tot"><span id="ob-l">total</span><b id="ob-amt"></b></div>
+    <button class="btn btn-teal" type="button" data-next>Continue</button>
+  </div>
+</div>
+
+{{foot}}
+</body>
+</html>

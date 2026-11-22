@@ -1,29 +1,32 @@
 {{offer_bar}}
 <header class="nav">
-  <a class="wordmark" href="/" aria-label="Hanflux AI design menu, home"><img class="wm-lotus" src="/assets/hx/brand/lotus-96.webp" width="30" height="30" alt=""><img class="wm-type" src="/assets/hx/brand/wordmark.svg" width="109" height="13" alt="Hanflux AI"><span>design menu</span></a>
+  <a class="wordmark" href="/" aria-label="Hanflux AI, home"><img class="wm-lotus" src="/assets/hx/brand/lotus-96.webp" width="30" height="30" alt=""><img class="wm-type" src="/assets/hx/brand/wordmark.svg" width="109" height="13" alt="Hanflux AI"><span>website factory</span></a>
   <nav class="nav-links" aria-label="Main">
-    <a class="nl" href="/websites/"{{cur:websites}}>Websites</a>
-    <a class="nl" href="/#pricing">Pricing</a>
+    <a class="nl" href="/websites/"{{cur:websites}}>Designs</a>
+    <a class="nl" href="/#pricing">Prices</a>
     <a class="nl" href="/#how">How it works</a>
+    <a class="nl" href="/#faq">Questions</a>
   </nav>
   <div class="nav-right">
-    <button class="pick-pill" type="button" data-open-request aria-label="Your shortlist and quote"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.4A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.5c0 5.8-7.5 10.4-7.5 10.4z"/></svg><span class="n" data-pick-count>0</span></button>
-    <a class="btn btn-teal btn-sm quote-btn" href="#request" data-open-request>Get a quote</a>
+    <a class="pick-pill" href="/websites/?f=picks" aria-label="Your saved designs"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.4A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.5c0 5.8-7.5 10.4-7.5 10.4z"/></svg><span class="n" data-pick-count>0</span></a>
+    <a class="btn btn-teal btn-sm quote-btn" href="/#plan" data-open-plan>Free plan</a>
     <button class="icon-btn menu-btn" type="button" data-menu-open aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
   </div>
   <i class="nav-prog" aria-hidden="true"></i>
 </header>
 <div class="overlay-menu" role="dialog" aria-label="Menu">
   <button class="icon-btn om-close" type="button" data-menu-close aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <p class="kicker dotk">hanflux design menu</p>
+  <p class="kicker dotk">hanflux ai · website factory</p>
   <nav aria-label="Mobile">
-    <a href="/websites/"><small>01</small>Websites</a>
-    <a href="/#pricing"><small>02</small>Pricing</a>
+    <a href="/websites/"><small>01</small>Designs</a>
+    <a href="/#pricing"><small>02</small>Prices</a>
     <a href="/#how"><small>03</small>How it works</a>
-    <a href="/websites/#our-work"><small>04</small>Our work</a>
+    <a href="/#custom"><small>04</small>Custom orders</a>
+    <a href="/#faq"><small>05</small>Questions</a>
   </nav>
+  <div class="om-cur"><p class="kicker plain">show prices for</p>{{cur_switch}}</div>
   <div class="om-foot">
-    <a class="btn btn-teal" href="#request" data-open-request>Get a quote</a>
-    <a class="btn btn-ghost" href="https://wa.me/{{wa}}" target="_blank" rel="noopener">WhatsApp us</a>
+    <a class="btn btn-teal" href="/#plan" data-open-plan>Get my free website plan</a>
+    <a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener">{{wa_ic}}WhatsApp us</a>
   </div>
 </div>

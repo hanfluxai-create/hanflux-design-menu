@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
 {{head}}
-<title>Hanflux Design Menu · Live website designs</title>
-<meta name="description" content="Watch {{n_sites}} website designs run live on desktop and phone. Shortlist the one you love, mix a few or ask for something custom, and get a fixed quote from Hanflux AI within 24 hours.">
-<meta property="og:title" content="The Hanflux Design Menu">
-<meta property="og:description" content="Pick the design. Watch it live. {{n_sites}} website designs, from clean business sites to immersive 3D. Launch prices up to {{off_max}} off.">
+<title>Hanflux AI · Your business website, live in 48 hours</title>
+<meta name="description" content="Pick from {{n_sites}} real, working website designs. Hanflux AI's website factory rebuilds yours with your name, photos and words, tests it on real phones and puts it live on your domain within 48 hours of payment. Fixed price before we start.">
+<meta property="og:title" content="Your business website, live in 48 hours · Hanflux AI">
+<meta property="og:description" content="{{n_sites}} real website designs you can watch working on your phone. Pick one, order in minutes, go live within 48 hours. Launch prices till 31 Dec.">
 <meta property="og:url" content="https://hanflux-design-menu.vercel.app/">
 <link rel="canonical" href="https://hanflux-design-menu.vercel.app/">
-<link rel="preload" href="/assets/hx/brand/lotus.webp" as="image" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="/assets/hx/frames.css?v={{v}}">
 <link rel="stylesheet" href="/assets/hx/home.css?v={{v}}">
 <script defer src="/data/config.js?v={{v}}"></script>
@@ -20,7 +19,7 @@
 <script defer src="/assets/hx/home.js?v={{v}}"></script>
 </head>
 <body class="home">
-<a class="skip" href="#doors">Skip to the menus</a>
+<a class="skip" href="#gallery">Skip to the designs</a>
 {{nav}}
 
 <main>
@@ -28,97 +27,138 @@
     <div class="hero-in wrap">
       <div class="hero-mark" aria-hidden="true">
         <canvas class="bloom" data-bloom data-anchor=".lotus" data-scroll="1"></canvas>
-        <div class="lotus-wrap"><img class="lotus" src="/assets/hx/brand/lotus.webp" width="510" height="364" alt="" fetchpriority="high"></div>
+        <div class="lotus-wrap"><img class="lotus" src="/assets/hx/brand/lotus.webp" srcset="/assets/hx/brand/lotus-300.webp 300w, /assets/hx/brand/lotus.webp 510w" sizes="(max-width: 640px) 100px, 170px" width="510" height="364" alt="" fetchpriority="high"></div>
       </div>
-      <p class="kicker low hero-k">the design menu · vol. 02</p>
-      <h1 class="display h-xl" id="hero-title"><span class="ln"><span>Pick the design.</span></span> <span class="ln"><span>Watch it live.</span></span></h1>
-      <p class="lede hero-l">Real websites, running live on desktop and phone. Pick one, mix a few, or ask for something fully custom, and get a fixed quote within 24 hours.</p>
+      <p class="kicker low hero-k">hanflux ai · the website factory</p>
+      <h1 class="display h-xl" id="hero-title"><span class="ln"><span>Your business website,</span></span> <span class="ln"><span>live in 48 hours.</span></span></h1>
+      <p class="lede hero-l">Pick a design you like from {{n_sites}} real, working websites. We rebuild it with your name, photos and words, test it on real phones and put it live.</p>
+      <div class="hero-price hero-l">
+        <p class="hp-main"><small>from</small> <b class="num">{{price_from}}</b></p>
+        <p class="hp-vs">Agencies usually quote {{agency}} for a custom site. <button class="cur-link" type="button" data-cur-toggle><span class="c-inr">Outside India? See $ prices</span><span class="c-usd">In India? See ₹ prices</span></button></p>
+      </div>
       <div class="cta hero-c">
-        <a class="btn btn-teal" href="/websites/" data-bloom-wave>Browse {{n_sites}} websites<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn-ghost" href="#pricing">See launch pricing</a>
+        <a class="btn btn-teal" href="#gallery" data-bloom-wave>See the designs{{arrow}}</a>
+        <button class="btn btn-ghost" type="button" data-open-plan>Get my free website plan</button>
       </div>
-    </div>
-    <div class="hero-stats wrap" aria-label="What is inside">
-      <div class="stat tabrule"><b class="num" data-count="{{n_sites}}">{{n_sites}}</b><span>live website designs</span></div>
-      <div class="stat tabrule"><b class="num" data-count="2">2</b><span>screens: desktop and phone</span></div>
-      <div class="stat tabrule"><b class="num"><span data-count="24">24</span>h</b><span>to a fixed quote</span></div>
-      <div class="stat tabrule offer-only"><b class="num"><span data-count="{{off_num}}">{{off_num}}</span>%</b><span>off, launch offer</span></div>
+      <ul class="ticks hero-t" aria-label="What you get">
+        <li>Fixed price before we start</li><li>Live within 48 hours</li><li>12 checks before launch</li>
+      </ul>
     </div>
   </section>
 
-  <section class="doors section" id="doors" aria-label="The website menu">
-    <div class="wrap">
-      <article class="door door-web">
-        <div class="door-copy">
-          <p class="kicker rv">menu 01 · websites</p>
-          <h2 class="display h-lg rv">One menu.<br>Every design, live.</h2>
-          <p class="lede rv">{{n_sites}} live designs, from a quiet law-firm site to a 3D world you scroll through. Every one runs here for real, on a desktop and a phone, side by side.</p>
-          <div class="feat-pick rv" role="group" aria-label="Switch the live preview" id="feat-pick"></div>
-          <a class="btn btn-teal rv" href="/websites/">Open the website menu<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-        <div class="door-stage rv"><div class="stage combo" id="feat-stage"></div></div>
-      </article>
-    </div>
-  </section>
-
-  <section class="custom section" id="custom" aria-labelledby="custom-title">
+  <section class="gallery section" id="gallery" aria-labelledby="gal-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">not a template shop</p><h2 class="display h-lg rv" id="custom-title">These are examples.<br>Yours is made for you.</h2></div>
-        <p class="lede rv">Every design in the menu is a starting point. Take one as it is, mix two or three, match the brand or app you already have, or ask for something nobody has seen yet.</p>
+        <div><p class="kicker rv">the design menu</p><h2 class="display h-lg rv" id="gal-title">Pick a design<br>for your business.</h2></div>
+        <p class="lede rv">Every design here is a real, working website, shown on a laptop and a phone. Tap one to watch it live and see its price.</p>
       </div>
-      <div class="kinds">
-        <article class="kcard tabrule rv"><p class="kn mono"><b>01</b> as it is</p><h3>One design, your content</h3><p>Pick a style from the menu. We rebuild it around your brand, your words and your photos.</p><button class="lnk" type="button" data-open-request data-kind-pick="This design, my content">Start with one design<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
-        <article class="kcard tabrule rv"><p class="kn mono"><b>02</b> blend</p><h3>Mix the designs</h3><p>The glow of one, the 3D of another, the layout of a third. We blend them into one site that feels like yours.</p><button class="lnk" type="button" data-open-request data-kind-pick="Mix two or more designs">Mix designs<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
-        <article class="kcard tabrule rv"><p class="kn mono"><b>03</b> match</p><h3>Match your brand or UI</h3><p>Send your logo, app or current site. We design a site that belongs with it, only sharper and faster.</p><button class="lnk" type="button" data-open-request data-kind-pick="Match my brand or current UI">Match my brand<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
-        <article class="kcard kfeat tabrule rv"><p class="kn mono"><b>04</b> bespoke</p><h3>Fully custom</h3><p>A concept made only for you, from first sketch to launch, at any tier. Nobody else gets it.</p><button class="lnk" type="button" data-open-request data-kind-pick="Something fully custom">Ask for a custom design<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></article>
-      </div>
+      <p class="kicker plain biz-k rv">find designs for</p>
+      <div class="biz rv" role="list" aria-label="Designs by type of business">{{biz_chips}}</div>
+    </div>
+    <div class="g-rail" id="g-rail" aria-label="Featured designs, swipe for more">
+      {{gallery}}
+      <a class="gcard g-all" href="/websites/"><span class="ga-n num">{{n_sites}}</span><b>See all {{n_sites}} designs</b><span class="gc-go">Open the menu{{arrow}}</span></a>
+    </div>
+    <div class="wrap g-foot rv">
+      <a class="btn btn-teal" href="/websites/">See all {{n_sites}} designs{{arrow}}</a>
+      <p class="g-note">Not seeing your style? We can mix two designs, match your brand, or make one fully custom. <button class="lnk" type="button" data-open-plan data-kind="Fully custom">Ask for custom{{arrow_l}}</button></p>
     </div>
   </section>
 
   <section class="how section" id="how" aria-labelledby="how-title">
     <div class="wrap">
       <p class="kicker rv">how it works</p>
-      <h2 class="display h-lg rv" id="how-title">From “I like that one”<br>to live in weeks.</h2>
+      <h2 class="display h-lg rv" id="how-title">Three steps.<br>No tech skills needed.</h2>
       <div class="how-line rv" aria-hidden="true"><i></i></div>
       <ol class="steps">
-        <li class="rv"><span class="sn mono">01</span><h3>Pick a design</h3><p>Watch every design run live on desktop and phone. Shortlist the ones that feel like you.</p></li>
-        <li class="rv"><span class="sn mono">02</span><h3>Add what you need</h3><p>Booking, WhatsApp, payments, a shop, an AI chat assistant or a voice receptionist. The estimate updates as you go.</p></li>
-        <li class="rv"><span class="sn mono">03</span><h3>Get a fixed quote</h3><p>Send your picks on WhatsApp in one tap. You get a fixed price and timeline within 24 hours.</p></li>
-        <li class="rv"><span class="sn mono">04</span><h3>We build it for you</h3><p>Your brand, your words, your domain. Live in 1 to 8 weeks, tested on real phones before launch.</p></li>
+        <li class="rv"><span class="sn mono">01</span><h3>Pick a design</h3><p>Tap any design to watch it working on a phone and a laptop. Choose the one that feels like your business.</p></li>
+        <li class="rv"><span class="sn mono">02</span><h3>Order and pay</h3><p>Add features, answer a few questions about your business and pay securely. We call you within 24 hours to collect your details.</p></li>
+        <li class="rv"><span class="sn mono">03</span><h3>Live in 48 hours</h3><p>Within 24 hours of that call your site is built, checked 12 ways and live on your own domain: 48 hours from payment.</p></li>
       </ol>
+      <div class="sec-cta rv"><button class="btn btn-teal" type="button" data-open-plan>Get my free website plan</button><a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener">{{wa_ic}}WhatsApp us</a></div>
+    </div>
+  </section>
+
+  <section class="factory section" id="factory" aria-labelledby="fac-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker rv">why it costs less</p><h2 class="display h-lg rv" id="fac-title">We built a<br>website factory.</h2></div>
+        <p class="lede rv">An agency builds every site by hand, and you pay for every hour. In our factory, AI agents do the repetitive work in hours: layouts, code, image prep, first drafts and testing. Our team does the parts that need taste and judgement. Same quality, a fraction of the hours, so you pay a fraction of the price.</p>
+      </div>
+      <ol class="fline rv" aria-label="How a site moves through the factory">
+        <li><b>Your brief</b><span>on WhatsApp</span></li>
+        <li><b>Design</b><span>from a live design</span></li>
+        <li><b>Build</b><span>AI agents and our team</span></li>
+        <li><b>12 checks</b><span>phone, speed, security</span></li>
+        <li><b>Live</b><span>on your own address</span></li>
+      </ol>
+      <div class="cmp-wrap rv">{{compare}}</div>
+      <div class="checks rv" id="checks">
+        <div class="ck-head"><p class="kicker">the 12-point launch check</p><h3 class="display h-sm">Every site passes all 12 before it goes live. You get the report.</h3></div>
+        <ol class="ck-list">{{checks}}</ol>
+        <button class="lnk ck-more" type="button" data-checks-all>See all 12 checks{{arrow_l}}</button>
+      </div>
     </div>
   </section>
 
   <section class="pricing section" id="pricing" aria-labelledby="pricing-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">pricing</p><h2 class="display h-lg rv" id="pricing-title">Four tiers.<br>One fixed quote.</h2></div>
-        <p class="lede rv">Every design in the menu carries a tier. Prices are starting points; your quote is fixed before any work begins.</p>
+        <div><p class="kicker rv">prices</p><h2 class="display h-lg rv" id="pricing-title">Simple prices.<br>Fixed before we start.</h2></div>
+        <div class="rv pr-side"><p class="lede">Every design in the menu belongs to one of four plans. All go live within 48 hours of payment. The price is fixed before any work begins.</p>{{cur_switch}}</div>
       </div>
+      <p class="offer-line offer-only rv"><span class="off-sticker">launch prices</span><span>Book by 31 Dec 2026. From 1 Jan 2027 the crossed-out price applies. <b data-countdown>{{offer_ends}}</b> left.</span></p>
       <div class="tiers" id="tiers">{{tiers}}</div>
+      <div class="incl-all rv"><p class="kicker">included in every plan</p><ul>{{included}}</ul></div>
       <div class="addons-strip rv">
-        <p class="kicker">add-ons for any tier</p>
+        <p class="kicker">add what you need</p>
         <div class="addon-row">{{addons}}</div>
       </div>
     </div>
   </section>
 
-  <section class="offer section offer-only" aria-labelledby="offer-title">
+  <section class="custom section" id="custom" aria-labelledby="custom-title">
     <div class="wrap">
-      <div class="offer-card rv">
-        <div class="oc-copy">
-          <span class="off-sticker big">{{offer_label}}</span>
-          <h2 class="display h-lg" id="offer-title">Up to <em>{{off_max}}</em> off every website.</h2>
-          <p class="oc-p">Book before {{offer_ends_label}} and lock in launch prices. Flagship 3D sites from <s class="was">{{flag_was}}</s> <b class="now">{{flag_now}}</b>. Business sites from <s class="was">{{ess_was}}</s> <b class="now">{{ess_now}}</b>.</p>
-          <div class="cta"><a class="btn btn-teal" href="#request" data-open-request>Claim launch pricing</a><a class="btn btn-ghost" href="/websites/">See the designs</a></div>
+      <div class="custom-card rv">
+        <div>
+          <p class="kicker">custom orders</p>
+          <h2 class="display h-lg" id="custom-title">Need more than<br>a website?</h2>
+          <p class="cu-p">Backends that take orders, custom features, AI agents, connections to the software you already use. We take these as custom orders: we scope them on a call, give you a fixed price and agree a timeline that fits the work. The 48-hour promise covers websites from the menu.</p>
+          <div class="cta"><button class="btn btn-teal" type="button" data-open-plan data-kind="Custom order">Request a custom order</button><a class="btn btn-ghost" href="https://wa.me/{{wa}}?text={{wa_custom}}" target="_blank" rel="noopener">{{wa_ic}}Talk it through on WhatsApp</a></div>
         </div>
-        <div class="oc-time">
-          <p class="kicker">launch prices end in</p>
-          <div class="cd-big" role="timer" aria-label="Time left on the launch offer">
+        <ul class="cu-list">{{custom_list}}</ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="plan section" id="plan" aria-labelledby="plan-title">
+    <div class="wrap">
+      <div class="plan-card rv">
+        <div class="pc-copy">
+          <span class="off-sticker big offer-only">launch prices end 31 dec</span>
+          <h2 class="display h-lg" id="plan-title">Get your free<br>website plan.</h2>
+          <p class="pc-p">Tell us about your business. Within 24 hours we WhatsApp you the design that fits you best, the pages you need and your fixed price. Free. No payment, no obligation.</p>
+          <div class="cd-big offer-only" role="timer" aria-label="Time left at launch prices">
             <div class="tabrule"><b class="num" data-cd="d">00</b><small>days</small></div><div class="tabrule"><b class="num" data-cd="h">00</b><small>hours</small></div><div class="tabrule"><b class="num" data-cd="m">00</b><small>minutes</small></div><div class="tabrule"><b class="num" data-cd="s">00</b><small>seconds</small></div>
           </div>
-          <p class="oc-fine">{{offer_note}}</p>
+          <p class="oc-fine offer-only">{{offer_note}}</p>
+        </div>
+        <div class="pc-side">
+          <form class="pc-form fgrid" data-lead-form="home" novalidate>
+            <div class="field full"><label for="pf-name">Your name</label><input id="pf-name" name="name" autocomplete="name" required maxlength="80"></div>
+            <div class="field full"><label for="pf-phone">WhatsApp number</label><input id="pf-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="24" placeholder="+91 98xxx xxxxx"></div>
+            <div class="field full"><label for="pf-type">Your business</label><select id="pf-type" name="type" required><option value="">Choose one</option>{{lead_types}}</select></div>
+            <input class="ld-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="ld-err full" role="alert" hidden></p>
+            <button class="btn btn-teal full" type="submit">Send me my free plan</button>
+            <p class="fine full">Takes 20 seconds. Your details go only to Hanflux AI.</p>
+          </form>
+          <div class="ld-done" hidden>
+            <span class="ld-tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+            <h3 class="ld-done-t display h-sm">Thank you.</h3>
+            <p class="ld-done-p"></p>
+            <a class="btn btn-wa ld-wa" href="https://wa.me/{{wa}}" target="_blank" rel="noopener">{{wa_ic}}Also send it on WhatsApp</a>
+          </div>
         </div>
       </div>
     </div>
@@ -127,10 +167,17 @@
   <section class="work section" aria-labelledby="work-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">built by hanflux</p><h2 class="display h-lg rv" id="work-title">Real sites<br>we designed and shipped.</h2></div>
-        <p class="lede rv">Our own brands, Hanflux and Oraya, are shown as examples of our craft and are not for sale. Client work sits in the menu as a style you can order.</p>
+        <div><p class="kicker rv">built by hanflux</p><h2 class="display h-lg rv" id="work-title">Our own site,<br>made in the same factory.</h2></div>
+        <p class="lede rv">hanflux.ai runs on the same process every client site goes through. Open it and watch it run.</p>
       </div>
       <ul class="work-list">{{work}}</ul>
+    </div>
+  </section>
+
+  <section class="faq section" id="faq" aria-labelledby="faq-title">
+    <div class="wrap faq-in">
+      <div class="faq-h"><p class="kicker rv">questions</p><h2 class="display h-lg rv" id="faq-title">Straight answers.</h2><p class="lede rv">Anything else? Ask us on <a class="teal" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener">WhatsApp</a>.</p></div>
+      <div class="faq-list">{{faq}}</div>
     </div>
   </section>
 
@@ -140,10 +187,10 @@
         <canvas class="bloom" data-bloom data-tone="dark" data-cx=".5" data-cy="1.14" data-rx=".5" data-ry="1" data-ri="78" data-a0="186" data-a1="354" data-n="58" data-seed="5" aria-hidden="true"></canvas>
         <div class="final-in">
           <p class="kicker dotk">ready when you are</p>
-          <h2 class="display h-xl" id="final-title">Tell us what<br>you are building.</h2>
+          <h2 class="display h-xl" id="final-title">Let's build<br>your website.</h2>
           <div class="cta">
-            <a class="btn btn-light" href="#request" data-open-request data-bloom-wave>Get a fixed quote<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-            <a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener">WhatsApp us</a>
+            <button class="btn btn-light" type="button" data-open-plan data-bloom-wave>Get my free website plan{{arrow}}</button>
+            <a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener">{{wa_ic}}WhatsApp us</a>
             <a class="btn btn-line" href="https://cal.com/chitraksh-mayank-lhab1f/15min" target="_blank" rel="noopener">Book a 15-minute call</a>
           </div>
         </div>
@@ -152,6 +199,14 @@
     </div>
   </section>
 </main>
+
+<div class="qbar" id="qbar" aria-live="polite">
+  <div class="qbar-in">
+    <div class="qb-txt"><b id="qb-n">From {{price_from}}</b><span id="qb-est">fixed price · live in 48 hours</span></div>
+    <a class="qb-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener" aria-label="WhatsApp us">{{wa_ic}}</a>
+    <button class="btn btn-teal btn-sm" type="button" id="qb-go">Free plan</button>
+  </div>
+</div>
 
 {{foot}}
 </body>

@@ -30,17 +30,18 @@
 .stage.big .d-bar { height: 34px; border-radius: 13px 13px 0 0; } .stage.big .dev-d { border-radius: 14px; } .stage.big .dev-d .vp { border-radius: 0 0 13px 13px; }
 .stage.big .d-url { height: 20px; font-size: 11px; max-width: 420px; margin: 0 auto; }
 .stage.big .d-dots i { width: 10px; height: 10px; }
-.stage.big .dev-m { border-radius: 34px; padding: 6.5px; } .stage.big .dev-m .vp { border-radius: 28px; } .stage.big .dev-m .isl { top: 14px; height: 13px; }
+.stage.big .dev-m { padding: 6.5px; } .stage.big .dev-m .isl { top: calc(6.5px + 2.7cqw); }
 .stage.big.only-m .dev-m { width: min(380px, 86%); }
 @media (max-width: 760px) {
   .stage.big.combo { padding-bottom: 32%; margin-right: 0; }
   .stage.big.combo .dev-m { width: 33%; right: 0; }
-  .stage.big .dev-m { border-radius: 24px; padding: 4.5px; } .stage.big .dev-m .vp { border-radius: 20px; } .stage.big .dev-m .isl { top: 9px; height: 8px; }
+  .stage.big .dev-m { padding: 4.5px; } .stage.big .dev-m .isl { top: calc(4.5px + 2.7cqw); }
   .d-hint { margin: 0; flex-basis: 100%; }
 }
 
 .d-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 410px); gap: clamp(28px, 5vw, 80px); padding-top: clamp(48px, 6vw, 88px); padding-bottom: clamp(40px, 6vw, 80px); align-items: start; }
-@media (max-width: 960px) { .d-body { grid-template-columns: 1fr; } }
+@media (min-width: 961px) { .d-body > .d-buy { grid-column: 2; grid-row: 1; } .d-body > .d-info { grid-column: 1; grid-row: 1; } }
+@media (max-width: 960px) { .d-body { grid-template-columns: 1fr; padding-top: 28px; } .d-buy { position: relative; top: 0; } }
 .block { padding: 0 0 34px; margin-bottom: 34px; border-bottom: 1px solid var(--hair); }
 .block.two { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
 @media (max-width: 560px) { .block.two { grid-template-columns: 1fr; } }
@@ -152,3 +153,40 @@
   .incl li { font-size: 15.5px; padding: 13px 0; }
   .d-nav a b { font-size: 19px; }
 }
+
+/* the price card: price, one big action, what is included, then optional extras */
+.buy-card .buy-price { margin-top: 16px; }
+.buy-when { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0 0 14px; }
+.buy-main { width: 100%; --h: 52px; font-size: 15.5px; margin: 0 0 22px; }
+.incl-mini { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 9px; }
+.incl-mini li { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; color: var(--ink); line-height: 1.4; }
+.incl-mini li svg { width: 17px; height: 17px; flex: none; margin-top: 1px; stroke: var(--s-blue); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.ao-wrap { border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); margin: 0 0 4px; }
+.ao-wrap summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 0; font: 600 15.5px/1.2 var(--font-body); color: var(--ink); letter-spacing: -.01em; }
+.ao-wrap summary::-webkit-details-marker { display: none; }
+.ao-wrap summary small { font: 400 12px var(--font-body); color: var(--ink-faint); margin-left: 6px; }
+.ao-wrap summary i { position: relative; width: 26px; height: 26px; flex: none; border-radius: 50%; border: 1px solid var(--hair-2); }
+.ao-wrap summary i::before, .ao-wrap summary i::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 1.6px; background: var(--ink); transform: translate(-50%, -50%); transition: transform .3s var(--ease-out); }
+.ao-wrap summary i::after { transform: translate(-50%, -50%) rotate(90deg); }
+.ao-wrap[open] summary i::after { transform: translate(-50%, -50%) rotate(0deg); }
+.ao-wrap .addons { padding-bottom: 14px; }
+.buy-cur { margin-top: 14px; }
+.buy-cur .cur-switch { width: 100%; } .buy-cur .cur-switch button { flex: 1; }
+.d-buy .fine { margin-top: 12px; }
+.crumbs a { color: var(--ink-dim); }
+
+/* phones: the preview starts as one phone frame (one live site, not two), before any script runs */
+html.is-phone .stage.big:not(.vset) { padding-bottom: 0 !important; }
+html.is-phone .stage.big:not(.vset) .dev-d { display: none; }
+html.is-phone .stage.big:not(.vset) .dev-m { position: relative; width: min(330px, 80%); margin: 0 auto; right: auto; bottom: auto; }
+.stage.big.only-m .dev-m { width: min(330px, 80%); }
+@media (max-width: 560px) {
+  .d-title h1 { margin: 12px 0 10px; }
+  .d-hero .lede { font-size: 15px; }
+  .d-stage-wrap { margin-top: 18px; }
+  .seg { flex: 1 1 100%; }
+  .d-hint { order: 9; }
+}
+@media (max-width: 960px) { .d-body > .d-buy { position: relative; top: auto; } }
+.buy-ask { display: block; text-align: center; margin: -12px 0 20px; font-size: 13.5px; color: var(--s-blue); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.buy-cta .btn-teal { justify-content: center; }

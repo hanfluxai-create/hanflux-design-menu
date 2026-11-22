@@ -13,13 +13,17 @@
 .d-url svg { width: 8px; height: 8px; stroke: currentColor; fill: none; stroke-width: 2; flex: none; }
 .vp { position: relative; overflow: hidden; background: var(--frame-bg, #0b0d13); }
 .dev-d .vp { aspect-ratio: 1280 / 800; border-radius: 0 0 11px 11px; }
-.dev-m { position: absolute; z-index: 2; border-radius: 22px; padding: 4.5px; background: #101124;
+.dev-m { position: absolute; z-index: 2; border-radius: 15.5% / 7.3%; padding: 4.5px; background: #101124; container-type: inline-size;
   box-shadow: 0 0 0 1px #5d6079, 0 0 0 2.5px #d9dbe6, 0 0 0 3.5px #9c9fb5, 0 14px 26px -10px rgba(26,27,69,.35), 0 36px 60px -26px rgba(26,27,69,.55); }
 .dev-m::before, .dev-m::after { content: ""; position: absolute; width: 3px; border-radius: 2px; background: linear-gradient(90deg, #8f92a8, #d9dbe6); z-index: -1; }
 .dev-m::before { left: -5.5px; top: 22%; height: 9%; box-shadow: 0 calc(100% + 6px) 0 0 #b3b6c8; }
 .dev-m::after { right: -5.5px; top: 28%; height: 13%; background: linear-gradient(270deg, #8f92a8, #d9dbe6); }
-.dev-m .vp { aspect-ratio: 390 / 844; border-radius: 18px; }
-.dev-m .isl { position: absolute; top: 9.5px; left: 50%; transform: translateX(-50%); width: 27%; height: 8.5px; border-radius: 99px; background: #000; z-index: 3; }
+.dev-m .vp { aspect-ratio: 390 / 844; border-radius: 13.6% / 6.3%; }
+/* the Dynamic Island, sized like a real iPhone at any frame size: a pill about a third of the screen wide */
+.dev-m .isl { position: absolute; top: calc(4.5px + 2.7cqw); left: 50%; transform: translateX(-50%); width: 31.5cqw; height: 9.2cqw; min-height: 6px; border-radius: 999px; background: #000; z-index: 3;
+  box-shadow: inset 0 0 0 .5px rgba(255,255,255,.05), 0 0 0 .5px rgba(0,0,0,.6); }
+.dev-m .isl::after { content: ""; position: absolute; top: 50%; right: 10%; width: 5.4cqw; height: 5.4cqw; transform: translateY(-50%); border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #3a4f86 0 14%, #121a33 36%, #04060c 62%); box-shadow: inset 0 0 0 .5px rgba(255,255,255,.08); }
 .vp iframe { position: absolute; top: 0; left: 0; border: 0; max-width: none; max-height: none; transform-origin: 0 0; background: transparent; pointer-events: none; opacity: 0; transition: opacity .7s ease; }
 .vp.live iframe { opacity: 1; }
 .vp.interactive iframe { pointer-events: auto; }
@@ -46,3 +50,24 @@
 .stage.only-m .dev-m { position: relative; width: min(360px, 82%); margin: 0 auto; right: auto; bottom: auto; }
 .stage.only-m { padding-bottom: 0 !important; }
 .stage.only-d { padding-bottom: 0 !important; }
+
+/* posters: the first screen of each site, rendered into the page so cards show at once */
+.vp .poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.vp .poster img.rf { opacity: 0; }
+
+/* reels (phones and the home page rail): three screens of the site cross-fading, drifting up like a slow scroll.
+   Opacity and transform only, so it runs on the GPU and never blocks scrolling. */
+.stage.reel-on .vp.has-reel .poster img { animation: reel 10.5s linear infinite both; will-change: opacity, transform; }
+.stage.reel-on .vp.has-reel .poster img:nth-of-type(1) { animation-delay: -.6s; }
+.stage.reel-on .vp.has-reel .poster img:nth-of-type(2) { animation-delay: 2.9s; }
+.stage.reel-on .vp.has-reel .poster img:nth-of-type(3) { animation-delay: 6.4s; }
+@keyframes reel {
+  0% { opacity: 0; transform: scale(1.06) translateY(1.6%); }
+  6% { opacity: 1; }
+  33.3% { opacity: 1; }
+  39% { opacity: 0; transform: scale(1.06) translateY(-1.6%); }
+  100% { opacity: 0; transform: scale(1.06) translateY(-1.6%); }
+}
+@media (prefers-reduced-motion: reduce) { .stage.reel-on .vp .poster img { animation: none !important; } }
+/* cards that may play a reel start at the reel's first pose, so nothing jumps when it starts */
+.g-rail .stage .vp .poster img, html.is-phone .w-grid .stage .vp .poster img, html.is-phone .d-studio .stage .vp .poster img { transform: scale(1.06) translateY(1.6%); }

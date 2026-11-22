@@ -1,1 +1,0 @@
-var e={index:0,driven:!1};export{e as t};

@@ -1,20 +1,27 @@
 <aside class="d-buy" id="buy" aria-label="Price and add-ons">
       <div class="buy-card">
         <div class="buy-top">
-          <span class="tier tier-{{tier}}">{{tier_name}}</span>
+          <span class="tier tier-{{tier}}">{{tier_name}} · {{tier_kind}}</span>
           <span class="mono faint">{{weeks}}</span>
         </div>
-        <div class="buy-offer offer-only"><span class="off-sticker">{{off_pct}} off · launch</span><span class="offer-note">ends in <b data-countdown>{{offer_ends}}</b></span></div>
-        <div class="buy-price" data-price-block><small>from</small> <s class="was">{{was_price}}</s> <span class="now" id="d-base">{{price}}</span></div>
+        {{price_block}}
+        <p class="buy-when offer-only"><span class="off-sticker">launch price</span><span class="offer-note">ends in <b data-countdown>{{offer_ends}}</b></span></p>
         <p class="buy-blurb">{{tier_blurb}}</p>
-        <h3 class="mono-h">add-ons</h3>
-        <ul class="addons" id="d-addons">{{addon_rows}}</ul>
-        <div class="est" id="d-est" data-price-block><div><div class="lbl">your estimate</div><div class="lbl" id="d-est-sub" style="margin-top:4px">{{tier_name}} design, no add-ons yet</div></div><div class="amt" id="d-est-amt">from {{price}}</div></div>
+        <a class="btn btn-teal buy-main" href="/order/?d={{slug}}">Order this design</a>
+        <a class="buy-ask" href="https://wa.me/{{wa}}?text={{wa_ask}}" target="_blank" rel="noopener">Have a question first? Ask on WhatsApp</a>
+        <h3 class="mono-h">included</h3>
+        <ul class="incl-mini">{{incl_short}}</ul>
+        <details class="ao-wrap" id="ao-wrap">
+          <summary><span>Add features <small>optional</small></span><i aria-hidden="true"></i></summary>
+          <ul class="addons" id="d-addons">{{addon_rows}}</ul>
+        </details>
+        <div class="est" id="d-est"><div><div class="lbl">your estimate</div><div class="lbl" id="d-est-sub">{{tier_name}} plan, no add-ons yet</div></div><div class="amt" id="d-est-amt">from {{price_now}}</div></div>
         <div class="buy-cta">
-          <button class="btn btn-teal" type="button" id="d-request">Request this design</button>
-          <button class="btn btn-ghost btn-pick" type="button" data-pick="{{slug}}" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.4A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.5c0 5.8-7.5 10.4-7.5 10.4z"/></svg><span class="lbl">Shortlist</span></button>
+          <a class="btn btn-teal" href="/order/?d={{slug}}">Order with these features</a>
+          <button class="btn btn-ghost btn-pick" type="button" data-pick="{{slug}}" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.4A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.5c0 5.8-7.5 10.4-7.5 10.4z"/></svg><span class="lbl">Save</span></button>
         </div>
-        <p class="fine">Fixed quote within 24 hours. No payment to ask.</p>
-        <p class="fine offer-only" style="margin-top:6px">{{offer_note}}</p>
+        <div class="buy-cur">{{cur_switch}}</div>
+        <p class="fine">Pay securely with Razorpay. We call you within 24 hours.</p>
+        <p class="fine offer-only">{{offer_note}}</p>
       </div>
     </aside>

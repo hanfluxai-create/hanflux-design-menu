@@ -1,15 +1,21 @@
-/* Hanflux Design Menu · live device frames.
-   Builds a desktop browser frame and a phone frame for a website style, and mounts the real site
-   inside each as a scaled iframe running its auto-tour. Only a few frames run at once: the ones
-   nearest the middle of the screen. Everything else shows a still poster. */
+/* Hanflux Design Menu · device frames.
+   A desktop browser frame and a phone frame for a website design. The frames arrive in the page with
+   still posters (the build renders them). This script brings them to life:
+   - live: the real site runs inside each frame as a scaled iframe with its auto-tour (laptops and
+     desktops, and the big preview on a design page);
+   - reel: phones never run live sites inside a scrolling list. The card nearest the middle of the
+     screen plays a light reel instead: three screens of the same site cross-fading on the GPU.
+   Only a few frames ever run at once, so scrolling stays smooth. */
 (function () {
   'use strict';
   var W = window, D = document;
   var DESK = { w: 1280, h: 800 }, MOB = { w: 390, h: 844 };
   var isPhone = (W.matchMedia && W.matchMedia('(pointer: coarse)').matches && Math.min(screen.width, screen.height) < 900) || W.innerWidth < 760;
   var weak = isPhone || (navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
-  var MAX_LIVE = isPhone || weak ? 1 : 2;
+  var MAX_LIVE = weak ? 1 : 2;
+  var reduce = W.matchMedia && W.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var ICON_LOCK = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+  var bySlug = {}; (W.HX_SITES || []).forEach(function (s) { bySlug[s.slug] = s; });
 
   function el(tag, cls, html) { var e = D.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -24,40 +30,45 @@
 
   function viewport(spec, site, kind) {
     var vp = el('div', 'vp');
-    vp.__spec = spec; vp.__kind = kind;
-    var poster = el('div', 'poster');
-    poster.innerHTML = '<div class="pfall"><b>' + esc(site.brand) + '</b></div>';
+    var poster = el('div', 'poster', '<div class="pfall"><b>' + esc(site.brand) + '</b></div>');
     var img = new Image();
     img.alt = ''; img.decoding = 'async'; img.loading = 'lazy';
     img.src = '/posters/' + site.slug + '-' + kind + '.webp';
-    img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center';
     img.onerror = function () { img.remove(); };
     poster.appendChild(img);
     vp.appendChild(poster);
     vp.appendChild(el('span', 'loading', '<i></i>loading live site'));
     vp.appendChild(el('span', 'prog'));
-    ro.observe(vp);
     return vp;
   }
+  function prep(vp, spec, kind) { vp.__spec = spec; vp.__kind = kind; ro.observe(vp); return vp; }
 
+  // build a stage from scratch, or adopt the one the page already has
   function build(stage, site, opts) {
     opts = opts || {};
-    stage.innerHTML = '';
     stage.classList.add('stage');
-    stage.style.setProperty('--accent', site.accent || '#27f2c0');
-    stage.style.setProperty('--frame-bg', site.bg || '#0b0d13');
     stage.__site = site; stage.__opts = opts;
+    var vps = stage.querySelectorAll('.vp');
+    if (vps.length === 2 && stage.getAttribute('data-slug') === site.slug) {
+      stage.__vps = [prep(vps[0], DESK, 'd'), prep(vps[1], MOB, 'm')];
+      return stage;
+    }
+    stage.innerHTML = '';
+    stage.setAttribute('data-slug', site.slug);
+    stage.__reelLoaded = null; stage.classList.remove('reel-on');
+    stage.style.setProperty('--accent', site.accent || '#1587bd');
+    stage.style.setProperty('--frame-bg', site.bg || '#0b0d13');
     var d = el('div', 'dev-d');
-    var bar = el('div', 'd-bar', '<span class="d-dots"><i></i><i></i><i></i></span><span class="d-url">' + ICON_LOCK + esc(site.domain || (site.slug + '.com')) + '</span>');
-    d.appendChild(bar);
-    var vd = viewport(DESK, site, 'd'); d.appendChild(vd);
+    d.appendChild(el('div', 'd-bar', '<span class="d-dots"><i></i><i></i><i></i></span><span class="d-url">' + ICON_LOCK + esc(site.domain || (site.slug + '.com')) + '</span>'));
+    var vd = prep(viewport(DESK, site, 'd'), DESK, 'd'); d.appendChild(vd);
     var m = el('div', 'dev-m');
-    var vm = viewport(MOB, site, 'm'); m.appendChild(vm); m.appendChild(el('span', 'isl'));
+    var vm = prep(viewport(MOB, site, 'm'), MOB, 'm'); m.appendChild(vm); m.appendChild(el('span', 'isl'));
     stage.appendChild(d); stage.appendChild(m);
     stage.__vps = [vd, vm];
     return stage;
   }
 
+  /* ---------- live ---------- */
   function srcFor(stage, vp) {
     var site = stage.__site, k = vp.clientWidth / vp.__spec.w, dpr = W.devicePixelRatio || 1;
     var maxDpr = (stage.__opts && stage.__opts.maxDpr) || 1.25;
@@ -66,12 +77,11 @@
     var tour = stage.__tourOff ? 0 : 1;
     return '/w/' + site.slug + '/?embed=1&tour=' + tour + '&v=' + vp.__kind + '&dpr=' + cap.toFixed(2) + '&lite=' + lite;
   }
-
   function mountVp(stage, vp) {
     if (vp.querySelector('iframe')) return;
     if (vp.offsetParent === null && !stage.__force) return; // hidden (e.g. phone-only view)
     var f = D.createElement('iframe');
-    f.setAttribute('title', stage.__site.brand + (vp.__kind === 'd' ? ' on desktop' : ' on a phone'));
+    f.setAttribute('title', stage.__site.brand + (vp.__kind === 'd' ? ' on a laptop' : ' on a phone'));
     f.setAttribute('loading', 'eager');
     f.setAttribute('allow', 'autoplay; fullscreen');
     f.setAttribute('tabindex', stage.__interactive ? '0' : '-1');
@@ -125,27 +135,64 @@
     D.querySelectorAll('.stage').forEach(function (s) { if (s.__mounted) post(s, msg); });
   });
 
-  // automatic policy for lists of cards: the cards closest to the screen centre run live.
-  // New sites only start once scrolling has settled, one card at a time, so the page never stutters.
+  /* ---------- reel ---------- */
+  function reelLoad(stage) {
+    if (stage.__reelLoaded) return stage.__reelLoaded;
+    var slug = stage.__site.slug, jobs = [];
+    stage.__vps.forEach(function (vp) {
+      var poster = vp.querySelector('.poster'), ims = [];
+      ['2', '3'].forEach(function (n) {
+        var im = new Image(); im.alt = ''; im.decoding = 'async'; im.className = 'rf';
+        im.src = '/posters/' + slug + '-' + vp.__kind + n + '.webp';
+        ims.push(im);
+        jobs.push(im.decode ? im.decode().catch(function () { im.__bad = true; }) : new Promise(function (r) { im.onload = r; im.onerror = function () { im.__bad = true; r(); }; }));
+      });
+      vp.__rf = ims;
+    });
+    stage.__reelLoaded = Promise.all(jobs).then(function () {
+      stage.__vps.forEach(function (vp) {
+        var poster = vp.querySelector('.poster');
+        if (vp.__rf.some(function (im) { return im.__bad; })) return;
+        vp.__rf.forEach(function (im) { poster.appendChild(im); });
+        vp.classList.add('has-reel');
+      });
+    });
+    return stage.__reelLoaded;
+  }
+  function reel(stage, on) {
+    stage.__reelWant = !!on;
+    if (!on) { stage.classList.remove('reel-on'); return; }
+    if (reduce) return;
+    reelLoad(stage).then(function () { if (stage.__reelWant) stage.classList.add('reel-on'); });
+  }
+
+  /* ---------- scheduling: who is live, who plays a reel ---------- */
+  // Cards closest to the screen centre get the turn. New ones only start once scrolling settles.
   var tracked = [], lastScroll = 0, schedT = 0;
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) { e.target.__ratio = e.intersectionRatio; });
     schedule();
-  }, { threshold: [0, 0.05, 0.25, 0.5, 0.75, 1] });
+  }, { threshold: [0, 0.05, 0.25, 0.5, 0.6, 0.75, 1] });
   function schedule() {
     clearTimeout(schedT);
-    var idle = isPhone ? 320 : 220, wait = Math.max(60, idle - (Date.now() - lastScroll));
+    var idle = isPhone ? 260 : 200, wait = Math.max(50, idle - (Date.now() - lastScroll));
     schedT = setTimeout(apply, wait);
   }
+  function centred(list, min) {
+    var mid = W.innerHeight / 2, midX = W.innerWidth / 2;
+    var c = list.filter(function (s) { return !s.closest('[hidden]') && (s.__ratio || 0) >= min; });
+    c.forEach(function (s) { var r = s.getBoundingClientRect(); s.__dist = Math.abs((r.top + r.bottom) / 2 - mid) + Math.abs((r.left + r.right) / 2 - midX) * 0.6; });
+    return c.sort(function (a, b) { return a.__dist - b.__dist; });
+  }
   function apply() {
-    var mid = W.innerHeight / 2;
-    // free anything that has left the screen
-    tracked.forEach(function (s) { if (s.__mounted && (s.__ratio || 0) < 0.05) unmount(s); });
-    var cands = tracked.filter(function (s) { return !s.closest('[hidden]') && (s.__ratio || 0) >= (isPhone ? 0.6 : 0.35); });
-    cands.forEach(function (s) { var r = s.getBoundingClientRect(); s.__dist = Math.abs((r.top + r.bottom) / 2 - mid); });
-    cands.sort(function (a, b) { return a.__dist - b.__dist; });
-    var keep = cands.slice(0, MAX_LIVE);
-    tracked.forEach(function (s) {
+    var lives = tracked.filter(function (s) { return s.__mode === 'live'; }), reels = tracked.filter(function (s) { return s.__mode === 'reel'; });
+    // reels: one at a time on phones, two on bigger screens
+    var rk = centred(reels, isPhone ? 0.55 : 0.4).slice(0, isPhone ? 1 : 2);
+    reels.forEach(function (s) { reel(s, rk.indexOf(s) >= 0); });
+    // live: free anything that has left the screen, then start the closest ones one after another
+    lives.forEach(function (s) { if (s.__mounted && (s.__ratio || 0) < 0.05) unmount(s); });
+    var keep = centred(lives, 0.35).slice(0, MAX_LIVE);
+    lives.forEach(function (s) {
       if (keep.indexOf(s) >= 0) return;
       if (s.__queued) { clearTimeout(s.__tq); s.__queued = false; }
       if (s.__mounted) unmount(s);
@@ -158,8 +205,14 @@
       delay += 650;
     });
   }
-  function observe(stage) { tracked.push(stage); io.observe(stage); }
+  // mode: 'auto' (live on big screens, reel on phones), 'reel' (always a reel) or 'live'
+  function observe(stage, mode) {
+    stage.__mode = mode === 'reel' || (mode !== 'live' && isPhone) ? 'reel' : 'live';
+    tracked.push(stage); io.observe(stage);
+  }
   W.addEventListener('scroll', function () { lastScroll = Date.now(); if (tracked.length) schedule(); }, { passive: true });
+  // a sideways rail (home page) scrolls on its own: listen there too
+  D.addEventListener('scroll', function (e) { if (e.target !== D && tracked.length) { lastScroll = Date.now(); schedule(); } }, { passive: true, capture: true });
 
   function setTour(stage, on) { stage.__tourOff = !on; post(stage, { hx: 'tour', on: !!on }); }
   function setInteractive(stage, on) {
@@ -167,6 +220,12 @@
     (stage.__vps || []).forEach(function (vp) { vp.classList.toggle('interactive', !!on); var f = vp.querySelector('iframe'); if (f) { f.setAttribute('tabindex', on ? '0' : '-1'); if (on) f.removeAttribute('aria-hidden'); } });
   }
   function remount(stage) { unmount(stage); mount(stage); }
+  // adopt every stage on the page that has a slug
+  function adoptAll(sel, mode, opts) {
+    var out = [];
+    D.querySelectorAll(sel).forEach(function (st) { var s = bySlug[st.getAttribute('data-slug')]; if (!s) return; build(st, s, opts); observe(st, mode); out.push(st); });
+    return out;
+  }
 
-  W.HXFrames = { build: build, observe: observe, mount: mount, unmount: unmount, remount: remount, post: post, setTour: setTour, setInteractive: setInteractive, refresh: schedule, isPhone: isPhone };
+  W.HXFrames = { build: build, observe: observe, adoptAll: adoptAll, mount: mount, unmount: unmount, remount: remount, post: post, setTour: setTour, setInteractive: setInteractive, refresh: schedule, reel: reel, isPhone: isPhone };
 })();
