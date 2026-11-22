@@ -7,7 +7,11 @@ class Q(SimpleHTTPRequestHandler):
     def log_message(self, *a): pass
 async def main():
     lap, pha, phb, n = (sys.argv[1:5] + ['particles', 'liquid', 'glass', '30'])[:4]
-    html = open(os.path.join(ROOT, 'tools/og.html')).read().replace('LAP', lap).replace('PHA', pha).replace('PHB', phb).replace('LIVE_COUNT', n)
+    import json
+    top = json.load(open(os.path.join(ROOT, 'posters/top.json'))).get(pha, '#0b0d13')
+    r, g, b_ = (int(top[i:i + 2], 16) for i in (1, 3, 5))
+    lt = 'lt' if (0.2126 * r + 0.7152 * g + 0.0722 * b_) / 255 > 0.62 else ''
+    html = open(os.path.join(ROOT, 'tools/og.html')).read().replace('LAP', lap).replace('PHA', pha).replace('PHB', phb).replace('LIVE_COUNT', n).replace('SB_BG', top).replace('SB_LT', lt)
     open(os.path.join(ROOT, 'tools/_og.html'), 'w').write(html)
     from playwright.async_api import async_playwright
     lock = open('/tmp/hx-chromium.lock', 'w'); fcntl.flock(lock, fcntl.LOCK_EX)

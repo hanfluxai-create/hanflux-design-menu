@@ -57,9 +57,17 @@
    "name": "Liquid Chrome",
    "tier": "flagship"
   },
+  "estate": {
+   "name": "Golden Hour",
+   "tier": "flagship"
+  },
   "holo": {
    "name": "Holographic",
    "tier": "flagship"
+  },
+  "gold": {
+   "name": "Solitaire",
+   "tier": "signature"
   },
   "neon": {
    "name": "Neon Nights",
@@ -68,6 +76,10 @@
   "glass": {
    "name": "Glass",
    "tier": "growth"
+  },
+  "silk": {
+   "name": "Satin Ribbon",
+   "tier": "signature"
   },
   "vhs": {
    "name": "Retro VHS",

@@ -144,3 +144,6 @@ body.order .toast { bottom: calc(88px + var(--safe-b)); }
 .addons input:focus-visible + label { outline: 2px solid var(--s-blue); outline-offset: 2px; }
 
 .op-c { margin-top: 10px !important; color: var(--s-magenta) !important; }
+
+/* the order bar stays on screen the whole way: leave room under the footer so its last links can scroll clear of it */
+body.order .foot { padding-bottom: calc(92px + var(--safe-b)); }

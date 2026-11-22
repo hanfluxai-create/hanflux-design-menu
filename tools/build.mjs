@@ -79,13 +79,21 @@ const tierBadge = (t) => `<span class="tier tier-${t}">${esc(kindOf(t))}</span>`
 
 // the device frames, rendered into the page with their still posters (frames.js brings them to life)
 const PLAY = '<span class="play-badge" aria-hidden="true"><i><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i>Tap to watch live</span>';
+// Phone status bar (time, signal, wifi, battery). Like Safari, it takes the colour at the top of the page:
+// posters/top.json holds that colour per design (written by tools/posters.py).
+const TOP = (() => { try { return JSON.parse(fs.readFileSync(path.join(ROOT, 'posters/top.json'), 'utf8')); } catch (e) { return {}; } })();
+const lum = (hex) => { const m = /^#?([0-9a-f]{6})$/i.exec(hex || ''); if (!m) return 0; const n = parseInt(m[1], 16); return (0.2126 * (n >> 16 & 255) + 0.7152 * (n >> 8 & 255) + 0.0722 * (n & 255)) / 255; };
+const SB_ICONS = '<i><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3.2" height="4" rx=".8"/><rect x="4.9" y="5.6" width="3.2" height="6.4" rx=".8"/><rect x="9.8" y="3" width="3.2" height="9" rx=".8"/><rect x="14.7" y="0" width="3.2" height="12" rx=".8"/></svg>' +
+  '<svg viewBox="0 0 16 12"><path d="M8 2.2c2.5 0 4.7.9 6.4 2.5l1.3-1.4C13.6 1.3 10.9.2 8 .2S2.4 1.3.3 3.3l1.3 1.4C3.3 3.1 5.5 2.2 8 2.2zm0 3.7c1.4 0 2.7.5 3.7 1.4l1.3-1.4C11.6 4.7 9.9 4 8 4s-3.6.7-5 1.9l1.3 1.4c1-.9 2.3-1.4 3.7-1.4zm0 3.6c.5 0 .9.2 1.3.5L8 11.8 6.7 10c.4-.3.8-.5 1.3-.5z"/></svg>' +
+  '<svg viewBox="0 0 27 12"><rect x=".6" y=".6" width="22.6" height="10.8" rx="3.3" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.1"/><rect x="2.3" y="2.3" width="17.4" height="7.4" rx="1.9"/><path d="M24.6 4.1v3.8c.8-.3 1.4-1 1.4-1.9s-.6-1.6-1.4-1.9z" opacity=".45"/></svg></i>';
+const sbar = (s) => { const c = TOP[s.slug] || s.bg || '#0b0d13'; return `<span class="sbar${lum(c) > 0.62 ? ' lt' : ''}" style="--sb-bg:${c}" aria-hidden="true"><b>9:41</b>${SB_ICONS}</span>`; };
 const stageHtml = (s, { id = '', cls = '', eager = false, badge = false } = {}) => {
   const lz = eager ? 'eager' : 'lazy';
   const img = (k, w, h) => `<img src="/posters/${s.slug}-${k}.webp" alt="" width="${w}" height="${h}" loading="${lz}" decoding="async"${eager && k === 'd' ? ' fetchpriority="high"' : ''}>`;
   const vp = (k, w, h) => `<div class="vp" data-k="${k}"><div class="poster"><div class="pfall"><b>${esc(s.brand)}</b></div>${img(k, w, h)}</div><span class="loading"><i></i>loading live site</span><span class="prog"></span></div>`;
   return `<div class="stage combo${cls}"${id ? ` id="${id}"` : ''} data-stage data-slug="${s.slug}" style="--accent:${s.accent};--frame-bg:${s.bg || '#0b0d13'}">` +
     `<div class="dev-d"><div class="d-bar"><span class="d-dots"><i></i><i></i><i></i></span><span class="d-url">${LOCK}${esc(s.domain || s.slug + '.com')}</span></div>${vp('d', 720, 450)}</div>` +
-    `<div class="dev-m">${vp('m', 300, 649)}<span class="isl"></span></div>${badge ? PLAY : ''}</div>`;
+    `<div class="dev-m">${vp('m', 300, 649).replace('<div class="poster">', sbar(s) + '<div class="poster">')}<span class="isl"></span></div>${badge ? PLAY : ''}</div>`;
 };
 // a big price line: the price from 1 Jan above (crossed out during the launch), "from <launch price>" below
 const priceBlock = (cls, t, small = 'from') => CURS.map((c) => `<div class="${cls} c-${c}" data-price-block><small>${small}</small>${C.tiers[t][c].was ? `<s class="was">${money(tierWas(t, c), c)}</s> ` : ''}<span class="now">${money(tierFrom(t, c), c)}</span></div>`).join('');
@@ -124,7 +132,17 @@ const tiersHtml = order.map((t) => {
 const addonChip = (a) => `<span class="chip">${esc(a.name)}${C.showPrices ? ' · ' + dual((c) => money(a[c], c) + (a.monthly ? '/month' : '')) : ''}</span>`;
 const addonsHtml = C.addons.slice(0, 7).map(addonChip).join('') + C.addons.filter((a) => a.monthly).map(addonChip).join('') + `<a class="chip more" href="/websites/">+${C.addons.length - 8} more on every design</a>`;
 const work = [...sale.filter((s) => s.live), ...exs.filter((s) => !WALLED.has(s.slug))];
-const workHtml = work.map((s, i) => `<li class="rv"><a class="row" href="/websites/${s.slug}/"><span class="wn">${pad(i + 1)}</span><span class="wt">${esc(s.brand)} <small>${esc(s.industry)} · ${isEx(s) ? 'our own company' : 'client site'}</small></span><span class="wu">${esc(hostOf(s))}</span><span class="wa">${ARROW_L}</span></a></li>`).join('\n');
+// our own site, as one card: the words on one side, the site in a phone frame on the other
+const wk = work[0];
+const workHtml = wk ? `<div class="wk-card rv">
+        <div class="wk-copy">
+          <p class="kicker">built by hanflux</p>
+          <h2 class="display h-md" id="work-title">Our own site, made in the same factory.</h2>
+          <p class="lede">${esc(hostOf(wk))} is our own AI agency site, with real-time 3D, scroll chapters and booking, designed and built in-house. Watch it run on a phone and a laptop.</p>
+          <a class="btn btn-ghost" href="/websites/${wk.slug}/">Watch it live${ARROW}</a>
+        </div>
+        <a class="wk-ph" href="/websites/${wk.slug}/" aria-label="Watch ${esc(wk.brand)} live" tabindex="-1">${stageHtml(wk, { cls: ' only-m' })}</a>
+      </div>` : '';
 const TYPES = ['Shop or brand', 'Restaurant, café or bar', 'Clinic, salon or wellness', 'Hotel, travel or events', 'Tech company or startup', 'Services: law, finance, construction', 'School, coaching or NGO', 'Something else'];
 const leadTypes = TYPES.map((x) => `<option>${esc(x)}</option>`).join('');
 const t0 = C.tiers.essential;
@@ -211,9 +229,9 @@ const exAside = (s) => `<aside class="d-buy" id="buy" aria-label="About this exa
         <div class="buy-top"><span class="tier ex-t">Our own company</span><span class="mono faint">example</span></div>
         <h3 class="ex-h display">Want a site like this?</h3>
         <p class="buy-blurb">This one belongs to our own company. We design an original site for your business at the same level of craft, with your content and the features you need.</p>
-        <div class="ex-ref"><span class="mono-h">similar builds</span><b>${esc(C.tiers[s.tier].name)} · ${esc(kindOf(s.tier))}</b><span class="ex-p">from ${priceInline(s.tier)}</span><span class="mono faint">${esc(C.tiers[s.tier].weeks)}</span></div>
+        <div class="ex-ref"><span class="mono-h">similar builds</span><b>${esc(C.tiers[s.tier].name)} · ${esc(kindOf(s.tier))}</b><span class="ex-p">from ${priceInline(s.tier)}</span></div>
         <div class="buy-cta"><button class="btn btn-teal" type="button" data-open-plan data-kind="Fully custom">Get my free plan</button><a class="btn btn-ghost" href="/websites/">Designs you can order</a></div>
-        <p class="fine">Fixed price within 24 hours, on WhatsApp. No payment to ask.</p>
+        <p class="fine">Free. We WhatsApp you a fixed price within ${C.callWithinHours} hours.</p>
       </div>
     </aside>`;
 const order2 = [...sale, ...exs];
@@ -223,8 +241,15 @@ order2.forEach((s, i) => {
   const host = hostOf(s), ex = isEx(s);
   const vars = {
     slug: s.slug, name: esc(s.name), family: esc(s.family), brand: esc(s.brand), pitch: esc(s.pitch), accent: s.accent,
-    type_line: ex ? `${esc(s.industry)} · our own company` : `${esc(s.industry)} · ${esc(kindOf(s.tier))}`,
-    badges: ex ? '<span class="tier ex-t">Our own company</span>' : (s.live || s.origin ? '<span class="tier built">Built by Hanflux</span>' : ''),
+    type_line: ex ? `example of our work · ${esc(host)}` : `${esc(s.industry)} · ${esc(kindOf(s.tier))}`,
+    badges: ex ? '' : (s.live || s.origin ? '<span class="tier built">Built by Hanflux</span>' : ''),
+    steps: (ex ? [['Get your free plan', `Tell us about your business. Within ${C.callWithinHours} hours we WhatsApp you the design that fits, the pages you need and a fixed price.`],
+      ['Order and pay', 'Pick a design from the menu or ask for an original one, add features and pay securely.'],
+      ['Live on your own domain', `Menu designs go live within ${C.liveHours} hours of payment. An original design gets a timeline we agree with you.`]]
+      : [['Order and pay', 'Tap "Order this design", add features, answer a few questions and pay securely.'],
+        [`We call you within ${C.callWithinHours} hours`, 'To collect your domain, logo, photos, text and any technical details.'],
+        [`Live within ${C.liveHours} hours`, `Built, checked 12 ways and live on your own domain, ${C.liveHours} hours from payment.`]])
+      .map((x, k) => `<li class="tabrule"><span>${pad(k + 1)}</span><b>${esc(x[0])}</b><p>${esc(x[1])}</p></li>`).join(''),
     ex_q: ex ? '&amp;ex=1' : '',
     stage: stageHtml(s, { id: 'd-stage', cls: ' big', eager: true }),
     meta_desc: ex ? `${esc(s.pitch)} Our own site, shown live as an example of Hanflux work. We design an original site for you at the same level.` : `${esc(s.pitch)} Watch it run live on a phone and a laptop. ${esc(t.name)} plan from ${esc(money(t.inr.from, 'inr'))} in India or ${esc(money(t.usd.from, 'usd'))} outside India. Fixed price, live within ${C.liveHours} hours of payment.`,
@@ -232,7 +257,7 @@ order2.forEach((s, i) => {
     bestfor: s.bestFor.map((x) => `<span class="chip">${esc(x)}</span>`).join(''),
     live_block: s.live && !WALLED.has(s.slug) ? `<div class="block"><div class="live-b"><div><span class="mono-h">${ex ? 'our own site' : 'live client site'}</span><b>${esc(s.brand)} · ${esc(host)}</b></div><a class="btn btn-ghost btn-sm" href="${esc(s.live)}" target="_blank" rel="noopener">Visit the live site${EXT}</a></div></div>` : '',
     note: ex ? `This is our own company's site, shown as an example of what we build. Your site is designed from scratch around your business, at the same level of craft.` : s.origin ? `This was the design of our own site before we moved to a new one. It is now open to order: we rebuild it around your business, your words and your photos.` : s.live ? `This is a real site we built and launched for ${esc(s.brand)}. Your version is designed around your business, in the same style and at the same level of craft.` : `${esc(s.brand)} is a made-up brand we use to show the design. Your site gets your name, colours, words, photos and the pages your business needs.`,
-    custom_block: ex ? `<div class="block custom-b"><span class="mono-h">like this level of craft?</span><p class="cb-t">We design something original for your business in the same spirit: your story, your content, the features you need.</p><div class="cb-row"><button class="btn btn-teal btn-sm" type="button" data-open-plan data-kind="Fully custom">Get my free plan</button><a class="btn btn-ghost btn-sm" href="/websites/">See designs you can order</a></div></div>`
+    custom_block: ex ? ''
       : `<div class="block custom-b"><span class="mono-h">not exactly this?</span><p class="cb-t">We can mix it with another design, match it to your current brand, or make something only you have.</p><div class="cb-row"><button class="btn btn-ghost btn-sm" type="button" data-open-plan data-kind="Mix designs">Mix it with another design</button><button class="btn btn-ghost btn-sm" type="button" data-open-plan data-kind="Fully custom">Ask for a custom design</button></div></div>`,
     tier: s.tier, tier_name: esc(t.name), tier_kind: esc(kindOf(s.tier)), weeks: esc(t.weeks), tier_blurb: esc(t.blurb),
     price_block: priceBlock('buy-price', s.tier), price_now: priceNow(s.tier), incl_short: inclShort,

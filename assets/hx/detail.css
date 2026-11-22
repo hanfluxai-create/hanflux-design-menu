@@ -64,7 +64,8 @@
 .d-buy { position: sticky; top: calc(var(--nav-h) + var(--bar-h) + 18px); }
 .buy-card { position: relative; padding: 26px 24px 24px; border-radius: var(--r-lg); border: 1px solid var(--hair-2); background: #fff; box-shadow: var(--shadow-2); overflow: hidden; }
 .buy-card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--spectrum); }
-.buy-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; }
+.buy-top { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 10px; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; }
+.buy-top > .mono { white-space: nowrap; }
 .buy-price { font: 300 clamp(38px, 3.8vw, 50px)/1.02 var(--font-display); letter-spacing: -.05em; margin: 18px 0 10px; color: var(--ink); display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 9px; }
 .buy-price small { font: 300 .5em var(--font-display); color: var(--ink); letter-spacing: -.02em; }
 .buy-blurb { color: var(--ink-2); font-size: 14.5px; margin: 0 0 24px; }
@@ -205,3 +206,16 @@ html.is-phone .stage.big:not(.vset) .dev-m { position: relative; width: min(330p
   .seg-big { flex: 1 1 100%; } .seg-big button { flex: 1; justify-content: center; padding: 0 8px; }
   .d-acts { flex: 1 1 100%; } .d-acts .btn-fs { flex: 1 1 auto; } .d-acts .tog { flex: none; }
 }
+
+/* phones: the live preview comes straight after the title, the controls sit under it.
+   "Both" (a tiny laptop next to a tiny phone) is left out; the full screen button pulses a few times instead of a bubble. */
+@media (max-width: 760px) {
+  .d-studio { display: flex; flex-direction: column; }
+  .d-studio > .d-controls { order: 2; margin: 16px 0 0; }
+  .d-controls .d-acts { order: 1; } .d-controls .seg-big { order: 2; } .d-controls .d-hint { order: 3; }
+  .seg-big .seg-both { display: none; }
+  .btn-fs .coach { display: none !important; }
+  .btn-fs { animation: hx-ring 2.4s ease-out 2s 4; }
+}
+@keyframes hx-ring { 0% { box-shadow: 0 0 0 0 rgba(101, 48, 128, .5), 0 10px 22px -10px rgba(26,27,69,.55); } 70%, 100% { box-shadow: 0 0 0 14px rgba(101, 48, 128, 0), 0 10px 22px -10px rgba(26,27,69,.55); } }
+@media (prefers-reduced-motion: reduce) { .btn-fs { animation: none !important; } }

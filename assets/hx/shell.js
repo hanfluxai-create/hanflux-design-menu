@@ -143,11 +143,20 @@
       // solid bar after the first few pixels, and a spectrum line that tracks how far down the page you are
       var prog = $('.nav-prog', nav), tick = 0, wasSolid = null, max = 0;
       var measure = function () { max = D.documentElement.scrollHeight - W.innerHeight; };
+      // phones: the header steps aside while reading down and comes back on any scroll up,
+      // so a small screen is not a third covered by bars
+      var small = W.matchMedia ? W.matchMedia('(max-width: 860px)') : { matches: false };
+      var lastY = W.scrollY, off = false;
+      var setOff = function (v) { if (v !== off) { off = v; D.documentElement.classList.toggle('hdr-off', v); } };
       var paint = function () {
         tick = 0;
         var y = W.scrollY, solid = y > 8;
         if (solid !== wasSolid) { wasSolid = solid; nav.classList.toggle('solid', solid); }
         if (prog) prog.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0).toFixed(4) + ')';
+        var dy = y - lastY;
+        if (!small.matches || y < 140 || D.body.style.overflow === 'hidden') { setOff(false); lastY = y; }
+        else if (dy > 8) { setOff(true); lastY = y; }
+        else if (dy < -8) { setOff(false); lastY = y; }
       };
       var onS = function () { if (!tick) tick = requestAnimationFrame(paint); };
       W.addEventListener('scroll', onS, { passive: true });

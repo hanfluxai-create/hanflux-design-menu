@@ -2,9 +2,12 @@
 """Still posters for the menu cards: /posters/<slug>-d.webp (desktop) and -m.webp (phone).
 
 Usage: python3 tools/posters.py [slug ...]   (default: every built demo in w/)
+       python3 tools/posters.py --top            (only refresh posters/top.json from the posters on disk)
 Takes the first screen of each demo after it settles, the same view the live frame starts on.
+Also records the colour along the top of each phone poster in posters/top.json: the phone frame's
+status bar takes that colour, the way Safari tints it to match the page.
 """
-import asyncio, fcntl, functools, os, sys, threading
+import asyncio, fcntl, functools, json, os, sys, threading
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from PIL import Image
 
@@ -15,6 +18,29 @@ OUT = os.path.join(ROOT, 'posters')
 class Quiet(SimpleHTTPRequestHandler):
     def log_message(self, *a):
         pass
+
+
+def top_colour(path):
+    """Median colour of the top rows of a phone poster, as #rrggbb."""
+    im = Image.open(path).convert('RGB')
+    band = im.crop((0, 0, im.width, max(3, im.height // 90)))
+    px = sorted((band.getpixel((x, y)) for y in range(band.height) for x in range(band.width)), key=lambda c: c[0] * .2126 + c[1] * .7152 + c[2] * .0722)
+    r, g, b = px[len(px) // 2]
+    return '#%02x%02x%02x' % (r, g, b)
+
+
+def write_top(slugs=None):
+    f = os.path.join(OUT, 'top.json')
+    data = json.load(open(f)) if os.path.exists(f) else {}
+    for name in sorted(os.listdir(OUT)):
+        if not name.endswith('-m.webp'):
+            continue
+        slug = name[:-7]
+        if slugs and slug not in slugs:
+            continue
+        data[slug] = top_colour(os.path.join(OUT, name))
+    json.dump(dict(sorted(data.items())), open(f, 'w'), indent=0)
+    return data
 
 
 # Styles whose signature moment is further down the page: scroll there before the poster is taken.
@@ -56,6 +82,9 @@ async def shoot(b, port, slug):
 
 async def main():
     os.makedirs(OUT, exist_ok=True)
+    if sys.argv[1:] == ['--top']:
+        print(write_top())
+        return
     slugs = sys.argv[1:] or sorted(d for d in os.listdir(os.path.join(ROOT, 'w')) if os.path.exists(os.path.join(ROOT, 'w', d, 'index.html')))
     from playwright.async_api import async_playwright
     lock = open('/tmp/hx-chromium.lock', 'w')
@@ -72,6 +101,7 @@ async def main():
     finally:
         srv.shutdown()
         fcntl.flock(lock, fcntl.LOCK_UN)
+    write_top(slugs)
 
 
 if __name__ == '__main__':

@@ -15,9 +15,12 @@
 .lg .lg-p { font: 300 clamp(24px, 2.5vw, 34px)/1.05 var(--font-display); letter-spacing: -.045em; color: var(--ink); }
 .lg .lg-p small { font-size: .62em; letter-spacing: -.02em; }
 @media (max-width: 860px) {
-  .w-hero { padding-top: calc(var(--nav-h) + var(--bar-h) + 214px); }
-  .w-mark { top: calc(var(--nav-h) + var(--bar-h) - 12px); right: -128px; width: 400px; height: 280px; }
-  .w-mark .lotus { width: 98px; }
+  /* the lotus and its circuit lines sit fully above the heading, never across the text */
+  .w-hero { padding-top: calc(var(--nav-h) + var(--bar-h) + 206px); }
+  .w-mark { top: calc(var(--nav-h) + var(--bar-h) - 18px); right: -96px; width: 330px; height: 214px; }
+  .w-mark .lotus { width: 84px; }
+  .w-bar { transition: top .38s var(--ease-out); }
+  html.hdr-off .w-bar { top: 0; }
   .w-hero .wrap > .kicker, .w-hero h1, .w-hero .lede, .w-hero .w-offer { max-width: none; }
   .legend { grid-template-columns: 1fr 1fr; gap: 22px 16px; }
 }

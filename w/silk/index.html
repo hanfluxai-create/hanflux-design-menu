@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<script>document.documentElement.classList.add('js');setTimeout(function(){document.documentElement.classList.add('failsafe')},4500);</script>
+<title>Selvine Salon &amp; Spa · Hair, skin and spa in Jubilee Hills</title>
+<meta name="description" content="Senior stylists, honest prices and quiet spa rituals on Road No. 36, Jubilee Hills, Hyderabad. Book hair, skin, nails, spa and bridal appointments online.">
+<meta name="theme-color" content="#3a1f2b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='19' fill='%233a1f2b'/%3E%3Cpath d='M26.5 12.5c-2-2.2-5.2-3-8-2.1-3.1 1-4.6 4.2-3.1 6.9 1.2 2.1 3.6 3 5.8 3.8 2.4.9 5 1.9 5.9 4.3 1.1 3-1 6.1-4.2 6.6-2.9.5-5.9-.6-7.6-2.9' fill='none' stroke='%23c9a46a' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-mark" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18.6" fill="none" stroke="currentColor" stroke-width="1" opacity=".6"/><path d="M26.5 12.5c-2-2.2-5.2-3-8-2.1-3.1 1-4.6 4.2-3.1 6.9 1.2 2.1 3.6 3 5.8 3.8 2.4.9 5 1.9 5.9 4.3 1.1 3-1 6.1-4.2 6.6-2.9.5-5.9-.6-7.6-2.9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.7 7.1L4 19.8l1.2-4A8 8 0 1 1 20 11.5z"/><path d="M8.6 10.4h6.8M8.6 13.4h4.4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.2l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.6l-5.2 2.7 1-5.8-4.3-4.1 5.9-.8z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="M14.5 6l-6 6 6 6"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="M9.5 6l6 6-6 6"/></symbol>
+  <symbol id="i-chev-d" viewBox="0 0 24 24"><path d="M6 9.5l6 6 6-6"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4.5 7l7.5 6 7.5-6"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3a1.4 1.4 0 0 1 0 2l-6.5 6.5a1.4 1.4 0 0 1-2 0z"/><circle cx="8" cy="8" r="1.4"/></symbol>
+  <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 9h11a3 3 0 1 0-3-3M3 13h15a3 3 0 1 1-3 3M3 17h7"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="1.5"/><path d="M3 9h18M12 9v11M12 9c-1.5-3-5-4.5-6-2.5S8 9 12 9zM12 9c1.5-3 5-4.5 6-2.5S16 9 12 9z"/></symbol>
+  <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M8.3 15.7L18 4M15.7 15.7L6 4"/></symbol>
+  <symbol id="i-friend" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M18.5 8v6M15.5 11h6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11.5" height="11.5" rx="2.5"/><path d="M15.5 8.5V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7.5a2 2 0 0 0 2 2h2.5"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2.5c.7 5.2 2.3 6.8 7.5 7.5-5.2.7-6.8 2.3-7.5 7.5-.7-5.2-2.3-6.8-7.5-7.5 5.2-.7 6.8-2.3 7.5-7.5z"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M4.5 16.5v-4l2-5h11l2 5v4"/><path d="M3.5 16.5h17M7 19.5v-3M17 19.5v-3"/><circle cx="8" cy="13.5" r=".9"/><circle cx="16" cy="13.5" r=".9"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M3 10h18M7 14.5h4"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+<canvas class="silk" aria-hidden="true"></canvas>
+<div class="silk-fallback" aria-hidden="true"></div>
+
+<header class="nav" id="top">
+  <div class="nav__bar">
+    <a class="brand" href="#top" aria-label="Selvine Salon and Spa, back to top">
+      <svg class="brand__mark" aria-hidden="true"><use href="#i-mark"/></svg>
+      <span class="brand__name">Selvine<small>Salon · Spa</small></span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#services">Services</a>
+      <a href="#results">Results</a>
+      <a href="#stylists">Stylists</a>
+      <a href="#bridal">Bridal</a>
+      <a href="#circle">Circle</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <div class="nav__cta">
+      <button class="btn btn--line btn--sm nav__wa" type="button" data-wa><svg class="ico"><use href="#i-chat"/></svg><span>WhatsApp</span></button>
+      <a class="btn btn--gold btn--sm" href="#book">Book</a>
+      <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__links" aria-label="Mobile">
+    <a href="#services"><span>01</span>Services and prices</a>
+    <a href="#results"><span>02</span>Results</a>
+    <a href="#stylists"><span>03</span>Stylists</a>
+    <a href="#bridal"><span>04</span>Bridal</a>
+    <a href="#circle"><span>05</span>Selvine Circle</a>
+    <a href="#visit"><span>06</span>Visit us</a>
+  </nav>
+  <div class="menu__foot">
+    <a class="btn btn--gold btn--lg btn--block" href="#book">Book an appointment</a>
+    <button class="btn btn--line-light btn--lg btn--block" type="button" data-wa><svg class="ico"><use href="#i-chat"/></svg>Chat on WhatsApp</button>
+    <p>Open daily, 10 AM to 9 PM · Road No. 36, Jubilee Hills</p>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="hero" data-silk data-tour="3600" aria-label="Selvine Salon and Spa">
+    <div class="hero__shade" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <p class="eyebrow hero__eyebrow"><span class="live" aria-hidden="true"></span>Salon and spa · Road No. 36, Jubilee Hills</p>
+      <h1 class="display hero__title">
+        <span class="hl">Look like your</span>
+        <span class="hl"><em>best day,</em></span>
+        <span class="hl">every day.</span>
+      </h1>
+      <p class="hero__lead">Hair, skin and spa rituals by senior stylists in Jubilee Hills.</p>
+      <div class="hero__ctas">
+        <a class="btn btn--gold btn--lg magnetic" href="#book"><span>Book an appointment</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn--line-light btn--lg" href="#services">See services and prices</a>
+      </div>
+      <ul class="hero__proof">
+        <li><span class="stars" aria-hidden="true"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span><span><b>4.9</b> from 2,140 client reviews</span></li>
+        <li><span><b>12 years</b> average stylist experience</span></li>
+        <li><span><b>Open daily</b> 10 AM to 9 PM</span></li>
+      </ul>
+    </div>
+    <aside class="tonight" aria-label="Open chairs this evening">
+      <p class="tonight__head"><span class="live" aria-hidden="true"></span><span data-tonight>Open chairs tonight</span></p>
+      <ul>
+        <li><b>5:30 PM</b><span>Aanya · Colour</span></li>
+        <li><b>6:15 PM</b><span>Rehan · Cut and style</span></li>
+        <li><b>7:00 PM</b><span>Sravani · Glow facial</span></li>
+      </ul>
+      <a class="tonight__cta" href="#book">Hold a chair<svg class="ico"><use href="#i-arrow"/></svg></a>
+    </aside>
+  </section>
+
+  <!-- SERVICE MENU (pinned, the silk changes colour per service) -->
+  <section class="services" id="services" data-silk data-tone="dark" data-tour="2600" aria-labelledby="svc-title">
+    <i class="tour-mark" data-tour="2000" data-tour-offset="0.5" aria-hidden="true"></i>
+    <i class="tour-mark" data-tour="2000" data-tour-offset="1" aria-hidden="true"></i>
+    <i class="tour-mark" data-tour="2000" data-tour-offset="1.5" aria-hidden="true"></i>
+    <i class="tour-mark" data-tour="2200" data-tour-offset="2" aria-hidden="true"></i>
+    <div class="services__calm services__calm--dark" aria-hidden="true"></div>
+    <div class="services__calm services__calm--light" aria-hidden="true"></div>
+    <div class="container services__grid">
+      <div class="services__intro">
+        <p class="eyebrow">The service menu</p>
+        <h2 class="h2" id="svc-title">Rituals, <em>priced plainly.</em></h2>
+        <p class="services__lead">Every visit starts with a consultation and ends with a finish you can walk out in. Prices include GST, and nothing is added at the counter.</p>
+        <div class="tabs" role="tablist" aria-label="Service categories">
+          <button class="tab" role="tab" id="tab-0" aria-controls="panel-0" aria-selected="true" data-k="0"><span class="tab__n">01</span><span class="tab__name">Hair</span><span class="tab__hint">Cuts, colour, keratin</span></button>
+          <button class="tab" role="tab" id="tab-1" aria-controls="panel-1" aria-selected="false" tabindex="-1" data-k="1"><span class="tab__n">02</span><span class="tab__name">Skin</span><span class="tab__hint">Facials and peels</span></button>
+          <button class="tab" role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1" data-k="2"><span class="tab__n">03</span><span class="tab__name">Spa</span><span class="tab__hint">Massage and body</span></button>
+          <button class="tab" role="tab" id="tab-3" aria-controls="panel-3" aria-selected="false" tabindex="-1" data-k="3"><span class="tab__n">04</span><span class="tab__name">Nails</span><span class="tab__hint">Hands and feet</span></button>
+          <button class="tab" role="tab" id="tab-4" aria-controls="panel-4" aria-selected="false" tabindex="-1" data-k="4"><span class="tab__n">05</span><span class="tab__name">Bridal</span><span class="tab__hint">Every look, every event</span></button>
+        </div>
+        <div class="services__progress" aria-hidden="true"><i></i></div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card__panels">
+          <div class="panel is-on" role="tabpanel" id="panel-0" aria-labelledby="tab-0">
+            <header class="panel__head"><p class="panel__k">01 / 05</p><h3>Hair</h3><p class="panel__tag">Cut, coloured and finished by senior stylists.</p></header>
+            <ul class="svc">
+              <li style="--i:0"><div><h4>Cut and style</h4><p>Consultation, wash, precision cut and blow-dry.</p></div><span class="svc__t">60 min</span><b class="svc__p">₹1,200</b></li>
+              <li style="--i:1"><div><h4>Global colour</h4><p>Ammonia-free colour with a gloss and bond-care rinse.</p></div><span class="svc__t">2 hr</span><b class="svc__p"><small>from</small>₹4,500</b></li>
+              <li style="--i:2"><div><h4>Keratin smoothing</h4><p>Frizz-free, glass-smooth hair for up to four months.</p></div><span class="svc__t">3 hr</span><b class="svc__p"><small>from</small>₹6,500</b></li>
+              <li style="--i:3"><div><h4>Balayage</h4><p>Hand-painted lightness, toned to your skin.</p></div><span class="svc__t">3 hr 30 min</span><b class="svc__p"><small>from</small>₹7,800</b></li>
+              <li style="--i:4"><div><h4>Hair spa ritual</h4><p>Steam, mask and a 20-minute scalp massage.</p></div><span class="svc__t">45 min</span><b class="svc__p">₹2,200</b></li>
+            </ul>
+            <footer class="panel__foot"><a class="btn btn--plum" href="#book" data-svc="cut">Book hair<svg class="ico"><use href="#i-arrow"/></svg></a><p>Free consultation. Cancel up to 4 hours before.</p></footer>
+          </div>
+          <div class="panel" role="tabpanel" id="panel-1" aria-labelledby="tab-1">
+            <header class="panel__head"><p class="panel__k">02 / 05</p><h3>Skin</h3><p class="panel__tag">Facials that show on day one, and on day thirty.</p></header>
+            <ul class="svc">
+              <li style="--i:0"><div><h4>Hydra facial</h4><p>Cleanse, extract, infuse and seal in six steps.</p></div><span class="svc__t">75 min</span><b class="svc__p">₹5,500</b></li>
+              <li style="--i:1"><div><h4>Glow facial</h4><p>Vitamin C, gentle exfoliation and a lymphatic massage.</p></div><span class="svc__t">50 min</span><b class="svc__p">₹2,800</b></li>
+              <li style="--i:2"><div><h4>Dermaplaning</h4><p>Lifts peach fuzz and dull skin for a smooth base.</p></div><span class="svc__t">40 min</span><b class="svc__p">₹3,400</b></li>
+              <li style="--i:3"><div><h4>Brow and lash lift</h4><p>Lifted, tinted and set for six weeks.</p></div><span class="svc__t">60 min</span><b class="svc__p">₹2,600</b></li>
+            </ul>
+            <footer class="panel__foot"><a class="btn btn--plum" href="#book" data-svc="hydra">Book a facial<svg class="ico"><use href="#i-arrow"/></svg></a><p>Patch test included for every new client.</p></footer>
+          </div>
+          <div class="panel" role="tabpanel" id="panel-2" aria-labelledby="tab-2">
+            <header class="panel__head"><p class="panel__k">03 / 05</p><h3>Spa</h3><p class="panel__tag">Quiet rooms, warm oils and nowhere to be.</p></header>
+            <ul class="svc">
+              <li style="--i:0"><div><h4>Balinese massage</h4><p>Long strokes, acupressure and warm coconut oil.</p></div><span class="svc__t">60 min</span><b class="svc__p">₹3,200</b></li>
+              <li style="--i:1"><div><h4>Deep tissue</h4><p>Firm pressure for desk shoulders and tight backs.</p></div><span class="svc__t">90 min</span><b class="svc__p">₹4,600</b></li>
+              <li style="--i:2"><div><h4>Hot stone ritual</h4><p>Warm basalt stones, from the neck to the heels.</p></div><span class="svc__t">75 min</span><b class="svc__p">₹4,200</b></li>
+              <li style="--i:3"><div><h4>Foot reflexology</h4><p>Pressure-point work that resets tired feet.</p></div><span class="svc__t">45 min</span><b class="svc__p">₹1,800</b></li>
+            </ul>
+            <footer class="panel__foot"><a class="btn btn--plum" href="#book" data-svc="balinese">Book the spa<svg class="ico"><use href="#i-arrow"/></svg></a><p>Couples suite available on request.</p></footer>
+          </div>
+          <div class="panel" role="tabpanel" id="panel-3" aria-labelledby="tab-3">
+            <header class="panel__head"><p class="panel__k">04 / 05</p><h3>Nails</h3><p class="panel__tag">Clean, precise and built to last three weeks.</p></header>
+            <ul class="svc">
+              <li style="--i:0"><div><h4>Gel manicure</h4><p>Shape, cuticle care and a high-shine gel finish.</p></div><span class="svc__t">45 min</span><b class="svc__p">₹1,400</b></li>
+              <li style="--i:1"><div><h4>Spa pedicure</h4><p>Soak, scrub, mask and a long foot massage.</p></div><span class="svc__t">60 min</span><b class="svc__p">₹1,800</b></li>
+              <li style="--i:2"><div><h4>Gel extensions</h4><p>Natural-looking length in almond, oval or square.</p></div><span class="svc__t">90 min</span><b class="svc__p">₹2,600</b></li>
+              <li style="--i:3"><div><h4>Nail art</h4><p>Hand-painted detail, foil and chrome, per set.</p></div><span class="svc__t">20 min</span><b class="svc__p"><small>from</small>₹600</b></li>
+            </ul>
+            <footer class="panel__foot"><a class="btn btn--plum" href="#book" data-svc="gelmani">Book nails<svg class="ico"><use href="#i-arrow"/></svg></a><p>Single-use files and sterilised tools, always.</p></footer>
+          </div>
+          <div class="panel" role="tabpanel" id="panel-4" aria-labelledby="tab-4">
+            <header class="panel__head"><p class="panel__k">05 / 05</p><h3>Bridal</h3><p class="panel__tag">Trials, events and the big day, planned with you.</p></header>
+            <ul class="svc">
+              <li style="--i:0"><div><h4>Bridal makeup and hair</h4><p>HD or airbrush makeup, styling and draping.</p></div><span class="svc__t">3 hr</span><b class="svc__p"><small>from</small>₹35,000</b></li>
+              <li style="--i:1"><div><h4>Pre-bridal glow course</h4><p>Six sessions of facials, body polish and hair spa.</p></div><span class="svc__t">6 visits</span><b class="svc__p">₹18,000</b></li>
+              <li style="--i:2"><div><h4>Bridal trial</h4><p>A full look rehearsal, adjusted in your package.</p></div><span class="svc__t">2 hr</span><b class="svc__p">₹4,500</b></li>
+              <li style="--i:3"><div><h4>Groom grooming</h4><p>Facial, haircut, beard design and a manicure.</p></div><span class="svc__t">2 hr</span><b class="svc__p">₹6,500</b></li>
+            </ul>
+            <footer class="panel__foot"><a class="btn btn--plum" href="#bridal">See bridal packages<svg class="ico"><use href="#i-arrow"/></svg></a><p>Venue visits anywhere in Hyderabad.</p></footer>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE AND AFTER -->
+  <section class="section results" id="results" data-tour="2800" aria-labelledby="res-title">
+    <div class="container results__grid">
+      <div class="results__copy">
+        <p class="eyebrow">Results, not filters</p>
+        <h2 class="h2" id="res-title" data-split>From frizz to <em>glass-smooth</em> in one afternoon.</h2>
+        <p class="lead">Drag the line. On the left, a year of heat damage and box dye. On the right, the same hair after keratin smoothing and a soft caramel balayage.</p>
+      </div>
+      <div class="results__detail">
+        <ul class="recipe" data-reveal>
+          <li><span>Keratin smoothing</span><b>₹6,500</b></li>
+          <li><span>Soft caramel balayage</span><b>₹7,800</b></li>
+          <li><span>Time in the chair</span><b>4 hr 30 min</b></li>
+          <li><span>Stylist</span><b>Aanya Reddy</b></li>
+        </ul>
+        <div class="stats" data-reveal>
+          <div><b><span data-count="4">4</span></b><span>months frizz-free, on average</span></div>
+          <div><b><span data-count="1900">1,900</span>+</b><span>keratin clients since 2019</span></div>
+        </div>
+      </div>
+      <div class="ba" data-ba>
+        <canvas class="ba__img" data-ba-before role="img" aria-label="Illustrated portrait of a client before treatment: frizzy, dull, uneven hair"></canvas>
+        <div class="ba__after" aria-hidden="true"><canvas class="ba__img" data-ba-after></canvas></div>
+        <span class="ba__tag ba__tag--b">Before</span>
+        <span class="ba__tag ba__tag--a">After</span>
+        <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Divider position. Left shows before, right shows after the keratin and balayage service">
+        <div class="ba__handle" aria-hidden="true"><span class="ba__knob"><svg><use href="#i-chev-l"/></svg><svg><use href="#i-chev-r"/></svg></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STYLISTS -->
+  <section class="section team" id="stylists" data-tour="2400" aria-labelledby="team-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Senior stylists</p>
+        <h2 class="h2" id="team-title" data-split>The hands you will <em>want to keep.</em></h2>
+        <p class="section-sub">Four leads, each trained in-house for two years before taking a chair. Ask for one by name, or let us match you.</p>
+      </div>
+      <ul class="team__grid">
+        <li class="stylist" data-reveal>
+          <figure class="stylist__art">
+            <svg viewBox="0 0 240 300" role="img" aria-label="Abstract portrait of Aanya Reddy with long caramel-tipped waves">
+              <defs>
+                <linearGradient id="aBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4dfd6"/><stop offset="1" stop-color="#e2b8a9"/></linearGradient>
+                <linearGradient id="aHair" gradientUnits="userSpaceOnUse" x1="0" y1="66" x2="0" y2="250"><stop offset="0" stop-color="#2a1611"/><stop offset=".55" stop-color="#4b2a1c"/><stop offset="1" stop-color="#c68f5a"/></linearGradient>
+              </defs>
+              <rect width="240" height="300" fill="url(#aBg)"/>
+              <circle cx="158" cy="104" r="72" fill="#f9ece5"/>
+              <rect x="72" y="70" width="96" height="180" rx="48" fill="url(#aHair)"/>
+              <path d="M22 300C26 244 64 214 120 212C176 214 214 244 218 300Z" fill="#3a1f2b"/>
+              <path d="M104 156h32v52l-16 28-16-28z" fill="#c98e6b"/>
+              <path d="M104 166q16 18 32 0v-10h-32z" fill="#b07655"/>
+              <ellipse cx="120" cy="122" rx="37" ry="46" fill="#c98e6b"/>
+              <path d="M120 76a37 46 0 0 1 0 92a24 46 0 0 0 0-92z" fill="#b07655" opacity=".55"/>
+              <path d="M82 126C80 88 100 70 126 70c24 0 40 16 41 40-14-10-34-13-52-5-14 6-26 13-33 21z" fill="url(#aHair)"/>
+              <path d="M82 120c-7 26 1 48 1 72 0 18-6 32-13 44 22-2 33-20 33-44 0-26-13-46-21-72z" fill="url(#aHair)"/>
+              <circle cx="158" cy="142" r="5" fill="none" stroke="#c9a46a" stroke-width="2"/>
+              <path d="M18 300V122a102 102 0 0 1 204 0v178" fill="none" stroke="#c9a46a" stroke-width="1" opacity=".55"/>
+              <g fill="none" stroke="#a87c40" stroke-width="1.4" stroke-linejoin="round"><rect x="186" y="40" width="9" height="26" rx="3" transform="rotate(-24 190 66)"/><rect x="194" y="38" width="9" height="26" rx="3"/><rect x="202" y="40" width="9" height="26" rx="3" transform="rotate(24 206 66)"/></g>
+            </svg>
+          </figure>
+          <div class="stylist__body">
+            <p class="stylist__role">Creative colour director</p>
+            <h3>Aanya Reddy</h3>
+            <p class="stylist__spec">Balayage, colour correction, grey blending</p>
+            <p class="stylist__meta"><span>14 years</span><span data-next="5:30 PM">Free today, 5:30 PM</span></p>
+            <a class="stylist__book" href="#book" data-stylist="Aanya">Book with Aanya<svg class="ico"><use href="#i-arrow"/></svg></a>
+          </div>
+        </li>
+        <li class="stylist" data-reveal>
+          <figure class="stylist__art">
+            <svg viewBox="0 0 240 300" role="img" aria-label="Abstract portrait of Rehan Qureshi with a short quiff and trimmed beard">
+              <defs><linearGradient id="rBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c7d1bf"/><stop offset="1" stop-color="#a0af97"/></linearGradient></defs>
+              <rect width="240" height="300" fill="url(#rBg)"/>
+              <circle cx="84" cy="104" r="68" fill="#d6dece"/>
+              <path d="M22 300C26 244 64 214 120 212C176 214 214 244 218 300Z" fill="#3a1f2b"/>
+              <path d="M98 212l22 44 22-44z" fill="#f7f1ea"/>
+              <path d="M104 156h32v50l-16 22-16-22z" fill="#b27552"/>
+              <path d="M104 166q16 18 32 0v-10h-32z" fill="#96603f"/>
+              <path d="M98 210l22 22-8 14zM142 210l-22 22 8 14z" fill="#ffffff"/>
+              <ellipse cx="120" cy="122" rx="37" ry="46" fill="#b27552"/>
+              <path d="M120 76a37 46 0 0 1 0 92a24 46 0 0 0 0-92z" fill="#96603f" opacity=".55"/>
+              <path d="M83 132c0 32 16 50 37 50s37-18 37-50c-4 14-13 22-23 22-5-6-23-6-28 0-10 0-19-8-23-22z" fill="#1c110e"/>
+              <path d="M83 118c-2-30 15-50 39-52 26-2 44 14 42 42-8-10-20-14-34-12-18 2-33 8-47 22z" fill="#1c110e"/>
+              <path d="M92 94c4-22 30-34 54-24 12 6 18 18 18 30-12-12-36-16-56-12-6 1-12 3-16 6z" fill="#2e1d16"/>
+              <path d="M18 300V122a102 102 0 0 1 204 0v178" fill="none" stroke="#7d8c74" stroke-width="1" opacity=".8"/>
+              <g fill="none" stroke="#5e6b57" stroke-width="1.5" stroke-linecap="round" transform="translate(184 34)"><circle cx="6" cy="24" r="4.5"/><circle cx="22" cy="24" r="4.5"/><path d="M9 21L24 2M19 21L4 2"/></g>
+            </svg>
+          </figure>
+          <div class="stylist__body">
+            <p class="stylist__role">Senior stylist</p>
+            <h3>Rehan Qureshi</h3>
+            <p class="stylist__spec">Precision cuts, keratin, men's grooming</p>
+            <p class="stylist__meta"><span>11 years</span><span data-next="6:15 PM">Free today, 6:15 PM</span></p>
+            <a class="stylist__book" href="#book" data-stylist="Rehan">Book with Rehan<svg class="ico"><use href="#i-arrow"/></svg></a>
+          </div>
+        </li>
+        <li class="stylist" data-reveal>
+          <figure class="stylist__art">
+            <svg viewBox="0 0 240 300" role="img" aria-label="Abstract portrait of Sravani Rao with a sleek low bun and jasmine flowers">
+              <defs><linearGradient id="sBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f1dfbf"/><stop offset="1" stop-color="#dbbf8f"/></linearGradient></defs>
+              <rect width="240" height="300" fill="url(#sBg)"/>
+              <circle cx="152" cy="98" r="68" fill="#f7eacf"/>
+              <circle cx="157" cy="160" r="23" fill="#1d110d"/>
+              <path d="M172 140a24 24 0 0 1 2 38" fill="none" stroke="#fffaf0" stroke-width="5.5" stroke-linecap="round" stroke-dasharray="0.1 7.2"/>
+              <path d="M22 300C26 244 64 214 120 212C176 214 214 244 218 300Z" fill="#6f7f67"/>
+              <path d="M38 252c40-22 84-18 126 48h-20c-34-50-70-56-100-38z" fill="#c9a46a"/>
+              <path d="M104 156h32v52l-16 26-16-26z" fill="#9c6244"/>
+              <path d="M104 166q16 18 32 0v-10h-32z" fill="#844f34"/>
+              <ellipse cx="120" cy="122" rx="37" ry="46" fill="#9c6244"/>
+              <path d="M120 76a37 46 0 0 1 0 92a24 46 0 0 0 0-92z" fill="#844f34" opacity=".55"/>
+              <path d="M83 124c-2-34 14-56 37-56s39 22 37 56c-6-18-18-29-37-29s-31 11-37 29z" fill="#1d110d"/>
+              <path d="M120 69v25" stroke="#5a3a2c" stroke-width="1.4"/>
+              <path d="M78 147a6 6 0 0 1 12 0z" fill="#c9a46a"/><circle cx="80" cy="151" r="1.4" fill="#c9a46a"/><circle cx="84" cy="152" r="1.4" fill="#c9a46a"/><circle cx="88" cy="151" r="1.4" fill="#c9a46a"/>
+              <path d="M18 300V122a102 102 0 0 1 204 0v178" fill="none" stroke="#b08a4c" stroke-width="1" opacity=".6"/>
+              <g fill="none" stroke="#9a7438" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" transform="translate(186 34)"><path d="M3 26c0-14 8-22 22-23 0 14-8 22-22 23z"/><path d="M3 26l11-11"/></g>
+            </svg>
+          </figure>
+          <div class="stylist__body">
+            <p class="stylist__role">Lead skin therapist</p>
+            <h3>Sravani Rao</h3>
+            <p class="stylist__spec">Hydra facials, peels, pre-bridal skin</p>
+            <p class="stylist__meta"><span>9 years</span><span data-next="7:00 PM">Free today, 7:00 PM</span></p>
+            <a class="stylist__book" href="#book" data-stylist="Sravani">Book with Sravani<svg class="ico"><use href="#i-arrow"/></svg></a>
+          </div>
+        </li>
+        <li class="stylist" data-reveal>
+          <figure class="stylist__art">
+            <svg viewBox="0 0 240 300" role="img" aria-label="Abstract portrait of Ruhi Siddiqui with full curls, gold hoops and a forehead jewel">
+              <defs><linearGradient id="hBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4d2a3b"/><stop offset="1" stop-color="#2c1520"/></linearGradient></defs>
+              <rect width="240" height="300" fill="url(#hBg)"/>
+              <circle cx="120" cy="114" r="80" fill="#5b3547"/>
+              <g fill="#1e110d"><circle cx="86" cy="92" r="21"/><circle cx="104" cy="70" r="21"/><circle cx="128" cy="64" r="22"/><circle cx="150" cy="74" r="20"/><circle cx="164" cy="96" r="20"/><circle cx="168" cy="122" r="18"/><circle cx="76" cy="118" r="19"/><circle cx="74" cy="144" r="17"/><circle cx="166" cy="148" r="17"/><circle cx="80" cy="170" r="15"/><circle cx="160" cy="172" r="15"/><circle cx="92" cy="58" r="13"/><circle cx="148" cy="54" r="13"/></g>
+              <g fill="#3a2219"><circle cx="100" cy="66" r="6"/><circle cx="146" cy="70" r="5"/><circle cx="72" cy="128" r="5"/><circle cx="170" cy="112" r="5"/></g>
+              <path d="M22 300C26 244 64 214 120 212C176 214 214 244 218 300Z" fill="#e9c9bf"/>
+              <path d="M104 156h32v52l-16 24-16-24z" fill="#d19c7b"/>
+              <path d="M104 166q16 18 32 0v-10h-32z" fill="#b98263"/>
+              <path d="M96 214q24 30 48 0" fill="none" stroke="#c9a46a" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="120" cy="230" r="3.5" fill="#c9a46a"/>
+              <ellipse cx="120" cy="122" rx="37" ry="46" fill="#d19c7b"/>
+              <path d="M120 76a37 46 0 0 1 0 92a24 46 0 0 0 0-92z" fill="#b98263" opacity=".55"/>
+              <g fill="#1e110d"><circle cx="98" cy="86" r="14"/><circle cx="120" cy="80" r="15"/><circle cx="142" cy="86" r="14"/></g>
+              <path d="M120 84v14" stroke="#e3c48c" stroke-width="1.4"/><path d="M120 97l4.5 6-4.5 5-4.5-5z" fill="#e3c48c"/>
+              <circle cx="84" cy="150" r="6.5" fill="none" stroke="#c9a46a" stroke-width="2"/><circle cx="156" cy="150" r="6.5" fill="none" stroke="#c9a46a" stroke-width="2"/>
+              <path d="M18 300V122a102 102 0 0 1 204 0v178" fill="none" stroke="#c9a46a" stroke-width="1" opacity=".45"/>
+              <g fill="none" stroke="#c9a46a" stroke-width="1.5" stroke-linejoin="round" transform="translate(184 36)"><path d="M2 20l3-14 7 7 4-11 4 11 7-7 3 14z"/><path d="M2 25h28"/></g>
+            </svg>
+          </figure>
+          <div class="stylist__body">
+            <p class="stylist__role">Bridal artist</p>
+            <h3>Ruhi Siddiqui</h3>
+            <p class="stylist__spec">Bridal makeup, hair styling, saree draping</p>
+            <p class="stylist__meta"><span>12 years</span><span>Free Thursday, 10:00 AM</span></p>
+            <a class="stylist__book" href="#book" data-stylist="Ruhi">Book with Ruhi<svg class="ico"><use href="#i-arrow"/></svg></a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BRIDAL -->
+  <section class="section bridal" id="bridal" data-tour="2600" aria-labelledby="bridal-title">
+    <svg class="bridal__orn" viewBox="0 0 1200 640" aria-hidden="true" preserveAspectRatio="xMidYMin slice">
+      <g fill="none" stroke="#c9a46a" stroke-linecap="round">
+        <path class="orn" d="M260 640V330a340 340 0 0 1 680 0v310" stroke-width="1.2" opacity=".55"/>
+        <path class="orn" d="M310 640V334a290 290 0 0 1 580 0v306" stroke-width="1" opacity=".4"/>
+        <path class="orn" d="M360 640V338a240 240 0 0 1 480 0v302" stroke-width="2" stroke-dasharray="0.1 12" opacity=".6"/>
+        <path class="orn" d="M600 -10v64M570 30h60M584 14l32 32M616 14l-32 32" stroke-width="1.2" opacity=".6"/>
+      </g>
+    </svg>
+    <div class="container">
+      <div class="section-head section-head--light">
+        <p class="eyebrow eyebrow--gold">Bridal at Selvine</p>
+        <h2 class="h2" id="bridal-title" data-split>Every look, every event, <em>one calm team.</em></h2>
+        <p class="section-sub">From the first trial to the last reception, one lead artist stays with you. We come to your venue anywhere in Hyderabad, from 5 AM.</p>
+      </div>
+      <ol class="tiers">
+        <li class="tier" data-reveal>
+          <p class="tier__name">Classic Bride</p>
+          <p class="tier__for">For one wedding day</p>
+          <p class="tier__price">₹35,000</p>
+          <ul class="tier__list">
+            <li>Wedding-day HD makeup and hair</li>
+            <li>Saree or lehenga draping</li>
+            <li>One bridal trial</li>
+            <li>Lashes, pins and a touch-up kit</li>
+            <li>Lead artist and one assistant</li>
+          </ul>
+          <a class="btn btn--line-gold btn--block" href="#book" data-svc="trial">Book a bridal trial</a>
+        </li>
+        <li class="tier tier--hi" data-reveal>
+          <span class="tier__badge">Most booked</span>
+          <p class="tier__name">Signature Bride</p>
+          <p class="tier__for">For three events</p>
+          <p class="tier__price">₹68,000</p>
+          <ul class="tier__list">
+            <li>Mehendi, sangeet and wedding looks</li>
+            <li>Two pre-bridal glow facials</li>
+            <li>Gel manicure and spa pedicure</li>
+            <li>A photographed bridal trial</li>
+            <li>Venue visits anywhere in Hyderabad</li>
+            <li>Lead artist and two assistants</li>
+          </ul>
+          <a class="btn btn--gold btn--block" href="#book" data-svc="trial">Book a bridal trial</a>
+        </li>
+        <li class="tier" data-reveal>
+          <p class="tier__name">Royal Trousseau</p>
+          <p class="tier__for">For the whole celebration</p>
+          <p class="tier__price">₹1,45,000</p>
+          <ul class="tier__list">
+            <li>Up to five events, five looks</li>
+            <li>Six-session pre-bridal course</li>
+            <li>Makeup and hair for four family members</li>
+            <li>Groom grooming package</li>
+            <li>On-call team from 5 AM</li>
+            <li>The same lead artist at every event</li>
+          </ul>
+          <a class="btn btn--line-gold btn--block" href="#book" data-svc="trial">Book a bridal trial</a>
+        </li>
+      </ol>
+      <p class="bridal__note"><svg class="ico"><use href="#i-spark"/></svg>Trials are ₹4,500 and fully adjusted when you book a package. Most brides book three to six months ahead.</p>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP -->
+  <section class="section circle" id="circle" data-tour="2600" aria-labelledby="circle-title">
+    <div class="container circle__grid">
+      <div class="circle__visual">
+        <div class="ccard" data-tilt aria-hidden="true">
+          <div class="ccard__face">
+            <svg class="ccard__lines" viewBox="0 0 340 214" preserveAspectRatio="none">
+              <g fill="none" stroke="#e6cc9a" stroke-width=".6">
+                <path d="M-10 150 Q 40 112, 90 150 T 190 150 T 290 150 T 390 150"/>
+                <path d="M-10 158 Q 40 124, 90 158 T 190 158 T 290 158 T 390 158"/>
+                <path d="M-10 166 Q 40 136, 90 166 T 190 166 T 290 166 T 390 166"/>
+                <path d="M-10 174 Q 40 148, 90 174 T 190 174 T 290 174 T 390 174"/>
+                <path d="M-10 182 Q 40 160, 90 182 T 190 182 T 290 182 T 390 182"/>
+                <path d="M-10 190 Q 40 172, 90 190 T 190 190 T 290 190 T 390 190"/>
+              </g>
+            </svg>
+            <div class="ccard__top"><svg class="ccard__mark"><use href="#i-mark"/></svg><span class="ccard__name">Selvine<em>Circle</em></span></div>
+            <span class="ccard__chip"></span>
+            <p class="ccard__no">2611 0427</p>
+            <div class="ccard__meta"><span>Member<b>Since 2026</b></span><span>Valid<b>12 months</b></span><span>Tier<b>Circle</b></span></div>
+            <i class="ccard__sheen"></i>
+          </div>
+        </div>
+        <div class="ccard__shadow" aria-hidden="true"></div>
+      </div>
+      <div class="circle__copy">
+        <p class="eyebrow">Membership</p>
+        <h2 class="h2" id="circle-title" data-split>Selvine Circle. <em>₹9,999 a year.</em></h2>
+        <p class="lead">One yearly fee, and every visit after it costs less. Most members earn it back by their fifth appointment.</p>
+        <ul class="perks">
+          <li data-reveal><svg class="ico"><use href="#i-tag"/></svg><span><b>15% off</b> every hair, skin, spa and nail service</span></li>
+          <li data-reveal><svg class="ico"><use href="#i-wind"/></svg><span><b>Four blow-dries</b> a year, on us</span></li>
+          <li data-reveal><svg class="ico"><use href="#i-gift"/></svg><span><b>A 60-minute massage</b> in your birthday month</span></li>
+          <li data-reveal><svg class="ico"><use href="#i-clock"/></svg><span><b>Priority</b> weekend and late-evening slots</span></li>
+          <li data-reveal><svg class="ico"><use href="#i-scissors"/></svg><span><b>Free fringe and beard trims</b> between cuts</span></li>
+          <li data-reveal><svg class="ico"><use href="#i-friend"/></svg><span><b>Bring a friend</b>, their first visit is 20% off</span></li>
+        </ul>
+        <div class="calc" data-reveal>
+          <p class="calc__q">If you spend about this much with us each month</p>
+          <div class="seg" role="radiogroup" aria-label="Monthly spend">
+            <button type="button" role="radio" aria-checked="false" data-spend="3000">₹3,000</button>
+            <button type="button" role="radio" aria-checked="true" data-spend="5000">₹5,000</button>
+            <button type="button" role="radio" aria-checked="false" data-spend="8000">₹8,000</button>
+            <button type="button" role="radio" aria-checked="false" data-spend="12000">₹12,000</button>
+          </div>
+          <p class="calc__a">you keep <b data-save>₹5,401</b> a year, after the fee.</p>
+        </div>
+        <div class="circle__ctas">
+          <a class="btn btn--plum btn--lg magnetic" href="#book" data-svc="circle"><span>Join the Circle</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+          <p class="circle__fine">Full refund within 30 days if it is not for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section reviews" id="reviews" data-tour="2200" aria-labelledby="rev-title">
+    <div class="container">
+      <div class="reviews__head">
+        <div>
+          <p class="eyebrow">Client words</p>
+          <h2 class="h2" id="rev-title" data-split>Loved in Jubilee Hills, <em>and well beyond.</em></h2>
+        </div>
+        <div class="score" data-reveal>
+          <b><span data-count="4.9" data-dec="1">4.9</span></b>
+          <div>
+            <span class="stars" aria-label="Rated 4.9 out of 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
+            <p>from 2,140 verified client reviews</p>
+          </div>
+        </div>
+      </div>
+      <ul class="reviews__grid">
+        <li class="review" data-reveal>
+          <span class="review__q" aria-hidden="true">“</span>
+          <blockquote><p>Aanya fixed two years of box dye in one afternoon. The colour is soft, glossy and exactly the caramel I showed her.</p></blockquote>
+          <div class="review__who"><span class="avatar av-1" aria-hidden="true">NS</span><p><b>Nikhita S.</b><span>Banjara Hills · Colour correction</span></p></div>
+        </li>
+        <li class="review review--mid" data-reveal>
+          <span class="review__q" aria-hidden="true">“</span>
+          <blockquote><p>The Balinese massage is the calmest hour of my month. Spotless rooms, warm oil, and nobody tries to upsell you.</p></blockquote>
+          <div class="review__who"><span class="avatar av-2" aria-hidden="true">FA</span><p><b>Farah A.</b><span>Jubilee Hills · Spa</span></p></div>
+        </li>
+        <li class="review" data-reveal>
+          <span class="review__q" aria-hidden="true">“</span>
+          <blockquote><p>Ruhi did my wedding and both receptions. Twelve hours, three looks, and not one touch-up needed in the photos.</p></blockquote>
+          <div class="review__who"><span class="avatar av-3" aria-hidden="true">KV</span><p><b>Keerthi V.</b><span>Gachibowli · Bridal</span></p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- BOOKING (the silk folds into a ribbon here) -->
+  <section class="book" id="book" data-silk data-tour="3200" aria-labelledby="book-title">
+    <div class="book__stage" aria-hidden="true"><p><svg class="ico"><use href="#i-spark"/></svg>Your chair is waiting</p></div>
+    <div class="container book__grid">
+      <div class="book__main">
+        <div class="book__head">
+          <p class="eyebrow">Book your chair</p>
+          <h2 class="h2" id="book-title">Choose a ritual, a stylist <em>and a time.</em></h2>
+          <p class="lead">Instant confirmation on WhatsApp. Reschedule free up to four hours before.</p>
+        </div>
+        <form class="booker" novalidate>
+          <div class="field">
+            <label for="bk-svc">Service</label>
+            <div class="select">
+              <select id="bk-svc" name="service">
+                <optgroup label="Hair">
+                  <option value="cut" data-p="₹1,200" data-d="60 min" data-who="Rehan" selected>Cut and style · ₹1,200</option>
+                  <option value="colour" data-p="from ₹4,500" data-d="2 hr" data-who="Aanya">Global colour · from ₹4,500</option>
+                  <option value="keratin" data-p="from ₹6,500" data-d="3 hr" data-who="Rehan">Keratin smoothing · from ₹6,500</option>
+                  <option value="balayage" data-p="from ₹7,800" data-d="3 hr 30 min" data-who="Aanya">Balayage · from ₹7,800</option>
+                  <option value="hairspa" data-p="₹2,200" data-d="45 min" data-who="Any">Hair spa ritual · ₹2,200</option>
+                </optgroup>
+                <optgroup label="Skin">
+                  <option value="hydra" data-p="₹5,500" data-d="75 min" data-who="Sravani">Hydra facial · ₹5,500</option>
+                  <option value="glow" data-p="₹2,800" data-d="50 min" data-who="Sravani">Glow facial · ₹2,800</option>
+                  <option value="derma" data-p="₹3,400" data-d="40 min" data-who="Sravani">Dermaplaning · ₹3,400</option>
+                </optgroup>
+                <optgroup label="Spa">
+                  <option value="balinese" data-p="₹3,200" data-d="60 min" data-who="Any">Balinese massage, 60 min · ₹3,200</option>
+                  <option value="deep" data-p="₹4,600" data-d="90 min" data-who="Any">Deep tissue, 90 min · ₹4,600</option>
+                  <option value="stone" data-p="₹4,200" data-d="75 min" data-who="Any">Hot stone ritual · ₹4,200</option>
+                </optgroup>
+                <optgroup label="Nails">
+                  <option value="gelmani" data-p="₹1,400" data-d="45 min" data-who="Any">Gel manicure · ₹1,400</option>
+                  <option value="pedi" data-p="₹1,800" data-d="60 min" data-who="Any">Spa pedicure · ₹1,800</option>
+                </optgroup>
+                <optgroup label="Bridal and membership">
+                  <option value="trial" data-p="₹4,500" data-d="2 hr" data-who="Ruhi">Bridal trial · ₹4,500</option>
+                  <option value="circle" data-p="₹9,999 a year" data-d="15 min" data-who="Any">Selvine Circle membership · ₹9,999</option>
+                </optgroup>
+              </select>
+              <svg class="ico" aria-hidden="true"><use href="#i-chev-d"/></svg>
+            </div>
+          </div>
+          <fieldset class="field">
+            <legend>Stylist</legend>
+            <div class="who" role="radiogroup" aria-label="Stylist">
+              <button type="button" role="radio" aria-checked="true" data-who="Any"><span class="mini mini--any" aria-hidden="true"><svg class="ico"><use href="#i-spark"/></svg></span>Any senior</button>
+              <button type="button" role="radio" aria-checked="false" data-who="Aanya"><span class="mini av-a" aria-hidden="true">A</span>Aanya</button>
+              <button type="button" role="radio" aria-checked="false" data-who="Rehan"><span class="mini av-r" aria-hidden="true">R</span>Rehan</button>
+              <button type="button" role="radio" aria-checked="false" data-who="Sravani"><span class="mini av-s" aria-hidden="true">S</span>Sravani</button>
+              <button type="button" role="radio" aria-checked="false" data-who="Ruhi"><span class="mini av-h" aria-hidden="true">R</span>Ruhi</button>
+            </div>
+          </fieldset>
+          <fieldset class="field">
+            <legend>Date <span class="legend__note" data-month>November 2026</span></legend>
+            <div class="days" role="radiogroup" aria-label="Date">
+              <button type="button" role="radio" aria-checked="true"><small>Today</small><b>22</b></button>
+              <button type="button" role="radio" aria-checked="false"><small>Mon</small><b>23</b></button>
+              <button type="button" role="radio" aria-checked="false"><small>Tue</small><b>24</b></button>
+              <button type="button" role="radio" aria-checked="false"><small>Wed</small><b>25</b></button>
+              <button type="button" role="radio" aria-checked="false"><small>Thu</small><b>26</b></button>
+              <button type="button" role="radio" aria-checked="false"><small>Fri</small><b>27</b></button>
+              <button type="button" role="radio" aria-checked="false"><small>Sat</small><b>28</b></button>
+            </div>
+          </fieldset>
+          <fieldset class="field">
+            <legend>Time</legend>
+            <div class="slots" role="radiogroup" aria-label="Time">
+              <button type="button" role="radio" aria-checked="false">10:00 AM</button>
+              <button type="button" role="radio" aria-checked="false">11:30 AM</button>
+              <button type="button" role="radio" aria-checked="false">1:00 PM</button>
+              <button type="button" role="radio" aria-checked="false">2:30 PM</button>
+              <button type="button" role="radio" aria-checked="false">4:00 PM</button>
+              <button type="button" role="radio" aria-checked="true">5:30 PM</button>
+              <button type="button" role="radio" aria-checked="false">7:00 PM</button>
+              <button type="button" role="radio" aria-checked="false">8:00 PM</button>
+            </div>
+          </fieldset>
+          <div class="field-row">
+            <div class="field"><label for="bk-name">Your name</label><input id="bk-name" name="name" type="text" autocomplete="name" placeholder="Priya Reddy"></div>
+            <div class="field"><label for="bk-phone">WhatsApp number</label><input id="bk-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="10-digit mobile"></div>
+          </div>
+          <div class="summary" aria-live="polite">
+            <p class="summary__what"><span data-sum-svc>Cut and style</span> with <span data-sum-who>any senior stylist</span></p>
+            <p class="summary__when"><svg class="ico"><use href="#i-clock"/></svg><span data-sum-when>Today · 5:30 PM</span><span class="summary__dot">·</span><span data-sum-dur>60 min</span><b data-sum-price>₹1,200</b></p>
+          </div>
+          <p class="form-err" data-err role="alert"></p>
+          <div class="booker__ctas">
+            <button class="btn btn--plum btn--lg" type="submit"><span>Confirm booking</span><svg class="ico"><use href="#i-arrow"/></svg></button>
+            <button class="btn btn--line btn--lg" type="button" data-wa><svg class="ico"><use href="#i-chat"/></svg>Book on WhatsApp</button>
+          </div>
+          <p class="booker__fine">Pay at the salon by card, UPI or cash. No deposit for appointments under ₹10,000.</p>
+          <div class="booked" hidden>
+            <span class="booked__check" aria-hidden="true"><svg class="ico"><use href="#i-check"/></svg></span>
+            <h3>You are booked.</h3>
+            <p data-booked-text>See you soon. Your confirmation is on its way to WhatsApp.</p>
+            <button class="btn btn--line" type="button" data-rebook>Book another visit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="section visit" id="visit" data-tour="2200" aria-labelledby="visit-title">
+    <div class="container visit__grid">
+      <div class="visit__copy">
+        <p class="eyebrow">Visit us</p>
+        <h2 class="h2" id="visit-title" data-split>Road No. 36, <em>Jubilee Hills.</em></h2>
+        <address>Plot 812, Road No. 36<br>Jubilee Hills, Hyderabad<br>Telangana 500033</address>
+        <p class="visit__how"><svg class="ico"><use href="#i-car"/></svg>Four minutes from Jubilee Hills Check Post. Valet parking at the door, and a quiet lounge with filter coffee if you are early.</p>
+        <dl class="hours">
+          <div><dt>Monday to Sunday</dt><dd>10 AM to 9 PM</dd></div>
+          <div><dt>Spa, last booking</dt><dd>7:30 PM</dd></div>
+          <div><dt>Bridal calls</dt><dd>From 5 AM, by appointment</dd></div>
+        </dl>
+        <div class="visit__ctas">
+          <button class="btn btn--plum" type="button" data-wa><svg class="ico"><use href="#i-chat"/></svg>Chat on WhatsApp</button>
+          <button class="btn btn--line" type="button" data-copy><svg class="ico"><use href="#i-copy"/></svg><span>Copy address</span></button>
+        </div>
+        <p class="visit__mail"><svg class="ico"><use href="#i-mail"/></svg><a href="mailto:hello@selvine.in">hello@selvine.in</a></p>
+      </div>
+      <figure class="map" data-reveal>
+        <svg viewBox="0 0 520 400" role="img" aria-label="Stylised map: Selvine on Road No. 36, four minutes from Jubilee Hills Check Post">
+          <rect width="520" height="400" fill="#f3e8dd"/>
+          <g fill="#fbf6f0">
+            <rect x="18" y="20" width="96" height="70" rx="12"/><rect x="132" y="20" width="76" height="58" rx="12"/><rect x="232" y="20" width="110" height="64" rx="12"/><rect x="364" y="20" width="138" height="82" rx="12"/>
+            <rect x="18" y="108" width="80" height="64" rx="12"/><rect x="360" y="122" width="70" height="60" rx="12"/><rect x="448" y="122" width="56" height="60" rx="12"/>
+            <rect x="18" y="262" width="92" height="118" rx="12"/><rect x="132" y="282" width="84" height="98" rx="12"/><rect x="246" y="276" width="96" height="104" rx="12"/><rect x="362" y="270" width="140" height="110" rx="12"/>
+          </g>
+          <path d="M120 108c30-8 70-6 100 8 22 10 34 30 28 52-6 20-30 30-62 30-36 0-70-10-76-34-4-22-8-48 10-56z" fill="#d5ddcc"/>
+          <g fill="#c1ccb7"><circle cx="150" cy="140" r="12"/><circle cx="178" cy="160" r="15"/><circle cx="206" cy="134" r="10"/><circle cx="140" cy="172" r="9"/></g>
+          <g fill="none" stroke="#ffffff" stroke-linecap="round">
+            <path d="M-10 232C120 222 260 250 530 214" stroke-width="20"/>
+            <path d="M262 -10C270 90 300 170 318 236S350 340 368 410" stroke-width="13"/>
+            <path d="M-10 92C80 100 160 96 250 92" stroke-width="10"/>
+            <path d="M432 -10C420 80 436 160 450 226" stroke-width="9"/>
+          </g>
+          <g fill="none" stroke="rgba(58,31,43,.08)" stroke-width="1">
+            <path d="M-10 222C120 212 260 240 530 204M-10 242C120 232 260 260 530 224"/>
+          </g>
+          <circle cx="316" cy="232" r="13" fill="#fff" stroke="#c9a46a" stroke-width="2.5"/>
+          <path class="map__route" d="M316 232C350 236 384 236 404 228" fill="none" stroke="#3a1f2b" stroke-width="2.6" stroke-dasharray="4 6" stroke-linecap="round"/>
+          <g class="map__pin" transform="translate(412 226)">
+            <circle class="map__pulse" r="24" fill="#c9a46a" opacity=".3"/>
+            <circle r="15" fill="#3a1f2b" stroke="#fff" stroke-width="3"/>
+            <path d="M4.4-4.6c-1.1-1.2-2.9-1.6-4.4-1.1-1.7.5-2.5 2.3-1.7 3.8.7 1.1 2 1.6 3.2 2.1 1.3.5 2.7 1 3.2 2.4.6 1.6-.6 3.3-2.3 3.6-1.6.3-3.2-.3-4.2-1.6" fill="none" stroke="#e6cc9a" stroke-width="1.6" stroke-linecap="round"/>
+          </g>
+          <g font-family="Figtree, sans-serif" font-size="11" fill="#3a1f2b">
+            <g transform="translate(396 168)"><rect x="-8" y="-14" width="104" height="40" rx="11" fill="#3a1f2b"/><text fill="#f7f1ea" font-weight="700" font-size="12.5">Selvine</text><text y="16" fill="#e6cc9a" font-size="10">Plot 812, Road 36</text></g>
+            <g transform="translate(258 268)"><rect x="-8" y="-14" width="140" height="21" rx="10.5" fill="#fff" opacity=".95"/><text font-size="10.5">Jubilee Hills Check Post</text></g>
+            <text x="22" y="214" fill="rgba(58,31,43,.6)" font-size="10" letter-spacing=".12em">ROAD NO. 36</text>
+            <text x="22" y="84" fill="rgba(58,31,43,.6)" font-size="10" letter-spacing=".12em">ROAD NO. 45</text>
+            <text x="440" y="70" fill="rgba(58,31,43,.6)" font-size="10" letter-spacing=".12em" transform="rotate(84 440 70)">ROAD NO. 10</text>
+            <text x="152" y="196" fill="#6f7f67" font-size="10" letter-spacing=".1em">PARK</text>
+          </g>
+        </svg>
+        <figcaption><svg class="ico"><use href="#i-pin"/></svg>Entrance and valet on the Road No. 36 side</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__cta">
+      <h2 class="footer__big">Your best day starts <em>at 10&nbsp;AM.</em></h2>
+      <a class="btn btn--gold btn--lg magnetic" href="#book"><span>Book an appointment</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="Selvine Salon and Spa, back to top"><svg class="brand__mark" aria-hidden="true"><use href="#i-mark"/></svg><span class="brand__name">Selvine<small>Salon · Spa</small></span></a>
+        <p>Hair, skin, spa and bridal rituals in Jubilee Hills, Hyderabad, since 2016.</p>
+        <form class="news" novalidate>
+          <label for="news-mail">Festive slots open to our list first</label>
+          <div class="news__row"><input id="news-mail" type="email" autocomplete="email" placeholder="you@email.com"><button class="btn btn--gold btn--sm" type="submit">Join</button></div>
+          <p class="news__msg" data-news-msg aria-live="polite"></p>
+        </form>
+      </div>
+      <nav class="footer__col" aria-label="Services">
+        <h3>Services</h3>
+        <a href="#services" data-tab="0">Hair</a><a href="#services" data-tab="1">Skin</a><a href="#services" data-tab="2">Spa</a><a href="#services" data-tab="3">Nails</a><a href="#services" data-tab="4">Bridal</a>
+      </nav>
+      <nav class="footer__col" aria-label="Salon">
+        <h3>Salon</h3>
+        <a href="#stylists">Stylists</a><a href="#results">Results</a><a href="#circle">Selvine Circle</a><a href="#reviews">Reviews</a><a href="#book">Book</a>
+      </nav>
+      <div class="footer__col">
+        <h3>Visit</h3>
+        <address>Plot 812, Road No. 36<br>Jubilee Hills, Hyderabad 500033</address>
+        <p>Daily, 10 AM to 9 PM</p>
+        <a href="mailto:hello@selvine.in">hello@selvine.in</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 Selvine Salon and Spa, Hyderabad.</p>
+      <nav aria-label="Legal"><a href="#top">Privacy</a><a href="#top">Terms</a><a href="#top">Gift cards</a></nav>
+      <p class="footer__note">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="mbar" aria-hidden="true">
+  <button class="btn btn--line btn--md" type="button" data-wa tabindex="-1"><svg class="ico"><use href="#i-chat"/></svg>WhatsApp</button>
+  <a class="btn btn--plum btn--md" href="#book" tabindex="-1">Book a chair</a>
+</div>
+
+<div class="wa" role="dialog" aria-modal="false" aria-labelledby="wa-title" hidden>
+  <div class="wa__head">
+    <span class="wa__av" aria-hidden="true"><svg class="ico"><use href="#i-mark"/></svg></span>
+    <div><p id="wa-title">Selvine Salon and Spa</p><span><i class="live" aria-hidden="true"></i>Usually replies in 5 minutes</span></div>
+    <button class="wa__close" type="button" aria-label="Close chat"><svg class="ico"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="wa__body" aria-live="polite">
+    <div class="bubble bubble--in">Hello, this is Meghana at the Selvine front desk. How can we help today?</div>
+  </div>
+  <div class="wa__quick">
+    <button type="button" data-q="0">Hair spa this week</button>
+    <button type="button" data-q="1">Bridal trial dates</button>
+    <button type="button" data-q="2">Circle membership</button>
+  </div>
+</div>
+</body>
+</html>

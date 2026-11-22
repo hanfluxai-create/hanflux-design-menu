@@ -271,6 +271,13 @@ html.has-offer .offer-bar { display: block; }
 .offer-bar .ob-go::after { content: " →"; }
 @media (max-width: 400px) { .offer-bar .ob-in { gap: 8px; letter-spacing: .08em; font-size: 10.5px; } .offer-bar .ob-go { display: none; } }
 
+/* phones: the offer bar and the header slide away while reading down and return on any scroll up (shell.js) */
+@media (max-width: 860px) {
+  .nav { transition: background-color .35s, box-shadow .35s, transform .38s var(--ease-out); }
+  .offer-bar { transition: transform .38s var(--ease-out); }
+  html.hdr-off .nav, html.hdr-off .offer-bar { transform: translateY(calc(-1 * (var(--nav-h) + var(--bar-h)) - 6px)); }
+}
+
 .was { position: relative; display: inline-block; color: var(--ink-faint); font-weight: inherit; text-decoration: none; white-space: nowrap; }
 .was::after { content: ""; position: absolute; left: -4%; right: -4%; top: 52%; height: max(1px, .06em); background: var(--s-pink); border-radius: 2px; transform: rotate(-7deg); }
 .now { white-space: nowrap; color: var(--ink); }

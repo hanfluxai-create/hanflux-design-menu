@@ -1,0 +1,33 @@
+/* Menu copy of hanflux.ai: phone fixes so the floating controls never sit on top of text.
+   The site's own CSS loads later in chunks, so these rules need !important. */
+
+/* inside the menu's preview frames the "Ask anything" chat cannot be used, and it sat on the chapter index */
+html.hx-embed .chatnav { display: none !important; }
+@media (max-width: 640px) {
+  /* progress read-out: a large box over the headings on a phone */
+  .lx-hud { display: none !important; }
+
+  /* Book a call: from bottom left (where it covered the chapter index 01 to 06) to top right */
+  .book-dock {
+    top: calc(env(safe-area-inset-top, 0px) + .75rem) !important;
+    right: .75rem !important;
+    bottom: auto !important;
+    left: auto !important;
+    padding: .55rem .95rem .55rem .8rem !important;
+    font-size: .8rem !important;
+  }
+
+  /* Top button: phones go back up from the status bar; it covered the chapter index */
+  .ascend { display: none !important; }
+
+  /* Jack in: tucked into the bottom right corner, clear of the long service titles */
+  .descend {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + .8rem) !important;
+    right: .9rem !important;
+    gap: .45rem !important;
+  }
+  .descend-arrow { height: 20px !important; }
+
+  /* footer: room for the corner controls is no longer needed */
+  .portal-foot { padding-right: 1.4rem !important; }
+}

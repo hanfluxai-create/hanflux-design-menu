@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/shared/hx-embed.js"></script>
+<script>document.documentElement.classList.add('js')</script>
+<title>Ruvela Residences · Homes above the hills of Baner, Pune</title>
+<meta name="description" content="Ruvela Residences by Senvara Developers: 2 BHK, 3 BHK and 3.5 BHK sky villas in three towers on 4.2 acres in Baner, Pune. 72% open space, 12 minutes from Hinjewadi. Possession December 2027.">
+<meta name="theme-color" content="#efe9df">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e3a2f'/%3E%3Cpath d='M9 24V12h3v12M14.5 24V8h3v16M20 24V10.5h3V24' fill='%23efe9df'/%3E%3Ccircle cx='22.5' cy='7' r='2' fill='%23c46a3c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Manrope:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/vendor/lenis/lenis.css">
+<link rel="stylesheet" href="./style.css">
+<script type="importmap">{"imports":{"three":"/vendor/three/three.module.min.js","three/addons/":"/vendor/three/addons/"}}</script>
+<script src="/vendor/gsap/gsap.min.js" defer></script>
+<script src="/vendor/gsap/ScrollTrigger.min.js" defer></script>
+<script src="/vendor/gsap/SplitText.min.js" defer></script>
+<script src="/vendor/lenis/lenis.min.js" defer></script>
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
+  <symbol id="i-down" viewBox="0 0 16 16"><path d="M8 3v10M4 9l4 4 4-4"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 20 20"><path d="M10 2.6a7.3 7.3 0 0 0-6.4 10.8L2.6 17.4l4.1-1a7.3 7.3 0 1 0 3.3-13.8Z"/><path d="M7.4 7.2c.2 1.9 1.6 3.9 3.6 4.9l1.2-1.1 1.6.8-.4 1.4c-3.1-.1-6.2-3-6.6-6l1.4-.5.8 1.6Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 20 20"><path d="M10 18s-5.5-5.4-5.5-9.6a5.5 5.5 0 0 1 11 0C15.5 12.6 10 18 10 18Z"/><circle cx="10" cy="8.4" r="2"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.4"/><path d="M10 5.6V10l2.9 1.9"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 20 20"><rect x="2.6" y="4.4" width="14.8" height="11.2" rx="2"/><path d="m3.4 5.6 6.6 5.2 6.6-5.2"/></symbol>
+  <symbol id="i-check" viewBox="0 0 20 20"><path d="m4.5 10.4 3.6 3.6 7.4-8"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 20 20"><path d="M10 4v12M4 10h12"/></symbol>
+  <symbol id="i-close" viewBox="0 0 20 20"><path d="m5 5 10 10M15 5 5 15"/></symbol>
+  <symbol id="i-car" viewBox="0 0 20 20"><path d="M3.4 13.6V10l1.7-4.2a1.6 1.6 0 0 1 1.5-1h6.8a1.6 1.6 0 0 1 1.5 1L16.6 10v3.6"/><path d="M2.6 13.6h14.8v1.8H2.6zM3.4 10h13.2"/><circle cx="6.2" cy="12" r=".6"/><circle cx="13.8" cy="12" r=".6"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Ruvela Residences, back to top">
+    <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M9 24V12h3v12M14.5 24V8h3v16M20 24V10.5h3V24"/><circle cx="22.6" cy="6.8" r="2"/></svg>
+    <span class="brand-txt"><b>Ruvela</b><small>Residences · Baner</small></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    <a href="#homes">Homes</a><a href="#amenities">Amenities</a><a href="#location">Location</a><a href="#progress">Progress</a><a href="#emi">EMI</a><a href="#faq">FAQ</a>
+  </nav>
+  <div class="nav-right">
+    <button class="btn btn-ghost btn-sm nav-wa" type="button" data-wa><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><span>WhatsApp</span></button>
+    <a class="btn btn-forest btn-sm magnetic" href="#visit"><span>Book a site visit</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span class="menu-lines" aria-hidden="true"><i></i><i></i></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <a href="#homes"><small>02</small>Homes and prices</a>
+    <a href="#amenities"><small>03</small>Amenities</a>
+    <a href="#location"><small>04</small>Location</a>
+    <a href="#progress"><small>05</small>Construction</a>
+    <a href="#emi"><small>06</small>EMI calculator</a>
+    <a href="#visit"><small>07</small>Book a site visit</a>
+    <a href="#faq"><small>08</small>Questions</a>
+  </nav>
+  <div class="menu-foot">
+    <button class="btn btn-sand btn-wide" type="button" data-wa><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><span>Chat on WhatsApp</span></button>
+    <p>Sales lounge open daily, 10 am to 7 pm<br>hello@ruvelaresidences.in</p>
+  </div>
+</div>
+
+<main id="main">
+  <!-- HERO: sticky 3D township, scroll flies in, light runs from morning to golden dusk -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <span class="tm tm-0" data-tour="3400" aria-hidden="true"></span>
+    <span class="tm tm-1" data-tour="2600" aria-hidden="true"></span>
+    <span class="tm tm-2" data-tour="2600" aria-hidden="true"></span>
+    <span class="tm tm-3" data-tour="3800" aria-hidden="true"></span>
+    <div class="hero-sticky">
+      <canvas id="stage" role="img" aria-label="Ruvela Residences in 3D: three towers with balconies on a landscaped podium with a pool and a clubhouse, at the foot of the Baner hills"></canvas>
+      <div class="scrim" aria-hidden="true"></div>
+      <div class="tlabels" aria-hidden="true">
+        <div class="tl"><div class="tl-in"><b>Tower A</b><span>20 floors</span></div></div>
+        <div class="tl"><div class="tl-in"><b>Tower B</b><span>24 floors</span></div></div>
+        <div class="tl"><div class="tl-in"><b>Tower C</b><span>22 floors</span></div></div>
+      </div>
+
+      <div class="cap cap-0">
+        <p class="eyebrow"><span class="dot"></span>New launch · Baner, Pune</p>
+        <h1 class="display" id="hero-title">Homes <em>above</em> the hills of Baner.</h1>
+        <p class="lede">2 and 3 BHK homes with 72% open space, 12 minutes from Hinjewadi.</p>
+        <p class="poss"><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg>Possession December 2027</p>
+        <div class="ctas">
+          <a class="btn btn-forest btn-lg magnetic" href="#visit"><span>Book a site visit</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-line btn-lg magnetic" href="#homes"><span>See floor plans and prices</span></a>
+        </div>
+      </div>
+
+      <div class="cap cap-1">
+        <p class="eyebrow"><span class="num">01</span>The masterplan</p>
+        <h2 class="cap-h">Three towers on 4.2 acres. The rest is garden.</h2>
+        <p class="cap-p">The towers stand on the northern edge, so the lawns, the pool and the clubhouse all face the afternoon sun. Every car parks below the podium, out of sight.</p>
+      </div>
+
+      <div class="cap cap-2">
+        <p class="eyebrow"><span class="num">02</span>Tower A, floor 14</p>
+        <h2 class="cap-h">This one catches the sunset.</h2>
+        <p class="cap-p">A west-facing 3 BHK, fifty metres up, looking straight at the Baner hills. Its 14 ft living room opens onto a 24 ft deck.</p>
+      </div>
+
+      <div class="planfx" aria-hidden="true">
+        <svg class="leader" preserveAspectRatio="none"><path class="ld-line"/><circle class="ld-dot" r="5"/><circle class="ld-ring" r="12"/></svg>
+        <div class="plancard">
+          <div class="pc-head">
+            <p class="eyebrow"><span class="num">03</span>Residence A-1402</p>
+            <p class="pc-h">Step inside: 3 BHK, 1,560 sq ft.</p>
+          </div>
+          <div class="pc-plan" data-plan="3bhk"></div>
+          <div class="pc-foot">
+            <span><b>3</b> bedrooms</span><span><b>3</b> baths</span><span><b>147</b> sq ft deck</span>
+            <a class="pc-cta" href="#homes">From ₹1.28 Cr<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lightclock" aria-hidden="true">
+        <svg viewBox="0 0 64 34"><path class="lc-arc" d="M4 30A28 28 0 0 1 60 30"/><path class="lc-h" d="M0 30.5H64"/><circle class="lc-sun" cx="4" cy="30" r="3.4"/></svg>
+        <div><span class="lc-k">Light study</span><b class="lc-t">07:10</b><span class="lc-n">Morning light</span></div>
+      </div>
+      <p class="hero-coord" aria-hidden="true">18.559° N · 73.786° E</p>
+      <p class="scroll-hint" aria-hidden="true"><span class="sh-line"></span>Scroll to fly in</p>
+    </div>
+  </section>
+
+  <!-- 01 OVERVIEW -->
+  <section class="overview" id="overview" data-tour="2200">
+    <div class="wrap ov-grid">
+      <div class="ov-copy">
+        <p class="label"><span>01</span>Overview</p>
+        <h2 class="h2" data-split>A township that gives most of its land back.</h2>
+        <p class="sec-intro" data-reveal>Ruvela keeps its three towers to the northern edge of a 4.2 acre plot on the Baner hill slope. Everything else is a landscaped podium: lawns, a 30 m lap pool, a clubhouse and a 460 m jogging loop, with every car parked below.</p>
+        <dl class="stats">
+          <div class="stat" data-reveal><dt><b data-count="4.2" data-dec="1">4.2</b><span>acres</span></dt><dd>of land on the Baner hill slope</dd></div>
+          <div class="stat" data-reveal><dt><b data-count="3">3</b><span>towers</span></dt><dd>of 20, 22 and 24 floors</dd></div>
+          <div class="stat" data-reveal><dt><b data-count="72">72</b><span>% open</span></dt><dd>lawns, courts and podium garden</dd></div>
+          <div class="stat" data-reveal><dt><b data-count="14">14</b><span>amenities</span></dt><dd>around a 13,000 sq ft clubhouse</dd></div>
+        </dl>
+      </div>
+      <figure class="ov-plan" data-reveal>
+        <div class="siteplan-wrap" id="siteplan"></div>
+        <figcaption><span>Site plan</span><span>Towers A, B and C · Podium level</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 02 HOMES -->
+  <section class="homes" id="homes" data-tour="2600" data-tour-offset="-0.02">
+    <div class="wrap">
+      <div class="cfg">
+        <header class="sec-head sec-head-row cfg-head">
+          <div>
+            <p class="label"><span>02</span>Homes and prices</p>
+            <h2 class="h2" data-split>Three plans. Every one with a view.</h2>
+          </div>
+          <div class="cfg-side" data-reveal>
+            <p class="sec-intro">Each home is a corner or a through-home, so air moves from the deck to the kitchen. Tap any room to see its size.</p>
+            <div class="cfg-tabs" role="tablist" aria-label="Home types">
+              <button class="cfg-tab is-on" role="tab" aria-selected="true" aria-controls="cfg-panel" data-cfg="2bhk"><b>2 BHK</b><span>1,180 sq ft</span></button>
+              <button class="cfg-tab" role="tab" aria-selected="false" aria-controls="cfg-panel" data-cfg="3bhk"><b>3 BHK</b><span>1,560 sq ft</span></button>
+              <button class="cfg-tab" role="tab" aria-selected="false" aria-controls="cfg-panel" data-cfg="villa"><b>3.5 BHK<span class="xl"> sky villa</span></b><span>2,240 sq ft</span></button>
+            </div>
+          </div>
+        </header>
+        <div class="cfg-panel" id="cfg-panel" role="tabpanel" data-reveal>
+          <div class="cfg-plan">
+            <div class="cfg-svg" id="cfg-svg"></div>
+            <p class="cfg-hint"><svg class="ico" aria-hidden="true"><use href="#i-plus"/></svg>Tap a room</p>
+          </div>
+          <div class="cfg-info">
+            <p class="cfg-name" id="cfg-name">2 BHK</p>
+            <p class="cfg-area"><b id="cfg-area">1,180</b> sq ft</p>
+            <p class="cfg-price">from <b id="cfg-price">₹96 lakh</b></p>
+            <div class="room-read" id="room-read" aria-live="polite">
+              <span class="rr-k">Selected room</span>
+              <b class="rr-n">Living and dining</b>
+              <span class="rr-d">14′0″ × 16′0″ · 224 sq ft</span>
+            </div>
+            <dl class="cfg-facts" id="cfg-facts">
+              <div><dt>Carpet area</dt><dd>806 sq ft</dd></div>
+              <div><dt>Balcony and utility</dt><dd>101 sq ft</dd></div>
+              <div><dt>Facing</dt><dd>East or west</dd></div>
+              <div><dt>Floors</dt><dd>2 to 20, Towers A and C</dd></div>
+              <div><dt>Car parks</dt><dd>1 covered, EV ready</dd></div>
+            </dl>
+            <div class="cfg-ctas">
+              <a class="btn btn-forest" href="#visit"><span>Get the price sheet</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <button class="btn btn-line" type="button" id="cfg-emi"><span>See the EMI</span></button>
+            </div>
+          </div>
+        </div>
+        <p class="fine" data-reveal>Prices include one covered car park with the 2 BHK and two with larger homes. GST, stamp duty and registration are extra. Plans are indicative and furniture is shown for scale.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 AMENITIES -->
+  <section class="amen" id="amenities">
+    <div class="wrap">
+      <header class="sec-head sec-head-row">
+        <div>
+          <p class="label"><span>03</span>Amenities</p>
+          <h2 class="h2" data-split>Fourteen reasons to stay in on a Sunday.</h2>
+        </div>
+        <p class="sec-intro" data-reveal>All of it sits on the podium, a lift ride from your door, and none of it is shared with a road.</p>
+      </header>
+      <div class="bento" data-tour="2600" data-tour-offset="-0.12">
+        <article class="tile t-club" data-reveal>
+          <div class="t-art" aria-hidden="true">
+            <svg viewBox="0 0 400 230" preserveAspectRatio="xMidYMax slice">
+              <rect class="cl-sky" width="400" height="230"/>
+              <circle class="cl-sunc" cx="318" cy="64" r="26"/>
+              <path class="cl-hill" d="M0 170C60 132 120 128 190 150S320 118 400 140V230H0Z"/>
+              <rect class="cl-ground" y="196" width="400" height="34"/>
+              <g class="cl-tree"><path d="M44 196V166"/><circle cx="44" cy="156" r="20"/><path d="M360 196V172"/><circle cx="360" cy="162" r="16"/></g>
+              <rect class="cl-glass" x="92" y="150" width="216" height="46"/>
+              <g class="cl-win"><rect x="104" y="160" width="28" height="30"/><rect x="140" y="160" width="28" height="30"/><rect x="176" y="160" width="28" height="30"/><rect x="212" y="160" width="28" height="30"/><rect x="248" y="160" width="28" height="30"/></g>
+              <rect class="cl-up" x="78" y="104" width="250" height="46"/>
+              <g class="cl-louv"><path d="M88 104v46M102 104v46M116 104v46M130 104v46M144 104v46M158 104v46M172 104v46M186 104v46M200 104v46M214 104v46M228 104v46M242 104v46M256 104v46M270 104v46M284 104v46M298 104v46M312 104v46"/></g>
+              <rect class="cl-slab" x="70" y="98" width="268" height="7"/>
+              <g class="cl-perg"><path d="M96 98V74M310 98V74M90 74H316"/><path d="M110 74v-4M130 74v-4M150 74v-4M170 74v-4M190 74v-4M210 74v-4M230 74v-4M250 74v-4M270 74v-4M290 74v-4"/></g>
+            </svg>
+          </div>
+          <div class="t-txt">
+            <p class="t-k">Clubhouse</p>
+            <h3>13,000 sq ft over two floors</h3>
+            <p>A gym with a view of the pool, a yoga deck under a timber pergola, a library and a party lawn that opens straight off the ground floor.</p>
+          </div>
+        </article>
+        <article class="tile t-pool" data-reveal>
+          <div class="t-art" aria-hidden="true">
+            <svg viewBox="0 0 400 150" preserveAspectRatio="xMidYMid slice">
+              <rect class="po-deck" width="400" height="150"/>
+              <rect class="po-water" x="26" y="26" width="348" height="98" rx="6"/>
+              <g class="po-lanes"><path d="M34 50.5H366M34 75H366M34 99.5H366"/></g>
+              <g class="po-shim"><path d="M60 38c20-6 40 6 60 0s40 6 60 0"/><path d="M190 64c20-6 40 6 60 0s40 6 60 0"/><path d="M80 88c20-6 40 6 60 0s40 6 60 0"/><path d="M230 112c20-6 40 6 60 0s40 6 60 0"/></g>
+              <g class="po-swim"><circle cx="0" cy="62" r="4"/><path d="M-22 62h14"/></g>
+            </svg>
+          </div>
+          <div class="t-txt">
+            <p class="t-k">Lap pool</p>
+            <h3>30 m, four lanes</h3>
+            <p>Heated from November to February, with a shaded kids' pool beside the deck.</p>
+          </div>
+        </article>
+        <article class="tile t-work" data-reveal>
+          <div class="t-art" aria-hidden="true">
+            <svg viewBox="0 0 200 120">
+              <g class="wk-lamp"><path d="M50 0v26M100 0v26M150 0v26"/><path d="M40 34a10 10 0 0 1 20 0ZM90 34a10 10 0 0 1 20 0ZM140 34a10 10 0 0 1 20 0Z"/><circle class="wk-glow" cx="50" cy="38" r="16"/><circle class="wk-glow" cx="100" cy="38" r="16"/><circle class="wk-glow" cx="150" cy="38" r="16"/></g>
+              <rect class="wk-table" x="16" y="78" width="168" height="8" rx="2"/><path class="wk-leg" d="M30 86v28M170 86v28"/>
+              <g class="wk-lap"><path d="M38 78l4-18h26l4 18Z"/><path d="M88 78l4-18h26l4 18Z"/><path d="M138 78l4-18h26l4 18Z"/></g>
+            </svg>
+          </div>
+          <div class="t-txt">
+            <p class="t-k">Co-working lounge</p>
+            <h3>24 desks, 2 call booths</h3>
+          </div>
+        </article>
+        <article class="tile t-kids" data-reveal>
+          <div class="t-art" aria-hidden="true">
+            <svg viewBox="0 0 200 120">
+              <path class="kd-mound" d="M0 120C30 92 70 92 100 120Z"/>
+              <path class="kd-dome" d="M110 112a40 40 0 0 1 80 0"/><path class="kd-grid" d="M150 72v40M130 78v34M170 78v34M114 96h72"/>
+              <path class="kd-slide" d="M22 112L70 48h12v64"/><path class="kd-ladder" d="M82 48v64M92 48v64M82 64h10M82 80h10M82 96h10"/>
+              <circle class="kd-ball kd-b1" cx="40" cy="104" r="8"/><circle class="kd-ball kd-b2" cx="104" cy="106" r="6"/>
+            </svg>
+          </div>
+          <div class="t-txt">
+            <p class="t-k">Kids' play garden</p>
+            <h3>Soft floor, climbing dome</h3>
+          </div>
+        </article>
+        <article class="tile t-jog" data-reveal>
+          <div class="t-art" aria-hidden="true">
+            <svg viewBox="0 0 200 120">
+              <rect class="jg-in" x="34" y="26" width="132" height="68" rx="26"/>
+              <rect class="jg-track" id="jg-path" x="24" y="16" width="152" height="88" rx="34"/>
+              <rect class="jg-lane" x="24" y="16" width="152" height="88" rx="34"/>
+              <circle class="jg-run" r="5"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto" path="M58 16H142A34 34 0 0 1 176 50V70A34 34 0 0 1 142 104H58A34 34 0 0 1 24 70V50A34 34 0 0 1 58 16Z"/></circle>
+            </svg>
+          </div>
+          <div class="t-txt">
+            <p class="t-k">Jogging loop</p>
+            <h3>460 m, lit until 10 pm</h3>
+          </div>
+        </article>
+        <article class="tile t-ev" data-reveal>
+          <div class="t-art" aria-hidden="true">
+            <svg viewBox="0 0 200 120">
+              <path class="ev-car" d="M30 86V70l12-20c2-4 6-6 10-6h52c5 0 9 2 12 6l14 20h14c6 0 10 4 10 10v6"/><path class="ev-base" d="M22 86h150"/><circle class="ev-wheel" cx="58" cy="88" r="11"/><circle class="ev-wheel" cx="132" cy="88" r="11"/>
+              <rect class="ev-post" x="176" y="30" width="14" height="70" rx="4"/><path class="ev-cable" d="M183 56c0 26-18 24-38 20"/>
+              <rect class="ev-bat" x="64" y="20" width="56" height="18" rx="4"/><rect class="ev-fill" x="67" y="23" width="50" height="12" rx="2"/><path class="ev-tip" d="M122 25v8"/>
+            </svg>
+          </div>
+          <div class="t-txt">
+            <p class="t-k">EV charging</p>
+            <h3>Every car park pre-wired</h3>
+          </div>
+        </article>
+        <article class="tile t-list" data-reveal>
+          <p class="t-k">All 14 amenities</p>
+          <ul class="amen-list">
+            <li>Clubhouse</li><li>30 m lap pool</li><li>Kids' pool</li><li>Gym</li><li>Yoga deck</li><li>Co-working lounge</li><li>Library</li>
+            <li>Kids' play garden</li><li>460 m jogging loop</li><li>Multipurpose court</li><li>Party lawn</li><li>Amphitheatre</li><li>Pet park</li><li>EV charging</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 LOCATION -->
+  <section class="loc" id="location" data-tour="2600">
+    <div class="wrap loc-grid">
+      <div class="loc-copy">
+        <p class="label label-inv"><span>04</span>Location</p>
+        <h2 class="h2" data-split>On the quiet side of Baner Road.</h2>
+        <p class="sec-intro" data-reveal>Close enough to walk to dinner on the High Street, far enough that the hill is what you hear at night. Drive times are on a weekday at 9 am.</p>
+        <ul class="dest" id="dest">
+          <li><button type="button" class="is-on" data-route="bal"><span class="d-n">Balewadi High Street</span><span class="d-t"><b>6</b> min</span></button></li>
+          <li><button type="button" data-route="nh"><span class="d-n">Mumbai to Bengaluru highway</span><span class="d-t"><b>4</b> min</span></button></li>
+          <li><button type="button" data-route="aun"><span class="d-n">Aundh</span><span class="d-t"><b>10</b> min</span></button></li>
+          <li><button type="button" data-route="hin"><span class="d-n">Hinjewadi IT Park</span><span class="d-t"><b>12</b> min</span></button></li>
+          <li><button type="button" data-route="air"><span class="d-n">Pune airport</span><span class="d-t"><b>35</b> min</span></button></li>
+          <li><button type="button" data-route="hill"><span class="d-n">Baner hill trail</span><span class="d-t"><b>5</b> min walk</span></button></li>
+        </ul>
+      </div>
+      <figure class="map" data-reveal>
+        <svg viewBox="0 0 800 560" role="img" aria-label="Map of Baner showing Ruvela Residences south of Baner Road, with drive routes to Balewadi High Street, the highway, Aundh, Hinjewadi and the airport">
+          <defs>
+            <pattern id="m-dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1"/></pattern>
+            <radialGradient id="m-glow"><stop offset="0" stop-color="#ffcf9a" stop-opacity=".55"/><stop offset="1" stop-color="#ffcf9a" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect class="m-bg" width="800" height="560"/>
+          <rect class="m-dots" width="800" height="560" fill="url(#m-dots)"/>
+          <g class="m-hill">
+            <ellipse cx="478" cy="478" rx="178" ry="80" transform="rotate(-8 478 478)"/><ellipse cx="482" cy="482" rx="128" ry="56" transform="rotate(-8 482 482)"/>
+            <ellipse cx="486" cy="486" rx="82" ry="34" transform="rotate(-8 486 486)"/><ellipse cx="490" cy="488" rx="38" ry="15" transform="rotate(-8 490 488)"/>
+          </g>
+          <path class="m-river" d="M0 128C90 116 150 152 240 140S380 90 470 104 640 154 800 96"/>
+          <path class="m-road m-hw" d="M262 0C250 120 214 220 196 300S150 470 120 560"/>
+          <path class="m-road m-hw-in" d="M262 0C250 120 214 220 196 300S150 470 120 560"/>
+          <path class="m-road" d="M40 316C180 312 300 322 430 330S640 344 800 362"/>
+          <path class="m-road m-minor" d="M432 331C442 282 470 232 514 192S640 150 720 108"/>
+          <path class="m-road m-minor" d="M200 302C150 282 96 252 40 232"/>
+          <path class="m-road m-minor" d="M640 344C660 300 700 210 790 30"/>
+          <path class="m-road m-minor" d="M560 340C566 400 590 440 620 560"/>
+          <path class="m-road m-minor" d="M330 324C320 380 300 440 290 560"/>
+          <text class="m-lbl m-lbl-it" x="560" y="96">Mula river</text>
+          <text class="m-lbl" x="640" y="384" transform="rotate(3 640 384)">BANER ROAD</text>
+          <text class="m-lbl m-lbl-hw" x="218" y="110" transform="rotate(-84 218 110)">NH 48</text>
+          <text class="m-lbl m-lbl-it" x="430" y="532">Baner hill</text>
+          <g class="m-routes">
+            <path class="rt" data-r="bal" d="M430 352L432 331C442 282 470 232 514 192"/>
+            <path class="rt" data-r="nh" d="M430 352L430 330C330 324 260 312 200 302"/>
+            <path class="rt" data-r="aun" d="M430 352L432 331C530 338 610 348 700 360"/>
+            <path class="rt" data-r="hin" d="M430 352L430 330C330 324 260 312 200 302C150 282 96 252 46 230"/>
+            <path class="rt" data-r="air" d="M430 352L432 331C530 338 600 346 640 344C660 300 700 210 780 44"/>
+            <path class="rt rt-walk" data-r="hill" d="M430 352C440 392 456 432 474 470"/>
+          </g>
+          <g class="m-dests">
+            <g class="md" data-r="bal" transform="translate(514 192)"><circle r="7"/><text x="14" y="-10">Balewadi High Street</text></g>
+            <g class="md" data-r="nh" transform="translate(200 302)"><circle r="7"/><text x="-14" y="30" text-anchor="end">Highway</text></g>
+            <g class="md" data-r="aun" transform="translate(700 360)"><circle r="7"/><text x="0" y="-16" text-anchor="middle">Aundh</text></g>
+            <g class="md" data-r="hin" transform="translate(46 230)"><circle r="7"/><text x="0" y="-16">Hinjewadi</text></g>
+            <g class="md" data-r="air" transform="translate(780 44)"><circle r="7"/><text x="-14" y="5" text-anchor="end">Airport</text></g>
+            <g class="md" data-r="hill" transform="translate(474 470)"><circle r="7"/><text x="16" y="6">Hill trail</text></g>
+          </g>
+          <g class="m-site" transform="translate(430 352)">
+            <circle class="ms-glow" r="60" fill="url(#m-glow)"/><circle class="ms-pulse" r="12"/><circle class="ms-dot" r="9"/>
+            <g class="ms-tag" transform="translate(-74 30)"><rect width="148" height="34" rx="17"/><text x="74" y="22" text-anchor="middle">Ruvela</text></g>
+          </g>
+        </svg>
+        <figcaption class="map-read" id="map-read" aria-live="polite"><b>6 min</b> to Balewadi High Street</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 05 PROGRESS -->
+  <section class="prog" id="progress" data-tour="2400">
+    <div class="wrap">
+      <header class="sec-head sec-head-row">
+        <div>
+          <p class="label"><span>05</span>Construction</p>
+          <h2 class="h2" data-split>Rising on schedule.</h2>
+        </div>
+        <p class="sec-intro" data-reveal>Updated 15 November 2026. We publish slab counts every month and walk buyers through the site on the first Sunday of each one.</p>
+      </header>
+      <div class="prog-grid">
+        <div class="prog-towers" data-reveal>
+          <figure class="tp" data-floors="20" data-done="15" data-name="Tower A"><div class="tp-art"></div><figcaption><b>Tower A</b><span>Slab 15 of 20</span><i>75%</i></figcaption></figure>
+          <figure class="tp" data-floors="24" data-done="13" data-name="Tower B"><div class="tp-art"></div><figcaption><b>Tower B</b><span>Slab 13 of 24</span><i>54%</i></figcaption></figure>
+          <figure class="tp" data-floors="22" data-done="12" data-name="Tower C"><div class="tp-art"></div><figcaption><b>Tower C</b><span>Slab 12 of 22</span><i>55%</i></figcaption></figure>
+          <div class="tp-side">
+            <div class="bar"><p><b>Clubhouse</b><span>Structure done, finishes 40%</span></p><div class="bar-t"><i style="--v:.7"></i></div></div>
+            <div class="bar"><p><b>Podium and car park</b><span>Complete</span></p><div class="bar-t"><i style="--v:1"></i></div></div>
+            <div class="bar"><p><b>Landscape</b><span>Trees planted, 20%</span></p><div class="bar-t"><i style="--v:.2"></i></div></div>
+          </div>
+        </div>
+        <ol class="timeline" data-reveal>
+          <li class="done"><time>Jan 2025</time><p>Ground-breaking and excavation</p></li>
+          <li class="done"><time>Aug 2025</time><p>Podium and two-level car park cast</p></li>
+          <li class="done"><time>Mar 2026</time><p>Clubhouse structure complete</p></li>
+          <li class="now"><time>Nov 2026</time><p>Tower A at slab 15, a slab every 9 days</p></li>
+          <li><time>Jun 2027</time><p>All three towers topped out</p></li>
+          <li><time>Sep 2027</time><p>Facades, lifts and landscape finished</p></li>
+          <li><time>Dec 2027</time><p>Possession and handover</p></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 EMI -->
+  <section class="emi" id="emi" data-tour="2400">
+    <div class="wrap emi-grid">
+      <div class="emi-copy">
+        <p class="label"><span>06</span>Home loan</p>
+        <h2 class="h2" data-split>Know your EMI before you visit.</h2>
+        <p class="sec-intro" data-reveal>Most buyers borrow about 80% of the price. Start from a home, then move the sliders.</p>
+        <div class="emi-presets" data-reveal>
+          <button type="button" class="chip is-on" data-loan="7680000">2 BHK · ₹76.8 lakh</button>
+          <button type="button" class="chip" data-loan="10240000">3 BHK · ₹1.02 Cr</button>
+          <button type="button" class="chip" data-loan="14880000">Sky villa · ₹1.49 Cr</button>
+        </div>
+      </div>
+      <div class="emi-card" data-reveal>
+        <div class="emi-ctrl">
+          <div class="rng">
+            <label for="emi-amt"><span>Loan amount</span><output id="emi-amt-o" for="emi-amt">₹76.8 lakh</output></label>
+            <input type="range" id="emi-amt" min="1000000" max="16000000" step="10000" value="7680000">
+            <div class="rng-s"><span>₹10 lakh</span><span>₹1.6 Cr</span></div>
+          </div>
+          <div class="rng">
+            <label for="emi-yrs"><span>Tenure</span><output id="emi-yrs-o" for="emi-yrs">20 years</output></label>
+            <input type="range" id="emi-yrs" min="5" max="30" step="1" value="20">
+            <div class="rng-s"><span>5 years</span><span>30 years</span></div>
+          </div>
+          <p class="emi-rate"><b>8.5%</b> a year, a sample rate for illustration</p>
+        </div>
+        <div class="emi-out">
+          <p class="emi-l">Monthly EMI</p>
+          <p class="emi-v"><span class="emi-cur">₹</span><b id="emi-v">66,649</b></p>
+          <div class="emi-bar" aria-hidden="true"><i class="emi-bp" id="emi-bp"></i><i class="emi-bi"></i></div>
+          <dl class="emi-dl">
+            <div><dt><i class="sw sw-p"></i>Principal</dt><dd id="emi-p">₹76,80,000</dd></div>
+            <div><dt><i class="sw sw-i"></i>Interest</dt><dd id="emi-i">₹83,15,760</dd></div>
+            <div><dt>Total payable</dt><dd id="emi-t">₹1,59,95,760</dd></div>
+          </dl>
+          <a class="btn btn-sand btn-wide" href="#visit"><span>Talk to our loan desk</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <p class="fine fine-inv">Your bank's rate, fees and eligibility will differ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 VISIT -->
+  <section class="visit" id="visit" data-tour="2800">
+    <div class="visit-sun" aria-hidden="true"></div>
+    <div class="wrap visit-grid">
+      <div class="visit-copy">
+        <p class="label label-inv"><span>07</span>Site visit</p>
+        <h2 class="h2 h2-xl" data-split>See it at golden hour.</h2>
+        <p class="sec-intro" data-reveal>The sample flat on floor 14 faces west. Come at 5:30 pm and watch the sun drop behind the hills from its deck, then walk the podium with our team.</p>
+        <ul class="visit-facts" data-reveal>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg><span>Sales lounge, Baner Road, Baner, Pune 411045</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-clock"/></svg><span>Open every day, 10 am to 7 pm</span></li>
+          <li><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg><span>Free cab pick-up within 10 km</span></li>
+        </ul>
+        <button class="btn btn-ghost-inv btn-lg magnetic" type="button" data-wa data-reveal><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><span>Chat on WhatsApp</span></button>
+      </div>
+      <form class="booker" id="booker" novalidate data-reveal>
+        <div class="bk-inner">
+          <fieldset class="bk-step">
+            <legend><span>1</span>Pick a day</legend>
+            <div class="chips days" id="days">
+              <button type="button" class="day is-on" data-i="0"><small>Mon</small><b>23</b><small>Nov</small></button>
+              <button type="button" class="day" data-i="1"><small>Tue</small><b>24</b><small>Nov</small></button>
+              <button type="button" class="day" data-i="2"><small>Wed</small><b>25</b><small>Nov</small></button>
+              <button type="button" class="day" data-i="3"><small>Thu</small><b>26</b><small>Nov</small></button>
+              <button type="button" class="day" data-i="4"><small>Fri</small><b>27</b><small>Nov</small></button>
+              <button type="button" class="day" data-i="5"><small>Sat</small><b>28</b><small>Nov</small></button>
+            </div>
+          </fieldset>
+          <fieldset class="bk-step">
+            <legend><span>2</span>Pick a time</legend>
+            <div class="chips slots" id="slots">
+              <button type="button" class="slot">10:00 am</button>
+              <button type="button" class="slot">11:30 am</button>
+              <button type="button" class="slot">1:00 pm</button>
+              <button type="button" class="slot">3:30 pm</button>
+              <button type="button" class="slot slot-gold is-on">5:30 pm<small>Golden hour</small></button>
+            </div>
+          </fieldset>
+          <fieldset class="bk-step">
+            <legend><span>3</span>Your details</legend>
+            <div class="fields">
+              <label class="field"><span>Full name</span><input type="text" id="bk-name" name="name" autocomplete="name" required></label>
+              <label class="field"><span>WhatsApp number</span><input type="tel" id="bk-phone" name="phone" autocomplete="tel" inputmode="numeric" maxlength="14" required></label>
+              <label class="field field-full"><span>Interested in</span>
+                <select id="bk-type" name="type"><option>2 BHK, 1,180 sq ft</option><option selected>3 BHK, 1,560 sq ft</option><option>3.5 BHK sky villa, 2,240 sq ft</option><option>Not sure yet</option></select>
+              </label>
+            </div>
+            <label class="check"><input type="checkbox" id="bk-cab" checked><span class="box" aria-hidden="true"><svg class="ico"><use href="#i-check"/></svg></span>Send a cab to pick me up</label>
+          </fieldset>
+          <p class="bk-err" id="bk-err" role="alert"></p>
+          <button class="btn btn-terra btn-lg btn-wide" type="submit"><span>Confirm my site visit</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <p class="fine fine-inv">We confirm on WhatsApp within 10 minutes. No calls unless you ask for one.</p>
+        </div>
+        <div class="bk-done" id="bk-done" hidden>
+          <div class="bk-tick" aria-hidden="true"><svg class="ico"><use href="#i-check"/></svg></div>
+          <p class="bk-h">You're booked<span id="bk-who"></span>.</p>
+          <p class="bk-when" id="bk-when">Monday 23 November at 5:30 pm</p>
+          <p class="bk-p" id="bk-p">Your visit pass and the lounge location are on their way to WhatsApp. Bring a photo ID for the site walk.</p>
+          <button class="btn btn-ghost-inv" type="button" id="bk-again"><span>Book another slot</span></button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- 08 FAQ -->
+  <section class="faq" id="faq" data-tour="2000">
+    <div class="wrap faq-grid">
+      <div class="faq-head">
+        <p class="label"><span>08</span>Questions</p>
+        <h2 class="h2" data-split>Asked at the sales lounge this week.</h2>
+        <p class="sec-intro" data-reveal>Anything else, ask us on WhatsApp. A real person from the project team answers, 9 am to 9 pm.</p>
+      </div>
+      <div class="qa" id="qa">
+        <div class="q" data-reveal><h3><button type="button" aria-expanded="true" aria-controls="a1" id="q1">When do I get the keys?<span class="qi" aria-hidden="true"></span></button></h3>
+          <div class="a" id="a1" role="region" aria-labelledby="q1"><p>Possession is December 2027 for all three towers. Tower A is ahead of plan at slab 15 of 20, and the date is written into your agreement.</p></div></div>
+        <div class="q" data-reveal><h3><button type="button" aria-expanded="false" aria-controls="a2" id="q2">How does the payment plan work?<span class="qi" aria-hidden="true"></span></button></h3>
+          <div class="a" id="a2" role="region" aria-labelledby="q2" hidden><p>It is construction linked: 10% when you book, 80% spread across the slab stages, and the last 10% at possession. You only pay for what has been built.</p></div></div>
+        <div class="q" data-reveal><h3><button type="button" aria-expanded="false" aria-controls="a3" id="q3">Which banks will fund my home?<span class="qi" aria-hidden="true"></span></button></h3>
+          <div class="a" id="a3" role="region" aria-labelledby="q3" hidden><p>Ruvela is approved by most major banks and housing finance companies, so you can choose your lender. Our loan desk compares offers for you at no charge.</p></div></div>
+        <div class="q" data-reveal><h3><button type="button" aria-expanded="false" aria-controls="a4" id="q4">What will maintenance cost?<span class="qi" aria-hidden="true"></span></button></h3>
+          <div class="a" id="a4" role="region" aria-labelledby="q4" hidden><p>₹4.50 per sq ft a month. The first 18 months are collected at possession and cover security, housekeeping, the clubhouse, the pool and backup power for common areas.</p></div></div>
+        <div class="q" data-reveal><h3><button type="button" aria-expanded="false" aria-controls="a5" id="q5">What comes fitted in the home?<span class="qi" aria-hidden="true"></span></button></h3>
+          <div class="a" id="a5" role="region" aria-labelledby="q5" hidden><p>A modular kitchen with hob and chimney, wardrobes in every bedroom, AC points in every room, large-format vitrified tiles and engineered wood in the master bedroom.</p></div></div>
+        <div class="q" data-reveal><h3><button type="button" aria-expanded="false" aria-controls="a6" id="q6">Are pets welcome?<span class="qi" aria-hidden="true"></span></button></h3>
+          <div class="a" id="a6" role="region" aria-labelledby="q6" hidden><p>Yes. There is a fenced pet park on the west lawn and a pet wash by the service gate, and pets can use the service lifts at any hour.</p></div></div>
+        <div class="q" data-reveal><h3><button type="button" aria-expanded="false" aria-controls="a7" id="q7">Can I buy from outside India?<span class="qi" aria-hidden="true"></span></button></h3>
+          <div class="a" id="a7" role="region" aria-labelledby="q7" hidden><p>Yes. We walk NRI buyers through the home on a video call, share every document online, and a power of attorney can complete registration for you in Pune.</p></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-tour="1800">
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <a class="brand brand-inv" href="#top" aria-label="Ruvela Residences, back to top">
+          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9"/><path d="M9 24V12h3v12M14.5 24V8h3v16M20 24V10.5h3V24"/><circle cx="22.6" cy="6.8" r="2"/></svg>
+          <span class="brand-txt"><b>Ruvela</b><small>Residences · Baner</small></span>
+        </a>
+        <p class="ft-tag">Homes above the hills of Baner. A Senvara Developers project.</p>
+        <div class="ft-cta">
+          <a class="btn btn-terra" href="#visit"><span>Book a site visit</span><svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <button class="btn btn-ghost-inv" type="button" data-wa><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><span>WhatsApp</span></button>
+        </div>
+      </div>
+      <nav class="ft-col" aria-label="Project">
+        <p>Project</p>
+        <a href="#overview">Overview</a><a href="#homes">Homes and prices</a><a href="#amenities">Amenities</a><a href="#progress">Construction</a>
+      </nav>
+      <nav class="ft-col" aria-label="Plan your move">
+        <p>Plan your move</p>
+        <a href="#location">Location</a><a href="#emi">EMI calculator</a><a href="#visit">Site visit</a><a href="#faq">Questions</a>
+      </nav>
+      <div class="ft-col">
+        <p>Sales lounge</p>
+        <span>Baner Road, Baner<br>Pune 411045</span>
+        <span>Every day, 10 am to 7 pm</span>
+        <a href="mailto:hello@ruvelaresidences.in">hello@ruvelaresidences.in</a>
+      </div>
+    </div>
+    <p class="ft-word" aria-hidden="true">Ruvela</p>
+    <div class="ft-bottom">
+      <p>© 2026 Senvara Developers. Images are artist's impressions built in code. Plans, sizes and prices are indicative.</p>
+      <p class="ft-hx">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="dock" id="dock">
+  <button class="btn btn-ghost btn-dock" type="button" data-wa><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><span>WhatsApp</span></button>
+  <a class="btn btn-forest btn-dock" href="#visit"><span>Book a site visit</span></a>
+</div>
+
+<aside class="wa" id="wa" hidden aria-label="WhatsApp chat with Ruvela Residences">
+  <div class="wa-top">
+    <span class="wa-av" aria-hidden="true">R</span>
+    <p><b>Ruvela Residences</b><small>Usually replies in 10 minutes</small></p>
+    <button class="wa-x" type="button" aria-label="Close chat"><svg class="ico" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="wa-body" id="wa-body">
+    <div class="bub bub-in">Namaste! This is Kavya from the Ruvela sales team. What would you like to know?</div>
+  </div>
+  <div class="wa-quick">
+    <button type="button" data-q="0">Send me the price sheet</button>
+    <button type="button" data-q="1">Is 5:30 pm free today?</button>
+    <button type="button" data-q="2">East-facing 2 BHKs?</button>
+  </div>
+</aside>
+</body>
+</html>

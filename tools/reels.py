@@ -14,6 +14,7 @@ from PIL import Image
 ROOT = '/home/claude/hdm'
 OUT = os.path.join(ROOT, 'posters')
 STOPS = (('2', 0.30), ('3', 0.62))   # frame name, share of the scrollable height
+WAIT = {'hanflux': 6000}             # ms to settle after each scroll (default 2600): text that decodes needs longer
 
 
 class Quiet(SimpleHTTPRequestHandler):
@@ -42,7 +43,7 @@ async def shoot(b, port, slug):
             for name, p in STOPS:
                 y = int(max(0, H) * p)
                 await pg.evaluate(SCROLL, y)
-                await pg.wait_for_timeout(2600)
+                await pg.wait_for_timeout(WAIT.get(slug, 2600))
                 tmp = '/tmp/reel_%s_%s%s.png' % (slug, kind, name)
                 await pg.screenshot(path=tmp, timeout=60000)
                 im = Image.open(tmp).convert('RGB')

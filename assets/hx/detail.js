@@ -75,7 +75,7 @@
 
   // a one-time nudge towards "Open full screen", once the live site is running
   var fs = $('.btn-fs');
-  if (fs) {
+  if (fs && !F.isPhone) {
     var seenCoach = false; try { seenCoach = !!sessionStorage.getItem('hx-coach'); } catch (e) {}
     if (!seenCoach) setTimeout(function () { fs.classList.add('coach-on'); try { sessionStorage.setItem('hx-coach', '1'); } catch (e) {} setTimeout(function () { fs.classList.remove('coach-on'); }, 5200); }, 4200);
   }
@@ -109,10 +109,18 @@
   X.onChange(function () { syncPick(); renderEst(); });
   syncPick(); renderEst();
 
-  // phone buy bar appears once the price card is out of view
+  // phone buy bar: shows once the price card is out of view, steps aside at the end of the page
+  // (more designs and the footer), so it never covers the last buttons and links
   var bar = $('#buybar'), buy = $('#buy');
   if (bar && buy) {
-    new IntersectionObserver(function (es) { bar.classList.toggle('show', !es[0].isIntersecting && W.scrollY > 300); }, { threshold: 0 }).observe(buy);
+    var buyVis = true, endVis = false, ends = $$('.d-more, .foot');
+    var upd = function () { bar.classList.toggle('show', !buyVis && !endVis && W.scrollY > 300); };
+    new IntersectionObserver(function (es) { buyVis = es[0].isIntersecting; upd(); }, { threshold: 0 }).observe(buy);
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { e.target.__vis = e.isIntersecting; });
+      endVis = ends.some(function (x) { return x.__vis; }); upd();
+    }, { threshold: 0 });
+    ends.forEach(function (x) { io.observe(x); });
     W.addEventListener('scroll', function () { if (W.scrollY < 300) bar.classList.remove('show'); }, { passive: true });
   }
 

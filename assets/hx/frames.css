@@ -25,6 +25,18 @@
 .dev-m .isl::after { content: ""; position: absolute; top: 50%; right: 10%; width: 5.4cqw; height: 5.4cqw; transform: translateY(-50%); border-radius: 50%;
   background: radial-gradient(circle at 35% 35%, #3a4f86 0 14%, #121a33 36%, #04060c 62%); box-shadow: inset 0 0 0 .5px rgba(255,255,255,.08); }
 .vp iframe { position: absolute; top: 0; left: 0; border: 0; max-width: none; max-height: none; transform-origin: 0 0; background: transparent; pointer-events: none; opacity: 0; transition: opacity .7s ease; }
+/* the status bar, as on a real iPhone: the page starts below it, so the island never covers the site.
+   13.6% of the screen width is the iPhone's 54 pt bar; frames.js gives the live page the same offset. */
+.dev-m .vp { --sb: 13.6cqw; }
+.dev-m .vp .poster, .dev-m .vp iframe { top: var(--sb); }
+.dev-m .sbar { position: absolute; top: 0; left: 0; right: 0; height: var(--sb); z-index: 2; display: flex; align-items: center; justify-content: space-between;
+  padding: .6cqw 7.4cqw 0 12.6cqw; background: var(--sb-bg, var(--frame-bg, #0b0d13)); color: #fff; pointer-events: none;
+  font: 600 4.3cqw/1 -apple-system, "SF Pro Text", "Inter", system-ui, sans-serif; letter-spacing: -.01em; }
+.dev-m .sbar.lt { color: #0b0d13; }
+.dev-m .sbar b { font-weight: 600; color: inherit; }
+.dev-m .sbar i { display: inline-flex; align-items: center; gap: 1.5cqw; }
+.dev-m .sbar svg { height: 3.1cqw; width: auto; fill: currentColor; display: block; }
+.dev-m .sbar svg:last-child { height: 3.3cqw; }
 .vp.live iframe { opacity: 1; }
 .vp.interactive iframe { pointer-events: auto; }
 .vp .poster { position: absolute; inset: 0; background-size: cover; background-position: center top; transition: opacity .8s ease; }

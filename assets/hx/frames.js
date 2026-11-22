@@ -20,11 +20,13 @@
   function el(tag, cls, html) { var e = D.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
 
+  // the phone's status bar: 13.6% of the screen width (frames.css --sb); the page starts below it
+  var SB = 0.136;
   var ro = new ResizeObserver(function (entries) { entries.forEach(function (e) { fit(e.target); }); });
   function fit(vp) {
     var f = vp.querySelector('iframe'); if (!f) return;
-    var spec = vp.__spec, k = vp.clientWidth / spec.w;
-    f.style.width = spec.w + 'px'; f.style.height = spec.h + 'px';
+    var spec = vp.__spec, k = vp.clientWidth / spec.w, top = vp.__kind === 'm' ? Math.round(spec.w * SB) : 0;
+    f.style.width = spec.w + 'px'; f.style.height = (spec.h - top) + 'px';
     f.style.transform = 'scale(' + k + ')';
   }
 
@@ -62,7 +64,12 @@
     d.appendChild(el('div', 'd-bar', '<span class="d-dots"><i></i><i></i><i></i></span><span class="d-url">' + ICON_LOCK + esc(site.domain || (site.slug + '.com')) + '</span>'));
     var vd = prep(viewport(DESK, site, 'd'), DESK, 'd'); d.appendChild(vd);
     var m = el('div', 'dev-m');
-    var vm = prep(viewport(MOB, site, 'm'), MOB, 'm'); m.appendChild(vm); m.appendChild(el('span', 'isl'));
+    var vm = prep(viewport(MOB, site, 'm'), MOB, 'm');
+    var sb = el('span', 'sbar', '<b>9:41</b>'); sb.setAttribute('aria-hidden', 'true');
+    sb.style.setProperty('--sb-bg', site.bg || '#0b0d13');
+    if (/^#?[0-9a-f]{6}$/i.test(site.bg || '')) { var n = parseInt(site.bg.replace('#', ''), 16); if ((0.2126 * (n >> 16 & 255) + 0.7152 * (n >> 8 & 255) + 0.0722 * (n & 255)) / 255 > 0.62) sb.className += ' lt'; }
+    vm.insertBefore(sb, vm.firstChild);
+    m.appendChild(vm); m.appendChild(el('span', 'isl'));
     stage.appendChild(d); stage.appendChild(m);
     stage.__vps = [vd, vm];
     return stage;
