@@ -68,11 +68,17 @@
   tb.addEventListener('click', function () {
     var on = tb.getAttribute('aria-pressed') !== 'true';
     tb.setAttribute('aria-pressed', on ? 'true' : 'false');
-    $('span', tb).textContent = on ? 'Auto-scroll on' : 'Auto-scroll off';
     F.setTour(st, on);
     F.setInteractive(st, !on);
-    hint.textContent = on ? 'This is the real, working site. Turn auto-scroll off to scroll it yourself.' : 'Scroll inside the frame to explore. Turn auto-scroll back on any time.';
+    hint.lastChild.textContent = on ? 'This is the real, working site. Turn auto-scroll off to scroll it yourself, or open it full screen.' : 'Scroll inside the frame to explore. Turn auto-scroll back on any time.';
   });
+
+  // a one-time nudge towards "Open full screen", once the live site is running
+  var fs = $('.btn-fs');
+  if (fs) {
+    var seenCoach = false; try { seenCoach = !!sessionStorage.getItem('hx-coach'); } catch (e) {}
+    if (!seenCoach) setTimeout(function () { fs.classList.add('coach-on'); try { sessionStorage.setItem('hx-coach', '1'); } catch (e) {} setTimeout(function () { fs.classList.remove('coach-on'); }, 5200); }, 4200);
+  }
 
   // add-ons and estimate (our own sites are examples: no price card)
   var hasBuy = !!$('#d-addons');

@@ -78,13 +78,14 @@ const write = (rel, html) => { const p = path.join(ROOT, rel); fs.mkdirSync(path
 const tierBadge = (t) => `<span class="tier tier-${t}">${esc(kindOf(t))}</span>`;
 
 // the device frames, rendered into the page with their still posters (frames.js brings them to life)
-const stageHtml = (s, { id = '', cls = '', eager = false } = {}) => {
+const PLAY = '<span class="play-badge" aria-hidden="true"><i><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z"/></svg></i>Tap to watch live</span>';
+const stageHtml = (s, { id = '', cls = '', eager = false, badge = false } = {}) => {
   const lz = eager ? 'eager' : 'lazy';
   const img = (k, w, h) => `<img src="/posters/${s.slug}-${k}.webp" alt="" width="${w}" height="${h}" loading="${lz}" decoding="async"${eager && k === 'd' ? ' fetchpriority="high"' : ''}>`;
   const vp = (k, w, h) => `<div class="vp" data-k="${k}"><div class="poster"><div class="pfall"><b>${esc(s.brand)}</b></div>${img(k, w, h)}</div><span class="loading"><i></i>loading live site</span><span class="prog"></span></div>`;
   return `<div class="stage combo${cls}"${id ? ` id="${id}"` : ''} data-stage data-slug="${s.slug}" style="--accent:${s.accent};--frame-bg:${s.bg || '#0b0d13'}">` +
     `<div class="dev-d"><div class="d-bar"><span class="d-dots"><i></i><i></i><i></i></span><span class="d-url">${LOCK}${esc(s.domain || s.slug + '.com')}</span></div>${vp('d', 720, 450)}</div>` +
-    `<div class="dev-m">${vp('m', 300, 649)}<span class="isl"></span></div></div>`;
+    `<div class="dev-m">${vp('m', 300, 649)}<span class="isl"></span></div>${badge ? PLAY : ''}</div>`;
 };
 // a big price line: the price from 1 Jan above (crossed out during the launch), "from <launch price>" below
 const priceBlock = (cls, t, small = 'from') => CURS.map((c) => `<div class="${cls} c-${c}" data-price-block><small>${small}</small>${C.tiers[t][c].was ? `<s class="was">${money(tierWas(t, c), c)}</s> ` : ''}<span class="now">${money(tierFrom(t, c), c)}</span></div>`).join('');
@@ -95,7 +96,7 @@ const priceNow = (t) => dual((c) => money(tierFrom(t, c), c));
 const bizChips = C.biz.map((b) => { const n = b.slugs.filter((x) => by[x] && !isEx(by[x])).length; return `<a class="chip" role="listitem" href="/websites/?biz=${b.id}">${esc(b.label)} <span>${n}</span></a>`; }).join('');
 const GAL = ['liquid', 'estate', 'glass', 'silk', 'comic', 'gold', 'deco', 'swiss', 'halftone', 'particles', 'neon', 'editorial'].filter((x) => by[x] && !isEx(by[x]));
 const galleryHtml = GAL.map((x, i) => { const s = by[x]; return `<a class="gcard" href="/websites/${s.slug}/" style="--accent:${s.accent}" aria-label="${esc(s.name)}, a ${esc(s.industry.toLowerCase())} website, from ${esc(money(tierFrom(s.tier, 'inr'), 'inr'))}">
-        ${stageHtml(s, { eager: i < 2 })}
+        ${stageHtml(s, { eager: i < 2, badge: true })}
         <span class="gc-type">${esc(s.industry)}</span>
         <b class="gc-name">${esc(s.name)}</b>
         <span class="gc-price">from ${priceNow(s.tier)} <small>· ${esc(kindOf(s.tier))}</small></span>
@@ -150,7 +151,7 @@ const tierFilters = order.slice().reverse().map((t) => `<button type="button" cl
 const saleCard = (s, i) => `    <article class="wcard rv" id="s-${s.slug}" data-slug="${s.slug}" style="--accent:${s.accent}">
       <a class="wc-hit" href="/websites/${s.slug}/" aria-label="${esc(s.name)}: watch it live and see the price"></a>
       <div class="wc-top"><span class="wc-type">${esc(s.industry)}</span>${tierBadge(s.tier)}${s.live || s.origin ? '<span class="tier built">Built by Hanflux</span>' : ''}</div>
-      ${stageHtml(s, { eager: i < 1 })}
+      ${stageHtml(s, { eager: i < 1, badge: true })}
       <div class="wc-meta">
         <h2 class="wc-name display">${esc(s.name)}</h2>
         <p class="wc-pitch">${esc(s.pitch)}</p>
@@ -164,7 +165,7 @@ const saleCard = (s, i) => `    <article class="wcard rv" id="s-${s.slug}" data-
 const exCard = (s, i) => `    <article class="wcard ex rv" id="s-${s.slug}" data-slug="${s.slug}" data-ex style="--accent:${s.accent}">
       <a class="wc-hit" href="/websites/${s.slug}/" aria-label="${esc(s.name)}: watch it live"></a>
       <div class="wc-top"><span class="wc-type">${esc(s.industry)}</span><span class="tier ex-t">Our own company</span></div>
-      ${stageHtml(s)}
+      ${stageHtml(s, { badge: true })}
       <div class="wc-meta">
         <h2 class="wc-name display">${esc(s.brand)}</h2>
         <p class="wc-pitch">${esc(s.pitch)}</p>

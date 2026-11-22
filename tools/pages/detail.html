@@ -38,14 +38,16 @@
     <div class="wrap d-stage-wrap">
       <div class="d-studio">
         <div class="d-controls">
-          <div class="seg" role="group" aria-label="Preview on">
-            <button type="button" data-view="m" aria-pressed="false">Phone</button>
-            <button type="button" data-view="d" aria-pressed="false">Laptop</button>
-            <button type="button" data-view="both" aria-pressed="true" class="seg-both">Both</button>
+          <div class="seg seg-big" role="group" aria-label="Show the site on">
+            <button type="button" data-view="m" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.4"/><path d="M10.5 5h3"/></svg><span>Phone</span></button>
+            <button type="button" data-view="d" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="11" rx="1.6"/><path d="M2 19h20"/></svg><span>Laptop</span></button>
+            <button type="button" data-view="both" aria-pressed="true" class="seg-both"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="13" height="9" rx="1.4"/><rect x="15.5" y="8" width="6" height="12" rx="1.6"/><path d="M1.5 17h12"/></svg><span>Both</span></button>
           </div>
-          <button type="button" class="chip tour-t" data-tour-toggle aria-pressed="true"><i class="dot live"></i><span>Auto-scroll on</span></button>
-          <a class="chip" href="/w/{{slug}}/?from=menu{{ex_q}}" target="_blank" rel="noopener">Full screen<svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" style="stroke:currentColor;fill:none;stroke-width:2"><path d="M14 5h5v5M19 5l-8 8M10 5H5v14h14v-5"/></svg></a>
-          <p class="d-hint" id="d-hint">This is the real, working site. Turn auto-scroll off to scroll it yourself.</p>
+          <div class="d-acts">
+            <a class="btn btn-teal btn-fs" href="/w/{{slug}}/?from=menu{{ex_q}}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Open full screen<span class="coach" aria-hidden="true">Try the real site here</span></a>
+            <button type="button" class="tog" data-tour-toggle aria-pressed="true"><span class="tog-k" aria-hidden="true"><i></i></span><span class="tog-l">Auto-scroll</span></button>
+          </div>
+          <p class="d-hint" id="d-hint"><i class="dot live"></i>This is the real, working site. Turn auto-scroll off to scroll it yourself, or open it full screen.</p>
         </div>
         {{stage}}
       </div>

@@ -190,3 +190,18 @@ html.is-phone .stage.big:not(.vset) .dev-m { position: relative; width: min(330p
 @media (max-width: 960px) { .d-body > .d-buy { position: relative; top: auto; } }
 .buy-ask { display: block; text-align: center; margin: -12px 0 20px; font-size: 13.5px; color: var(--s-blue); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .buy-cta .btn-teal { justify-content: center; }
+
+/* preview controls: big, labelled, with icons */
+.d-controls { gap: 10px; }
+.seg-big { padding: 4px; border-width: 1.5px; border-color: var(--ink-faint); }
+.seg-big button { height: 40px; padding: 0 16px; display: inline-flex; align-items: center; gap: 8px; font: 650 14px/1 var(--font-body); color: var(--ink-2); }
+.seg-big button svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.d-acts { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn-fs { --h: 46px; position: relative; }
+.btn-fs svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.d-hint { display: flex; align-items: center; gap: 8px; font: 500 12px/1.45 var(--font-body); letter-spacing: 0; text-transform: none; color: var(--ink-dim); margin: 0; flex-basis: 100%; }
+.d-hint .dot { flex: none; }
+@media (max-width: 560px) {
+  .seg-big { flex: 1 1 100%; } .seg-big button { flex: 1; justify-content: center; padding: 0 8px; }
+  .d-acts { flex: 1 1 100%; } .d-acts .btn-fs { flex: 1 1 auto; } .d-acts .tog { flex: none; }
+}

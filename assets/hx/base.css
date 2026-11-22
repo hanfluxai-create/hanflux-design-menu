@@ -399,3 +399,52 @@ html:not(.cur-usd) .c-usd, html.cur-usd .c-inr { display: none !important; }
 .om-cur { margin: 22px 0 0; display: grid; gap: 10px; justify-items: start; }
 .om-foot .btn-wa .ic { width: 18px; height: 18px; }
 .btn-wa .ic { width: 18px; height: 18px; }
+
+/* ---------- buttons that ask to be pressed ---------- */
+/* a soft light sweeps across the main buttons every few seconds, and their arrows nudge forward */
+.btn-teal, .btn-wa, .btn-light { --shine: rgba(255,255,255,.30); }
+.qbar .btn-teal, .buybar .btn-teal, .o-bar .btn-teal, .btn-light { --shine: rgba(21,135,189,.22); }
+.btn-teal::after, .btn-wa::after, .btn-light::after { content: ""; position: absolute; top: 0; bottom: 0; left: -70%; width: 50%; pointer-events: none; z-index: 1;
+  background: linear-gradient(100deg, transparent, var(--shine), transparent); transform: skewX(-18deg); animation: hx-shine 5.2s cubic-bezier(.4, 0, .2, 1) infinite; }
+.btn-wa::after { animation-delay: 1.4s; }
+@keyframes hx-shine { 0%, 64% { left: -70%; } 86%, 100% { left: 135%; } }
+.btn .ic { animation: hx-nudge 2.6s ease-in-out infinite; }
+@keyframes hx-nudge { 0%, 68%, 100% { transform: none; } 78% { transform: translateX(5px); } 88% { transform: translateX(0); } }
+.btn-wa .ic { animation: none; }
+.btn-ghost { border-width: 1.5px; border-color: var(--ink-faint); }
+.btn { font-weight: 650; }
+@media (prefers-reduced-motion: reduce) { .btn::after, .btn .ic, .play-badge i::after, .swipe-hint span, .coach { animation: none !important; } }
+
+/* "tap to watch live" on every preview */
+.stage { position: relative; }
+.play-badge { position: absolute; z-index: 5; left: 10px; top: 36px; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 6px 6px; border-radius: 999px;
+  background: rgba(255,255,255,.94); color: var(--ink); font: 600 12px/1 var(--font-body); letter-spacing: -.005em; box-shadow: 0 6px 18px -6px rgba(26,27,69,.45), 0 0 0 1px rgba(26,27,69,.08); pointer-events: none; }
+.play-badge i { position: relative; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); flex: none; }
+.play-badge i svg { width: 11px; height: 11px; fill: #fff; margin-left: 2px; }
+.play-badge i::after { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid var(--s-orange); animation: hx-ring 1.9s var(--ease-out) infinite; }
+@keyframes hx-ring { from { transform: scale(.85); opacity: .9; } to { transform: scale(1.6); opacity: 0; } }
+.stage.reel-on .play-badge, .stage:has(.vp.live) .play-badge { background: rgba(26,27,69,.9); color: #fff; }
+.stage.reel-on .play-badge i, .stage:has(.vp.live) .play-badge i { background: var(--s-orange); }
+@media (max-width: 560px) { .play-badge { top: 30px; left: 8px; font-size: 11.5px; padding: 5px 10px 5px 5px; } .play-badge i { width: 22px; height: 22px; } }
+
+/* an on/off switch that looks like one */
+.tog { display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 16px 0 10px; border-radius: 999px; border: 1.5px solid var(--ink-faint); background: #fff; font: 650 14px/1 var(--font-body); color: var(--ink); cursor: pointer; }
+.tog-k { position: relative; width: 38px; height: 22px; border-radius: 999px; background: var(--hair-2); transition: background-color .25s; flex: none; }
+.tog-k i { position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.3); transition: transform .3s var(--ease-out); }
+.tog[aria-pressed="true"] .tog-k { background: var(--s-blue); }
+.tog[aria-pressed="true"] .tog-k i { transform: translateX(16px); }
+
+/* a one-time speech bubble that points at a button */
+.coach { position: absolute; left: 50%; bottom: calc(100% + 12px); transform: translate(-50%, 6px); white-space: nowrap; padding: 9px 13px; border-radius: 12px; background: var(--ink); color: #fff;
+  font: 600 12.5px/1 var(--font-body); box-shadow: 0 10px 26px -8px rgba(26,27,69,.6); opacity: 0; pointer-events: none; transition: opacity .35s, transform .45s var(--ease-out); z-index: 6; }
+.coach::after { content: ""; position: absolute; left: 50%; top: 100%; width: 10px; height: 10px; background: var(--ink); transform: translate(-50%, -50%) rotate(45deg); }
+.coach-on { overflow: visible !important; }
+.coach-on .coach { opacity: 1; transform: translate(-50%, 0); animation: hx-bob 1.4s ease-in-out infinite; }
+@keyframes hx-bob { 50% { transform: translate(-50%, -4px); } }
+
+/* "swipe for more" under the design rail on phones */
+.swipe-hint { display: none; margin: -6px auto 14px; font: 600 13px/1 var(--font-body); color: var(--ink-dim); }
+.swipe-hint span { display: inline-block; color: var(--s-blue); animation: hx-swipe 1.6s ease-in-out infinite; }
+@keyframes hx-swipe { 0%, 100% { transform: none; } 50% { transform: translateX(8px); } }
+@media (max-width: 760px) { .swipe-hint { display: block; } }
+.coach-on::after { display: none; }
