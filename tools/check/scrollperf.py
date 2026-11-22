@@ -3,7 +3,9 @@
 Prints frame-time p50/p95, frames over 50 ms (visible jank), long tasks and iframes created while scrolling.
 
 Usage: python3 tools/check/scrollperf.py https://hanflux-design-menu.vercel.app /websites/
-Reference (live, 22 Nov 2026): /websites/ p95 16.8 ms, 0 frames over 50 ms, 0 iframes; home 0 frames over 50 ms.
+The numbers are noisy here (software GPU, 2 CPUs): judge a change by running the old and the new build side by
+side a few times (serve the old commit from a git worktree on another port), not against fixed numbers.
+22 Nov 2026, /websites/: p95 33 to 50 ms, 8 to 26 frames over 50 ms, 0 iframes, for both releases; home 0 over 50 ms.
 """
 import asyncio, fcntl, os, sys, json
 from playwright.async_api import async_playwright
