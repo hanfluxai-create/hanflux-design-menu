@@ -1,0 +1,88 @@
+<div id="hxi" aria-hidden="true"><canvas></canvas><div class="hxi-brand"><img src="/factory/assets/hx/brand/wordmark-dark.svg" width="210" height="25" alt=""><p>the design factory</p></div><button class="hxi-skip" type="button" tabindex="-1">Skip</button></div>
+<script>
+/* First-open intro: brand dust swarms into the lotus, then flies into the hero logo while the page irises open. Once per session. */
+(function () {
+  var d = document, H = d.documentElement, ov = d.getElementById('hxi');
+  if (!ov || H.classList.contains('no-intro')) { ov && ov.remove(); return; }
+  var done = false, t0 = 0, raf = 0;
+  function end() { if (done) return; done = true; cancelAnimationFrame(raf); try { sessionStorage.setItem('hx-intro', '1'); } catch (e) {} H.classList.remove('intro-on'); ov.remove(); }
+  try { sessionStorage.setItem('hx-intro', '1'); } catch (e) {}
+  H.classList.add('intro-on');
+  setTimeout(end, 5200);
+  ['pointerdown', 'wheel', 'keydown', 'touchmove'].forEach(function (e) { addEventListener(e, function () { if (t0 && performance.now() - t0 > 350) end(); }, { once: true, passive: true }); });
+  ov.querySelector('.hxi-skip').addEventListener('click', end);
+  var cv = ov.querySelector('canvas'), x = cv.getContext('2d'), brand = ov.querySelector('.hxi-brand');
+  var dpr = Math.min(2, devicePixelRatio || 1), W = innerWidth, Ht = innerHeight;
+  cv.width = W * dpr; cv.height = Ht * dpr; x.scale(dpr, dpr);
+  var phone = W < 760, N = phone ? 2600 : 4500;
+  var img = new Image(); img.decoding = 'async'; img.src = '/factory/assets/hx/brand/lotus-300.webp';
+  var giveUp = setTimeout(end, 1600);
+  img.onerror = end;
+  img.onload = function () {
+    clearTimeout(giveUp); if (done) return;
+    var sw = 150, sh = Math.round(150 * img.naturalHeight / img.naturalWidth), oc = d.createElement('canvas'); oc.width = sw; oc.height = sh;
+    var o = oc.getContext('2d'); o.drawImage(img, 0, 0, sw, sh);
+    var px; try { px = o.getImageData(0, 0, sw, sh).data; } catch (e) { end(); return; }
+    var pts = [];
+    for (var j = 0; j < sh; j++) for (var i = 0; i < sw; i++) { var k = (j * sw + i) * 4; if (px[k + 3] > 150) pts.push([i / sw, j / sh, px[k], px[k + 1], px[k + 2]]); }
+    if (!pts.length) { end(); return; }
+    // big lotus at the centre, then the hero lotus as the landing spot
+    var bw = Math.min(W * .62, 380), bh = bw * sh / sw, bx = (W - bw) / 2, by = Ht * .42 - bh / 2;
+    var r = null;
+    function heroRect() { var h = d.querySelector('.hero-mark .lotus'), q = h ? h.getBoundingClientRect() : null; return q && q.width > 4 ? q : { left: (W - 100) / 2, top: 120, width: 100, height: 71 }; }
+    brand.style.top = (by + bh + (phone ? 26 : 34)) + 'px';
+    var P = [];
+    for (var n = 0; n < N; n++) {
+      var p = pts[(Math.random() * pts.length) | 0], a = Math.random() * 6.283, rad = Math.max(W, Ht) * (.3 + Math.random() * .55);
+      P.push({ u: p[0] + (Math.random() - .5) / sw, v: p[1] + (Math.random() - .5) / sh, c: 'rgb(' + p[2] + ',' + p[3] + ',' + p[4] + ')',
+        sx: W / 2 + Math.cos(a) * rad, sy: Ht * .42 + Math.sin(a) * rad, dl: Math.random() * 380, cu: (Math.random() - .5) * 220, s: .7 + Math.random() * 1.3, ph: Math.random() * 6.283 });
+    }
+    var C = x, IRIS0 = 2150, IRIS = 620, FLY0 = 1650, FLY = 620, R0 = Math.hypot(W, Ht);
+    function eo(t) { return 1 - Math.pow(1 - t, 3); }
+    function eio(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+    function frame(now) {
+      if (done) return;
+      if (!t0) t0 = now;
+      var t = now - t0;
+      C.clearRect(0, 0, W, Ht);
+      C.globalCompositeOperation = 'lighter';
+      if (t >= FLY0 - 40 && !r) r = heroRect();
+      var R_ = r || { left: bx, top: by, width: bw, height: bh };
+      var fly = eio(Math.min(1, Math.max(0, (t - FLY0) / FLY)));
+      var lx = bx + (R_.left - bx) * fly, ly = by + (R_.top - by) * fly, lw = bw + (R_.width - bw) * fly, lh = bh + (R_.height - bh) * fly;
+      var ia = eo(Math.min(1, Math.max(0, (t - 1050) / 450)));
+      var fade = 1 - Math.min(1, Math.max(0, (t - IRIS0 - 120) / 260));
+      for (var n = 0; n < N; n++) {
+        var p = P[n], q = eo(Math.min(1, Math.max(0, (t - p.dl) / 1100)));
+        var tx = lx + p.u * lw, ty = ly + p.v * lh;
+        var px2 = p.sx + (tx - p.sx) * q + Math.sin(q * 3.14) * p.cu, py2 = p.sy + (ty - p.sy) * q + Math.cos(q * 3.14) * p.cu * .4;
+        if (q >= 1) { px2 += Math.sin(t * .004 + p.ph) * .6 * (1 - fly); py2 += Math.cos(t * .005 + p.ph) * .6 * (1 - fly); }
+        var sz = p.s * (1 - fly * .45) * (q < 1 ? 1.4 - q * .4 : 1);
+        C.globalAlpha = (.35 + .65 * q) * fade * (1 - .55 * ia);
+        C.fillStyle = p.c;
+        C.fillRect(px2, py2, sz, sz);
+      }
+      C.globalAlpha = 1; C.globalCompositeOperation = 'source-over';
+      // the real mark resolves out of the dust, with a shock ring as it lands
+      if (ia > 0) { C.globalAlpha = ia * fade; C.drawImage(img, lx, ly, lw, lh); C.globalAlpha = 1; }
+      if (t > 1050 && t < 1900) {
+        var k = (t - 1050) / 850, rr = bw * (.3 + k * .8), g = C.createRadialGradient(bx + bw / 2, by + bh / 2, rr * .7, bx + bw / 2, by + bh / 2, rr);
+        g.addColorStop(0, 'rgba(133,131,245,0)'); g.addColorStop(.85, 'rgba(221,106,198,' + (.32 * (1 - k)) + ')'); g.addColorStop(1, 'rgba(61,184,238,0)');
+        C.globalCompositeOperation = 'lighter'; C.fillStyle = g; C.fillRect(0, 0, W, Ht); C.globalCompositeOperation = 'source-over';
+      }
+      var bt = Math.min(1, Math.max(0, (t - 750) / 520)), bo = Math.min(1, Math.max(0, (t - FLY0) / 300));
+      brand.style.opacity = eo(bt) * (1 - bo);
+      brand.style.transform = 'translateY(' + ((1 - eo(bt)) * 18 - bo * 14) + 'px)';
+      brand.style.letterSpacing = '';
+      var ir = eio(Math.min(1, Math.max(0, (t - IRIS0) / IRIS)));
+      if (t > IRIS0) {
+        var cx = R_.left + R_.width / 2, cy = R_.top + R_.height / 2, R = ir * R0, m = 'radial-gradient(circle at ' + cx + 'px ' + cy + 'px, transparent ' + R + 'px, #000 ' + (R + 60) + 'px)';
+        ov.style.webkitMaskImage = m; ov.style.maskImage = m;
+      }
+      if (t > IRIS0 + IRIS) { end(); return; }
+      raf = requestAnimationFrame(frame);
+    }
+    raf = requestAnimationFrame(frame);
+  };
+})();
+</script>

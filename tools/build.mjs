@@ -82,7 +82,7 @@ const partial = (name, cur) => {
   return h;
 };
 function render(tpl, vars, cur, suffix = '') {
-  let h = tpl.replace('{{head}}', partial('head' + suffix)).replace('{{nav}}', partial('nav' + suffix, cur)).replace('{{foot}}', partial('foot' + suffix));
+  let h = tpl.replace('{{head}}', partial('head' + suffix)).replace('{{nav}}', partial('nav' + suffix, cur)).replace('{{foot}}', partial('foot' + suffix)).replace('{{intro}}', partial('intro'));
   const all = { ...offerVars, cur_script: curScript, cur_switch: curSwitch(), n_ex: exs.length, wa: C.whatsapp, wa_label: esc(C.whatsappLabel), wa_hello: waHello, wa_ic: WA_IC, v: V, n_sites: nSites, n_agents: LOOKS.length, agent_fonts: esc(AGENT_FONTS), price_from: priceFromAll, arrow: ARROW, arrow_l: ARROW_L, ...vars };
   h = h.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in all ? String(all[k]) : m));
   const left = h.match(/\{\{[^}]+\}\}/g);

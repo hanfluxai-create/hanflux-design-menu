@@ -2,6 +2,17 @@
 <html lang="en">
 <head>
 {{head}}
+<script>try{if(sessionStorage.getItem('hx-intro')||matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&](nointro|embed)=/.test(location.search)||/bot|crawl|spider|lighthouse|facebookexternalhit/i.test(navigator.userAgent))document.documentElement.classList.add('no-intro')}catch(e){document.documentElement.classList.add('no-intro')}</script>
+<style>
+#hxi{position:fixed;inset:0;z-index:9999;background:radial-gradient(120% 80% at 50% 38%,#151a4a 0,#080924 48%,#04050f 100%);overflow:hidden}
+#hxi canvas{position:absolute;inset:0;width:100%;height:100%}
+#hxi .hxi-brand{position:absolute;left:0;right:0;top:62%;text-align:center;opacity:0;pointer-events:none}
+#hxi .hxi-brand img{display:block;margin:0 auto;width:min(52vw,230px);height:auto}
+#hxi .hxi-brand p{margin:14px 0 0;font:500 12px/1 "Geist Mono",ui-monospace,monospace;letter-spacing:.42em;text-transform:lowercase;color:#9fa4e6}
+#hxi .hxi-skip{position:absolute;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));padding:9px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#c9ccf5;font:500 13px/1 Inter,system-ui,sans-serif;cursor:pointer}
+html.no-intro #hxi{display:none}
+html.intro-on,html.intro-on body{overflow:hidden}
+</style>
 <title>Hanflux Design Factory · Your website, live in 48 hours, one flat price</title>
 <meta name="description" content="Pick from {{n_sites}} real, working website designs, from minimal to full 3D. One flat price for any design, hosting included, live on your domain within 48 hours. Apps, HTML emails and dashboards to order.">
 <meta property="og:title" content="Any website design, one flat price, live in 48 hours · Hanflux Design Factory">
@@ -18,6 +29,7 @@
 <script defer src="/factory/assets/hx/home.js?v={{v}}"></script>
 </head>
 <body class="home">
+{{intro}}
 <a class="skip" href="#gallery">Skip to the designs</a>
 {{nav}}
 
