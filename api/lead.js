@@ -11,6 +11,15 @@ const clean = (v, n) => String(v == null ? '' : v).replace(/[\u0000-\u0008\u000b
 async function emailIt(lead) {
   const subject = clean(lead._subject || ('New lead: ' + (lead.name || 'website enquiry')), 140);
   const fields = Object.fromEntries(Object.entries(lead).filter(([k]) => !k.startsWith('_') && k !== 'emailed'));
+  // Resend (optional): set RESEND_API_KEY in Vercel to email from the server when the browser could not.
+  if (process.env.RESEND_API_KEY) {
+    try {
+      const rows = Object.entries(fields).map(([k, v]) => `<tr><td style="padding:4px 10px;color:#666">${k}</td><td style="padding:4px 10px"><b>${String(v).replace(/[<>&]/g, '')}</b></td></tr>`).join('');
+      const r = await fetch('https://api.resend.com/emails', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + process.env.RESEND_API_KEY },
+        body: JSON.stringify({ from: process.env.RESEND_FROM || 'Hanflux Design Factory <onboarding@resend.dev>', to: [NOTIFY], subject, html: `<table>${rows}</table>` }) });
+      if (r.ok) return 'resend';
+    } catch (e) { /* try the next one */ }
+  }
   if (W3_KEY) {
     try {
       const r = await fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },

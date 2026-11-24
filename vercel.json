@@ -129,5 +129,40 @@
       "source": "/factory/:path*",
       "destination": "/:path*"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "hanflux-design-menu.vercel.app"
+        }
+      ],
+      "destination": "https://hanflux.ai/factory/",
+      "permanent": false
+    },
+    {
+      "source": "/websites/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "hanflux-design-menu.vercel.app"
+        }
+      ],
+      "destination": "https://hanflux.ai/factory/websites/:path*",
+      "permanent": false
+    },
+    {
+      "source": "/order/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "hanflux-design-menu.vercel.app"
+        }
+      ],
+      "destination": "https://hanflux.ai/factory/order/:path*",
+      "permanent": false
+    }
   ]
 }

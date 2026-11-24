@@ -29,7 +29,8 @@
   /* ---------- save an enquiry: emailed from the browser (Web3Forms) and saved on our server ---------- */
   // 1. Web3Forms emails it to the owner straight from the browser (its access key is public by design).
   // 2. /factory/api/lead/ saves it in the private lead store, and emails it from the server if step 1 failed.
-  // The visitor sees "thank you" if either worked; otherwise they are offered WhatsApp.
+  // The visitor sees "thank you" once the email went out; if it could not (an ad blocker, say), the lead is
+  // still saved and the visitor is asked to send it on WhatsApp too, so the owner hears about it either way.
   function j(r) { return r.json().catch(function () { return { success: r.ok }; }); }
   function post(data, subject) {
     if (data && data._honey) return Promise.resolve(true); // a bot filled the hidden field
@@ -50,7 +51,7 @@
       body.emailed = emailed;
       if (!L.api) return emailed;
       return fetch(L.api, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
-        .then(j).then(function (x) { return !!(x && x.ok) || emailed; }).catch(function () { return emailed; });
+        .then(j).then(function () { return emailed; }).catch(function () { return emailed; });
     });
   }
 

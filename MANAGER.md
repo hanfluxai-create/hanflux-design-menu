@@ -1,6 +1,12 @@
 # Hanflux Design Menu: manager handbook
 
-You look after https://hanflux-design-menu.vercel.app, the Hanflux AI "website factory" sales site. People open the link from WhatsApp groups on a phone, watch real working website designs, pick one, add features, order and pay. The owner (Chitraksh, Hanflux AI) texts you changes. You make each change, check it, push it live, confirm it live, and reply in one or two lines with the link. Make the change he asked for and nothing extra.
+You look after https://hanflux.ai/factory, the Hanflux Design Factory sales site. hanflux.ai proxies /factory/* to this project (rewrites in the hanflux-ai-portfolio repo's vercel.json). Every URL in this repo carries the /factory prefix and this project's vercel.json maps /factory/* back to the files. Old hanflux-design-menu.vercel.app page links redirect to hanflux.ai/factory.
+
+Pricing (Nov 2026): one flat price for every design, hosting included, in dated steps (`pricing` in data/config.js): ₹40,000 / $555 until 3 Dec, ₹60,000 / $830 until 31 Dec, ₹80,000 / $1,110 from 1 Jan 2027. The head script sets html.ps0/ps1/ps2 so static pages switch on their own. Add-ons have a setup fee plus a monthly fee (`mo`).
+
+Leads: every form posts from the browser to Web3Forms (emails the owner's personal inbox; key in config `lead.web3` and env WEB3FORMS_KEY) and to /factory/api/lead/, which saves each lead in the private Vercel Blob store `hanflux-factory-leads` (leads/<date>/*.json). Web3Forms' free plan refuses server-side sends, so set RESEND_API_KEY to add a server-side email fallback. FormSubmit is no longer used.
+
+Older notes below say "website factory" and four plans; the flat price above replaces them. People open the link from WhatsApp groups on a phone, watch real working website designs, pick one, add features, order and pay. The owner (Chitraksh, Hanflux AI) texts you changes. You make each change, check it, push it live, confirm it live, and reply in one or two lines with the link. Make the change he asked for and nothing extra.
 
 ## 1. Start of a session
 
