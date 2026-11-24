@@ -239,7 +239,7 @@ const waHelp = encodeURIComponent('Hi Hanflux, I need a website. My business is:
 write('websites/index.html', render(T('pages/websites.html'), { legend, cards: withCustom, examples: exSection, wa_help: waHelp, biz_filters: bizFilters, tier_filters: tierFilters }, 'websites'));
 
 // ---------- detail pages ----------
-const addonRows = C.addons.map((a) => `<li><input type="checkbox" id="ao-${a.id}" value="${a.id}"><label for="ao-${a.id}"><span class="box">${CHECK}</span><span class="an">${esc(a.name)}</span><span class="ap" data-price-block>+${dual((c) => money(a[c], c) + (a.monthly ? '/mo' : ''))}</span><span class="ad">${esc(a.desc)}</span></label></li>`).join('');
+const addonRows = C.addons.map((a) => `<li><input type="checkbox" id="ao-${a.id}" value="${a.id}"><label for="ao-${a.id}"><span class="box">${CHECK}</span><span class="an">${esc(a.name)}</span><span class="ap" data-price-block>${dual((c) => (a[c] ? '+' + money(a[c], c) : '') + (a[c] && a.mo ? ' + ' : '') + (a.mo ? money(a.mo[c], c) + '/mo' : ''))}</span><span class="ad">${esc(a.desc)}</span></label></li>`).join('');
 const inclShort = ['Your design, rebuilt with your name, photos and words', 'Live on your own domain within 48 hours of payment', 'Made for phones, tested on iPhone and Android', 'The 12-point launch check', 'As many changes as you want before launch', '30 days of small fixes after launch'].map((x) => `<li>${CHECK}<span>${esc(x)}</span></li>`).join('');
 const saleAside = T('partials/buy-aside.html');
 const saleBuybar = T('partials/buybar.html');
