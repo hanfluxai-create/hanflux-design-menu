@@ -35,7 +35,7 @@
     var poster = el('div', 'poster', '<div class="pfall"><b>' + esc(site.brand) + '</b></div>');
     var img = new Image();
     img.alt = ''; img.decoding = 'async'; img.loading = 'lazy';
-    img.src = '/posters/' + site.slug + '-' + kind + '.webp';
+    img.src = '/factory/posters/' + site.slug + '-' + kind + '.webp';
     img.onerror = function () { img.remove(); };
     poster.appendChild(img);
     vp.appendChild(poster);
@@ -82,7 +82,7 @@
     var cap = Math.max(0.5, Math.min(maxDpr, k * dpr * 1.05));
     var lite = vp.__kind === 'm' || weak || (stage.__opts && stage.__opts.lite) ? 1 : 0;
     var tour = stage.__tourOff ? 0 : 1;
-    return '/w/' + site.slug + '/?embed=1&tour=' + tour + '&v=' + vp.__kind + '&dpr=' + cap.toFixed(2) + '&lite=' + lite;
+    return '/factory/w/' + site.slug + '/?embed=1&tour=' + tour + '&v=' + vp.__kind + '&dpr=' + cap.toFixed(2) + '&lite=' + lite;
   }
   function mountVp(stage, vp) {
     if (vp.querySelector('iframe')) return;
@@ -150,7 +150,7 @@
       var poster = vp.querySelector('.poster'), ims = [];
       ['2', '3'].forEach(function (n) {
         var im = new Image(); im.alt = ''; im.decoding = 'async'; im.className = 'rf';
-        im.src = '/posters/' + slug + '-' + vp.__kind + n + '.webp';
+        im.src = '/factory/posters/' + slug + '-' + vp.__kind + n + '.webp';
         ims.push(im);
         jobs.push(im.decode ? im.decode().catch(function () { im.__bad = true; }) : new Promise(function (r) { im.onload = r; im.onerror = function () { im.__bad = true; r(); }; }));
       });

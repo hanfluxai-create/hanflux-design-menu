@@ -8,30 +8,30 @@
 <meta name="description" content="{{n_agents}} live interface styles for AI agents and assistants, each with Director Mode: your assistant opens the right screen and points to what it is talking about.">
 <meta property="og:title" content="AI agent interfaces · Hanflux Design Menu">
 <meta property="og:description" content="Choose the face of your AI. {{n_agents}} live interface styles with Director Mode built in.">
-<meta property="og:url" content="https://hanflux-design-menu.vercel.app/agents/">
-<link rel="canonical" href="https://hanflux-design-menu.vercel.app/agents/">
+<meta property="og:url" content="https://hanflux.ai/factory/agents/">
+<link rel="canonical" href="https://hanflux.ai/factory/agents/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{{agent_fonts}}">
-<link rel="stylesheet" href="/assets/agents/stage.css?v={{v}}">
-<link rel="stylesheet" href="/assets/hx/agents.css?v={{v}}">
-<script defer src="/data/config.js?v={{v}}"></script>
-<script defer src="/data/sites.js?v={{v}}"></script>
-<script defer src="/assets/agents/stage.js?v={{v}}"></script>
-<script defer src="/assets/agents/styles-data.js?v={{v}}"></script>
-<script defer src="/assets/hx/shell.js?v={{v}}"></script>
-<script defer src="/assets/hx/agents.js?v={{v}}"></script>
+<link rel="stylesheet" href="/factory/assets/agents/stage.css?v={{v}}">
+<link rel="stylesheet" href="/factory/assets/hx/agents.css?v={{v}}">
+<script defer src="/factory/data/config.js?v={{v}}"></script>
+<script defer src="/factory/data/sites.js?v={{v}}"></script>
+<script defer src="/factory/assets/agents/stage.js?v={{v}}"></script>
+<script defer src="/factory/assets/agents/styles-data.js?v={{v}}"></script>
+<script defer src="/factory/assets/hx/shell.js?v={{v}}"></script>
+<script defer src="/factory/assets/hx/agents.js?v={{v}}"></script>
 </head>
 <body class="agents">
 <div class="pin-gate" role="dialog" aria-modal="true" aria-labelledby="pin-t">
   <form class="pin-card" id="pin-form" autocomplete="off">
-    <a class="wordmark" href="/" aria-label="Hanflux design menu, home"><b>HANFLUX<sup aria-hidden="true">●</sup></b><span>design menu</span></a>
+    <a class="wordmark" href="/factory/" aria-label="Hanflux design menu, home"><b>HANFLUX<sup aria-hidden="true">●</sup></b><span>design menu</span></a>
     <p class="kicker">private</p>
     <h1 id="pin-t">AI agent interfaces</h1>
     <p>This menu is private for now. Enter the PIN to open it.</p>
     <input class="pin-in" id="pin" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="8" aria-label="PIN" autocomplete="off">
     <button class="btn btn-teal" type="submit">Open</button>
     <p class="pin-err" id="pin-err" role="alert" hidden>That PIN is not right.</p>
-    <a class="alt" href="/websites/">See the website menu instead</a>
+    <a class="alt" href="/factory/websites/">See the website menu instead</a>
   </form>
 </div>
 <script>
@@ -117,7 +117,7 @@
       </div>
       <div class="cta">
         <a class="btn btn-teal" href="#request" data-open-request>Get a fixed quote</a>
-        <a class="btn btn-ghost" href="/websites/">See the websites</a>
+        <a class="btn btn-ghost" href="/factory/websites/">See the websites</a>
       </div>
     </div>
   </section>

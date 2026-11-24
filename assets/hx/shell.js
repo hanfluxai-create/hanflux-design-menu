@@ -24,13 +24,15 @@
   function tierPrice(t, c) { var x = C.tiers[t][c || cur()]; return offerOn() ? x.from : (x.was || x.from); }
   function tierRegular(t, c) { var x = C.tiers[t][c || cur()]; return x.was || x.from; }
   function addonPrice(a, c) { return +a[c || cur()] || 0; }
+  function addonMo(a, c) { return a.mo ? +a.mo[c || cur()] || 0 : 0; }
+  function addonLabel(a, c) { var s = addonPrice(a, c), m = addonMo(a, c); return (s ? money(s, c) : '') + (s && m ? ' + ' : '') + (m ? money(m, c) + '/mo' : ''); }
   function minFrom(c) { return Math.min.apply(null, TIER_ORDER.map(function (t) { return tierPrice(t, c); })); }
 
   /* ---------- shortlist store ---------- */
   var KEY = 'hx-picks-v2';
   var EXS = C.examples || [];
   function isEx(s) { return EXS.indexOf(s) >= 0; }           // our own sites: examples, never for sale
-  var AGENTS_ON = /^\/agents\//.test(location.pathname);       // the agent menu is private for now
+  var AGENTS_ON = /^(\/factory)?\/agents\//.test(location.pathname);       // the agent menu is private for now
   var store = { w: [], a: [], add: [], primary: null };
   try { var raw = JSON.parse(localStorage.getItem(KEY) || 'null'); if (raw) store = Object.assign(store, raw); } catch (e) {}
   store.w = (store.w || []).filter(function (s) { return bySlug[s] && !isEx(s); });
@@ -55,7 +57,7 @@
   function syncCur() { var c = cur(); $$('[data-cur]').forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cur') === c ? 'true' : 'false'); }); }
 
   var api = W.HXShell = {
-    store: store, sites: SITES, bySlug: bySlug, money: money, esc: esc, offerOn: offerOn, tierPrice: tierPrice, tierRegular: tierRegular, addonPrice: addonPrice, cur: cur, setCur: setCur, minFrom: minFrom,
+    store: store, sites: SITES, bySlug: bySlug, money: money, esc: esc, offerOn: offerOn, tierPrice: tierPrice, tierRegular: tierRegular, addonPrice: addonPrice, addonMo: addonMo, addonLabel: addonLabel, cur: cur, setCur: setCur, minFrom: minFrom,
     onChange: function (fn) { listeners.push(fn); },
     hasSite: function (s) { return store.w.indexOf(s) >= 0; },
     isExample: isEx,
@@ -79,12 +81,12 @@
     c = c || cur();
     var p = primarySite();
     var base = p ? tierPrice(p.tier, c) : 0, reg = p ? tierRegular(p.tier, c) : 0, once = 0, monthly = 0;
-    store.add.forEach(function (id) { var a = C.addons.filter(function (x) { return x.id === id; })[0]; if (!a) return; if (a.monthly) monthly += addonPrice(a, c); else once += addonPrice(a, c); });
+    store.add.forEach(function (id) { var a = C.addons.filter(function (x) { return x.id === id; })[0]; if (!a) return; once += addonPrice(a, c); monthly += addonMo(a, c); });
     if (!p && store.a.length) { base = reg = c === 'inr' ? 100000 : 2000; } // an agent interface on its own (private menu)
     return { site: p, base: base, regular: reg + once, addons: once, monthly: monthly, total: base + once, saving: Math.max(0, reg - base), cur: c };
   }
   function shareLink() {
-    var u = new URL(C.site + '/websites/');
+    var u = new URL(C.site + '/factory/websites/');
     if (store.w.length) u.searchParams.set('w', store.w.join(','));
     if (store.a.length) u.searchParams.set('a', store.a.join(','));
     if (store.add.length) u.searchParams.set('add', store.add.join(','));
@@ -108,6 +110,7 @@
   function pad2(n) { return (n < 10 ? '0' : '') + n; }
   function tickOffer() {
     var left = OFFER_END - Date.now();
+    if (left <= 0 && C.pricing && C.stageIndex < C.pricing.stages.length - 1) { setTimeout(function () { location.reload(); }, 1500); return false; }
     if (left <= 0) { D.documentElement.classList.remove('has-offer'); D.documentElement.classList.add('offer-over'); return false; }
     var d = Math.floor(left / 864e5), h = Math.floor(left / 36e5) % 24, m = Math.floor(left / 6e4) % 60, sec = Math.floor(left / 1e3) % 60;
     var txt = d > 0 ? d + 'd ' + pad2(h) + 'h ' + pad2(m) + 'm' : pad2(h) + ':' + pad2(m) + ':' + pad2(sec);
@@ -197,7 +200,7 @@
   function initQbar() {
     qbar = $('#qbar'); if (!qbar) return;
     var go = $('#qb-go', qbar);
-    go.addEventListener('click', function () { if (store.w.length) location.href = '/order/'; else if (W.HXLead) W.HXLead.open({ source: 'sticky bar' }); });
+    go.addEventListener('click', function () { if (store.w.length) location.href = '/factory/order/'; else if (W.HXLead) W.HXLead.open({ source: 'sticky bar' }); });
     // stay out of the way of the big forms and the footer
     var blockers = $$('#plan, .final, .foot, .w-help');
     if ('IntersectionObserver' in W && blockers.length) {
@@ -265,9 +268,9 @@
     var picks = $('#rq-picks', sheet);
     var html = store.w.map(function (s) { var x = bySlug[s]; return '<span class="pchip"><i style="background:' + esc(x.accent) + '"></i>' + esc(x.name) + ' <span class="faint">· ' + esc(x.industry || x.brand) + '</span><button type="button" data-rm-w="' + esc(s) + '" aria-label="Remove ' + esc(x.name) + '">' + ICON.x + '</button></span>'; }).join('') +
       store.a.map(function (id) { var x = byLook[id]; var nm = x ? x.name : id; return '<span class="pchip"><i style="background:linear-gradient(135deg,#27f2c0,#7c5cff)"></i>AI agent: ' + esc(nm) + '<button type="button" data-rm-a="' + esc(id) + '" aria-label="Remove ' + esc(nm) + '">' + ICON.x + '</button></span>'; }).join('');
-    picks.innerHTML = html || '<p class="picks-empty">No design picked yet. That is fine: send this and we suggest the best one, or <a class="teal" href="/websites/">look at the designs</a> first.</p>';
+    picks.innerHTML = html || '<p class="picks-empty">No design picked yet. That is fine: send this and we suggest the best one, or <a class="teal" href="/factory/websites/">look at the designs</a> first.</p>';
     $('#rq-addons', sheet).innerHTML = C.addons.map(function (a) {
-      return '<button type="button" class="chip" data-addon="' + a.id + '" aria-pressed="' + api.hasAddon(a.id) + '">' + esc(a.name) + (C.showPrices ? ' · ' + money(addonPrice(a)) + (a.monthly ? '/mo' : '') : '') + '</button>';
+      return '<button type="button" class="chip" data-addon="' + a.id + '" aria-pressed="' + api.hasAddon(a.id) + '">' + esc(a.name) + (C.showPrices ? ' · ' + addonLabel(a) : '') + '</button>';
     }).join('');
     var e = estimate(), est = $('#rq-est', sheet);
     if (C.showPrices && (e.site || store.add.length || store.a.length)) {
@@ -417,5 +420,14 @@
     $$('[data-copy-share]').forEach(function (b) { b.addEventListener('click', copyShare); });
     if (location.hash === '#request') setTimeout(function () { openRequest({ primary: D.body.getAttribute('data-slug') || null }); }, 300);
   }
+  /* ---------- light and dark ---------- */
+  function setTheme(dark) {
+    var h = D.documentElement; h.classList.add('theme-anim'); h.classList.toggle('dark', dark);
+    try { localStorage.setItem('hx-theme', dark ? 'dark' : 'light'); } catch (e) {}
+    $$('meta[name="theme-color"]').forEach(function (m) { m.setAttribute('content', dark ? '#07081a' : '#ffffff'); m.removeAttribute('media'); });
+    if (W.HXBloom && W.HXBloom.relayout) W.HXBloom.relayout();
+    setTimeout(function () { h.classList.remove('theme-anim'); }, 450);
+  }
+  D.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-theme-toggle]'); if (b) setTheme(!D.documentElement.classList.contains('dark')); });
   if (D.readyState === 'loading') D.addEventListener('DOMContentLoaded', init); else init();
 })();

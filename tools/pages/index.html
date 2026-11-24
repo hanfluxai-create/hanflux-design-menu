@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
 {{head}}
-<title>Hanflux AI · Your business website, live in 48 hours</title>
-<meta name="description" content="Pick from {{n_sites}} real, working website designs. Hanflux AI's website factory rebuilds yours with your name, photos and words, tests it on real phones and puts it live on your domain within 48 hours of payment. Fixed price before we start.">
-<meta property="og:title" content="Your business website, live in 48 hours · Hanflux AI">
-<meta property="og:description" content="{{n_sites}} real website designs you can watch working on your phone. Pick one, order in minutes, go live within 48 hours. Launch prices till 31 Dec.">
-<meta property="og:url" content="https://hanflux-design-menu.vercel.app/">
-<link rel="canonical" href="https://hanflux-design-menu.vercel.app/">
-<link rel="stylesheet" href="/assets/hx/frames.css?v={{v}}">
-<link rel="stylesheet" href="/assets/hx/home.css?v={{v}}">
-<script defer src="/data/config.js?v={{v}}"></script>
-<script defer src="/data/sites.js?v={{v}}"></script>
-<script defer src="/assets/hx/frames.js?v={{v}}"></script>
-<script defer src="/assets/hx/shell.js?v={{v}}"></script>
-<script defer src="/assets/hx/lead.js?v={{v}}"></script>
-<script defer src="/assets/hx/bloom.js?v={{v}}"></script>
-<script defer src="/assets/hx/home.js?v={{v}}"></script>
+<title>Hanflux Design Factory · Your website, live in 48 hours, one flat price</title>
+<meta name="description" content="Pick from {{n_sites}} real, working website designs, from minimal to full 3D. One flat price for any design, hosting included, live on your domain within 48 hours. Apps, HTML emails and dashboards to order.">
+<meta property="og:title" content="Any website design, one flat price, live in 48 hours · Hanflux Design Factory">
+<meta property="og:description" content="{{n_sites}} real website designs you can watch working on your phone. Pick one, we make it yours, hosting included. Launch week price ends 3 Dec.">
+<meta property="og:url" content="https://hanflux.ai/factory/">
+<link rel="canonical" href="https://hanflux.ai/factory/">
+<link rel="stylesheet" href="/factory/assets/hx/frames.css?v={{v}}">
+<link rel="stylesheet" href="/factory/assets/hx/home.css?v={{v}}">
+<script defer src="/factory/data/config.js?v={{v}}"></script>
+<script defer src="/factory/data/sites.js?v={{v}}"></script>
+<script defer src="/factory/assets/hx/frames.js?v={{v}}"></script>
+<script defer src="/factory/assets/hx/shell.js?v={{v}}"></script>
+<script defer src="/factory/assets/hx/lead.js?v={{v}}"></script>
+<script defer src="/factory/assets/hx/bloom.js?v={{v}}"></script>
+<script defer src="/factory/assets/hx/home.js?v={{v}}"></script>
 </head>
 <body class="home">
 <a class="skip" href="#gallery">Skip to the designs</a>
@@ -26,22 +26,24 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="hero-in wrap">
       <div class="hero-mark" aria-hidden="true">
+        <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
         <canvas class="bloom" data-bloom data-anchor=".lotus" data-scroll="1"></canvas>
-        <div class="lotus-wrap"><img class="lotus" src="/assets/hx/brand/lotus.webp" srcset="/assets/hx/brand/lotus-300.webp 300w, /assets/hx/brand/lotus.webp 510w" sizes="(max-width: 640px) 100px, 170px" width="510" height="364" alt="" fetchpriority="high"></div>
+        <div class="lotus-wrap"><img class="lotus" src="/factory/assets/hx/brand/lotus.webp" srcset="/factory/assets/hx/brand/lotus-300.webp 300w, /factory/assets/hx/brand/lotus.webp 510w" sizes="(max-width: 640px) 100px, 170px" width="510" height="364" alt="" fetchpriority="high"></div>
       </div>
-      <p class="kicker low hero-k">hanflux ai · the website factory</p>
-      <h1 class="display h-xl" id="hero-title"><span class="ln"><span>Your business website,</span></span> <span class="ln"><span>live in 48 hours.</span></span></h1>
-      <p class="lede hero-l">Pick a design you like from {{n_sites}} real, working websites. We rebuild it with your name, photos and words, test it on real phones and put it live.</p>
+      <p class="kicker low hero-k">hanflux ai · the design factory</p>
+      <h1 class="display h-xl" id="hero-title"><span class="ln"><span>Any website design.</span></span> <span class="ln"><span class="grad-t">One flat price.</span></span> <span class="ln"><span>Live in 48 hours.</span></span></h1>
+      <p class="lede hero-l">Watch {{n_sites}} real, working websites, from minimal to full 3D. Pick one and we make it yours, host it and put it live on your domain.</p>
       <div class="hero-price hero-l">
-        <p class="hp-main"><small>from</small> <b class="num">{{price_from}}</b></p>
-        <p class="hp-vs">Agencies usually quote {{agency}} for a custom site. <button class="cur-link" type="button" data-cur-toggle><span class="c-inr">Outside India? See $ prices</span><span class="c-usd">In India? See ₹ prices</span></button></p>
+        <p class="hp-tag"><span class="hp-dot"></span>{{step_label}} · {{step_ends}}</p>
+        <p class="hp-main">{{ladder_hero}}</p>
+        <p class="hp-vs">Hosting included. Agencies usually quote {{agency}}. <button class="cur-link" type="button" data-cur-toggle><span class="c-inr">Outside India? See $ prices</span><span class="c-usd">In India? See ₹ prices</span></button></p>
       </div>
       <div class="cta hero-c">
         <a class="btn btn-teal" href="#gallery" data-bloom-wave>See the designs{{arrow}}</a>
         <button class="btn btn-ghost" type="button" data-open-plan>Get my free website plan</button>
       </div>
       <ul class="ticks hero-t" aria-label="What you get">
-        <li>Fixed price before we start</li><li>Live within 48 hours</li><li>12 checks before launch</li>
+        <li>Same price for every design</li><li>Hosting included</li><li>Live within 48 hours</li>
       </ul>
     </div>
   </section>
@@ -50,19 +52,30 @@
     <div class="wrap">
       <div class="sec-head">
         <div><p class="kicker rv">the design menu</p><h2 class="display h-lg rv" id="gal-title">Pick a design<br>for your business.</h2></div>
-        <p class="lede rv">Every design here is a real, working website, shown on a laptop and a phone. Tap one to watch it live and see its price.</p>
+        <p class="lede rv">Every design here is a real, working website, not a picture. Tap one and give it a second to load: it runs live on a phone and a laptop. Every design is the same price.</p>
       </div>
       <p class="kicker plain biz-k rv">find designs for</p>
       <div class="biz rv" role="list" aria-label="Designs by type of business">{{biz_chips}}</div>
     </div>
     <div class="g-rail" id="g-rail" aria-label="Featured designs, swipe for more">
       {{gallery}}
-      <a class="gcard g-all" href="/websites/"><span class="ga-n num">{{n_sites}}</span><b>See all {{n_sites}} designs</b><span class="gc-go">Open the menu{{arrow}}</span></a>
+      <a class="gcard g-all" href="/factory/websites/"><span class="ga-n num">{{n_sites}}</span><b>See all {{n_sites}} designs</b><span class="gc-go">Open the menu{{arrow}}</span></a>
     </div>
     <p class="swipe-hint wrap" aria-hidden="true">Swipe for more designs <span>→</span></p>
     <div class="wrap g-foot rv">
-      <a class="btn btn-teal" href="/websites/">See all {{n_sites}} designs{{arrow}}</a>
+      <a class="btn btn-teal" href="/factory/websites/">See all {{n_sites}} designs{{arrow}}</a>
       <p class="g-note">Not seeing your style? We can mix two designs, match your brand, or make one fully custom. <button class="lnk" type="button" data-open-plan data-kind="Fully custom">Ask for custom{{arrow_l}}</button></p>
+    </div>
+  </section>
+
+  <section class="services section" id="custom" aria-labelledby="svc-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker rv">your design partner</p><h2 class="display h-lg rv" id="svc-title">Everything your<br>customers see.</h2></div>
+        <p class="lede rv">Websites are the start. The same designers make your apps, emails, dashboards and brand, so everything looks like it came from one place. Websites are a flat price; everything else gets a fixed quote after a short call.</p>
+      </div>
+      <ul class="svc-grid">{{services}}</ul>
+      <div class="sec-cta rv"><button class="btn btn-teal" type="button" data-open-plan data-kind="Custom order">Request a custom order</button><a class="btn btn-ghost" href="https://wa.me/{{wa}}?text={{wa_custom}}" target="_blank" rel="noopener">{{wa_ic}}Talk it through on WhatsApp</a></div>
     </div>
   </section>
 
@@ -83,7 +96,7 @@
   <section class="factory section" id="factory" aria-labelledby="fac-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">why it costs less</p><h2 class="display h-lg rv" id="fac-title">We built a<br>website factory.</h2></div>
+        <div><p class="kicker rv">why it costs less</p><h2 class="display h-lg rv" id="fac-title">We built a<br>design factory.</h2></div>
         <p class="lede rv">An agency builds every site by hand, and you pay for every hour. In our factory, AI agents do the repetitive work in hours: layouts, code, image prep, first drafts and testing. Our team does the parts that need taste and judgement. Same quality, a fraction of the hours, so you pay a fraction of the price.</p>
       </div>
       <ol class="fline rv" aria-label="How a site moves through the factory">
@@ -105,29 +118,14 @@
   <section class="pricing section" id="pricing" aria-labelledby="pricing-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">prices</p><h2 class="display h-lg rv" id="pricing-title">Simple prices.<br>Fixed before we start.</h2></div>
-        <div class="rv pr-side"><p class="lede">Every design in the menu belongs to one of four plans. All go live within 48 hours of payment. The price is fixed before any work begins.</p>{{cur_switch}}</div>
+        <div><p class="kicker rv">prices</p><h2 class="display h-lg rv" id="pricing-title">One price.<br>Fixed before we start.</h2></div>
+        <div class="rv pr-side"><p class="lede">Every design costs the same, hosting included. The launch price steps up on fixed dates, so the earlier you start, the less you pay.</p>{{cur_switch}}</div>
       </div>
-      <p class="offer-line offer-only rv"><span class="off-sticker">launch prices</span><span>Book by 31 Dec 2026. From 1 Jan 2027 the crossed-out price applies. <b data-countdown>{{offer_ends}}</b> left.</span></p>
       <div class="tiers" id="tiers">{{tiers}}</div>
-      <div class="incl-all rv"><p class="kicker">included in every plan</p><ul>{{included}}</ul></div>
+      <div class="incl-all rv"><p class="kicker">included with every website</p><ul>{{included}}</ul></div>
       <div class="addons-strip rv">
-        <p class="kicker">add what you need</p>
-        <div class="addon-row">{{addons}}</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="custom section" id="custom" aria-labelledby="custom-title">
-    <div class="wrap">
-      <div class="custom-card rv">
-        <div>
-          <p class="kicker">custom orders</p>
-          <h2 class="display h-lg" id="custom-title">Need more than<br>a website?</h2>
-          <p class="cu-p">Backends that take orders, custom features, AI agents, connections to the software you already use. We take these as custom orders: we scope them on a call, give you a fixed price and agree a timeline that fits the work. The 48-hour promise covers websites from the menu.</p>
-          <div class="cta"><button class="btn btn-teal" type="button" data-open-plan data-kind="Custom order">Request a custom order</button><a class="btn btn-ghost" href="https://wa.me/{{wa}}?text={{wa_custom}}" target="_blank" rel="noopener">{{wa_ic}}Talk it through on WhatsApp</a></div>
-        </div>
-        <ul class="cu-list">{{custom_list}}</ul>
+        <div class="ao-head"><p class="kicker">add what you need</p><p class="ao-note">One-time setup, plus a monthly fee for anything that keeps running after launch. Usage like call minutes and WhatsApp fees is billed at cost.</p></div>
+        {{addons}}
       </div>
     </div>
   </section>
@@ -136,10 +134,10 @@
     <div class="wrap">
       <div class="plan-card rv">
         <div class="pc-copy">
-          <span class="off-sticker big offer-only">launch prices end 31 dec</span>
+          <span class="off-sticker big offer-only">{{step_label}} · {{step_ends}}</span>
           <h2 class="display h-lg" id="plan-title">Get your free<br>website plan.</h2>
           <p class="pc-p">Tell us about your business. Within 24 hours we WhatsApp you the design that fits you best, the pages you need and your fixed price. Free. No payment, no obligation.</p>
-          <div class="cd-big offer-only" role="timer" aria-label="Time left at launch prices">
+          <div class="cd-big offer-only" role="timer" aria-label="Time left at this price">
             <div class="tabrule"><b class="num" data-cd="d">00</b><small>days</small></div><div class="tabrule"><b class="num" data-cd="h">00</b><small>hours</small></div><div class="tabrule"><b class="num" data-cd="m">00</b><small>minutes</small></div><div class="tabrule"><b class="num" data-cd="s">00</b><small>seconds</small></div>
           </div>
           <p class="oc-fine offer-only">{{offer_note}}</p>
@@ -181,17 +179,17 @@
   <section class="final section" aria-labelledby="final-title">
     <div class="wrap">
       <div class="final-panel rv">
-        <canvas class="bloom" data-bloom data-tone="dark" data-cx=".5" data-cy="1.14" data-rx=".5" data-ry="1" data-ri="78" data-a0="186" data-a1="354" data-n="58" data-seed="5" aria-hidden="true"></canvas>
+        <div class="final-mark" aria-hidden="true"><canvas class="bloom" data-bloom data-tone="dark" data-anchor=".f-lotus" data-n="72" data-seed="5"></canvas><img class="f-lotus" src="/factory/assets/hx/brand/lotus-300.webp" width="300" height="214" alt="" loading="lazy"></div>
         <div class="final-in">
           <p class="kicker dotk">ready when you are</p>
-          <h2 class="display h-xl" id="final-title">Let's build<br>your website.</h2>
+          <h2 class="display h-xl" id="final-title">Let's design<br>yours.</h2>
           <div class="cta">
             <button class="btn btn-light" type="button" data-open-plan data-bloom-wave>Get my free website plan{{arrow}}</button>
             <a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener">{{wa_ic}}WhatsApp us</a>
             <a class="btn btn-line" href="https://cal.com/chitraksh-mayank-lhab1f/15min" target="_blank" rel="noopener">Book a 15-minute call</a>
           </div>
         </div>
-        <div class="final-meta mono"><a href="https://wa.me/{{wa}}" target="_blank" rel="noopener">{{wa_label}}</a><a href="https://hanflux.ai" target="_blank" rel="noopener">hanflux.ai</a></div>
+        <div class="final-meta mono"><a href="https://wa.me/{{wa}}" target="_blank" rel="noopener">{{wa_label}}</a><a href="https://hanflux.ai">hanflux.ai</a></div>
       </div>
     </div>
   </section>
@@ -199,7 +197,7 @@
 
 <div class="qbar" id="qbar" aria-live="polite">
   <div class="qbar-in">
-    <div class="qb-txt"><b id="qb-n">From {{price_from}}</b><span id="qb-est">fixed price · live in 48 hours</span></div>
+    <div class="qb-txt"><b id="qb-n">Any design {{price_from}}</b><span id="qb-est">hosting included · live in 48 hours</span></div>
     <a class="qb-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener" aria-label="WhatsApp us">{{wa_ic}}</a>
     <button class="btn btn-teal btn-sm" type="button" id="qb-go">Free plan</button>
   </div>

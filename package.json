@@ -1,0 +1,8 @@
+{
+  "name": "hanflux-design-factory",
+  "private": true,
+  "description": "Static site plus three serverless functions (api/pay, api/verify, api/lead).",
+  "dependencies": {
+    "@vercel/blob": "^2.9.0"
+  }
+}

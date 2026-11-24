@@ -1,6 +1,6 @@
 /* Hanflux Design Menu: the website styles. Order here is the order in the menu.
    live: real site URL for work Hanflux built (shown as "Built by Hanflux").
-   agent: the matching look in the AI agent menu (/agents/#<id>). */
+   agent: the matching look in the AI agent menu (/factory/agents/#<id>). */
 window.HX_SITES = [
   {"slug":"particles","name":"Particle Field","family":"Particles","brand":"Novaform","domain":"novaform.ai","industry":"AI forecasting platform","tier":"flagship","tags":["3d","dark","tech"],"accent":"#5ef2ff","bg":"#04050b","agent":"particles","pitch":"Tens of thousands of particles that reshape into your story as people scroll. Built for launches that need to look like the future.","bestFor":["AI and SaaS","Fintech","Product launches"],"includes":["GPU particle hero that morphs on scroll","Pinned three-step story","Animated dashboard section","Pricing and demo booking"],"tech":["WebGL","Custom shaders","GSAP ScrollTrigger"]},
 

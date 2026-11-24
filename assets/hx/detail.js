@@ -33,7 +33,7 @@
   function calm() {
     clearTimeout(calmT);
     if (mounted || !seen) return;
-    calmT = setTimeout(function () { if (seen && !mounted) { F.reel(st, false); start(); } }, F.isPhone ? 1800 : 0);
+    calmT = setTimeout(function () { if (seen && !mounted) { F.reel(st, false); start(); } }, F.isPhone ? 800 : 0);
   }
   if (F.isPhone) {
     W.addEventListener('scroll', calm, { passive: true });
@@ -86,11 +86,11 @@
     if (!hasBuy) return;
     var base = X.tierPrice(site.tier), reg = X.tierRegular(site.tier), on = X.offerOn();
     var once = 0, mo = 0, n = 0;
-    C.addons.forEach(function (a) { if (X.hasAddon(a.id)) { n++; if (a.monthly) mo += X.addonPrice(a); else once += X.addonPrice(a); } });
+    C.addons.forEach(function (a) { if (X.hasAddon(a.id)) { n++; once += X.addonPrice(a); mo += X.addonMo(a); } });
     $$('#d-addons input').forEach(function (i) { i.checked = X.hasAddon(i.value); });
     var amt = (on && reg > base ? '<s class="was" style="font-size:.55em;margin-right:8px">' + X.money(reg + once) + '</s>' : '') + 'from ' + X.money(base + once) + (mo ? '<small>+ ' + X.money(mo) + '/mo</small>' : '');
     $('#d-est-amt').innerHTML = amt;
-    $('#d-est-sub').textContent = C.tiers[site.tier].name + ' plan' + (n ? ' + ' + n + ' add-on' + (n > 1 ? 's' : '') : ', no add-ons yet');
+    $('#d-est-sub').textContent = 'Website, hosting included' + (n ? ' + ' + n + ' add-on' + (n > 1 ? 's' : '') : ', no add-ons yet');
     var bb = $('#bb-amt'); if (bb) bb.innerHTML = 'from ' + X.money(base + once) + (mo ? ' <span class="faint" style="font:500 12px var(--font-body)">+ ' + X.money(mo) + '/mo</span>' : '');
   }
   if (hasBuy) {

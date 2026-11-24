@@ -26,20 +26,32 @@
     } catch (e) { return ''; }
   }
 
-  /* ---------- save an enquiry to the inbox ---------- */
+  /* ---------- save an enquiry: emailed from the browser (Web3Forms) and saved on our server ---------- */
+  // 1. Web3Forms emails it to the owner straight from the browser (its access key is public by design).
+  // 2. /factory/api/lead/ saves it in the private lead store, and emails it from the server if step 1 failed.
+  // The visitor sees "thank you" if either worked; otherwise they are offered WhatsApp.
+  function j(r) { return r.json().catch(function () { return { success: r.ok }; }); }
   function post(data, subject) {
-    if (!L.endpoint) return Promise.resolve(false);
     if (data && data._honey) return Promise.resolve(true); // a bot filled the hidden field
-    var body = { _subject: subject || ('Website lead: ' + (data.name || 'new enquiry')), _template: 'table', _captcha: 'false' };
+    var body = { _subject: subject || ('Website lead: ' + (data.name || 'new enquiry')) };
     Object.keys(data || {}).forEach(function (k) { if (k !== '_honey' && data[k] != null && data[k] !== '') body[k] = data[k]; });
-    body.page = location.href; body.prices_in = cur().toUpperCase(); body.launch_prices = offerOn() ? 'yes' : 'no';
-    if (data.email) body._replyto = data.email;
-    try {
-      return fetch(L.endpoint, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(body) })
-        .then(function (r) { return r.json().catch(function () { return { success: r.ok }; }); })
-        .then(function (j) { return !!(j && (j.success === true || j.success === 'true')); })
-        .catch(function () { return false; });
-    } catch (e) { return Promise.resolve(false); }
+    body.page = location.href; body.prices_in = cur().toUpperCase(); body.offer = offerOn() ? (C.offer.label || 'yes') : 'no';
+    if (data.email) body.replyto = data.email;
+    var mail = Promise.resolve(false);
+    if (L.web3) {
+      try {
+        var wb = { access_key: L.web3, subject: body._subject, from_name: 'Hanflux Design Factory' };
+        Object.keys(body).forEach(function (k) { if (k.charAt(0) !== '_') wb[k] = body[k]; });
+        mail = fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(wb) })
+          .then(j).then(function (x) { return !!(x && x.success); }).catch(function () { return false; });
+      } catch (e) {}
+    }
+    return mail.then(function (emailed) {
+      body.emailed = emailed;
+      if (!L.api) return emailed;
+      return fetch(L.api, { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+        .then(j).then(function (x) { return !!(x && x.ok) || emailed; }).catch(function () { return emailed; });
+    });
   }
 
   function waText(d) {
@@ -149,7 +161,7 @@
     $$('form[data-lead-form]').forEach(function (f) { bind(f, { source: 'home page form' }); });
 
     // the timed pop-up
-    if (!L.on || !L.endpoint || /^\/(agents|w|order)\//.test(location.pathname)) return;
+    if (!L.on || !L.api || /^(\/factory)?\/(agents|w|order)\//.test(location.pathname)) return;
     var st = state(), force = /[?&]lead=now\b/.test(location.search);   // add ?lead=now to test the pop-up
     if (!force && st && (st.sent || (st.closed && Date.now() - st.closed < 3 * DAY))) return;
     var need = Math.max(5, +L.afterSec || 60) * 1000, spent = 0, last = Date.now(), timer;

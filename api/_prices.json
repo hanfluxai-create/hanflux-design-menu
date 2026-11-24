@@ -1,51 +1,36 @@
 {
- "site": "https://hanflux-design-menu.vercel.app",
- "offerEnds": 1798741799000,
+ "site": "https://hanflux.ai/factory",
  "upfrontPct": 100,
+ "regular": {
+  "inr": 80000,
+  "usd": 1110
+ },
+ "stages": [
+  {
+   "id": "week",
+   "ends": 1796322599000,
+   "inr": 40000,
+   "usd": 555
+  },
+  {
+   "id": "month",
+   "ends": 1798741799000,
+   "inr": 60000,
+   "usd": 830
+  }
+ ],
  "tiers": {
   "essential": {
-   "name": "Essential",
-   "inr": {
-    "from": 40000,
-    "was": 50000
-   },
-   "usd": {
-    "from": 600,
-    "was": 750
-   }
+   "name": "Minimal"
   },
   "growth": {
-   "name": "Growth",
-   "inr": {
-    "from": 55000,
-    "was": 70000
-   },
-   "usd": {
-    "from": 850,
-    "was": 1100
-   }
+   "name": "Business"
   },
   "signature": {
-   "name": "Signature",
-   "inr": {
-    "from": 75000,
-    "was": 95000
-   },
-   "usd": {
-    "from": 1200,
-    "was": 1500
-   }
+   "name": "Animated"
   },
   "flagship": {
-   "name": "Flagship",
-   "inr": {
-    "from": 95000,
-    "was": 120000
-   },
-   "usd": {
-    "from": 1600,
-    "was": 2000
-   }
+   "name": "3D"
   }
  },
  "sites": {
@@ -155,75 +140,112 @@
   }
  },
  "addons": {
-  "whatsapp": {
-   "inr": 2000,
-   "usd": 50,
-   "monthly": false
+  "dashboard": {
+   "inr": 45000,
+   "usd": 1800,
+   "mo": {
+    "inr": 3000,
+    "usd": 99
+   }
   },
-  "booking": {
-   "inr": 6000,
-   "usd": 150,
-   "monthly": false
-  },
-  "payments": {
-   "inr": 6000,
-   "usd": 150,
-   "monthly": false
+  "alerts": {
+   "inr": 18000,
+   "usd": 600,
+   "mo": {
+    "inr": 1500,
+    "usd": 49
+   }
   },
   "store": {
+   "inr": 60000,
+   "usd": 2000,
+   "mo": {
+    "inr": 3000,
+    "usd": 99
+   }
+  },
+  "booking": {
    "inr": 15000,
-   "usd": 400,
-   "monthly": false
+   "usd": 450,
+   "mo": {
+    "inr": 1000,
+    "usd": 29
+   }
+  },
+  "payments": {
+   "inr": 12000,
+   "usd": 450,
+   "mo": null
   },
   "aichat": {
-   "inr": 12000,
-   "usd": 300,
-   "monthly": false
+   "inr": 35000,
+   "usd": 1200,
+   "mo": {
+    "inr": 4000,
+    "usd": 150
+   }
   },
   "voice": {
-   "inr": 20000,
-   "usd": 500,
-   "monthly": false
+   "inr": 75000,
+   "usd": 2500,
+   "mo": {
+    "inr": 12000,
+    "usd": 300
+   }
   },
   "leads": {
-   "inr": 8000,
-   "usd": 200,
-   "monthly": false
+   "inr": 25000,
+   "usd": 900,
+   "mo": {
+    "inr": 2500,
+    "usd": 99
+   }
+  },
+  "whatsapp": {
+   "inr": 15000,
+   "usd": 500,
+   "mo": {
+    "inr": 1500,
+    "usd": 49
+   }
+  },
+  "emails": {
+   "inr": 18000,
+   "usd": 600,
+   "mo": null
   },
   "seo": {
-   "inr": 6000,
-   "usd": 150,
-   "monthly": false
+   "inr": 15000,
+   "usd": 500,
+   "mo": null
   },
   "copy": {
-   "inr": 6000,
-   "usd": 150,
-   "monthly": false
+   "inr": 15000,
+   "usd": 500,
+   "mo": null
   },
   "brand": {
-   "inr": 8000,
-   "usd": 200,
-   "monthly": false
+   "inr": 20000,
+   "usd": 800,
+   "mo": null
   },
   "cms": {
-   "inr": 6000,
-   "usd": 150,
-   "monthly": false
+   "inr": 12000,
+   "usd": 400,
+   "mo": null
   },
   "language": {
-   "inr": 6000,
-   "usd": 150,
-   "monthly": false
-  },
-  "newsletter": {
-   "inr": 5000,
-   "usd": 120,
-   "monthly": false
+   "inr": 12000,
+   "usd": 400,
+   "mo": null
   },
   "care": {
-   "inr": 1500,
-   "usd": 40,
-   "monthly": true
+   "inr": 0,
+   "usd": 0,
+   "mo": {
+    "inr": 4000,
+    "usd": 149
+   }
   }
  }
 }

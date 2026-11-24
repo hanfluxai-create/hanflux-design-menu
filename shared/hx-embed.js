@@ -1,7 +1,7 @@
 /*!
  * Hanflux Design Menu: embed and tour runtime for live website demos.
  * Load this as the FIRST script in <head> (classic script, not a module):
- *   <script src="/shared/hx-embed.js"></script>
+ *   <script src="/factory/shared/hx-embed.js"></script>
  *
  * URL params (all optional):
  *   embed=1   page is inside a menu frame (hides scrollbars, pauses on request)
@@ -214,8 +214,8 @@
       var slug = (location.pathname.match(/\/w\/([^/]+)/) || [])[1] || '';
       var bar = d.createElement('div');
       bar.setAttribute('data-hx-chip', '');
-      bar.innerHTML = '<a href="/websites/' + slug + '/" aria-label="Back to the Hanflux design menu">&#8592; Design menu</a>' +
-        '<a class="hx-go" href="/websites/' + slug + '/#request">' + (q.get('ex') === '1' ? 'Get one made for you' : 'Choose this design') + '</a>';
+      bar.innerHTML = '<a href="/factory/websites/' + slug + '/" aria-label="Back to the Hanflux design menu">&#8592; Design menu</a>' +
+        '<a class="hx-go" href="/factory/websites/' + slug + '/#request">' + (q.get('ex') === '1' ? 'Get one made for you' : 'Choose this design') + '</a>';
       var css = d.createElement('style');
       css.textContent = '[data-hx-chip]{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:2147483646;display:flex;gap:6px;padding:6px;border-radius:999px;' +
         'background:rgba(8,10,16,.72);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,.14);' +

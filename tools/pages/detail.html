@@ -6,17 +6,17 @@
 <meta name="description" content="{{meta_desc}}">
 <meta property="og:title" content="{{name}} · a live website design by Hanflux AI">
 <meta property="og:description" content="{{pitch}}">
-<meta property="og:url" content="https://hanflux-design-menu.vercel.app/websites/{{slug}}/">
-<link rel="canonical" href="https://hanflux-design-menu.vercel.app/websites/{{slug}}/">
+<meta property="og:url" content="https://hanflux.ai/factory/websites/{{slug}}/">
+<link rel="canonical" href="https://hanflux.ai/factory/websites/{{slug}}/">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/assets/hx/frames.css?v={{v}}">
-<link rel="stylesheet" href="/assets/hx/detail.css?v={{v}}">
-<script defer src="/data/config.js?v={{v}}"></script>
-<script defer src="/data/sites.js?v={{v}}"></script>
-<script defer src="/assets/hx/frames.js?v={{v}}"></script>
-<script defer src="/assets/hx/shell.js?v={{v}}"></script>
-<script defer src="/assets/hx/lead.js?v={{v}}"></script>
-<script defer src="/assets/hx/detail.js?v={{v}}"></script>
+<link rel="stylesheet" href="/factory/assets/hx/frames.css?v={{v}}">
+<link rel="stylesheet" href="/factory/assets/hx/detail.css?v={{v}}">
+<script defer src="/factory/data/config.js?v={{v}}"></script>
+<script defer src="/factory/data/sites.js?v={{v}}"></script>
+<script defer src="/factory/assets/hx/frames.js?v={{v}}"></script>
+<script defer src="/factory/assets/hx/shell.js?v={{v}}"></script>
+<script defer src="/factory/assets/hx/lead.js?v={{v}}"></script>
+<script defer src="/factory/assets/hx/detail.js?v={{v}}"></script>
 </head>
 <body class="detail" data-slug="{{slug}}" style="--accent: {{accent}}">
 <a class="skip" href="#buy">Skip to the price</a>
@@ -25,7 +25,7 @@
 <main>
   <section class="d-hero">
     <div class="wrap">
-      <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/websites/">← all designs</a></nav>
+      <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/factory/websites/">← all designs</a></nav>
       <div class="d-title">
         <div>
           <p class="kicker dotk">{{type_line}}</p>
@@ -44,7 +44,7 @@
             <button type="button" data-view="both" aria-pressed="true" class="seg-both"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="13" height="9" rx="1.4"/><rect x="15.5" y="8" width="6" height="12" rx="1.6"/><path d="M1.5 17h12"/></svg><span>Both</span></button>
           </div>
           <div class="d-acts">
-            <a class="btn btn-teal btn-fs" href="/w/{{slug}}/?from=menu{{ex_q}}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Open full screen<span class="coach" aria-hidden="true">Try the real site here</span></a>
+            <a class="btn btn-teal btn-fs" href="/factory/w/{{slug}}/?from=menu{{ex_q}}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>Open full screen<span class="coach" aria-hidden="true">Try the real site here</span></a>
             <button type="button" class="tog" data-tour-toggle aria-pressed="true"><span class="tog-k" aria-hidden="true"><i></i></span><span class="tog-l">Auto-scroll</span></button>
           </div>
           <p class="d-hint" id="d-hint"><i class="dot live"></i>This is the real, working site. Turn auto-scroll off to scroll it yourself, or open it full screen.</p>
@@ -78,9 +78,9 @@
 
   <section class="d-more wrap" aria-label="More designs">
     <div class="d-nav">
-      <a class="d-prev" href="/websites/{{prev_slug}}/"><span class="mono-h">previous</span><b>{{prev_name}}</b></a>
-      <a class="d-all btn btn-ghost" href="/websites/">All {{n_sites}} designs</a>
-      <a class="d-next" href="/websites/{{next_slug}}/"><span class="mono-h">next</span><b>{{next_name}}</b></a>
+      <a class="d-prev" href="/factory/websites/{{prev_slug}}/"><span class="mono-h">previous</span><b>{{prev_name}}</b></a>
+      <a class="d-all btn btn-ghost" href="/factory/websites/">All {{n_sites}} designs</a>
+      <a class="d-next" href="/factory/websites/{{next_slug}}/"><span class="mono-h">next</span><b>{{next_name}}</b></a>
     </div>
   </section>
 </main>

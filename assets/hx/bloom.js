@@ -25,16 +25,19 @@
 
   var all = [], px = -1e5, py = -1e5, pointerAt = 0;
   if (fine) W.addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; pointerAt = performance.now(); }, { passive: true });
+  // phones: a touch near the lotus pulls the traces too, and a tap sends a wave
+  else W.addEventListener('touchmove', function (e) { var t = e.touches && e.touches[0]; if (t) { px = t.clientX; py = t.clientY; pointerAt = performance.now(); } }, { passive: true });
+  var siteDark = function () { return D.documentElement.classList.contains('dark'); };
 
   function Bloom(cv) {
     var ctx = cv.getContext('2d'); if (!ctx) return;
-    var o = cv.dataset, dark = o.tone === 'dark';
+    var o = cv.dataset, dark = o.tone === 'dark' || siteDark();
     var anchor = o.anchor ? (cv.parentNode.querySelector(o.anchor) || D.querySelector(o.anchor)) : null;
     var A0 = (+(o.a0 || 0)) * Math.PI / 180, A1 = (+(o.a1 || 360)) * Math.PI / 180;
     var full = Math.abs(A1 - A0) >= TAU - .001;
     var N = +(o.n || 84), rand = rng(+(o.seed || 11));
     var retract = o.scroll === '1', still = reduce || o.still === '1';
-    var paper = dark ? '#1a1b45' : '#ffffff';
+    var paper = o.tone === 'dark' ? '#1a1b45' : dark ? '#0a0b1f' : '#ffffff';
     var T = [], i;
     for (i = 0; i < N; i++) {
       var f = full ? i / N : i / (N - 1), step = (A1 - A0) / N;
@@ -55,6 +58,7 @@
     var parX = 0, parY = 0, cache = null, cacheOk = false, anyEx = false;
 
     function layout() {
+      if (o.tone !== 'dark') { dark = siteDark(); paper = dark ? '#0a0b1f' : '#ffffff'; }
       var r = cv.getBoundingClientRect();
       w = Math.max(2, r.width); h = Math.max(2, r.height);
       // small canvases (phones) can afford the full pixel ratio; big ones stay at 2
@@ -266,6 +270,8 @@
     else { visible = true; kick(); }
     D.addEventListener('visibilitychange', function () { if (!D.hidden) { last = performance.now(); kick(); } });
     this.wave = function (from) { if (started && !still) wave(performance.now(), from); };
+    this.relayout = function () { layout(); cacheOk = false; kick(); };
+    if (!fine) cv.parentNode.addEventListener('click', function (e) { var r = cv.getBoundingClientRect(); px = e.clientX; py = e.clientY; pointerAt = performance.now(); if (started && !still) wave(performance.now(), Math.atan2(e.clientY - r.top - cy, e.clientX - r.left - cx)); kick(); });
   }
 
   function init() {
@@ -276,6 +282,6 @@
       b.addEventListener('pointerenter', function () { var n = performance.now(); if (n - lastT < 1600) return; lastT = n; all.forEach(function (x) { if (x.wave) x.wave(Math.PI / 2); }); });
     });
   }
-  W.HXBloom = { wave: function () { all.forEach(function (x) { if (x.wave) x.wave(); }); } };
+  W.HXBloom = { wave: function () { all.forEach(function (x) { if (x.wave) x.wave(); }); }, relayout: function () { all.forEach(function (x) { if (x.relayout) x.relayout(); }); } };
   if (D.readyState === 'loading') D.addEventListener('DOMContentLoaded', init); else init();
 })();

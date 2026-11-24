@@ -12,13 +12,17 @@ function priceOf(b) {
   const site = P.sites[b.design];
   if (!site) return null;
   const tier = P.tiers[site.tier];
-  const launch = Date.now() < P.offerEnds;
-  let amount = launch ? tier[cur].from : (tier[cur].was || tier[cur].from);
-  const addons = (Array.isArray(b.addons) ? b.addons : []).filter((x, i, a) => P.addons[x] && !P.addons[x].monthly && a.indexOf(x) === i).slice(0, 20);
-  addons.forEach((x) => { amount += P.addons[x][cur]; });
+  // flat price: the dated step that applies now, else the regular price
+  const now = Date.now();
+  const step = (P.stages || []).find((s) => now < s.ends);
+  let amount = step ? step[cur] : P.regular[cur];
+  // add-ons: the one-time setup is paid now; monthly fees start at launch and are billed separately
+  const addons = (Array.isArray(b.addons) ? b.addons : []).filter((x, i, a) => P.addons[x] && a.indexOf(x) === i).slice(0, 20);
+  addons.forEach((x) => { amount += P.addons[x][cur] || 0; });
+  const monthly = addons.reduce((n, x) => n + ((P.addons[x].mo || {})[cur] || 0), 0);
   const total = amount;
   amount = Math.round(amount * P.upfrontPct / 100);
-  return { cur, site, tier, addons, total, amount };
+  return { cur, site, tier, addons, total, amount, monthly };
 }
 
 module.exports = async (req, res) => {
@@ -28,7 +32,7 @@ module.exports = async (req, res) => {
   if (req.method === 'GET') { res.status(200).json({ ready }); return; }
   if (req.method !== 'POST') { res.status(405).json({ error: 'POST only' }); return; }
   const origin = req.headers.origin || '';
-  if (origin && origin !== P.site && !/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) { res.status(403).json({ error: 'wrong origin' }); return; }
+  if (origin && origin !== new URL(P.site).origin && origin !== 'https://hanflux-design-menu.vercel.app' && !/^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)) { res.status(403).json({ error: 'wrong origin' }); return; }
   if (!ready) { res.status(503).json({ error: 'online payment is not switched on yet' }); return; }
   let b = req.body;
   if (typeof b === 'string') { try { b = JSON.parse(b); } catch (e) { b = null; } }
@@ -41,10 +45,10 @@ module.exports = async (req, res) => {
   const body = {
     amount: p.amount * 100, currency: p.cur.toUpperCase(), accept_partial: false,
     reference_id: order,
-    description: clean(`Hanflux website: ${p.site.name} (${p.tier.name} plan)` + (p.addons.length ? ` + ${p.addons.length} add-on${p.addons.length > 1 ? 's' : ''}` : ''), 240),
+    description: clean(`Hanflux Design Factory website: ${p.site.name}` + (p.addons.length ? ` + ${p.addons.length} add-on${p.addons.length > 1 ? 's' : ''}` : ''), 240),
     customer: Object.assign({ name: name, contact: phone }, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? { email: email } : {}),
     notify: { sms: false, email: false }, reminder_enable: false,
-    notes: { order_id: order, design: p.site.name, plan: p.tier.name, addons: clean(p.addons.join(', '), 250) || 'none', total: String(p.total) },
+    notes: { order_id: order, design: p.site.name, plan: p.tier.name, addons: clean(p.addons.join(', '), 250) || 'none', total: String(p.total), monthly_from_launch: String(p.monthly) },
     callback_url: P.site + '/order/?paid=1', callback_method: 'get',
     expire_by: Math.floor(Date.now() / 1000) + 7 * 86400
   };

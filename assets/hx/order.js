@@ -24,14 +24,14 @@
   function site() { return S.design && by[S.design] ? by[S.design] : null; }
   function totals() {
     var s = site(), base = s ? X.tierPrice(s.tier) : 0, reg = s ? X.tierRegular(s.tier) : 0, once = 0, mo = 0, list = [];
-    C.addons.forEach(function (a) { if (X.hasAddon(a.id)) { var p = X.addonPrice(a); list.push({ a: a, p: p }); if (a.monthly) mo += p; else once += p; } });
+    C.addons.forEach(function (a) { if (X.hasAddon(a.id)) { var p = X.addonPrice(a), m = X.addonMo(a); list.push({ a: a, p: p, m: m }); once += p; mo += m; } });
     var total = base + once, pct = Math.max(1, Math.min(100, +PAY.upfrontPct || 100));
     return { s: s, base: base, reg: reg, once: once, mo: mo, list: list, total: total, now: Math.round(total * pct / 100), pct: pct, fixed: !!s };
   }
   function payLink() { var l = (PAY.razorpay || {})[X.cur()]; return l && /^https:\/\//.test(l) ? l : ''; }
   // online payment: /api/pay/ makes a Razorpay link for the exact amount (only once the keys are set in Vercel)
   var online = false;
-  if (PAY.online && W.fetch) fetch('/api/pay/', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : {}; }).then(function (j) { online = !!(j && j.ready); if (S.step === 4) go(4); }).catch(function () {});
+  if (PAY.online && W.fetch) fetch('/factory/api/pay/', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : {}; }).then(function (j) { online = !!(j && j.ready); if (S.step === 4) go(4); }).catch(function () {});
   function canPay(t) { return t.fixed && (online || !!payLink()); }
 
   /* ---------- step 1: the design ---------- */
@@ -41,9 +41,9 @@
       el.innerHTML = '<div class="o-card o-card-s"><div class="oc-txt"><span class="oc-k">not sure yet</span><b>Help me choose</b><span class="oc-p">We suggest the best design on the call and confirm the price before you pay.</span></div></div>';
     } else if (s) {
       var t = C.tiers[s.tier];
-      el.innerHTML = '<div class="o-card"><img src="/posters/' + s.slug + '-m.webp" alt="" width="300" height="649" decoding="async"><div class="oc-txt"><span class="oc-k">' + esc(s.industry) + ' · ' + esc(t.kind) + '</span><b>' + esc(s.name) + '</b>' +
-        '<span class="oc-p">' + (X.offerOn() && t[X.cur()].was ? '<s class="was">' + money(X.tierRegular(s.tier)) + '</s> ' : '') + '<span class="now">' + money(X.tierPrice(s.tier)) + '</span> <span class="faint">· ' + esc(t.name) + ' plan</span></span>' +
-        '<a class="lnk" href="/websites/' + s.slug + '/" target="_blank" rel="noopener">Watch it live</a></div></div>';
+      el.innerHTML = '<div class="o-card"><img src="/factory/posters/' + s.slug + '-m.webp" alt="" width="300" height="649" decoding="async"><div class="oc-txt"><span class="oc-k">' + esc(s.industry) + ' · ' + esc(t.kind) + '</span><b>' + esc(s.name) + '</b>' +
+        '<span class="oc-p">' + (X.offerOn() && t[X.cur()].was ? '<s class="was">' + money(X.tierRegular(s.tier)) + '</s> ' : '') + '<span class="now">' + money(X.tierPrice(s.tier)) + '</span> <span class="faint">· hosting included</span></span>' +
+        '<a class="lnk" href="/factory/websites/' + s.slug + '/" target="_blank" rel="noopener">Watch it live</a></div></div>';
     } else {
       el.innerHTML = '<p class="o-sub">Pick the design you want below.</p>';
       $('#o-list').hidden = false;
@@ -81,13 +81,13 @@
   /* ---------- summary (side panel, bottom bar, review) ---------- */
   function summaryHtml(t) {
     var rows = [];
-    if (t.s) rows.push(['<b>' + esc(t.s.name) + '</b><small>' + esc(C.tiers[t.s.tier].name) + ' plan · ' + esc(C.tiers[t.s.tier].kind) + '</small>', money(t.base)]);
+    if (t.s) rows.push(['<b>' + esc(t.s.name) + '</b><small>' + esc(C.tiers[t.s.tier].name) + ' style · hosting included</small>', money(t.base)]);
     else if (S.design === 'suggest') rows.push(['<b>Design: help me choose</b><small>confirmed on the call</small>', '']);
-    t.list.forEach(function (x) { rows.push([esc(x.a.name), money(x.p) + (x.a.monthly ? '/mo' : '')]); });
+    t.list.forEach(function (x) { rows.push([esc(x.a.name), X.addonLabel(x.a)]); });
     var h = '<p class="kicker">your order</p>' + (rows.length ? '<ul class="os-rows">' + rows.map(function (r) { return '<li><span>' + r[0] + '</span><span>' + r[1] + '</span></li>'; }).join('') + '</ul>' : '<p class="o-sub">No design picked yet.</p>');
     if (t.fixed) {
       h += '<div class="os-tot"><span>Total' + (X.offerOn() ? ' <small>launch price</small>' : '') + '</span><b>' + money(t.total) + '</b></div>';
-      if (t.mo) h += '<p class="os-mo">+ ' + money(t.mo) + ' a month for the Care plan, from launch</p>';
+      if (t.mo) h += '<p class="os-mo">+ ' + money(t.mo) + ' a month in add-on fees, from launch</p>';
       if (t.pct < 100) h += '<p class="os-mo">Pay ' + t.pct + '% now to start: <b>' + money(t.now) + '</b>. The rest before launch.</p>';
       if (X.offerOn() && t.reg > t.base) h += '<p class="os-save">You save ' + money(t.reg - t.base) + ' with launch prices, for orders by ' + esc(C.offer.endsLabel) + '.</p>';
     }
@@ -171,8 +171,8 @@
   function place() {
     for (var k = 1; k <= 3; k++) if (!valid(k)) { go(k); valid(k); return; }
     var t = totals(), f = S.f, id = orderId(), nx = $('[data-next]');
-    var design = t.s ? t.s.name + ' (' + C.tiers[t.s.tier].name + ' plan)' : 'help me choose';
-    var addons = t.list.map(function (x) { return x.a.name + ' ' + money(x.p) + (x.a.monthly ? '/mo' : ''); }).join(', ') || 'none';
+    var design = t.s ? t.s.name + ' (' + C.tiers[t.s.tier].kind + ')' : 'help me choose';
+    var addons = t.list.map(function (x) { return x.a.name + ' ' + X.addonLabel(x.a); }).join(', ') || 'none';
     var lead = function (payment, extra) {
       return W.HXLead && W.HXLead.post(Object.assign({
         order_id: id, name: f.name, whatsapp: f.phone, email: f.email, best_time_to_call: S.call,
@@ -192,7 +192,7 @@
     // 1. online: the server makes a Razorpay link for the exact amount, and the client goes straight to it
     if (t.fixed && online) {
       nx.disabled = true; nx.textContent = 'Opening secure payment…';
-      fetch('/api/pay/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ order: id, design: t.s.slug, addons: t.list.map(function (x) { return x.a.id; }), cur: X.cur(), name: f.name, phone: f.phone, email: f.email }) })
+      fetch('/factory/api/pay/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ order: id, design: t.s.slug, addons: t.list.map(function (x) { return x.a.id; }), cur: X.cur(), name: f.name, phone: f.phone, email: f.email }) })
         .then(function (r) { return r.json().then(function (j) { return r.ok && j.url ? j : Promise.reject(j); }); })
         .then(function (j) {
           remember();
@@ -234,10 +234,10 @@
     var last = {}; try { last = JSON.parse(localStorage.getItem('hx-last-order') || '{}') || {}; } catch (e) {}
     var ref = q.get('razorpay_payment_link_reference_id') || last.id || '';
     $$('.ostep').forEach(function (s) { s.hidden = true; }); $('#o-bar').hidden = true;
-    fetch('/api/verify/' + location.search, { cache: 'no-store' }).then(function (r) { return r.json(); }).catch(function () { return { ok: false }; }).then(function (j) {
+    fetch('/factory/api/verify/' + location.search, { cache: 'no-store' }).then(function (r) { return r.json(); }).catch(function () { return { ok: false }; }).then(function (j) {
       showDone(j.ok ? 'paid' : 'check', { id: ref, name: last.name || '', phone: last.phone || 'your number', wa: 'Hi Hanflux, I just paid for order ' + ref + '.' });
       if (j.ok && W.HXLead) W.HXLead.post({ order_id: ref, name: last.name, whatsapp: last.phone, design: last.design, total: last.total, payment_id: q.get('razorpay_payment_id'), status: 'PAID (signature verified)', source: 'order page' }, 'PAID ' + ref + ': ' + (last.name || '') + ' · ' + (last.total || ''));
-      if (history.replaceState) history.replaceState(null, '', '/order/');
+      if (history.replaceState) history.replaceState(null, '', '/factory/order/');
     });
     return;
   }

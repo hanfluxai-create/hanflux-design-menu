@@ -1,32 +1,34 @@
 {{offer_bar}}
 <header class="nav">
-  <a class="wordmark" href="/" aria-label="Hanflux AI, home"><img class="wm-lotus" src="/assets/hx/brand/lotus-96.webp" width="30" height="30" alt=""><img class="wm-type" src="/assets/hx/brand/wordmark.svg" width="109" height="13" alt="Hanflux AI"><span>website factory</span></a>
+  <a class="wordmark" href="/factory/" aria-label="Hanflux AI, home"><img class="wm-lotus" src="/factory/assets/hx/brand/lotus-96.webp" width="30" height="30" alt=""><img class="wm-type wm-l" src="/factory/assets/hx/brand/wordmark.svg" width="109" height="13" alt="Hanflux AI"><img class="wm-type wm-d" src="/factory/assets/hx/brand/wordmark-dark.svg" width="109" height="13" alt=""><span>design factory</span></a>
   <nav class="nav-links" aria-label="Main">
-    <a class="nl" href="/websites/"{{cur:websites}}>Designs</a>
-    <a class="nl" href="/#pricing">Prices</a>
-    <a class="nl" href="/#how">How it works</a>
-    <a class="nl" href="/#faq">Questions</a>
+    <a class="nl" href="/factory/websites/"{{cur:websites}}>Designs</a>
+    <a class="nl" href="/factory/#pricing">Prices</a>
+    <a class="nl" href="/factory/#custom">Apps and more</a>
+    <a class="nl" href="/factory/#how">How it works</a>
+    <a class="nl" href="/factory/#faq">Questions</a>
   </nav>
   <div class="nav-right">
-    <a class="pick-pill" href="/websites/?f=picks" aria-label="Your saved designs"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.4A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.5c0 5.8-7.5 10.4-7.5 10.4z"/></svg><span class="n" data-pick-count>0</span></a>
-    <a class="btn btn-teal btn-sm quote-btn" href="/#plan" data-open-plan>Free plan</a>
+    <button class="icon-btn theme-btn" type="button" data-theme-toggle aria-label="Switch light or dark mode"><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    <a class="pick-pill" href="/factory/websites/?f=picks" aria-label="Your saved designs"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.4A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.5c0 5.8-7.5 10.4-7.5 10.4z"/></svg><span class="n" data-pick-count>0</span></a>
+    <a class="btn btn-teal btn-sm quote-btn" href="/factory/#plan" data-open-plan>Free plan</a>
     <button class="icon-btn menu-btn" type="button" data-menu-open aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
   </div>
   <i class="nav-prog" aria-hidden="true"></i>
 </header>
 <div class="overlay-menu" role="dialog" aria-label="Menu">
   <button class="icon-btn om-close" type="button" data-menu-close aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <p class="kicker dotk">hanflux ai · website factory</p>
+  <p class="kicker dotk">hanflux ai · design factory</p>
   <nav aria-label="Mobile">
-    <a href="/websites/"><small>01</small>Designs</a>
-    <a href="/#pricing"><small>02</small>Prices</a>
-    <a href="/#how"><small>03</small>How it works</a>
-    <a href="/#custom"><small>04</small>Custom orders</a>
-    <a href="/#faq"><small>05</small>Questions</a>
+    <a href="/factory/websites/"><small>01</small>Designs</a>
+    <a href="/factory/#pricing"><small>02</small>Prices</a>
+    <a href="/factory/#how"><small>03</small>How it works</a>
+    <a href="/factory/#custom"><small>04</small>Apps, emails and more</a>
+    <a href="/factory/#faq"><small>05</small>Questions</a>
   </nav>
   <div class="om-cur"><p class="kicker plain">show prices for</p>{{cur_switch}}</div>
   <div class="om-foot">
-    <a class="btn btn-teal" href="/#plan" data-open-plan>Get my free website plan</a>
+    <a class="btn btn-teal" href="/factory/#plan" data-open-plan>Get my free website plan</a>
     <a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener">{{wa_ic}}WhatsApp us</a>
   </div>
 </div>

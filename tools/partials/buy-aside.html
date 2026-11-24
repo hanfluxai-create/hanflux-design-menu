@@ -1,13 +1,13 @@
 <aside class="d-buy" id="buy" aria-label="Price and add-ons">
       <div class="buy-card">
         <div class="buy-top">
-          <span class="tier tier-{{tier}}">{{tier_name}} · {{tier_kind}}</span>
+          <span class="tier tier-{{tier}}">{{tier_kind}} · same price as every design</span>
           <span class="mono faint">{{weeks}}</span>
         </div>
         {{price_block}}
-        <p class="buy-when offer-only"><span class="off-sticker">launch price</span><span class="offer-note">ends in <b data-countdown>{{offer_ends}}</b></span></p>
+        <p class="buy-when offer-only"><span class="off-sticker">{{step_label}}</span><span class="offer-note">ends in <b data-countdown>{{offer_ends}}</b> · hosting included</span></p>
         <p class="buy-blurb">{{tier_blurb}}</p>
-        <a class="btn btn-teal buy-main" href="/order/?d={{slug}}">Order this design</a>
+        <a class="btn btn-teal buy-main" href="/factory/order/?d={{slug}}">Order this design</a>
         <a class="buy-ask" href="https://wa.me/{{wa}}?text={{wa_ask}}" target="_blank" rel="noopener">Have a question first? Ask on WhatsApp</a>
         <h3 class="mono-h">included</h3>
         <ul class="incl-mini">{{incl_short}}</ul>
@@ -15,13 +15,13 @@
           <summary><span>Add features <small>optional</small></span><i aria-hidden="true"></i></summary>
           <ul class="addons" id="d-addons">{{addon_rows}}</ul>
         </details>
-        <div class="est" id="d-est"><div><div class="lbl">your estimate</div><div class="lbl" id="d-est-sub">{{tier_name}} plan, no add-ons yet</div></div><div class="amt" id="d-est-amt">from {{price_now}}</div></div>
+        <div class="est" id="d-est"><div><div class="lbl">your estimate</div><div class="lbl" id="d-est-sub">Website, hosting included, no add-ons yet</div></div><div class="amt" id="d-est-amt">from {{price_now}}</div></div>
         <div class="buy-cta">
-          <a class="btn btn-teal" href="/order/?d={{slug}}">Order with these features</a>
+          <a class="btn btn-teal" href="/factory/order/?d={{slug}}">Order with these features</a>
           <button class="btn btn-ghost btn-pick" type="button" data-pick="{{slug}}" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10.4A4.2 4.2 0 0 1 12 7.6a4.2 4.2 0 0 1 7.5 2.5c0 5.8-7.5 10.4-7.5 10.4z"/></svg><span class="lbl">Save</span></button>
         </div>
         <div class="buy-cur">{{cur_switch}}</div>
-        <p class="fine">Pay securely with Razorpay. We call you within 24 hours.</p>
+        <p class="fine">Pay securely with Razorpay. We call you within 24 hours. Add-on monthly fees start at launch.</p>
         <p class="fine offer-only">{{offer_note}}</p>
       </div>
     </aside>
