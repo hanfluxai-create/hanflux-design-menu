@@ -217,7 +217,7 @@ html.ps1 .lad0 b, html.ps2 .lad0 b, html.ps2 .lad1 b { text-decoration: line-thr
 .final-mark { position: absolute; z-index: -1; right: clamp(-40px, -2vw, 0px); top: 50%; transform: translateY(-50%); width: min(46%, 520px); aspect-ratio: 1; display: grid; place-items: center; pointer-events: none; }
 .final-mark .bloom { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease; }
 .final-mark .bloom.on { opacity: 1; }
-.final-mark .f-lotus { position: relative; width: 26%; filter: drop-shadow(0 0 30px rgba(221, 106, 198, .55)); animation: lotus-float 6s ease-in-out infinite; }
+.final-mark .f-lotus { position: relative; width: 26%; height: auto; filter: drop-shadow(0 0 30px rgba(221, 106, 198, .55)); animation: lotus-float 6s ease-in-out infinite; }
 .final-panel .bloom:not(.final-mark .bloom) { display: none; }
 @media (max-width: 860px) {
   .final-panel { padding-bottom: clamp(30px, 6vw, 60px) !important; }

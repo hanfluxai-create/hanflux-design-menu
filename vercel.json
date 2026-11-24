@@ -143,6 +143,39 @@
       "permanent": false
     },
     {
+      "source": "/websites/",
+      "has": [
+        {
+          "type": "host",
+          "value": "hanflux-design-menu.vercel.app"
+        }
+      ],
+      "destination": "https://hanflux.ai/factory/websites/",
+      "permanent": false
+    },
+    {
+      "source": "/websites/:a/",
+      "has": [
+        {
+          "type": "host",
+          "value": "hanflux-design-menu.vercel.app"
+        }
+      ],
+      "destination": "https://hanflux.ai/factory/websites/:a/",
+      "permanent": false
+    },
+    {
+      "source": "/order/",
+      "has": [
+        {
+          "type": "host",
+          "value": "hanflux-design-menu.vercel.app"
+        }
+      ],
+      "destination": "https://hanflux.ai/factory/order/",
+      "permanent": false
+    },
+    {
       "source": "/websites/:path*",
       "has": [
         {
