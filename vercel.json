@@ -111,7 +111,19 @@
     },
     {
       "source": "/factory",
-      "destination": "/"
+      "destination": "/index.html"
+    },
+    {
+      "source": "/factory/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/factory/:a/",
+      "destination": "/:a/index.html"
+    },
+    {
+      "source": "/factory/:a/:b/",
+      "destination": "/:a/:b/index.html"
     },
     {
       "source": "/factory/:path*",
