@@ -232,3 +232,40 @@ html.ps1 .lad0 b, html.ps2 .lad0 b, html.ps2 .lad1 b { text-decoration: line-thr
   .hero-mark .lotus { width: clamp(70px, 10.5svh, 96px); }
   .hero h1 { font-size: clamp(30px, min(8.8vw, 5.2svh), 40px); }
 }
+
+/* ---------- colour-flowing display words (Nov 2026) ---------- */
+:root { --flow: linear-gradient(90deg, #1587bd 0%, #4b57d6 18%, #8a3fb0 34%, #d24f8c 50%, #f0782f 66%, #8a3fb0 82%, #1587bd 100%); }
+html.dark { --flow: linear-gradient(90deg, #3db8ee 0%, #7d8cff 18%, #b47cf0 34%, #f06ab0 50%, #ffa25a 66%, #b47cf0 82%, #3db8ee 100%); }
+.grad-t { background: var(--flow); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  animation: flow-t 7s ease-in-out infinite alternate; padding-bottom: .08em; }
+@keyframes flow-t { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+@media (prefers-reduced-motion: reduce) { .grad-t { animation: none; } }
+
+/* ---------- designs page hero: centred, lotus with its aurora on top ---------- */
+body.websites .w-hero { text-align: center; padding-top: calc(var(--nav-h) + var(--bar-h) + clamp(26px, 4vw, 54px)); }
+body.websites .w-hero .w-mark { position: relative; inset: auto; right: auto; top: auto; z-index: 0; width: auto; height: clamp(130px, 16vw, 190px); margin: 0 auto 6px; display: grid; place-items: center; }
+body.websites .w-hero .w-mark .aurora { position: absolute; inset: -40% -10% -30%; z-index: -1; pointer-events: none; }
+body.websites .w-hero .w-mark .aurora i { position: absolute; left: 50%; top: 50%; width: min(80vw, 560px); aspect-ratio: 1; margin: calc(min(80vw, 560px) / -2) 0 0 calc(min(80vw, 560px) / -2); border-radius: 50%; background: radial-gradient(circle, rgba(21, 135, 189, .16), transparent 62%); animation: aur1 14s ease-in-out infinite alternate; }
+body.websites .w-hero .w-mark .aurora i:nth-child(2) { background: radial-gradient(circle, rgba(162, 62, 140, .16), transparent 62%); animation-name: aur2; animation-duration: 16s; }
+body.websites .w-hero .w-mark .aurora i:nth-child(3) { background: radial-gradient(circle, rgba(240, 133, 34, .14), transparent 62%); animation-name: aur3; animation-duration: 19s; }
+body.websites .w-hero .w-mark .lotus { width: clamp(108px, 12vw, 160px); }
+body.websites .w-hero .wrap > .kicker, body.websites .w-hero h1, body.websites .w-hero .lede, body.websites .w-hero .w-offer { max-width: 780px !important; margin-left: auto; margin-right: auto; }
+body.websites .w-hero .kicker.dotk { justify-content: center; }
+body.websites .w-hero h1 { margin: 14px auto 20px; }
+body.websites .w-hero .w-offer { justify-content: center; }
+body.websites .w-hero .legend { max-width: 560px; margin: clamp(26px, 4vw, 44px) auto 0; }
+body.websites .w-hero .lg-flat { flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding-top: 18px; text-align: center; background-position: top center !important; }
+body.websites .w-hero .lg-flat .lg-n { display: block !important; }
+body.websites .w-hero .lg-flat .lg-n::before { display: none; }
+body.websites .w-hero .lg-p { display: flex; align-items: baseline; justify-content: center; gap: 10px; flex-wrap: wrap; }
+body.websites .w-hero .lg-p small { order: 2; color: var(--ink-dim); }
+@media (max-width: 860px) {
+  body.websites .w-hero { padding-top: calc(var(--nav-h) + var(--bar-h) + 18px); }
+  body.websites .w-hero .w-mark { height: 150px; }
+  body.websites .w-hero .w-mark .lotus { width: 104px; }
+}
+
+/* ---------- forms in dark mode: dark panel, readable title ---------- */
+html.dark .sheet .panel { background: var(--spectrum) top / 100% 3px no-repeat, var(--paper-2); border-color: var(--hair-2); }
+html.dark .sheet h2, html.dark .sheet .ld-done-t { color: var(--ink); }
+html.dark .sheet .field input, html.dark .sheet .field select { background: #0a0c20; border-color: var(--hair-2); color: var(--ink); }

@@ -415,8 +415,14 @@
     els.forEach(function (e) { io.observe(e); });
   }
 
+  // phone placeholders follow the visitor's currency: a US number for dollar visitors, an Indian one for rupees
+  function telHint() {
+    var usd = D.documentElement.classList.contains('cur-usd');
+    $$('input[type="tel"]').forEach(function (i) { if (/98xxx|555 123/.test(i.placeholder || '')) i.placeholder = usd ? '+1 555 123 4567' : '+91 98xxx xxxxx'; });
+  }
   function init() {
     initNav(); initReveals(); initOffer(); initQbar();
+    telHint(); D.addEventListener('focusin', function (e) { if (e.target && e.target.type === 'tel') telHint(); });
     $$('[data-copy-share]').forEach(function (b) { b.addEventListener('click', copyShare); });
     if (location.hash === '#request') setTimeout(function () { openRequest({ primary: D.body.getAttribute('data-slug') || null }); }, 300);
   }

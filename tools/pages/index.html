@@ -4,12 +4,23 @@
 {{head}}
 <script>try{if(sessionStorage.getItem('hx-intro')||matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&](nointro|embed)=/.test(location.search)||/bot|crawl|spider|lighthouse|facebookexternalhit/i.test(navigator.userAgent))document.documentElement.classList.add('no-intro')}catch(e){document.documentElement.classList.add('no-intro')}</script>
 <style>
-#hxi{position:fixed;inset:0;z-index:9999;background:radial-gradient(120% 80% at 50% 38%,#151a4a 0,#080924 48%,#04050f 100%);overflow:hidden}
-#hxi canvas{position:absolute;inset:0;width:100%;height:100%}
-#hxi .hxi-brand{position:absolute;left:0;right:0;top:62%;text-align:center;opacity:0;pointer-events:none}
-#hxi .hxi-brand img{display:block;margin:0 auto;width:min(52vw,230px);height:auto}
-#hxi .hxi-brand p{margin:14px 0 0;font:500 12px/1 "Geist Mono",ui-monospace,monospace;letter-spacing:.42em;text-transform:lowercase;color:#9fa4e6}
-#hxi .hxi-skip{position:absolute;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));padding:9px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#c9ccf5;font:500 13px/1 Inter,system-ui,sans-serif;cursor:pointer}
+#hxi{position:fixed;inset:0;z-index:9999;overflow:hidden;background:#fbfbfe;background-image:radial-gradient(rgba(41,58,119,.09) 1px,transparent 1.3px);background-size:26px 26px}
+#hxi .hxi-au{position:absolute;inset:0;pointer-events:none}
+#hxi .hxi-au i{position:absolute;left:50%;top:40%;width:min(110vw,820px);aspect-ratio:1;margin:calc(min(110vw,820px)/-2) 0 0 calc(min(110vw,820px)/-2);border-radius:50%;background:radial-gradient(circle,rgba(21,135,189,.11),transparent 60%);animation:hxi-a 3s ease-in-out infinite alternate}
+#hxi .hxi-au i:nth-child(2){background:radial-gradient(circle,rgba(138,63,176,.09),transparent 60%);animation-delay:-1s;animation-duration:3.6s}
+#hxi .hxi-au i:nth-child(3){background:radial-gradient(circle,rgba(210,79,140,.07),transparent 60%);animation-delay:-2s;animation-duration:4.2s}
+@keyframes hxi-a{from{transform:translate(-12%,-4%) scale(.92)}to{transform:translate(10%,6%) scale(1.08)}}
+#hxi .hxi-mark{position:absolute;transform-origin:0 0;will-change:transform}
+#hxi .hxi-img,#hxi .hxi-neon{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#hxi .hxi-img{opacity:0;object-fit:contain;filter:drop-shadow(0 14px 30px rgba(101,48,128,.22))}
+#hxi .hxi-neon .n{fill:none}
+#hxi .hxi-brand{position:absolute;left:0;right:0;text-align:center;pointer-events:none}
+#hxi .hxi-word{position:relative;height:30px;display:grid;place-items:center}
+#hxi .hxi-dec{font:600 26px/1 "Geist Mono",ui-monospace,monospace;letter-spacing:.2em;color:#1a1b45;white-space:pre}
+#hxi .hxi-dec i,#hxi .hxi-tag i{font-style:normal}
+#hxi .hxi-word img{position:absolute;left:50%;top:50%;width:min(56vw,236px);height:auto;transform:translate(-50%,-50%);opacity:0}
+#hxi .hxi-tag{margin:16px 0 0;min-height:14px;font:500 12.5px/1 "Geist Mono",ui-monospace,monospace;letter-spacing:.42em;text-transform:lowercase;color:#5b5f8e;white-space:pre}
+#hxi .hxi-skip{position:absolute;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));padding:9px 16px;border-radius:999px;border:1px solid rgba(26,27,69,.14);background:rgba(255,255,255,.7);color:#4a4e7c;font:500 13px/1 Inter,system-ui,sans-serif;cursor:pointer}
 html.no-intro #hxi{display:none}
 html.intro-on,html.intro-on body{overflow:hidden}
 </style>
@@ -61,7 +72,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   <section class="gallery section" id="gallery" aria-labelledby="gal-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">the design menu</p><h2 class="display h-lg rv" id="gal-title">Pick a design<br>for your business.</h2></div>
+        <div><p class="kicker rv">the design menu</p><h2 class="display h-lg rv" id="gal-title">Pick a design<br><span class="grad-t">for your business.</span></h2></div>
         <p class="lede rv">Every design here is a real, working website, not a picture. Tap one and give it a second to load: it runs live on a phone and a laptop. Every design is the same price.</p>
       </div>
       <p class="kicker plain biz-k rv">find designs for</p>
@@ -81,7 +92,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   <section class="services section" id="custom" aria-labelledby="svc-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">your design partner</p><h2 class="display h-lg rv" id="svc-title">Everything your<br>customers see.</h2></div>
+        <div><p class="kicker rv">your design partner</p><h2 class="display h-lg rv" id="svc-title">Everything your<br><span class="grad-t">customers see.</span></h2></div>
         <p class="lede rv">Websites are the start. The same designers make your apps, emails, dashboards and brand, so everything looks like it came from one place. Websites are a flat price; everything else gets a fixed quote after a short call.</p>
       </div>
       <ul class="svc-grid">{{services}}</ul>
@@ -92,7 +103,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   <section class="how section" id="how" aria-labelledby="how-title">
     <div class="wrap">
       <p class="kicker rv">how it works</p>
-      <h2 class="display h-lg rv" id="how-title">Three steps.<br>No tech skills needed.</h2>
+      <h2 class="display h-lg rv" id="how-title">Three steps.<br><span class="grad-t">No tech skills needed.</span></h2>
       <div class="how-line rv" aria-hidden="true"><i></i></div>
       <ol class="steps">
         <li class="rv"><span class="sn mono">01</span><h3>Pick a design</h3><p>Tap any design to watch it working on a phone and a laptop. Choose the one that feels like your business.</p></li>
@@ -106,7 +117,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   <section class="factory section" id="factory" aria-labelledby="fac-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">why it costs less</p><h2 class="display h-lg rv" id="fac-title">We built a<br>design factory.</h2></div>
+        <div><p class="kicker rv">why it costs less</p><h2 class="display h-lg rv" id="fac-title">We built a<br><span class="grad-t">design factory.</span></h2></div>
         <p class="lede rv">An agency builds every site by hand, and you pay for every hour. In our factory, AI agents do the repetitive work in hours: layouts, code, image prep, first drafts and testing. Our team does the parts that need taste and judgement. Same quality, a fraction of the hours, so you pay a fraction of the price.</p>
       </div>
       <ol class="fline rv" aria-label="How a site moves through the factory">
@@ -128,7 +139,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   <section class="pricing section" id="pricing" aria-labelledby="pricing-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">prices</p><h2 class="display h-lg rv" id="pricing-title">One price.<br>Fixed before we start.</h2></div>
+        <div><p class="kicker rv">prices</p><h2 class="display h-lg rv" id="pricing-title">One price.<br><span class="grad-t">Fixed before we start.</span></h2></div>
         <div class="rv pr-side"><p class="lede">Every design costs the same, hosting included. The launch price steps up on fixed dates, so the earlier you start, the less you pay.</p>{{cur_switch}}</div>
       </div>
       <div class="tiers" id="tiers">{{tiers}}</div>
@@ -145,7 +156,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
       <div class="plan-card rv">
         <div class="pc-copy">
           <span class="off-sticker big offer-only">{{step_label}} · {{step_ends}}</span>
-          <h2 class="display h-lg" id="plan-title">Get your free<br>website plan.</h2>
+          <h2 class="display h-lg" id="plan-title">Get your free<br><span class="grad-t">website plan.</span></h2>
           <p class="pc-p">Tell us about your business. Within 24 hours we WhatsApp you the design that fits you best, the pages you need and your fixed price. Free. No payment, no obligation.</p>
           <div class="cd-big offer-only" role="timer" aria-label="Time left at this price">
             <div class="tabrule"><b class="num" data-cd="d">00</b><small>days</small></div><div class="tabrule"><b class="num" data-cd="h">00</b><small>hours</small></div><div class="tabrule"><b class="num" data-cd="m">00</b><small>minutes</small></div><div class="tabrule"><b class="num" data-cd="s">00</b><small>seconds</small></div>
@@ -192,7 +203,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
         <div class="final-mark" aria-hidden="true"><img class="f-lotus" src="/factory/assets/hx/brand/lotus-300.webp" width="300" height="214" alt="" loading="lazy"></div>
         <div class="final-in">
           <p class="kicker dotk">ready when you are</p>
-          <h2 class="display h-xl" id="final-title">Let's design<br>yours.</h2>
+          <h2 class="display h-xl" id="final-title">Let's design<br><span class="grad-t">yours.</span></h2>
           <div class="cta">
             <button class="btn btn-light" type="button" data-open-plan>Get my free website plan{{arrow}}</button>
             <a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener">{{wa_ic}}WhatsApp us</a>

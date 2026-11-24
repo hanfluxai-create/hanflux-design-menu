@@ -62,7 +62,7 @@ const offPct = (t, c) => Math.round((1 - PR.stages[0][c] / PR.regular[c]) * 100)
 const maxPct = Math.min(...CURS.map((c) => Math.max(...order.map((t) => offPct(t, c)))));
 const daysLeft = OFFER ? Math.max(0, Math.floor((new Date(OFFER.ends) - Date.now()) / 864e5)) : 0;
 const offerVars = {
-  offer_script: `<script>(function(){var d=document.documentElement;try{var n=Date.now(),e=[${PR.stages.map((x) => new Date(x.ends).getTime()).join(',')}],k=0;while(k<e.length&&n>=e[k])k++;d.classList.add('ps'+k,k<e.length?'has-offer':'offer-over')}catch(e){d.classList.add('ps0','has-offer')}try{var t=localStorage.getItem('hx-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))d.classList.add('dark')}catch(e){}})()</script>`,
+  offer_script: `<script>(function(){var d=document.documentElement;try{var n=Date.now(),e=[${PR.stages.map((x) => new Date(x.ends).getTime()).join(',')}],k=0;while(k<e.length&&n>=e[k])k++;d.classList.add('ps'+k,k<e.length?'has-offer':'offer-over')}catch(e){d.classList.add('ps0','has-offer')}try{var t=localStorage.getItem('hx-theme');if(t==='dark')d.classList.add('dark')}catch(e){}})()</script>`,
   offer_bar: (() => {
     const item = `<span class="ob-i"><span class="ob-dot" aria-hidden="true"></span>${stepLabel}: any design ${dual((c) => ladder(c, false))}</span>` +
       `<span class="ob-i"><b>${steps((k) => (k < NST ? 'Ends ' + esc(PR.stages[k].endsLabel) : 'Hosting included'))}</b> <b data-countdown-days>${daysLeft} days left</b></span>` +

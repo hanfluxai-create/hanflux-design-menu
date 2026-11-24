@@ -3,8 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#07081a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="/factory/assets/hx/brand/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="/factory/assets/hx/brand/apple-touch-icon.png">
@@ -17,18 +16,29 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <script>(function(){var d=document.documentElement,c='inr';try{var q=new URLSearchParams(location.search).get('cur'),s=localStorage.getItem('hx-cur');if(q==='inr'||q==='usd'){c=q;localStorage.setItem('hx-cur',c)}else if(s==='inr'||s==='usd'){c=s}else{var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||''}catch(e){}c=/^Asia\/(Kolkata|Calcutta)$/.test(tz)||/-IN$/i.test(navigator.language||'')?'inr':'usd'}}catch(e){}d.classList.add('cur-'+c);try{if((matchMedia('(pointer: coarse)').matches&&Math.min(screen.width,screen.height)<900)||innerWidth<760)d.classList.add('is-phone')}catch(e){}})()</script>
-<script>(function(){var d=document.documentElement;try{var n=Date.now(),e=[1796322599000,1798741799000],k=0;while(k<e.length&&n>=e[k])k++;d.classList.add('ps'+k,k<e.length?'has-offer':'offer-over')}catch(e){d.classList.add('ps0','has-offer')}try{var t=localStorage.getItem('hx-theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))d.classList.add('dark')}catch(e){}})()</script>
-<link rel="stylesheet" href="/factory/assets/hx/base.css?v=mwv6medv">
-<link rel="stylesheet" href="/factory/assets/hx/theme.css?v=mwv6medv">
+<script>(function(){var d=document.documentElement;try{var n=Date.now(),e=[1796322599000,1798741799000],k=0;while(k<e.length&&n>=e[k])k++;d.classList.add('ps'+k,k<e.length?'has-offer':'offer-over')}catch(e){d.classList.add('ps0','has-offer')}try{var t=localStorage.getItem('hx-theme');if(t==='dark')d.classList.add('dark')}catch(e){}})()</script>
+<link rel="stylesheet" href="/factory/assets/hx/base.css?v=mwv89rgf">
+<link rel="stylesheet" href="/factory/assets/hx/theme.css?v=mwv89rgf">
 
 <script>try{if(sessionStorage.getItem('hx-intro')||matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&](nointro|embed)=/.test(location.search)||/bot|crawl|spider|lighthouse|facebookexternalhit/i.test(navigator.userAgent))document.documentElement.classList.add('no-intro')}catch(e){document.documentElement.classList.add('no-intro')}</script>
 <style>
-#hxi{position:fixed;inset:0;z-index:9999;background:radial-gradient(120% 80% at 50% 38%,#151a4a 0,#080924 48%,#04050f 100%);overflow:hidden}
-#hxi canvas{position:absolute;inset:0;width:100%;height:100%}
-#hxi .hxi-brand{position:absolute;left:0;right:0;top:62%;text-align:center;opacity:0;pointer-events:none}
-#hxi .hxi-brand img{display:block;margin:0 auto;width:min(52vw,230px);height:auto}
-#hxi .hxi-brand p{margin:14px 0 0;font:500 12px/1 "Geist Mono",ui-monospace,monospace;letter-spacing:.42em;text-transform:lowercase;color:#9fa4e6}
-#hxi .hxi-skip{position:absolute;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));padding:9px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#c9ccf5;font:500 13px/1 Inter,system-ui,sans-serif;cursor:pointer}
+#hxi{position:fixed;inset:0;z-index:9999;overflow:hidden;background:#fbfbfe;background-image:radial-gradient(rgba(41,58,119,.09) 1px,transparent 1.3px);background-size:26px 26px}
+#hxi .hxi-au{position:absolute;inset:0;pointer-events:none}
+#hxi .hxi-au i{position:absolute;left:50%;top:40%;width:min(110vw,820px);aspect-ratio:1;margin:calc(min(110vw,820px)/-2) 0 0 calc(min(110vw,820px)/-2);border-radius:50%;background:radial-gradient(circle,rgba(21,135,189,.11),transparent 60%);animation:hxi-a 3s ease-in-out infinite alternate}
+#hxi .hxi-au i:nth-child(2){background:radial-gradient(circle,rgba(138,63,176,.09),transparent 60%);animation-delay:-1s;animation-duration:3.6s}
+#hxi .hxi-au i:nth-child(3){background:radial-gradient(circle,rgba(210,79,140,.07),transparent 60%);animation-delay:-2s;animation-duration:4.2s}
+@keyframes hxi-a{from{transform:translate(-12%,-4%) scale(.92)}to{transform:translate(10%,6%) scale(1.08)}}
+#hxi .hxi-mark{position:absolute;transform-origin:0 0;will-change:transform}
+#hxi .hxi-img,#hxi .hxi-neon{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+#hxi .hxi-img{opacity:0;object-fit:contain;filter:drop-shadow(0 14px 30px rgba(101,48,128,.22))}
+#hxi .hxi-neon .n{fill:none}
+#hxi .hxi-brand{position:absolute;left:0;right:0;text-align:center;pointer-events:none}
+#hxi .hxi-word{position:relative;height:30px;display:grid;place-items:center}
+#hxi .hxi-dec{font:600 26px/1 "Geist Mono",ui-monospace,monospace;letter-spacing:.2em;color:#1a1b45;white-space:pre}
+#hxi .hxi-dec i,#hxi .hxi-tag i{font-style:normal}
+#hxi .hxi-word img{position:absolute;left:50%;top:50%;width:min(56vw,236px);height:auto;transform:translate(-50%,-50%);opacity:0}
+#hxi .hxi-tag{margin:16px 0 0;min-height:14px;font:500 12.5px/1 "Geist Mono",ui-monospace,monospace;letter-spacing:.42em;text-transform:lowercase;color:#5b5f8e;white-space:pre}
+#hxi .hxi-skip{position:absolute;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));padding:9px 16px;border-radius:999px;border:1px solid rgba(26,27,69,.14);background:rgba(255,255,255,.7);color:#4a4e7c;font:500 13px/1 Inter,system-ui,sans-serif;cursor:pointer}
 html.no-intro #hxi{display:none}
 html.intro-on,html.intro-on body{overflow:hidden}
 </style>
@@ -38,102 +48,120 @@ html.intro-on,html.intro-on body{overflow:hidden}
 <meta property="og:description" content="26 real website designs you can watch working on your phone. Pick one, we make it yours, hosting included. Launch week price ends 3 Dec.">
 <meta property="og:url" content="https://hanflux.ai/factory/">
 <link rel="canonical" href="https://hanflux.ai/factory/">
-<link rel="stylesheet" href="/factory/assets/hx/frames.css?v=mwv6medv">
-<link rel="stylesheet" href="/factory/assets/hx/home.css?v=mwv6medv">
-<script defer src="/factory/data/config.js?v=mwv6medv"></script>
-<script defer src="/factory/data/sites.js?v=mwv6medv"></script>
-<script defer src="/factory/assets/hx/frames.js?v=mwv6medv"></script>
-<script defer src="/factory/assets/hx/shell.js?v=mwv6medv"></script>
-<script defer src="/factory/assets/hx/lead.js?v=mwv6medv"></script>
-<script defer src="/factory/assets/hx/home.js?v=mwv6medv"></script>
+<link rel="stylesheet" href="/factory/assets/hx/frames.css?v=mwv89rgf">
+<link rel="stylesheet" href="/factory/assets/hx/home.css?v=mwv89rgf">
+<script defer src="/factory/data/config.js?v=mwv89rgf"></script>
+<script defer src="/factory/data/sites.js?v=mwv89rgf"></script>
+<script defer src="/factory/assets/hx/frames.js?v=mwv89rgf"></script>
+<script defer src="/factory/assets/hx/shell.js?v=mwv89rgf"></script>
+<script defer src="/factory/assets/hx/lead.js?v=mwv89rgf"></script>
+<script defer src="/factory/assets/hx/home.js?v=mwv89rgf"></script>
 </head>
 <body class="home">
-<div id="hxi" aria-hidden="true"><canvas></canvas><div class="hxi-brand"><img src="/factory/assets/hx/brand/wordmark-dark.svg" width="210" height="25" alt=""><p>the design factory</p></div><button class="hxi-skip" type="button" tabindex="-1">Skip</button></div>
+<div id="hxi" aria-hidden="true">
+  <div class="hxi-au"><i></i><i></i><i></i></div>
+  <div class="hxi-mark">
+    <img class="hxi-img" src="/factory/assets/hx/brand/lotus-300.webp" alt="">
+    <svg class="hxi-neon" viewBox="0 0 510 364" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <defs><filter id="hxi-glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9" result="b2"/><feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b1"/><feMerge><feMergeNode in="b2"/><feMergeNode in="b1"/><feMergeNode in="SourceGraphic"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <g filter="url(#hxi-glow)" stroke-width="3.2">
+        <path class="n" style="--c:#4b57d6;--d:0" d="M255 272C196 232 186 142 255 47C324 142 314 232 255 272Z"/>
+        <path class="n" style="--c:#1587bd;--d:.12" d="M255 272C198 256 126 206 118 115C170 117 211 150 224 206C233 236 246 258 255 272Z"/>
+        <path class="n" style="--c:#a23e8c;--d:.12" d="M255 272C312 256 384 206 392 115C340 117 299 150 286 206C277 236 264 258 255 272Z"/>
+        <path class="n" style="--c:#1e6fb0;--d:.24" d="M255 272C178 282 88 250 48 175C98 166 146 182 178 214C206 240 236 262 255 272Z"/>
+        <path class="n" style="--c:#d24f8c;--d:.24" d="M255 272C332 282 422 250 462 175C412 166 364 182 332 214C304 240 274 262 255 272Z"/>
+        <path class="n" style="--c:#293a77;--d:.36" d="M252 282C214 302 150 346 82 340C110 304 176 284 252 282Z"/>
+        <path class="n" style="--c:#f0782f;--d:.36" d="M258 282C296 302 360 346 428 340C400 304 334 284 258 282Z"/>
+        <g stroke-width="2.2">
+          <path class="n" style="--c:#1587bd;--d:.48" d="M200 118L172 92V62"/><circle class="n" style="--c:#1587bd;--d:.62" cx="172" cy="55" r="7"/>
+          <path class="n" style="--c:#1587bd;--d:.5" d="M214 108V30"/><circle class="n" style="--c:#1587bd;--d:.64" cx="214" cy="22" r="7"/>
+          <path class="n" style="--c:#1e6fb0;--d:.52" d="M186 124L146 98V70"/><circle class="n" style="--c:#1e6fb0;--d:.66" cx="146" cy="62" r="7"/>
+          <path class="n" style="--c:#7a3a9a;--d:.48" d="M300 92V18"/><circle class="n" style="--c:#7a3a9a;--d:.62" cx="300" cy="12" r="7"/>
+          <path class="n" style="--c:#8a3fb0;--d:.5" d="M318 112L338 92V70H360"/><circle class="n" style="--c:#8a3fb0;--d:.64" cx="368" cy="64" r="7"/>
+          <path class="n" style="--c:#a23e8c;--d:.52" d="M330 128L362 100"/><circle class="n" style="--c:#a23e8c;--d:.66" cx="366" cy="88" r="7"/>
+          <path class="n" style="--c:#293a77;--d:.56" d="M128 270H64L46 290H20"/><circle class="n" style="--c:#293a77;--d:.7" cx="14" cy="295" r="7"/>
+          <path class="n" style="--c:#f0782f;--d:.56" d="M384 270H446L464 290H490"/><circle class="n" style="--c:#f0782f;--d:.7" cx="496" cy="295" r="7"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="hxi-brand"><div class="hxi-word"><span class="hxi-dec" data-t="HANFLUX AI"></span><img src="/factory/assets/hx/brand/wordmark.svg" width="210" height="25" alt=""></div><p class="hxi-tag" data-t="the design factory"></p></div>
+  <button class="hxi-skip" type="button" tabindex="-1">Skip</button>
+</div>
 <script>
-/* First-open intro: brand dust swarms into the lotus, then flies into the hero logo while the page irises open. Once per session. */
+/* First-open intro (always light): the lotus is traced in neon, flickers on and fills with the real mark while the
+   name decodes; then the mark flies into the hero logo and the page shows through. Once per session, skippable. */
 (function () {
   var d = document, H = d.documentElement, ov = d.getElementById('hxi');
   if (!ov || H.classList.contains('no-intro')) { ov && ov.remove(); return; }
-  var done = false, t0 = 0, raf = 0;
-  function end() { if (done) return; done = true; cancelAnimationFrame(raf); try { sessionStorage.setItem('hx-intro', '1'); } catch (e) {} H.classList.remove('intro-on'); ov.remove(); }
+  var done = false, t0 = 0;
+  function end() { if (done) return; done = true; H.classList.remove('intro-on'); ov.remove(); }
   try { sessionStorage.setItem('hx-intro', '1'); } catch (e) {}
   H.classList.add('intro-on');
-  setTimeout(end, 5200);
-  ['pointerdown', 'wheel', 'keydown', 'touchmove'].forEach(function (e) { addEventListener(e, function () { if (t0 && performance.now() - t0 > 350) end(); }, { once: true, passive: true }); });
+  setTimeout(end, 5000);
   ov.querySelector('.hxi-skip').addEventListener('click', end);
-  var cv = ov.querySelector('canvas'), x = cv.getContext('2d'), brand = ov.querySelector('.hxi-brand');
-  var dpr = Math.min(2, devicePixelRatio || 1), W = innerWidth, Ht = innerHeight;
-  cv.width = W * dpr; cv.height = Ht * dpr; x.scale(dpr, dpr);
-  var phone = W < 760, N = phone ? 2600 : 4500;
-  var img = new Image(); img.decoding = 'async'; img.src = '/factory/assets/hx/brand/lotus-300.webp';
-  var giveUp = setTimeout(end, 1600);
-  img.onerror = end;
-  img.onload = function () {
-    clearTimeout(giveUp); if (done) return;
-    var sw = 150, sh = Math.round(150 * img.naturalHeight / img.naturalWidth), oc = d.createElement('canvas'); oc.width = sw; oc.height = sh;
-    var o = oc.getContext('2d'); o.drawImage(img, 0, 0, sw, sh);
-    var px; try { px = o.getImageData(0, 0, sw, sh).data; } catch (e) { end(); return; }
-    var pts = [];
-    for (var j = 0; j < sh; j++) for (var i = 0; i < sw; i++) { var k = (j * sw + i) * 4; if (px[k + 3] > 150) pts.push([i / sw, j / sh, px[k], px[k + 1], px[k + 2]]); }
-    if (!pts.length) { end(); return; }
-    // big lotus at the centre, then the hero lotus as the landing spot
-    var bw = Math.min(W * .62, 380), bh = bw * sh / sw, bx = (W - bw) / 2, by = Ht * .42 - bh / 2;
-    var r = null;
-    function heroRect() { var h = d.querySelector('.hero-mark .lotus'), q = h ? h.getBoundingClientRect() : null; return q && q.width > 4 ? q : { left: (W - 100) / 2, top: 120, width: 100, height: 71 }; }
-    brand.style.top = (by + bh + (phone ? 26 : 34)) + 'px';
-    var P = [];
-    for (var n = 0; n < N; n++) {
-      var p = pts[(Math.random() * pts.length) | 0], a = Math.random() * 6.283, rad = Math.max(W, Ht) * (.3 + Math.random() * .55);
-      P.push({ u: p[0] + (Math.random() - .5) / sw, v: p[1] + (Math.random() - .5) / sh, c: 'rgb(' + p[2] + ',' + p[3] + ',' + p[4] + ')',
-        sx: W / 2 + Math.cos(a) * rad, sy: Ht * .42 + Math.sin(a) * rad, dl: Math.random() * 380, cu: (Math.random() - .5) * 220, s: .7 + Math.random() * 1.3, ph: Math.random() * 6.283 });
+  ['pointerdown', 'wheel', 'keydown', 'touchmove'].forEach(function (e) { addEventListener(e, function () { if (t0 && performance.now() - t0 > 300) end(); }, { once: true, passive: true }); });
+  var mark = ov.querySelector('.hxi-mark'), img = ov.querySelector('.hxi-img'), neon = ov.querySelector('.hxi-neon'), brand = ov.querySelector('.hxi-brand');
+  var dec = ov.querySelector('.hxi-dec'), word = ov.querySelector('.hxi-word img'), tag = ov.querySelector('.hxi-tag');
+  var W = innerWidth, Ht = innerHeight, bw = Math.min(W * .64, 400), bh = bw * 364 / 510, bx = (W - bw) / 2, by = Ht * .40 - bh / 2;
+  mark.style.cssText = 'left:' + bx + 'px;top:' + by + 'px;width:' + bw + 'px;height:' + bh + 'px';
+  brand.style.top = (by + bh + Math.min(40, bw * .1)) + 'px';
+  var N = [].slice.call(ov.querySelectorAll('.n')).map(function (p) {
+    var L = 60; try { L = p.getTotalLength(); } catch (e) {}
+    var cs = getComputedStyle(p);
+    p.style.stroke = cs.getPropertyValue('--c').trim();
+    p.style.strokeDasharray = L + ' ' + L; p.style.strokeDashoffset = L;
+    return { p: p, L: L, dl: parseFloat(cs.getPropertyValue('--d')) || 0 };
+  });
+  var G = '!<>-_/[]{}=+*^?#ABCDEFGHJKLMNPQRSTUVWXYZ0123456789', COLS = ['#1587bd', '#4b57d6', '#8a3fb0', '#d24f8c', '#f0782f'];
+  function decode(el, t, start, per) {
+    var s = el.getAttribute('data-t'), out = '';
+    for (var i = 0; i < s.length; i++) {
+      var at = start + i * per;
+      if (s[i] === ' ') { out += ' '; continue; }
+      if (t < at - 280) out += '<i style="opacity:0">' + s[i] + '</i>';
+      else if (t < at) out += '<i style="color:' + COLS[(i + ((t / 70) | 0)) % COLS.length] + '">' + G[(Math.random() * G.length) | 0] + '</i>';
+      else out += '<i>' + s[i] + '</i>';
     }
-    var C = x, IRIS0 = 2150, IRIS = 620, FLY0 = 1650, FLY = 620, R0 = Math.hypot(W, Ht);
-    function eo(t) { return 1 - Math.pow(1 - t, 3); }
-    function eio(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
-    function frame(now) {
-      if (done) return;
-      if (!t0) t0 = now;
-      var t = now - t0;
-      C.clearRect(0, 0, W, Ht);
-      C.globalCompositeOperation = 'lighter';
-      if (t >= FLY0 - 40 && !r) r = heroRect();
-      var R_ = r || { left: bx, top: by, width: bw, height: bh };
-      var fly = eio(Math.min(1, Math.max(0, (t - FLY0) / FLY)));
-      var lx = bx + (R_.left - bx) * fly, ly = by + (R_.top - by) * fly, lw = bw + (R_.width - bw) * fly, lh = bh + (R_.height - bh) * fly;
-      var ia = eo(Math.min(1, Math.max(0, (t - 1050) / 450)));
-      var fade = 1 - Math.min(1, Math.max(0, (t - IRIS0 - 120) / 260));
-      for (var n = 0; n < N; n++) {
-        var p = P[n], q = eo(Math.min(1, Math.max(0, (t - p.dl) / 1100)));
-        var tx = lx + p.u * lw, ty = ly + p.v * lh;
-        var px2 = p.sx + (tx - p.sx) * q + Math.sin(q * 3.14) * p.cu, py2 = p.sy + (ty - p.sy) * q + Math.cos(q * 3.14) * p.cu * .4;
-        if (q >= 1) { px2 += Math.sin(t * .004 + p.ph) * .6 * (1 - fly); py2 += Math.cos(t * .005 + p.ph) * .6 * (1 - fly); }
-        var sz = p.s * (1 - fly * .45) * (q < 1 ? 1.4 - q * .4 : 1);
-        C.globalAlpha = (.35 + .65 * q) * fade * (1 - .55 * ia);
-        C.fillStyle = p.c;
-        C.fillRect(px2, py2, sz, sz);
-      }
-      C.globalAlpha = 1; C.globalCompositeOperation = 'source-over';
-      // the real mark resolves out of the dust, with a shock ring as it lands
-      if (ia > 0) { C.globalAlpha = ia * fade; C.drawImage(img, lx, ly, lw, lh); C.globalAlpha = 1; }
-      if (t > 1050 && t < 1900) {
-        var k = (t - 1050) / 850, rr = bw * (.3 + k * .8), g = C.createRadialGradient(bx + bw / 2, by + bh / 2, rr * .7, bx + bw / 2, by + bh / 2, rr);
-        g.addColorStop(0, 'rgba(133,131,245,0)'); g.addColorStop(.85, 'rgba(221,106,198,' + (.32 * (1 - k)) + ')'); g.addColorStop(1, 'rgba(61,184,238,0)');
-        C.globalCompositeOperation = 'lighter'; C.fillStyle = g; C.fillRect(0, 0, W, Ht); C.globalCompositeOperation = 'source-over';
-      }
-      var bt = Math.min(1, Math.max(0, (t - 750) / 520)), bo = Math.min(1, Math.max(0, (t - FLY0) / 300));
-      brand.style.opacity = eo(bt) * (1 - bo);
-      brand.style.transform = 'translateY(' + ((1 - eo(bt)) * 18 - bo * 14) + 'px)';
-      brand.style.letterSpacing = '';
-      var ir = eio(Math.min(1, Math.max(0, (t - IRIS0) / IRIS)));
-      if (t > IRIS0) {
-        var cx = R_.left + R_.width / 2, cy = R_.top + R_.height / 2, R = ir * R0, m = 'radial-gradient(circle at ' + cx + 'px ' + cy + 'px, transparent ' + R + 'px, #000 ' + (R + 60) + 'px)';
-        ov.style.webkitMaskImage = m; ov.style.maskImage = m;
-      }
-      if (t > IRIS0 + IRIS) { end(); return; }
-      raf = requestAnimationFrame(frame);
+    el.innerHTML = out;
+  }
+  function cl(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function eo(x) { return 1 - Math.pow(1 - x, 3); }
+  function eio(x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+  var hero = null, DRAW = 900, FLY0 = 2050, FLY = 640, OUT0 = 2520, OUT = 420;
+  function frame(now) {
+    if (done) return;
+    if (!t0) t0 = now;
+    var t = now - t0;
+    // 1. neon trace
+    for (var k = 0; k < N.length; k++) { var q = eo(cl((t - 120 - N[k].dl * 1000) / DRAW)); N[k].p.style.strokeDashoffset = N[k].L * (1 - q); }
+    // 2. flicker on, then a soft hum
+    var fl = 1;
+    if (t > 1150 && t < 1420) fl = [1, .25, 1, .4, .9, .15, 1][(((t - 1150) / 45) | 0) % 7];
+    else if (t >= 1420) fl = .94 + Math.sin(t / 37) * .06;
+    // 3. the real mark fills the outline
+    var fill = eo(cl((t - 1400) / 460));
+    neon.style.opacity = fl * (1 - fill * .6);
+    img.style.opacity = fill;
+    img.style.transform = 'scale(' + (.96 + .04 * fill) + ')';
+    // 4. the name decodes and resolves into the wordmark; the tagline decodes after it
+    if (t > 600 && t < 1750) decode(dec, t, 900, 72);
+    var ws = eo(cl((t - 1640) / 280)); dec.style.opacity = cl(1 - ws * 2.2); dec.style.filter = 'blur(' + (ws * 6) + 'px)'; word.style.opacity = ws; word.style.transform = 'translate(-50%,-50%) scale(' + (.92 + .08 * ws) + ')'; word.style.filter = 'blur(' + ((1 - ws) * 6) + 'px)';
+    if (t > 1100 && t < 2250) decode(tag, t, 1350, 40);
+    var bo = eo(cl((t - FLY0) / 260)); brand.style.opacity = 1 - bo; brand.style.transform = 'translateY(' + (-bo * 16) + 'px)';
+    // 5. fly into the hero logo
+    if (t >= FLY0 - 30 && !hero) { var h = d.querySelector('.hero-mark .lotus'), r = h && h.getBoundingClientRect(); hero = r && r.width > 4 ? r : { left: (W - 110) / 2, top: 140, width: 110, height: 78 }; }
+    if (hero) {
+      var f = eio(cl((t - FLY0) / FLY)), s = hero.width / bw;
+      mark.style.transform = 'translate(' + ((hero.left - bx) * f) + 'px,' + ((hero.top - by) * f) + 'px) scale(' + (1 + (s - 1) * f) + ')';
+      neon.style.opacity = fl * .4 * (1 - f);
     }
-    raf = requestAnimationFrame(frame);
-  };
+    // 6. the page shows through
+    var o = cl((t - OUT0) / OUT); ov.style.opacity = 1 - eo(o);
+    if (t > OUT0 + OUT) { end(); return; }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
 })();
 </script>
 
@@ -202,7 +230,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   <section class="gallery section" id="gallery" aria-labelledby="gal-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">the design menu</p><h2 class="display h-lg rv" id="gal-title">Pick a design<br>for your business.</h2></div>
+        <div><p class="kicker rv">the design menu</p><h2 class="display h-lg rv" id="gal-title">Pick a design<br><span class="grad-t">for your business.</span></h2></div>
         <p class="lede rv">Every design here is a real, working website, not a picture. Tap one and give it a second to load: it runs live on a phone and a laptop. Every design is the same price.</p>
       </div>
       <p class="kicker plain biz-k rv">find designs for</p>
@@ -305,7 +333,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   <section class="services section" id="custom" aria-labelledby="svc-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">your design partner</p><h2 class="display h-lg rv" id="svc-title">Everything your<br>customers see.</h2></div>
+        <div><p class="kicker rv">your design partner</p><h2 class="display h-lg rv" id="svc-title">Everything your<br><span class="grad-t">customers see.</span></h2></div>
         <p class="lede rv">Websites are the start. The same designers make your apps, emails, dashboards and brand, so everything looks like it came from one place. Websites are a flat price; everything else gets a fixed quote after a short call.</p>
       </div>
       <ul class="svc-grid"><li class="svc svc-web rv"><span class="svc-n mono">01</span><b>Websites</b><span class="svc-l">Pick a live design. Yours in 48 hours.</span><span class="svc-p"><span class="c-inr"><span class="st st0">₹40,000</span><span class="st st1">₹60,000</span><span class="st st2">₹80,000</span></span><span class="c-usd"><span class="st st0">$555</span><span class="st st1">$830</span><span class="st st2">$1,110</span></span> flat</span></li><li class="svc svc-apps rv"><span class="svc-n mono">02</span><b>Mobile and web apps</b><span class="svc-l">iPhone, Android and web apps, designed to order.</span><span class="svc-p">from <span class="c-inr">₹1,50,000</span><span class="c-usd">$6,000</span></span></li><li class="svc svc-emails rv"><span class="svc-n mono">03</span><b>HTML emails</b><span class="svc-l">Branded newsletters, welcome and order emails.</span><span class="svc-p">from <span class="c-inr">₹18,000</span><span class="c-usd">$600</span></span></li><li class="svc svc-dash rv"><span class="svc-n mono">04</span><b>Dashboards</b><span class="svc-l">See orders, bookings and leads in one place.</span><span class="svc-p">from <span class="c-inr">₹45,000</span><span class="c-usd">$1,800</span></span></li><li class="svc svc-brand rv"><span class="svc-n mono">05</span><b>Brand and logo</b><span class="svc-l">Logo, colours, type and a brand guide.</span><span class="svc-p">from <span class="c-inr">₹20,000</span><span class="c-usd">$800</span></span></li><li class="svc svc-ai rv"><span class="svc-n mono">06</span><b>AI chat and voice</b><span class="svc-l">Answers customers 24/7 and books them in.</span><span class="svc-p">from <span class="c-inr">₹35,000</span><span class="c-usd">$1,200</span></span></li></ul>
@@ -316,7 +344,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   <section class="how section" id="how" aria-labelledby="how-title">
     <div class="wrap">
       <p class="kicker rv">how it works</p>
-      <h2 class="display h-lg rv" id="how-title">Three steps.<br>No tech skills needed.</h2>
+      <h2 class="display h-lg rv" id="how-title">Three steps.<br><span class="grad-t">No tech skills needed.</span></h2>
       <div class="how-line rv" aria-hidden="true"><i></i></div>
       <ol class="steps">
         <li class="rv"><span class="sn mono">01</span><h3>Pick a design</h3><p>Tap any design to watch it working on a phone and a laptop. Choose the one that feels like your business.</p></li>
@@ -330,7 +358,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   <section class="factory section" id="factory" aria-labelledby="fac-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">why it costs less</p><h2 class="display h-lg rv" id="fac-title">We built a<br>design factory.</h2></div>
+        <div><p class="kicker rv">why it costs less</p><h2 class="display h-lg rv" id="fac-title">We built a<br><span class="grad-t">design factory.</span></h2></div>
         <p class="lede rv">An agency builds every site by hand, and you pay for every hour. In our factory, AI agents do the repetitive work in hours: layouts, code, image prep, first drafts and testing. Our team does the parts that need taste and judgement. Same quality, a fraction of the hours, so you pay a fraction of the price.</p>
       </div>
       <ol class="fline rv" aria-label="How a site moves through the factory">
@@ -358,7 +386,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   <section class="pricing section" id="pricing" aria-labelledby="pricing-title">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker rv">prices</p><h2 class="display h-lg rv" id="pricing-title">One price.<br>Fixed before we start.</h2></div>
+        <div><p class="kicker rv">prices</p><h2 class="display h-lg rv" id="pricing-title">One price.<br><span class="grad-t">Fixed before we start.</span></h2></div>
         <div class="rv pr-side"><p class="lede">Every design costs the same, hosting included. The launch price steps up on fixed dates, so the earlier you start, the less you pay.</p><div class="cur-switch" role="group" aria-label="Show prices for"><button type="button" data-cur="inr">India ₹</button><button type="button" data-cur="usd">Outside India $</button></div></div>
       </div>
       <div class="tiers" id="tiers"><article class="flat-card rv">
@@ -385,7 +413,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
       <div class="plan-card rv">
         <div class="pc-copy">
           <span class="off-sticker big offer-only"><span class="st st0">Launch week</span><span class="st st1">Launch offer</span><span class="st st2">Regular price</span> · <span class="st st0">ends 3 Dec</span><span class="st st1">ends 31 Dec</span><span class="st st2">from 1 Jan 2027</span></span>
-          <h2 class="display h-lg" id="plan-title">Get your free<br>website plan.</h2>
+          <h2 class="display h-lg" id="plan-title">Get your free<br><span class="grad-t">website plan.</span></h2>
           <p class="pc-p">Tell us about your business. Within 24 hours we WhatsApp you the design that fits you best, the pages you need and your fixed price. Free. No payment, no obligation.</p>
           <div class="cd-big offer-only" role="timer" aria-label="Time left at this price">
             <div class="tabrule"><b class="num" data-cd="d">00</b><small>days</small></div><div class="tabrule"><b class="num" data-cd="h">00</b><small>hours</small></div><div class="tabrule"><b class="num" data-cd="m">00</b><small>minutes</small></div><div class="tabrule"><b class="num" data-cd="s">00</b><small>seconds</small></div>
@@ -449,7 +477,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
         <div class="final-mark" aria-hidden="true"><img class="f-lotus" src="/factory/assets/hx/brand/lotus-300.webp" width="300" height="214" alt="" loading="lazy"></div>
         <div class="final-in">
           <p class="kicker dotk">ready when you are</p>
-          <h2 class="display h-xl" id="final-title">Let's design<br>yours.</h2>
+          <h2 class="display h-xl" id="final-title">Let's design<br><span class="grad-t">yours.</span></h2>
           <div class="cta">
             <button class="btn btn-light" type="button" data-open-plan>Get my free website plan<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
             <a class="btn btn-wa" href="https://wa.me/919234660000?text=Hi%20Hanflux%2C%20I%20saw%20your%20design%20menu%20and%20I%20would%20like%20a%20website%20for%20my%20business." target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="fill:currentColor;stroke:none"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.9 9.9 0 0 0 12.04 2zm5.8 14.16c-.24.69-1.42 1.32-1.96 1.37-.5.05-.97.23-3.27-.68-2.77-1.09-4.52-3.92-4.66-4.1-.13-.18-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.24.56.79 1.92.86 2.06.07.14.11.3.02.48-.09.18-.14.3-.27.46l-.41.48c-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.58.75 1.85.88.27.14.45.2.52.32.07.11.07.66-.17 1.35z"/></svg>WhatsApp us</a>
