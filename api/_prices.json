@@ -31,9 +31,40 @@
   },
   "flagship": {
    "name": "3D"
+  },
+  "premium": {
+   "name": "Film",
+   "fixed": {
+    "inr": 58000,
+    "usd": 800
+   }
   }
  },
  "sites": {
+  "chrono": {
+   "name": "Movement",
+   "tier": "premium"
+  },
+  "atrium": {
+   "name": "Atrium",
+   "tier": "premium"
+  },
+  "ember": {
+   "name": "Ember",
+   "tier": "premium"
+  },
+  "shore": {
+   "name": "Blue Hour",
+   "tier": "premium"
+  },
+  "core": {
+   "name": "Core",
+   "tier": "premium"
+  },
+  "totem": {
+   "name": "Totem",
+   "tier": "premium"
+  },
   "particles": {
    "name": "Particle Field",
    "tier": "flagship"
