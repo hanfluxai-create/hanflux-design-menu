@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script src="/factory/shared/hx-embed.js"></script>
+<title>Tessera · The inference cloud for AI products</title>
+<meta name="description" content="Tessera runs any AI model behind one endpoint in 31 regions, with a 38 ms median response and pay per token pricing that scales to zero. Ship your first endpoint in five minutes.">
+<meta name="theme-color" content="#06070b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%237af0ff'/%3E%3Cstop offset='.5' stop-color='%23b18cff'/%3E%3Cstop offset='1' stop-color='%23ff8ad8'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2306070b'/%3E%3Crect x='8' y='8' width='16' height='16' rx='4' fill='none' stroke='url(%23g)' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="./film/still-d.webp" media="(min-aspect-ratio: 85/100)" fetchpriority="high">
+<link rel="preload" as="image" href="./film/still-m.webp" media="(max-aspect-ratio: 85/100)" fetchpriority="high">
+<link rel="stylesheet" href="./kit.css">
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="./main.js"></script>
+</head>
+<body>
+<a class="sr" href="#build">Skip to the product</a>
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="Tessera, home"><i aria-hidden="true"></i>Tessera</a>
+    <nav class="nav-links" aria-label="Main"><a href="#build">Build</a><a href="#platform">Platform</a><a href="#speed">Speed</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+    <a class="nav-cta btn holo sm" href="#start">Start free</a>
+    <button data-menu aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i></button>
+  </div>
+</header>
+<div id="menu">
+  <a href="#build">Build</a><a href="#platform">Platform</a><a href="#speed">Speed</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#start">Start free</a>
+</div>
+
+<main id="top">
+<section class="film" id="film" data-tour="2600" aria-label="The Tessera core, turning as you scroll">
+  <div class="film-pin">
+    <picture><source media="(max-aspect-ratio: 85/100)" srcset="./film/still-m.webp"><img class="film-still" src="./film/still-d.webp" alt="A glass cube with threads of light running to a bright core" fetchpriority="high"></picture>
+    <canvas aria-hidden="true"></canvas>
+    <div class="veil" aria-hidden="true"></div>
+    <div class="film-ui">
+      <div class="ch ch-hero on" data-at="0,0.2">
+        <a class="pill" href="#speed"><b>New</b>Region 31 is live: São Paulo<span aria-hidden="true">→</span></a>
+        <h1>Inference at the <span class="holo-t">speed of thought.</span></h1>
+        <p class="lede">Run any model behind one endpoint, in 31 regions, at a 38 ms median. Scale to zero when nobody is asking.</p>
+        <div class="row"><a class="btn holo" href="#start">Start free</a><a class="btn glass" href="#build">Read the quickstart</a><button class="btn glass hx-hide-in-embed" type="button" data-play-film><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>Play</button></div>
+      </div>
+      <div class="ch stat s-l" data-at="0.27,0.47"><span class="k">p50 latency, worldwide</span><b>38<small>ms</small></b><p>Requests are answered from the region nearest your user, with the model already warm.</p></div>
+      <div class="ch stat s-r" data-at="0.52,0.72"><span class="k">models, one endpoint</span><b>140<small>+</small></b><p>Open and proprietary, text, vision and speech. Switch with one line, no redeploy.</p></div>
+      <div class="ch stat s-l" data-at="0.77,1"><span class="k">cost when idle</span><b>$0</b><p>Endpoints sleep after sixty seconds and wake in under one. You pay for tokens, never for waiting.</p><a class="btn holo sm" href="#pricing">See pricing</a></div>
+      <div class="ring" aria-hidden="true"><i></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="strip" aria-label="Tessera in numbers" data-tour>
+  <ul>
+    <li class="rv"><b data-count="31">31</b><span>regions</span></li>
+    <li class="rv" style="--d:1"><b data-count="4.2" data-dec="1" data-suf="B">4.2B</b><span>tokens served a day</span></li>
+    <li class="rv" style="--d:2"><b data-count="99.99" data-dec="2" data-suf="%">99.99%</b><span>uptime, last 12 months</span></li>
+    <li class="rv" style="--d:3"><b data-count="5" data-suf=" min">5 min</b><span>to a first endpoint</span></li>
+  </ul>
+</section>
+
+<section class="build" id="build" data-tour="2800">
+  <div class="build-copy">
+    <p class="tag rv">Build</p>
+    <h2 class="rv">One call. <span class="holo-t">Any model.</span></h2>
+    <p class="rv">Point your existing client at Tessera and change the model name. Streaming, tools, structured output and vision work the same way across every model we host.</p>
+    <ul class="checks">
+      <li class="rv">Drop-in compatible with the common chat API shape</li>
+      <li class="rv">Automatic failover to a second region in under 200 ms</li>
+      <li class="rv">Bring your own fine-tunes and weights</li>
+    </ul>
+  </div>
+  <div class="term rv" aria-label="Code example">
+    <div class="term-bar"><i></i><i></i><i></i>
+      <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-lang="py">Python</button><button role="tab" aria-selected="false" data-lang="ts">TypeScript</button><button role="tab" aria-selected="false" data-lang="sh">curl</button></div>
+    </div>
+    <pre><code data-code></code></pre>
+    <div class="resp"><span class="k">response · <b data-ms>38</b> ms to first token</span><p data-stream></p></div>
+  </div>
+</section>
+
+<section class="platform" id="platform" data-tour="2600">
+  <header class="sec-head"><p class="tag rv">Platform</p><h2 class="rv">Everything between your app <span class="holo-t">and the model.</span></h2></header>
+  <div class="bento">
+    <article class="b b-wide rv"><div class="viz v-map" aria-hidden="true"></div><h3>A global edge</h3><p>31 regions on five continents. Traffic lands on the closest one and fails over on its own.</p></article>
+    <article class="b rv" style="--d:1"><div class="viz v-scale" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><h3>Autoscale to zero</h3><p>From nothing to ten thousand requests a second, and back.</p></article>
+    <article class="b rv" style="--d:2"><div class="viz v-swap" aria-hidden="true"><span>atlas-large</span><span>lumen-vision</span><span>quill-mini</span></div><h3>Swap models live</h3><p>Route by cost, speed or quality with a rule, not a release.</p></article>
+    <article class="b rv"><div class="viz v-guard" aria-hidden="true"><i></i></div><h3>Guardrails built in</h3><p>Redact personal data, block prompt injection and cap spend per key.</p></article>
+    <article class="b rv" style="--d:1"><div class="viz v-trace" aria-hidden="true"><i style="--w:92%"></i><i style="--w:64%"></i><i style="--w:78%"></i><i style="--w:38%"></i></div><h3>See every token</h3><p>Traces, cost per user and evals in one place, exportable to your own stack.</p></article>
+    <article class="b b-wide rv" style="--d:2"><img src="./img/chip.webp" alt="A macro view of an iridescent glass processor" width="1400" height="934" loading="lazy" decoding="async"><h3>Your weights stay yours</h3><p>Dedicated clusters, private networking and zero data retention by default. Audited security controls, with reports on request.</p></article>
+  </div>
+</section>
+
+<section class="speed" id="speed" data-tour="2600">
+  <div class="speed-copy">
+    <p class="tag rv">Speed</p>
+    <h2 class="rv">Fast is a feature. <span class="holo-t">We publish ours.</span></h2>
+    <p class="rv">Time to first token, measured from real traffic in every region and refreshed every few seconds on our status page.</p>
+    <dl class="rv"><div><dt>p50</dt><dd><b data-p50>38</b> ms</dd></div><div><dt>p95</dt><dd><b data-p95>112</b> ms</dd></div><div><dt>p99</dt><dd><b data-p99>184</b> ms</dd></div></dl>
+  </div>
+  <div class="chart rv"><svg viewBox="0 0 600 260" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="hg" x1="0" x2="1"><stop offset="0" stop-color="#7af0ff"/><stop offset=".5" stop-color="#b18cff"/><stop offset="1" stop-color="#ff8ad8"/></linearGradient><linearGradient id="hf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b18cff" stop-opacity=".34"/><stop offset="1" stop-color="#b18cff" stop-opacity="0"/></linearGradient></defs><path data-area fill="url(#hf)"/><path data-line fill="none" stroke="url(#hg)" stroke-width="2.4" stroke-linejoin="round"/></svg>
+    <span class="live"><i></i>live · time to first token</span><span class="ax a1">200 ms</span><span class="ax a2">100 ms</span><span class="ax a3">0</span></div>
+</section>
+
+<section class="pricing" id="pricing" data-tour="2800">
+  <header class="sec-head"><p class="tag rv">Pricing</p><h2 class="rv">Pay for tokens. <span class="holo-t">Not for idle.</span></h2>
+    <div class="toggle rv" role="group" aria-label="Billing period"><button type="button" aria-pressed="true" data-bill="mo">Monthly</button><button type="button" aria-pressed="false" data-bill="yr">Yearly <small>2 months free</small></button></div></header>
+  <div class="plans">
+    <article class="plan rv"><h3>Hobby</h3><p class="amt"><b>$0</b></p><p class="for">For prototypes and weekend projects.</p><ul><li>1 million tokens a month, free</li><li>Shared endpoints in 6 regions</li><li>Community support</li></ul><a class="btn glass" href="#start">Start free</a></article>
+    <article class="plan hot rv" style="--d:1"><span class="badge">Most teams</span><h3>Scale</h3><p class="amt"><b data-mo="$499" data-yr="$416">$499</b><span>/ month</span></p><p class="for">For products with real users.</p><ul><li>Usage at $0.18 per million tokens</li><li>All 31 regions, automatic failover</li><li>Guardrails, traces and evals</li><li>Support with a four hour response</li></ul><a class="btn holo" href="#start">Start a 14 day trial</a></article>
+    <article class="plan rv" style="--d:2"><h3>Enterprise</h3><p class="amt"><b>Custom</b></p><p class="for">For regulated and very large workloads.</p><ul><li>Dedicated clusters and private networking</li><li>Your own fine-tunes and weights</li><li>Uptime agreement and a named engineer</li></ul><a class="btn glass" href="#start">Talk to us</a></article>
+  </div>
+</section>
+
+<section class="faq" id="faq" data-tour>
+  <h2 class="rv">Questions, <span class="holo-t">answered.</span></h2>
+  <div>
+    <details class="rv" open><summary>How long does migration take?</summary><p>Most teams change one base address and one key. If you use the common chat API shape, your existing code and SDKs keep working.</p></details>
+    <details class="rv"><summary>What happens when a region goes down?</summary><p>Requests move to the next closest region within 200 ms. You do not need to configure anything, and you can pin regions if your data must stay in one place.</p></details>
+    <details class="rv"><summary>Do you train on our data?</summary><p>No. Prompts and outputs are not stored unless you switch on tracing, and they are never used for training.</p></details>
+    <details class="rv"><summary>Can we run our own model?</summary><p>Yes. Upload weights or a fine-tune and it gets the same endpoint, autoscaling and observability as every hosted model.</p></details>
+  </div>
+</section>
+
+<section class="start" id="start" data-tour="2400">
+  <div class="orb" aria-hidden="true"></div>
+  <h2 class="rv">Ship your first endpoint <span class="holo-t">in five minutes.</span></h2>
+  <p class="rv">A million free tokens every month. No card needed.</p>
+  <form class="rv" data-demo>
+    <label class="sr" for="em">Work email</label>
+    <input id="em" type="email" required placeholder="you@company.com" autocomplete="email">
+    <button class="btn holo" type="submit">Get an API key</button>
+    <p class="form-ok" hidden tabindex="-1">Check your inbox. Your key and the quickstart are on their way.</p>
+  </form>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot-top">
+    <a class="brand" href="#top"><i aria-hidden="true"></i>Tessera</a>
+    <nav aria-label="Product"><b>Product</b><a href="#build">Quickstart</a><a href="#platform">Platform</a><a href="#pricing">Pricing</a></nav>
+    <nav aria-label="Company"><b>Company</b><a href="#speed">Status</a><a href="#faq">Security</a><a href="#start">Contact</a></nav>
+    <p>hello@tessera.dev<br>+1 (415) 555-0164</p>
+  </div>
+  <p class="hx-line">Sample site designed by Hanflux AI. Brand, people and content are fictional.</p>
+</footer>
+
+<dialog id="film-dlg" aria-label="The Tessera core">
+  <button type="button" data-close-film aria-label="Close">&times;</button>
+  <video controls playsinline preload="none" data-d="./film/film-d.mp4" data-m="./film/film-m.mp4"></video>
+</dialog>
+</body>
+</html>

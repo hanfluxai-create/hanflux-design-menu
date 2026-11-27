@@ -79,7 +79,13 @@ window.HX_CONFIG = {
     signature: { name: 'Animated', kind: 'Animated site', tag: 'Motion design', weeks: 'Live within 48 hours',
       blurb: 'Custom motion: scroll stories, animated text and illustrations that make people stop and look.' },
     flagship: { name: '3D', kind: '3D site', tag: 'Immersive 3D', weeks: 'Live within 48 hours',
-      blurb: 'Immersive 3D scenes and effects, tuned to run smoothly on phones. For launches and luxury brands.' }
+      blurb: 'Immersive 3D scenes and effects, tuned to run smoothly on phones. For launches and luxury brands.' },
+    // Premium film sites: a separate, higher-priced category with its own fixed price (not part of the flat price steps).
+    // usd is the owner's price. inr is a PLACEHOLDER (same rupee-to-dollar ratio as the flat price) and must be
+    // confirmed by the owner before this goes live: while inrTbc is true the pages label it "to be confirmed".
+    premium: { name: 'Film', kind: 'Premium film site', tag: 'Cinematic film', weeks: 'Live within 48 hours',
+      blurb: 'Built around a cinematic film of your product or place that plays as people scroll, with a full site around it. Smooth on every phone, with no autoplaying video.',
+      fixed: { inr: 58000, usd: 800 }, inrTbc: true }
   },
 
   // In every plan, whichever design is picked.
@@ -113,14 +119,15 @@ window.HX_CONFIG = {
 
   // Business types for the "find a design for your business" filters.
   biz: [
-    { id: 'shops', label: 'Shops and brands', slugs: ['gold', 'liquid', 'brutal', 'editorial', 'halftone', 'comic', 'holo'] },
-    { id: 'food', label: 'Food and cafés', slugs: ['comic', 'halftone', 'neon', 'pixel', 'brutal'] },
+    { id: 'shops', label: 'Shops and brands', slugs: ['chrono', 'gold', 'liquid', 'brutal', 'editorial', 'halftone', 'comic', 'holo'] },
+    { id: 'food', label: 'Food and cafés', slugs: ['ember', 'comic', 'halftone', 'neon', 'pixel', 'brutal'] },
     { id: 'health', label: 'Salons, clinics, wellness', slugs: ['silk', 'glass', 'mesh', 'swiss'] },
-    { id: 'property', label: 'Real estate and builders', slugs: ['estate', 'blueprint', 'wireframe'] },
-    { id: 'travel', label: 'Hotels, travel, events', slugs: ['deco', 'flap', 'neon', 'vhs'] },
-    { id: 'tech', label: 'Tech and startups', slugs: ['particles', 'holo', 'iso', 'bento', 'ascii', 'clay', 'mesh'] },
-    { id: 'services', label: 'Services and B2B', slugs: ['swiss', 'blueprint', 'wireframe', 'kinetic', 'bento', 'iso'] },
-    { id: 'learn', label: 'Schools and coaching', slugs: ['bauhaus', 'clay'] }
+    { id: 'property', label: 'Real estate and builders', slugs: ['shore', 'estate', 'blueprint', 'wireframe'] },
+    { id: 'travel', label: 'Hotels, travel, events', slugs: ['ember', 'deco', 'flap', 'neon', 'vhs'] },
+    { id: 'tech', label: 'Tech and startups', slugs: ['core', 'particles', 'holo', 'iso', 'bento', 'ascii', 'clay', 'mesh'] },
+    { id: 'services', label: 'Services and B2B', slugs: ['atrium', 'swiss', 'blueprint', 'wireframe', 'kinetic', 'bento', 'iso'] },
+    { id: 'learn', label: 'Schools and coaching', slugs: ['bauhaus', 'clay'] },
+    { id: 'personal', label: 'Personal brands and portfolios', slugs: ['totem', 'kinetic'] }
   ],
 
   // Custom orders: anything beyond a website from the menu. Scoped on a call, quoted separately,
@@ -173,7 +180,7 @@ window.HX_CONFIG = {
   C.offer = st ? { on: true, label: st.label, ends: st.ends, endsLabel: st.endsLabel,
     note: st.label + ' price for orders paid by ' + st.endsLabel + '. Then the price moves to the next step on its own, up to ' + C.currencies.inr.symbol + P.regular.inr.toLocaleString('en-IN') + ' / $' + P.regular.usd.toLocaleString('en-US') + ' from 1 January 2027.' } : { on: false };
   ['inr', 'usd'].forEach(function (c) {
-    Object.keys(C.tiers).forEach(function (t) { C.tiers[t][c] = { from: st ? st[c] : P.regular[c], was: P.regular[c] }; });
+    Object.keys(C.tiers).forEach(function (t) { var f = C.tiers[t].fixed; C.tiers[t][c] = f ? { from: f[c], was: f[c] } : { from: st ? st[c] : P.regular[c], was: P.regular[c] }; });
   });
 })(window.HX_CONFIG);
 

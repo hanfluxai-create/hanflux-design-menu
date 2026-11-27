@@ -40,6 +40,11 @@ const ladder = (c, full = true) => steps((k) => { const was = []; for (let j = N
 const stepLabel = steps((k) => (k < NST ? esc(PR.stages[k].label) : 'Regular price'));
 const stepEnds = steps((k) => (k < NST ? 'ends ' + esc(PR.stages[k].endsLabel) : 'from 1 Jan 2027'));
 const priceFromAll = dual(flatNow);
+// tiers with their own fixed price (the premium film category) sit outside the flat price steps
+const fixedOf = (t) => (C.tiers[t] && C.tiers[t].fixed) || null;
+const tbc = (t, c) => (c === 'inr' && C.tiers[t].inrTbc ? ' <small class="tbc">(rupee price to be confirmed)</small>' : '');
+const fixedNow = (t, c) => `<span class="now">${money(fixedOf(t)[c], c)}</span>${tbc(t, c)}`;
+const allTiers = [...order, ...Object.keys(C.tiers).filter((t) => !order.includes(t))];
 const curSwitch = (cls = '') => `<div class="cur-switch${cls}" role="group" aria-label="Show prices for"><button type="button" data-cur="inr">India ₹</button><button type="button" data-cur="usd">Outside India $</button></div>`;
 
 // only list styles whose demo folder exists
@@ -112,9 +117,9 @@ const stageHtml = (s, { id = '', cls = '', eager = false, badge = false, state =
     `<div class="dev-m">${vp('m', 300, 649).replace('<div class="poster">', sbar(s) + '<div class="poster">')}<span class="isl"></span>${state ? LSTATE : ''}</div>${badge ? PLAY : ''}</div>`;
 };
 // a big price line: the price from 1 Jan above (crossed out during the launch), "from <launch price>" below
-const priceBlock = (cls, t, small = 'flat') => CURS.map((c) => `<div class="${cls} c-${c}" data-price-block><small>${small}</small>${ladder(c)}</div>`).join('');
-const priceInline = (t) => dual((c) => ladder(c, false));
-const priceNow = (t) => dual(flatNow);
+const priceBlock = (cls, t, small = 'flat') => CURS.map((c) => `<div class="${cls} c-${c}" data-price-block><small>${fixedOf(t) ? 'fixed' : small}</small>${fixedOf(t) ? fixedNow(t, c) : ladder(c)}</div>`).join('');
+const priceInline = (t) => dual((c) => (fixedOf(t) ? fixedNow(t, c) : ladder(c, false)));
+const priceNow = (t) => (fixedOf(t) ? dual((c) => fixedNow(t, c)) : dual(flatNow));
 
 // ---------- home ----------
 const bizChips = C.biz.map((b) => { const n = b.slugs.filter((x) => by[x] && !isEx(by[x])).length; return `<a class="chip" role="listitem" href="/factory/websites/?biz=${b.id}">${esc(b.label)} <span>${n}</span></a>`; }).join('');
@@ -182,9 +187,9 @@ const customList = C.custom.map((x) => `<li>${CHECK}<span>${esc(x)}</span></li>`
 write('index.html', render(T('pages/index.html'), { services: servicesHtml, custom_list: customList, step_label: stepLabel, step_ends: stepEnds, ladder_hero: dual((c) => ladder(c)), off_week: maxPct, wa_custom: encodeURIComponent('Hi Hanflux, I have a custom project in mind: '), gallery: galleryHtml, biz_chips: bizChips, compare: compareHtml, checks: checksHtml, tiers: tiersHtml, included: includedHtml, addons: addonsHtml, work: workHtml, faq: faqHtml, lead_types: leadTypes, agency: dual((c) => esc(C.agency[c])) }, 'home'));
 
 // ---------- websites ----------
-const legend = `<div class="lg lg-flat tabrule"><span class="lg-n">${stepLabel} · any design · hosting included · ${stepEnds}</span>${priceBlock('lg-p', 'flagship', 'flat')}</div>`;
+const legend = `<div class="lg lg-flat tabrule"><span class="lg-n">${stepLabel} · any design · hosting included · ${stepEnds}</span>${priceBlock('lg-p', 'flagship', 'flat')}</div>` + allTiers.filter((t) => fixedOf(t) && sale.some((s) => s.tier === t)).map((t) => `<div class="lg lg-flat tabrule"><span class="lg-n">${esc(kindOf(t))}s · ${sale.filter((s) => s.tier === t).length} designs · hosting included · fixed price</span>${priceBlock('lg-p', t)}</div>`).join('');
 const bizFilters = C.biz.map((b) => `<button type="button" class="chip" data-f="b:${b.id}">${esc(b.label)}</button>`).join('');
-const tierFilters = order.slice().reverse().map((t) => `<button type="button" class="chip" data-f="t:${t}">${esc(kindOf(t))}s</button>`).join('');
+const tierFilters = allTiers.filter((t) => sale.some((s) => s.tier === t)).reverse().map((t) => `<button type="button" class="chip" data-f="t:${t}">${esc(kindOf(t))}s</button>`).join('');
 const saleCard = (s, i) => `    <article class="wcard rv" id="s-${s.slug}" data-slug="${s.slug}" style="--accent:${s.accent}">
       <a class="wc-hit" href="/factory/websites/${s.slug}/" aria-label="${esc(s.name)}: watch it live and see the price"></a>
       <div class="wc-top"><span class="wc-type">${esc(s.industry)}</span>${tierBadge(s.tier)}${s.live || s.origin ? '<span class="tier built">Built by Hanflux</span>' : ''}</div>
@@ -284,7 +289,11 @@ order2.forEach((s, i) => {
     prev_slug: prev.slug, prev_name: esc(prev.name), next_slug: next.slug, next_name: esc(next.name)
   };
   const fillT = (tpl) => tpl.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in vars ? String(vars[k]) : k in offerVars ? String(offerVars[k]) : m));
-  vars.aside = ex ? exAside(s) : fillT(saleAside);
+  // a fixed-price tier is not part of the flat price steps: drop the step sticker, countdown and "same price" wording
+  const fx = fixedOf(s.tier);
+  const unflat = (h) => (fx ? h.replace(' · same price as every design', '').replace(/\s*<p class="buy-when offer-only">[\s\S]*?<\/p>/, '').replace(/\s*<p class="fine offer-only">[\s\S]*?<\/p>/, '') : h);
+  if (fx && !ex) vars.meta_desc = `${esc(s.pitch)} Watch it run live on a phone and a laptop. ${esc(kindOf(s.tier))}, fixed price, hosting included. Live within ${C.liveHours} hours of payment.`;
+  vars.aside = ex ? exAside(s) : unflat(fillT(saleAside));
   vars.buybar = ex ? `<div class="buybar" id="buybar"><div class="buybar-in"><div class="bb-txt"><span class="mono faint">our own company · example</span><b>Want one like it?</b></div><button class="btn btn-teal btn-sm" type="button" data-open-plan data-kind="Fully custom">Free plan</button></div></div>` : fillT(saleBuybar);
   write(`websites/${s.slug}/index.html`, render(T('pages/detail.html'), vars, 'websites'));
 });
@@ -297,7 +306,7 @@ write('order/index.html', render(T('pages/order.html'), { design_options: design
 fs.writeFileSync(path.join(ROOT, 'api/_prices.json'), JSON.stringify({
   site: C.site, upfrontPct: Math.max(1, Math.min(100, +(C.payment || {}).upfrontPct || 100)),
   regular: C.pricing.regular, stages: C.pricing.stages.map((s) => ({ id: s.id, ends: new Date(s.ends).getTime(), inr: s.inr, usd: s.usd })),
-  tiers: Object.fromEntries(order.map((t) => [t, { name: C.tiers[t].name }])),
+  tiers: Object.fromEntries(allTiers.map((t) => [t, fixedOf(t) ? { name: C.tiers[t].name, fixed: fixedOf(t) } : { name: C.tiers[t].name }])),
   sites: Object.fromEntries(sale.map((s) => [s.slug, { name: s.name, tier: s.tier }])),
   addons: Object.fromEntries(C.addons.map((a) => [a.id, { inr: a.inr, usd: a.usd, mo: a.mo || null }]))
 }, null, 1) + '\n');
