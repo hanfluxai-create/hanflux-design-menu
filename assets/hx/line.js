@@ -14,36 +14,52 @@
   var top = 0, span = 1, cur = -1, p = 0, tick = 0, inside = null;
 
   // ---- film ----
+  // Frames stay in memory compressed (about 1 MB in all). Only a small window around the current frame is kept decoded,
+  // and decoding happens off the main thread, so a scroll never waits on an image decode and memory stays flat.
   var film = line.querySelector('.ln-film'), cv = film && film.querySelector('canvas'), ctx = cv && cv.getContext && cv.getContext('2d', { alpha: false });
-  var total = film ? +film.getAttribute('data-n') || 0 : 0, imgs = [], ready = [], shownF = -1, pos = 0, raf = 0;
+  var total = film ? +film.getAttribute('data-n') || 0 : 0, blobs = [], bmp = {}, busy = {}, nBusy = 0, shownF = -1, pos = 0, raf = 0, dir = 1;
   var portrait = W.matchMedia('(max-width: 899px) and (orientation: portrait)').matches;
   var base = film ? film.getAttribute(portrait ? 'data-m' : 'data-d') : '';
   var conn = navigator.connection || {}, lean = !!conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
+  var AHEAD = portrait ? 10 : 12, BEHIND = 5, KEEP = portrait ? 22 : 28, canBmp = !!W.createImageBitmap;
   function src(i) { var n = String(i + 1); while (n.length < 3) n = '0' + n; return base + n + '.webp'; }
-  function nearest(i) { if (ready[i]) return i; for (var d = 1; d < total; d++) { if (i - d >= 0 && ready[i - d]) return i - d; if (i + d < total && ready[i + d]) return i + d; } return -1; }
+  function decode(i) {
+    if (i < 0 || i >= total || bmp[i] || busy[i] || !blobs[i] || nBusy >= 3) return;
+    busy[i] = 1; nBusy++;
+    var done = function (b) { busy[i] = 0; nBusy--; if (b) { bmp[i] = b; if (!raf) raf = requestAnimationFrame(settle); } pump(); };
+    if (canBmp) createImageBitmap(blobs[i]).then(done, function () { done(null); });
+    else { var im = new Image(), u = URL.createObjectURL(blobs[i]); im.onload = function () { URL.revokeObjectURL(u); done(im); }; im.onerror = function () { done(null); }; im.src = u; }
+  }
+  function pump() {
+    var c = Math.round(pos), k;
+    decode(c);
+    for (k = 1; k <= AHEAD; k++) { decode(c + k * dir); if (k <= BEHIND) decode(c - k * dir); }
+    for (var key in bmp) { if (Math.abs(key - c) > KEEP) { if (bmp[key].close) bmp[key].close(); delete bmp[key]; } }
+  }
+  function nearest(i) { if (bmp[i]) return i; for (var d = 1; d <= KEEP; d++) { if (bmp[i - d]) return i - d; if (bmp[i + d]) return i + d; } return -1; }
   function draw(i) {
-    var k = nearest(i); if (k < 0 || k === shownF) return; var im = imgs[k];
-    if (cv.width !== im.naturalWidth) { cv.width = im.naturalWidth; cv.height = im.naturalHeight; }
-    ctx.drawImage(im, 0, 0); shownF = k; if (!cv.classList.contains('on')) cv.classList.add('on');
+    var k = nearest(i); if (k < 0 || k === shownF) return; var b = bmp[k], w = b.width || b.naturalWidth, h = b.height || b.naturalHeight;
+    if (cv.width !== w) { cv.width = w; cv.height = h; }
+    ctx.drawImage(b, 0, 0); shownF = k; if (!cv.classList.contains('on')) cv.classList.add('on');
   }
   function settle() {
     raf = 0; var want = p * (total - 1), d = want - pos;
-    pos = Math.abs(d) < 0.4 ? want : pos + d * 0.22;
-    draw(Math.round(pos));
-    if (pos !== want) raf = requestAnimationFrame(settle);
+    if (d) dir = d > 0 ? 1 : -1;
+    pos = Math.abs(d) < 0.35 ? want : pos + d * 0.2;
+    pump(); draw(Math.round(pos));
+    if (pos !== want || shownF !== Math.round(pos)) { if (pos !== want || nBusy) raf = requestAnimationFrame(settle); }
   }
   function loadFrames() {
-    if (!ctx || !total || !base) return;
-    var order = [], seen = {}, steps = lean ? [8] : [16, 8, 4, 2, 1];
+    if (!ctx || !total || !base || !W.fetch) return;
+    var order = [], seen = {}, steps = lean ? [6] : [12, 6, 3, 1];
     steps.forEach(function (s) { for (var i = 0; i < total; i += s) if (!seen[i]) { seen[i] = 1; order.push(i); } });
     if (!seen[total - 1]) order.push(total - 1);
-    var at = 0, live = 0, MAX = 4;
+    var at = 0, live = 0;
     (function next() {
-      while (live < MAX && at < order.length) (function (i) {
-        live++; var im = new Image(); im.decoding = 'async';
-        im.onload = function () { imgs[i] = im; ready[i] = 1; live--; if (!raf) raf = requestAnimationFrame(settle); if (Math.abs(i - Math.round(pos)) < 3) shownF = -1; next(); };
-        im.onerror = function () { live--; next(); };
-        im.src = src(i);
+      while (live < 4 && at < order.length) (function (i) {
+        live++;
+        fetch(src(i)).then(function (r) { if (!r.ok) throw 0; return r.blob(); }).then(function (b) { blobs[i] = b; if (Math.abs(i - Math.round(pos)) <= AHEAD) { pump(); } })
+          .catch(function () {}).then(function () { live--; next(); });
       })(order[at++]);
     })();
   }
