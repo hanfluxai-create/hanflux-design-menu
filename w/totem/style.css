@@ -175,3 +175,11 @@ legend { margin-bottom: 10px; }
   .foot-row > span { margin-left: 0; }
   .me figcaption { right: 0; }
 }
+
+/* film legibility: a cream halo keeps the type readable when a shape drifts behind it */
+.ch-hero h1, .ch-end h2 { -webkit-text-stroke: 12px var(--bg); paint-order: stroke fill; }
+@media (min-width: 761px) {
+  .ch-hero h1 { font-size: clamp(50px, 6.6vw, 112px); max-width: 5.6em; }
+  .ch-end { right: auto; max-width: 40vw; }
+  .ch-end h2 { font-size: clamp(40px, 5vw, 84px); }
+}

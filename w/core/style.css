@@ -198,3 +198,17 @@ details p { padding: 0 30px 22px 0; }
   .foot-top { grid-template-columns: 1fr 1fr; } .foot-top .brand, .foot-top p { grid-column: 1 / -1; }
   details p { padding-right: 0; }
 }
+
+/* film legibility and phone fixes */
+.pill { background: rgba(6, 7, 11, .72); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.build > *, .speed > * { min-width: 0; }
+@media (min-width: 641px) {
+  .ch-hero h1 { font-size: clamp(44px, 5.6vw, 96px); margin: 18px 0 16px; }
+  .ch-hero { bottom: clamp(36px, 6vh, 72px); }
+  .veil { background: radial-gradient(90% 70% at 50% 40%, transparent 30%, rgba(6, 7, 11, .7) 100%), linear-gradient(180deg, rgba(6, 7, 11, .5), transparent 22%, transparent 44%, rgba(6, 7, 11, .9) 74%, rgba(6, 7, 11, .97)); }
+  .film-pin > img.film-still, .film-pin > canvas { transform: translateY(calc((1 - min(1, var(--p, 0) * 5)) * -9%)); }
+}
+@media (max-width: 640px) {
+  .veil { background: linear-gradient(180deg, rgba(6, 7, 11, .5), transparent 18%, transparent 42%, rgba(6, 7, 11, .88) 64%, rgba(6, 7, 11, .97)); }
+  .film-pin > img.film-still, .film-pin > canvas { transform: translateY(-10%); }
+}

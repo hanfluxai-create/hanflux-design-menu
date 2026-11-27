@@ -178,3 +178,8 @@ legend, .field { padding: 0; margin-bottom: 12px; font: 400 11.5px/1 var(--mono)
   .visit .row .btn { flex: 1 1 100%; }
   .foot-row { flex-direction: column; }
 }
+
+/* looser tracking: Fraunces at display size closes up on its own */
+h1, h2 { letter-spacing: -.018em; }
+.brand, .courses li b, .big { letter-spacing: -.01em; }
+.veil { background: linear-gradient(180deg, rgba(12, 10, 9, .6), transparent 24%, transparent 40%, rgba(12, 10, 9, .8) 70%, rgba(12, 10, 9, .96)); }
