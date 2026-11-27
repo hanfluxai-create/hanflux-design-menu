@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 {{head}}
-<script>try{if(sessionStorage.getItem('hx-intro')||matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&](nointro|embed)=/.test(location.search)||/bot|crawl|spider|lighthouse|facebookexternalhit/i.test(navigator.userAgent))document.documentElement.classList.add('no-intro')}catch(e){document.documentElement.classList.add('no-intro')}</script>
+<script>try{if(sessionStorage.getItem('hx-intro')||matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&](nointro|embed)=/.test(location.search)||/bot|crawl|spider|lighthouse|facebookexternalhit/i.test(navigator.userAgent))document.documentElement.classList.add('no-intro')}catch(e){document.documentElement.classList.add('no-intro')}document.documentElement.classList.add('ln-js')</script>
 <style>
 #hxi{position:fixed;inset:0;z-index:9999;overflow:hidden;background:#fbfbfe;background-image:radial-gradient(rgba(41,58,119,.09) 1px,transparent 1.3px);background-size:26px 26px}
 #hxi .hxi-au{position:absolute;inset:0;pointer-events:none}
@@ -32,12 +32,16 @@ html.intro-on,html.intro-on body{overflow:hidden}
 <link rel="canonical" href="https://hanflux.ai/factory/">
 <link rel="stylesheet" href="/factory/assets/hx/frames.css?v={{v}}">
 <link rel="stylesheet" href="/factory/assets/hx/home.css?v={{v}}">
+<link rel="stylesheet" href="/factory/assets/hx/line.css?v={{v}}">
+<link rel="stylesheet" href="/factory/assets/hx/glass.css?v={{v}}">
+<link rel="preload" as="image" href="/factory/assets/hx/line/still-m.webp" media="(max-width: 899px)" fetchpriority="high">
 <script defer src="/factory/data/config.js?v={{v}}"></script>
 <script defer src="/factory/data/sites.js?v={{v}}"></script>
 <script defer src="/factory/assets/hx/frames.js?v={{v}}"></script>
 <script defer src="/factory/assets/hx/shell.js?v={{v}}"></script>
 <script defer src="/factory/assets/hx/lead.js?v={{v}}"></script>
 <script defer src="/factory/assets/hx/home.js?v={{v}}"></script>
+<script defer src="/factory/assets/hx/line.js?v={{v}}"></script>
 </head>
 <body class="home">
 {{intro}}
@@ -45,27 +49,79 @@ html.intro-on,html.intro-on body{overflow:hidden}
 {{nav}}
 
 <main>
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero-in wrap">
-      <div class="hero-mark" aria-hidden="true">
-        <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="lotus-wrap"><img class="lotus" src="/factory/assets/hx/brand/lotus.webp" srcset="/factory/assets/hx/brand/lotus-300.webp 300w, /factory/assets/hx/brand/lotus.webp 510w" sizes="(max-width: 640px) 100px, 170px" width="510" height="364" alt="" fetchpriority="high"></div>
+  <section class="line" id="line" aria-labelledby="hero-title">
+    <div class="ln-pin">
+      <div class="ln-mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="ln-grid wrap">
+        <div class="ln-win" aria-hidden="true">
+          <div class="ln-media">
+            <picture><source media="(max-width: 899px)" srcset="/factory/assets/hx/line/still-m.webp"><img class="ln-f on" src="/factory/assets/hx/line/still-d.webp" width="1920" height="1086" alt="" fetchpriority="high" decoding="async"></picture>
+          </div>
+          <span class="ln-tag mono"><b class="ln-tag-n">01</b><span class="ln-tag-t">Your brief</span></span>
+          <span class="ln-live mono"><i></i>the factory line</span>
+        </div>
+        <div class="ln-copy">
+          <article class="ln-ch on" data-ch="0">
+            <p class="kicker low ln-k"><img class="ln-mark" src="/factory/assets/hx/brand/lotus-96.webp" width="96" height="68" alt="">hanflux ai · the design factory</p>
+            <h1 class="display" id="hero-title">Any website design. <span class="grad-t">One flat price.</span> Live in 48 hours.</h1>
+            <p class="lede ln-l">We are a website factory. You pick a real, working design. We make it yours, host it and put it live on your own domain.</p>
+            <div class="ln-price">
+              <p class="hp-tag"><span class="hp-dot"></span>{{step_label}} · {{step_ends}}</p>
+              <p class="hp-main">{{ladder_hero}}</p>
+              <p class="hp-vs">Hosting included. Agencies usually quote {{agency}}. <button class="cur-link" type="button" data-cur-toggle><span class="c-inr">Outside India? See $ prices</span><span class="c-usd">In India? See ₹ prices</span></button></p>
+            </div>
+            <div class="cta ln-cta">
+              <a class="btn btn-teal" href="#gallery">See the designs{{arrow}}</a>
+              <button class="btn btn-ghost" type="button" data-open-plan>Free website plan</button>
+            </div>
+            <p class="ln-scroll mono" aria-hidden="true"><i></i>Scroll to walk the factory line</p>
+          </article>
+          <article class="ln-ch" data-ch="1">
+            <p class="kicker ln-k"><b>02</b> design</p>
+            <h2 class="display">Pick a design you can <span class="grad-t">watch working.</span></h2>
+            <p class="lede ln-l">Not mock-ups. {{n_sites}} real websites, from minimal to full 3D, running live on a phone and a laptop. Choose the one that feels like your business. Every design is the same price.</p>
+            <ul class="ln-pts"><li>Shops and brands</li><li>Food and cafés</li><li>Clinics and salons</li><li>Real estate</li><li>Tech and startups</li><li>Services</li></ul>
+            <div class="cta ln-cta"><a class="btn btn-teal" href="#gallery">Open the design menu{{arrow}}</a></div>
+          </article>
+          <article class="ln-ch" data-ch="2">
+            <p class="kicker ln-k"><b>03</b> build</p>
+            <h2 class="display">We make it <span class="grad-t">yours.</span></h2>
+            <p class="lede ln-l">Your name, logo, photos, words and colours go in. AI agents do the repetitive work in hours and our team does the parts that need taste. That is why it costs a fraction of an agency.</p>
+            <ul class="ln-pts"><li>Websites</li><li>Mobile and web apps</li><li>Dashboards</li><li>HTML emails</li><li>Brand and logo</li><li>AI chat and voice</li></ul>
+            <div class="cta ln-cta"><a class="btn btn-ghost" href="#custom">Everything we make{{arrow}}</a></div>
+          </article>
+          <article class="ln-ch" data-ch="3">
+            <p class="kicker ln-k"><b>04</b> 12 checks</p>
+            <h2 class="display">Checked 12 ways <span class="grad-t">before it ships.</span></h2>
+            <p class="lede ln-l">Every site passes the same 12-point launch check, and you get the report.</p>
+            <ul class="ln-pts ck"><li>Phones and laptops</li><li>Every major browser</li><li>Loading speed</li><li>Security</li><li>Forms and links</li><li>Google basics</li></ul>
+            <div class="cta ln-cta"><a class="btn btn-ghost" href="#checks">See all 12 checks{{arrow}}</a></div>
+          </article>
+          <article class="ln-ch" data-ch="4">
+            <p class="kicker ln-k"><b>05</b> live</p>
+            <h2 class="display">Live on your domain <span class="grad-t">in 48 hours.</span></h2>
+            <p class="lede ln-l">One flat price, fixed before we start, hosting included. As many changes as you want before launch and 30 days of small fixes after.</p>
+            <div class="ln-price">
+              <p class="hp-main">{{ladder_hero}}</p>
+            </div>
+            <div class="cta ln-cta">
+              <button class="btn btn-teal" type="button" data-open-plan>Get my free website plan{{arrow}}</button>
+              <a class="btn btn-wa" href="https://wa.me/{{wa}}?text={{wa_hello}}" target="_blank" rel="noopener">{{wa_ic}}WhatsApp us</a>
+            </div>
+          </article>
+        </div>
       </div>
-      <p class="kicker low hero-k">hanflux ai · the design factory</p>
-      <h1 class="display h-xl" id="hero-title"><span class="ln"><span>Any website design.</span></span> <span class="ln"><span class="grad-t">One flat price.</span></span> <span class="ln"><span>Live in 48 hours.</span></span></h1>
-      <p class="lede hero-l">Watch {{n_sites}} real, working websites, from minimal to full 3D. Pick one and we make it yours, host it and put it live on your domain.</p>
-      <div class="hero-price hero-l">
-        <p class="hp-tag"><span class="hp-dot"></span>{{step_label}} · {{step_ends}}</p>
-        <p class="hp-main">{{ladder_hero}}</p>
-        <p class="hp-vs">Hosting included. Agencies usually quote {{agency}}. <button class="cur-link" type="button" data-cur-toggle><span class="c-inr">Outside India? See $ prices</span><span class="c-usd">In India? See ₹ prices</span></button></p>
+      <div class="ln-rail wrap" role="group" aria-label="The factory line, five stations">
+        <div class="ln-track" aria-hidden="true"><i class="ln-bar"></i></div>
+        <ol class="ln-stops">
+          <li><button type="button" class="ln-stop on" data-go="0"><span class="mono">01</span>Brief</button></li>
+          <li><button type="button" class="ln-stop" data-go="1"><span class="mono">02</span>Design</button></li>
+          <li><button type="button" class="ln-stop" data-go="2"><span class="mono">03</span>Build</button></li>
+          <li><button type="button" class="ln-stop" data-go="3"><span class="mono">04</span>12 checks</button></li>
+          <li><button type="button" class="ln-stop" data-go="4"><span class="mono">05</span>Live</button></li>
+        </ol>
+        <a class="ln-skip" href="#gallery">Skip to the designs</a>
       </div>
-      <div class="cta hero-c">
-        <a class="btn btn-teal" href="#gallery">See the designs{{arrow}}</a>
-        <button class="btn btn-ghost" type="button" data-open-plan>Get my free website plan</button>
-      </div>
-      <ul class="ticks hero-t" aria-label="What you get">
-        <li>Same price for every design</li><li>Hosting included</li><li>Live within 48 hours</li>
-      </ul>
     </div>
   </section>
 

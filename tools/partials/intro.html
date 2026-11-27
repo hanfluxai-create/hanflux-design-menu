@@ -90,7 +90,7 @@
     if (t > 1100 && t < 2250) decode(tag, t, 1350, 40);
     var bo = eo(cl((t - FLY0) / 260)); brand.style.opacity = 1 - bo; brand.style.transform = 'translateY(' + (-bo * 16) + 'px)';
     // 5. fly into the hero logo
-    if (t >= FLY0 - 30 && !hero) { var h = d.querySelector('.hero-mark .lotus'), r = h && h.getBoundingClientRect(); hero = r && r.width > 4 ? r : { left: (W - 110) / 2, top: 140, width: 110, height: 78 }; }
+    if (t >= FLY0 - 30 && !hero) { var h = d.querySelector('.ln-mark'), r = h && h.getBoundingClientRect(); hero = r && r.width > 4 ? r : { left: (W - 110) / 2, top: 140, width: 110, height: 78 }; }
     if (hero) {
       var f = eio(cl((t - FLY0) / FLY)), s = hero.width / bw;
       mark.style.transform = 'translate(' + ((hero.left - bx) * f) + 'px,' + ((hero.top - by) * f) + 'px) scale(' + (1 + (s - 1) * f) + ')';

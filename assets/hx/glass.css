@@ -1,0 +1,35 @@
+/* Hanflux Design Factory · glass and gradient mesh for the home page (light theme; dark keeps its own look).
+   No backdrop blur on phones: the glass is drawn with gradients and shadows, which cost nothing to scroll. */
+html:not(.dark) body.home { background: #fbfbfe; }
+html:not(.dark) .home .section { background: transparent; }
+html:not(.dark) .home main { position: relative; }
+html:not(.dark) .home .gallery, html:not(.dark) .home .how, html:not(.dark) .home .pricing, html:not(.dark) .home .faq { isolation: isolate; }
+html:not(.dark) .home .gallery::before, html:not(.dark) .home .services::before, html:not(.dark) .home .how::before, html:not(.dark) .home .factory::before,
+html:not(.dark) .home .pricing::before, html:not(.dark) .home .plan::before, html:not(.dark) .home .faq::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+html:not(.dark) .home .gallery::before { background: radial-gradient(60% 50% at 8% 0%, rgba(21,135,189,.10), transparent 70%), radial-gradient(50% 46% at 96% 30%, rgba(215,80,136,.08), transparent 70%); }
+html:not(.dark) .home .services { isolation: isolate; }
+html:not(.dark) .home .services::before { background: radial-gradient(56% 50% at 92% 6%, rgba(101,48,128,.10), transparent 70%), radial-gradient(48% 48% at 4% 80%, rgba(240,133,34,.08), transparent 70%); }
+html:not(.dark) .home .how::before { background: radial-gradient(54% 60% at 50% 100%, rgba(21,135,189,.09), transparent 70%); }
+html:not(.dark) .home .factory { isolation: isolate; background: linear-gradient(180deg, #f6f6fc, #f1f2fb); }
+html:not(.dark) .home .factory::before { background: radial-gradient(50% 44% at 0% 10%, rgba(41,58,119,.09), transparent 70%), radial-gradient(52% 46% at 100% 70%, rgba(162,62,140,.09), transparent 70%); }
+html:not(.dark) .home .pricing::before { background: radial-gradient(60% 48% at 50% 0%, rgba(101,48,128,.08), transparent 70%), radial-gradient(40% 40% at 100% 100%, rgba(240,133,34,.08), transparent 70%); }
+html:not(.dark) .home .plan { isolation: isolate; }
+html:not(.dark) .home .faq::before { background: radial-gradient(50% 50% at 0% 40%, rgba(21,135,189,.08), transparent 70%); }
+
+/* one glass recipe */
+html:not(.dark) .home .gcard:not(.g-all), html:not(.dark) .home .fline li, html:not(.dark) .home .cmp-wrap, html:not(.dark) .home .tcard:not(.top),
+html:not(.dark) .home .svc-grid > li, html:not(.dark) .home .steps li, html:not(.dark) .home .qa, html:not(.dark) .home .incl-all, html:not(.dark) .home .addons-strip, html:not(.dark) .home .wk-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.74));
+  border-color: rgba(255,255,255,.95);
+  box-shadow: 0 0 0 1px rgba(41,58,119,.07), inset 0 1px 0 #fff, 0 22px 44px -28px rgba(86,62,170,.38), 0 3px 8px -4px rgba(41,58,119,.08); }
+html:not(.dark) .home .steps li { padding: 22px 22px 24px; border: 1px solid rgba(255,255,255,.95); border-radius: var(--r-lg); }
+html:not(.dark) .home .qa { border-radius: var(--r); border: 1px solid rgba(255,255,255,.95); margin-bottom: 10px; padding-left: 18px; padding-right: 18px; }
+html:not(.dark) .home .g-all { background: linear-gradient(140deg, rgba(21,135,189,.10), rgba(101,48,128,.10) 50%, rgba(240,133,34,.12)); box-shadow: 0 0 0 1px rgba(41,58,119,.07), inset 0 1px 0 rgba(255,255,255,.8); }
+html:not(.dark) .home .g-all .ga-n { background: var(--spectrum); -webkit-background-clip: text; background-clip: text; color: transparent; }
+html:not(.dark) .home .ck-list li { border-top-color: rgba(41,58,119,.1); }
+html:not(.dark) .home .gcard { border-radius: 28px; }
+@media (hover: hover) and (min-width: 861px) {
+  html:not(.dark) .home .gcard:not(.g-all):hover, html:not(.dark) .home .svc-grid > li:hover, html:not(.dark) .home .steps li:hover {
+    box-shadow: 0 0 0 1px rgba(41,58,119,.1), inset 0 1px 0 #fff, 0 34px 60px -30px rgba(86,62,170,.5), 0 6px 14px -6px rgba(41,58,119,.12); }
+}
