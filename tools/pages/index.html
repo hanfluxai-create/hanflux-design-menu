@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 {{head}}
-<script>try{if(sessionStorage.getItem('hx-intro')||matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&](nointro|embed)=/.test(location.search)||/bot|crawl|spider|lighthouse|facebookexternalhit/i.test(navigator.userAgent))document.documentElement.classList.add('no-intro')}catch(e){document.documentElement.classList.add('no-intro')}document.documentElement.classList.add('ln-js')</script>
+<script>try{if(sessionStorage.getItem('hx-intro')||matchMedia('(prefers-reduced-motion: reduce)').matches||/[?&](nointro|embed)=/.test(location.search)||/bot|crawl|spider|lighthouse|facebookexternalhit/i.test(navigator.userAgent))document.documentElement.classList.add('no-intro')}catch(e){document.documentElement.classList.add('no-intro')}document.documentElement.classList.add('ln-js','ln-in')</script>
 <style>
 #hxi{position:fixed;inset:0;z-index:9999;overflow:hidden;background:#fbfbfe;background-image:radial-gradient(rgba(41,58,119,.09) 1px,transparent 1.3px);background-size:26px 26px}
 #hxi .hxi-au{position:absolute;inset:0;pointer-events:none}
@@ -34,7 +34,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
 <link rel="stylesheet" href="/factory/assets/hx/home.css?v={{v}}">
 <link rel="stylesheet" href="/factory/assets/hx/line.css?v={{v}}">
 <link rel="stylesheet" href="/factory/assets/hx/glass.css?v={{v}}">
-<link rel="preload" as="image" href="/factory/assets/hx/line/still-m.webp" media="(max-width: 899px)" fetchpriority="high">
+<link rel="preload" as="image" href="/factory/assets/hx/line/poster-m.webp" media="(max-width: 899px) and (orientation: portrait)" fetchpriority="high">
 <script defer src="/factory/data/config.js?v={{v}}"></script>
 <script defer src="/factory/data/sites.js?v={{v}}"></script>
 <script defer src="/factory/assets/hx/frames.js?v={{v}}"></script>
@@ -51,15 +51,13 @@ html.intro-on,html.intro-on body{overflow:hidden}
 <main>
   <section class="line" id="line" aria-labelledby="hero-title">
     <div class="ln-pin">
-      <div class="ln-mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="ln-film" aria-hidden="true" data-n="97" data-d="/factory/assets/hx/line/d/f-" data-m="/factory/assets/hx/line/m/f-">
+        <picture><source media="(max-width: 899px) and (orientation: portrait)" srcset="/factory/assets/hx/line/poster-m.webp"><img class="ln-poster" src="/factory/assets/hx/line/poster-d.webp" width="1280" height="720" alt="" fetchpriority="high" decoding="async"></picture>
+        <canvas class="ln-cv"></canvas>
+        <i class="ln-shade"></i>
+      </div>
       <div class="ln-grid wrap">
-        <div class="ln-win" aria-hidden="true">
-          <div class="ln-media">
-            <picture><source media="(max-width: 899px)" srcset="/factory/assets/hx/line/still-m.webp"><img class="ln-f on" src="/factory/assets/hx/line/still-d.webp" width="1920" height="1086" alt="" fetchpriority="high" decoding="async"></picture>
-          </div>
-          <span class="ln-tag mono"><b class="ln-tag-n">01</b><span class="ln-tag-t">Your brief</span></span>
-          <span class="ln-live mono"><i></i>the factory line</span>
-        </div>
+        <span class="ln-tag mono"><b class="ln-tag-n">01</b><span class="ln-tag-t">Your brief</span></span>
         <div class="ln-copy">
           <article class="ln-ch on" data-ch="0">
             <p class="kicker low ln-k"><img class="ln-mark" src="/factory/assets/hx/brand/lotus-96.webp" width="96" height="68" alt="">hanflux ai · the design factory</p>
@@ -74,12 +72,12 @@ html.intro-on,html.intro-on body{overflow:hidden}
               <a class="btn btn-teal" href="#gallery">See the designs{{arrow}}</a>
               <button class="btn btn-ghost" type="button" data-open-plan>Free website plan</button>
             </div>
-            <p class="ln-scroll mono" aria-hidden="true"><i></i>Scroll to walk the factory line</p>
+            <p class="ln-scroll mono" aria-hidden="true"><i></i>Scroll to fly through the factory</p>
           </article>
           <article class="ln-ch" data-ch="1">
             <p class="kicker ln-k"><b>02</b> design</p>
             <h2 class="display">Pick a design you can <span class="grad-t">watch working.</span></h2>
-            <p class="lede ln-l">Not mock-ups. {{n_sites}} real websites, from minimal to full 3D, running live on a phone and a laptop. Choose the one that feels like your business. Every design is the same price.</p>
+            <p class="lede ln-l">Not mock-ups. A growing wall of real websites, {{n_sites}} today, from minimal to full 3D, each running live on a phone and a laptop. Choose the one that feels like your business.</p>
             <ul class="ln-pts"><li>Shops and brands</li><li>Food and cafés</li><li>Clinics and salons</li><li>Real estate</li><li>Tech and startups</li><li>Services</li></ul>
             <div class="cta ln-cta"><a class="btn btn-teal" href="#gallery">Open the design menu{{arrow}}</a></div>
           </article>
