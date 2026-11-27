@@ -24,7 +24,7 @@ p { color: var(--mute); }
 
 /* nav */
 .nav { position: fixed; z-index: 50; inset: 0 0 auto 0; display: flex; align-items: center; gap: 30px; padding: calc(14px + env(safe-area-inset-top)) var(--pad) 14px; transition: background .4s; }
-.nav.stuck { background: rgba(12, 10, 9, .8); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+.nav.stuck { background: rgba(12, 10, 9, .94); }
 .brand { display: inline-flex; align-items: center; gap: 10px; margin-right: auto; font: 500 25px/1 var(--disp); letter-spacing: -.03em; font-variation-settings: "opsz" 144; }
 .brand i { width: 14px; height: 14px; border-radius: 50%; background: var(--hot); }
 .nav-links { display: flex; gap: 30px; font: 400 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
@@ -39,7 +39,7 @@ html.menu-open .brand i { background: #140803; }
 /* film */
 .film { background: var(--bg); }
 .veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12, 10, 9, .6), transparent 26%, transparent 48%, rgba(12, 10, 9, .93)); }
-.dots { position: absolute; inset: 0; background: var(--screen) 0 0 / 7px 7px; opacity: .55; mix-blend-mode: multiply; -webkit-mask: radial-gradient(90% 70% at 50% 46%, transparent 38%, #000 100%); mask: radial-gradient(90% 70% at 50% 46%, transparent 38%, #000 100%); }
+.dots { position: absolute; inset: 0; background: url(./img/dots.webp) center / cover no-repeat; }
 .ch { position: absolute; left: var(--pad); right: var(--pad); bottom: clamp(52px, 9vh, 104px); }
 .ch-hero h1 { margin: 20px 0 30px; max-width: 9em; }
 .row { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -49,7 +49,7 @@ html.menu-open .brand i { background: #140803; }
 .ch-big .btn { margin-top: 28px; }
 .temp { position: absolute; right: var(--pad); top: 50%; translate: 0 -50%; display: flex; flex-direction: column; align-items: center; gap: 12px; font: 400 10.5px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--mute); }
 .temp b { position: relative; width: 3px; height: 150px; border-radius: 3px; background: var(--line); overflow: hidden; }
-.temp b::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--hot), var(--hot2)); transform-origin: bottom; transform: scaleY(calc(.12 + var(--p, 0) * .88)); }
+.temp b i { position: absolute; inset: 0; background: linear-gradient(0deg, var(--hot), var(--hot2)); transform-origin: bottom; transform: scaleY(.12); }
 .temp span { writing-mode: vertical-rl; }
 
 /* halftone band */

@@ -1,7 +1,7 @@
 import { film, reveals, $, $$ } from './kit.js';
 const HX = window.HX || {};
 
-film({ section: '#film', canvas: '#film canvas', counts: { d: 72, m: 48 } });
+film({ section: '#film', counts: { d: 96, m: 96 } });
 reveals();
 
 /* ---------- code tabs and a streamed reply ---------- */

@@ -21,6 +21,9 @@ class Quiet(SimpleHTTPRequestHandler):
     def log_message(self, *a):
         pass
 
+    def translate_path(self, path):  # the site lives under /factory in production
+        return super().translate_path(path[8:] if path.startswith('/factory/') else path)
+
 
 SCROLL = '''(y) => { const l = window.__lenis; if (l && l.scrollTo) l.scrollTo(y, { immediate: true, force: true }); else window.scrollTo(0, y); }'''
 

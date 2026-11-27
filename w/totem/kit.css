@@ -2,7 +2,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: clip; }
 body { margin: 0; overflow-x: clip; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-img, svg, canvas, video { display: block; max-width: 100%; }
+img, svg, canvas { display: block; max-width: 100%; }
 h1, h2, h3, h4, p, ul, ol, figure, blockquote, dl, dd { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 a { color: inherit; text-decoration: none; }
@@ -42,13 +42,6 @@ html.menu-open [data-menu] i { transform: translateY(3.5px) rotate(45deg); }
 html.menu-open [data-menu] i::before { transform: rotate(-90deg); }
 @media (max-width: 860px) { [data-menu] { display: inline-flex; } .nav-links, .nav-cta { display: none !important; } }
 @media (min-width: 861px) { #menu { display: none; } }
-
-/* the film dialog */
-#film-dlg { border: 0; padding: 0; background: #000; max-width: min(1100px, 94vw); max-height: 88vh; width: 94vw; border-radius: 14px; overflow: hidden; }
-#film-dlg::backdrop { background: rgba(0, 0, 0, .82); }
-#film-dlg video { width: 100%; max-height: 88vh; background: #000; }
-#film-dlg [data-close-film] { position: absolute; top: 10px; right: 10px; width: 44px; height: 44px; border-radius: 50%; background: rgba(0, 0, 0, .55); color: #fff; font-size: 22px; line-height: 1; z-index: 2; }
-@media (max-aspect-ratio: 85/100) { #film-dlg { width: auto; height: 88vh; } #film-dlg video { height: 88vh; width: auto; } }
 
 .form-ok[hidden] { display: none; }
 form.sent > :not(.form-ok) { display: none; }

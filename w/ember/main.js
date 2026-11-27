@@ -1,6 +1,7 @@
 import { film, reveals, $, $$ } from './kit.js';
 
-film({ section: '#film', canvas: '#film canvas', counts: { d: 72, m: 48 } });
+const heat = $('.temp b i');
+film({ section: '#film', counts: { d: 96, m: 96 }, onProgress: (p) => { if (heat) heat.style.transform = `scaleY(${(0.12 + p * 0.88).toFixed(3)})`; } });
 reveals();
 
 // the next six open nights (closed on Mondays); the first counter night shows as full

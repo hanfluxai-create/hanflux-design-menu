@@ -26,6 +26,9 @@ class Quiet(SimpleHTTPRequestHandler):
     def log_message(self, *a):
         pass
 
+    def translate_path(self, path):  # the site lives under /factory in production
+        return super().translate_path(path[8:] if path.startswith('/factory/') else path)
+
     def end_headers(self):
         self.send_header('Cache-Control', 'no-store')
         super().end_headers()

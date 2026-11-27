@@ -45,16 +45,16 @@
    "name": "Movement",
    "tier": "premium"
   },
-  "atrium": {
-   "name": "Atrium",
+  "axis": {
+   "name": "Axis",
    "tier": "premium"
   },
   "ember": {
    "name": "Ember",
    "tier": "premium"
   },
-  "shore": {
-   "name": "Blue Hour",
+  "draft": {
+   "name": "Draft",
    "tier": "premium"
   },
   "core": {

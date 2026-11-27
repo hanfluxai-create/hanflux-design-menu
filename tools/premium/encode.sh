@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
-# Hanflux premium film templates: turn the two raw Seedance cuts into what a template ships.
-# Usage: tools/premium/encode.sh <slug> <raw-16x9.mp4> <raw-9x16.mp4> [desktop frames=72] [phone frames=48]
-# Writes w/<slug>/film/: film-d.mp4, film-m.mp4 (H.264, yuv420p, short GOP, faststart, no audio; the phone one is lighter),
-# d/001.webp.., m/001.webp.. (the scroll frames, taken from the encoded files) and still-d.webp, still-m.webp (first frames).
+# Hanflux premium film templates: cut a raw film into the webp frames the scroll plays. No video file ships.
+# Usage: tools/premium/encode.sh <slug> <name> <raw-16x9.mp4|-> <raw-9x16.mp4|-> [frames=96] [trim-start s=0] [trim-end s=0]
+#   <name> is the folder under w/<slug>/: "film" for the hero film, anything else for a section film.
+#   "-" skips that cut (a section film can be laptop-only; the kit then uses the d set on phones too).
+# Writes w/<slug>/<name>/d/001.webp.. (1280x720), m/001.webp.. (540x960, a real vertical cut) and still-d.webp, still-m.webp.
 set -euo pipefail
-slug=$1; rd=$2; rm_=$3; nd=${4:-72}; nm=${5:-48}
-root=$(cd "$(dirname "$0")/../.." && pwd); out="$root/w/$slug/film"
-mkdir -p "$out/d" "$out/m"; rm -f "$out"/d/*.webp "$out"/m/*.webp
-ffmpeg -v error -y -i "$rd" -an -vf "scale=1280:720:flags=lanczos,setsar=1" -c:v libx264 -preset slow -crf 25 -pix_fmt yuv420p -g 12 -keyint_min 12 -sc_threshold 0 -movflags +faststart "$out/film-d.mp4"
-ffmpeg -v error -y -i "$rm_" -an -vf "scale=540:960:flags=lanczos,setsar=1" -c:v libx264 -preset slow -crf 28 -pix_fmt yuv420p -g 12 -keyint_min 12 -sc_threshold 0 -movflags +faststart "$out/film-m.mp4"
-frames() { # file dir count quality
+slug=$1; name=$2; rd=$3; rm_=$4; n=${5:-96}; t0=${6:-0}; t1=${7:-0}
+root=$(cd "$(dirname "$0")/../.." && pwd); out="$root/w/$slug/$name"
+cutf() { # file dir size quality still
+  [ "$1" = "-" ] && return 0
+  mkdir -p "$out/$2"; rm -f "$out/$2"/*.webp
   local dur; dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$1")
-  ffmpeg -v error -y -i "$1" -vf "fps=$3/$dur" -frames:v "$3" -c:v libwebp -quality "$4" -compression_level 6 "$2/%03d.webp"
+  local len; len=$(python3 -c "print(max(0.5, $dur - $t0 - $t1))")
+  ffmpeg -v error -y -ss "$t0" -t "$len" -i "$1" -an -vf "fps=$n/$len,scale=$3:force_original_aspect_ratio=increase:flags=lanczos,crop=$3,setsar=1" -frames:v "$n" -c:v libwebp -quality "$4" -compression_level 6 -preset photo "$out/$2/%03d.webp"
+  ffmpeg -v error -y -ss "$t0" -i "$1" -an -vf "scale=$3:force_original_aspect_ratio=increase:flags=lanczos,crop=$3,setsar=1" -frames:v 1 -c:v libwebp -quality 80 "$out/still-$2.webp"
 }
-frames "$out/film-d.mp4" "$out/d" "$nd" 60
-frames "$out/film-m.mp4" "$out/m" "$nm" 58
-ffmpeg -v error -y -i "$out/film-d.mp4" -frames:v 1 -c:v libwebp -quality 80 "$out/still-d.webp"
-ffmpeg -v error -y -i "$out/film-m.mp4" -frames:v 1 -c:v libwebp -quality 80 "$out/still-m.webp"
-echo "$slug: d=$(ls "$out/d" | wc -l) m=$(ls "$out/m" | wc -l) $(du -sh "$out" | cut -f1)"
+cutf "$rd" d 1280:720 50
+cutf "$rm_" m 540:960 54
+echo "$slug/$name: d=$(ls "$out/d" 2>/dev/null | wc -l) m=$(ls "$out/m" 2>/dev/null | wc -l) $(du -sh "$out" | cut -f1)"

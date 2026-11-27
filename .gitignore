@@ -1,3 +1,5 @@
 _qa/
 node_modules/
 .DS_Store
+tools/premium/gen/
+__pycache__/

@@ -7,6 +7,8 @@ from PIL import Image
 ROOT = os.path.realpath(os.path.join(os.path.dirname(__file__), '..', '..'))
 class Q(SimpleHTTPRequestHandler):
     def log_message(self, *a): pass
+    def translate_path(self, path):  # the site lives under /factory in production
+        return super().translate_path(path[8:] if path.startswith('/factory/') else path)
 async def main(slugs):
     from playwright.async_api import async_playwright
     srv = ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(Q, directory=ROOT)); threading.Thread(target=srv.serve_forever, daemon=True).start()

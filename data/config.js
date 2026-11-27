@@ -122,10 +122,10 @@ window.HX_CONFIG = {
     { id: 'shops', label: 'Shops and brands', slugs: ['chrono', 'gold', 'liquid', 'brutal', 'editorial', 'halftone', 'comic', 'holo'] },
     { id: 'food', label: 'Food and cafés', slugs: ['ember', 'comic', 'halftone', 'neon', 'pixel', 'brutal'] },
     { id: 'health', label: 'Salons, clinics, wellness', slugs: ['silk', 'glass', 'mesh', 'swiss'] },
-    { id: 'property', label: 'Real estate and builders', slugs: ['shore', 'estate', 'blueprint', 'wireframe'] },
+    { id: 'property', label: 'Real estate and builders', slugs: ['draft', 'estate', 'blueprint', 'wireframe'] },
     { id: 'travel', label: 'Hotels, travel, events', slugs: ['ember', 'deco', 'flap', 'neon', 'vhs'] },
     { id: 'tech', label: 'Tech and startups', slugs: ['core', 'particles', 'holo', 'iso', 'bento', 'ascii', 'clay', 'mesh'] },
-    { id: 'services', label: 'Services and B2B', slugs: ['atrium', 'swiss', 'blueprint', 'wireframe', 'kinetic', 'bento', 'iso'] },
+    { id: 'services', label: 'Services and B2B', slugs: ['axis', 'swiss', 'blueprint', 'wireframe', 'kinetic', 'bento', 'iso'] },
     { id: 'learn', label: 'Schools and coaching', slugs: ['bauhaus', 'clay'] },
     { id: 'personal', label: 'Personal brands and portfolios', slugs: ['totem', 'kinetic'] }
   ],

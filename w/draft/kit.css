@@ -1,0 +1,53 @@
+/* Hanflux premium film templates: shared mechanics only (copied into each w/<slug>/). Looks live in style.css. */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: smooth; overflow-x: clip; }
+body { margin: 0; overflow-x: clip; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+img, svg, canvas { display: block; max-width: 100%; }
+h1, h2, h3, h4, p, ul, ol, figure, blockquote, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+:focus-visible { outline: 2px solid var(--focus, currentColor); outline-offset: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+html.hx-embed .hx-hide-in-embed { display: none !important; }
+
+/* the film: a tall section, a pinned stage, the first frame as an image, the canvas over it */
+.film { position: relative; height: 360vh; }
+.film-pin { position: sticky; top: 0; height: 100vh; height: 100lvh; overflow: hidden; contain: layout paint; }
+.film-pin > img.film-still, .film-pin > canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.film-pin > canvas { opacity: 0; transition: opacity .5s ease; }
+.film-pin > canvas.on { opacity: 1; }
+.film-ui { position: absolute; inset: 0 0 auto 0; height: 100vh; height: 100svh; pointer-events: none; }
+.film-ui a, .film-ui button { pointer-events: auto; }
+[data-at] { opacity: 0; transform: translate3d(0, 22px, 0); transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .9s cubic-bezier(.2, .7, .2, 1); will-change: opacity, transform; }
+[data-at].on { opacity: 1; transform: none; }
+html:not(.js) [data-at]:first-of-type { opacity: 1; transform: none; }
+.film.still { height: auto; }
+.film.still .film-pin { position: relative; }
+@media (max-width: 760px) { .film { height: 320vh; } }
+
+/* scroll reveals */
+html.js .rv { opacity: 0; transform: translate3d(0, 26px, 0); transition: opacity .8s cubic-bezier(.2, .7, .2, 1), transform 1s cubic-bezier(.2, .7, .2, 1); transition-delay: calc(var(--d, 0) * 90ms); }
+html.js .rv.in { opacity: 1; transform: none; }
+
+/* phone menu */
+#menu { position: fixed; inset: 0; z-index: 60; display: flex; flex-direction: column; justify-content: center; gap: 6px; padding: 96px 28px calc(40px + env(safe-area-inset-bottom)); visibility: hidden; opacity: 0; transition: opacity .35s ease, visibility 0s .35s; }
+html.menu-open #menu { visibility: visible; opacity: 1; transition: opacity .35s ease; }
+html.menu-open { overflow: hidden; }
+[data-menu] { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; position: relative; z-index: 70; }
+[data-menu] i, [data-menu] i::before { display: block; width: 22px; height: 1.5px; background: currentColor; transition: transform .35s ease; }
+[data-menu] i::before { content: ""; transform: translateY(7px); }
+html.menu-open [data-menu] i { transform: translateY(3.5px) rotate(45deg); }
+html.menu-open [data-menu] i::before { transform: rotate(-90deg); }
+@media (max-width: 860px) { [data-menu] { display: inline-flex; } .nav-links, .nav-cta { display: none !important; } }
+@media (min-width: 861px) { #menu { display: none; } }
+
+.form-ok[hidden] { display: none; }
+form.sent > :not(.form-ok) { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  html:not(.hx-embed) [data-at], html:not(.hx-embed) .rv { transition: none !important; }
+  html:not(.hx-embed) .film.still [data-at] { opacity: 1; transform: none; position: relative; }
+}
